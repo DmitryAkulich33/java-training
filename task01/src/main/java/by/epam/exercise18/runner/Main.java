@@ -1,7 +1,5 @@
 package by.epam.exercise18.runner;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         solve(3.0);
