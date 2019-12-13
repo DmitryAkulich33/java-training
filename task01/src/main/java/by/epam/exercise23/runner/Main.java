@@ -2,8 +2,8 @@ package by.epam.exercise23.runner;
 
 public class Main {
     public static void main(String[] args) {
-        calculateRingArea(3, 2);
-        calculateRingArea(2, 3);
+        calculateRingArea(3.0, 2.0);
+        calculateRingArea(2.0, 3.0);
     }
 
     public static void calculateRingArea(double outerRadius, double innerRadius) {

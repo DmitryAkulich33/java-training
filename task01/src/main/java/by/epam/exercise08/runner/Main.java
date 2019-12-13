@@ -2,8 +2,8 @@ package by.epam.exercise08.runner;
 
 public class Main {
     public static void main(String[] args) {
-        calculateValue(1, 2, 3);
-        calculateValue(0, 2, 3);
+        calculateValue(1.0, 2.0, 3.0);
+        calculateValue(0.0, 2.0, 3.0);
     }
 
     public static void calculateValue(double a, double b, double c) {
