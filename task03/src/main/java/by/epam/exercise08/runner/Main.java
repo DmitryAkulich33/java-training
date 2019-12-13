@@ -1,6 +1,6 @@
-package by.epam.exercise08.controller;
+package by.epam.exercise08.runner;
 
-public class Runner {
+public class Main {
     public static void main(String[] args) {
         double lineStart = 15;
         double lineEnd = 30;
