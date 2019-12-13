@@ -8,8 +8,8 @@ public class Main {
         solve(0.0);
     }
 
-    public static void solve (double cubeEdge){
-        if(cubeEdge > 0) {
+    public static void solve(double cubeEdge) {
+        if (cubeEdge > 0) {
             double faceArea = findFaceArea(cubeEdge);
             double cubeArea = findCubeArea(cubeEdge);
             double cubeVolume = findCubeVolume(cubeEdge);
@@ -40,9 +40,6 @@ public class Main {
     public static void printUnCorrectData() {
         System.out.println("The data is incorrect");
     }
-
-
-
 
 
 }
