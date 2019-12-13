@@ -1,23 +1,25 @@
-package by.epam.exercise23.controller;
+package by.epam.exercise23.runner;
 
-import java.util.Scanner;
-
-public class Runner {
+public class Main {
     public static void main(String[] args) {
-        double outerRadius;
-        double innerRadius;
-        double ringArea;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the outer radius:");
-        outerRadius = scanner.nextDouble();
-        System.out.println("Enter the inner radius:");
-        innerRadius = scanner.nextDouble();
-        scanner.close();
-        if (outerRadius > innerRadius) {
-            ringArea = (Math.PI * outerRadius * outerRadius) - (Math.PI * innerRadius * innerRadius);
-            System.out.println("The ring area is: " + ringArea);
+        calculateRingArea(3, 2);
+        calculateRingArea(2, 3);
+    }
+
+    public static void calculateRingArea(double outerRadius, double innerRadius) {
+        if (outerRadius > innerRadius && outerRadius > 0 && innerRadius > 0) {
+            double ringArea = (Math.PI * outerRadius * outerRadius) - (Math.PI * innerRadius * innerRadius);
+            printCorrectData(ringArea);
         } else {
-            System.out.println("The entered data is incorrect.");
+            printUnCorrectData();
         }
+    }
+
+    public static void printCorrectData(double ringArea) {
+        System.out.println("The ring area is: " + ringArea);
+    }
+
+    public static void printUnCorrectData() {
+        System.out.println("The data is incorrect");
     }
 }
