@@ -1,7 +1,5 @@
 package by.epam.exercise08.runner;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         calculateValue(1, 2, 3);
