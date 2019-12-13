@@ -1,32 +1,30 @@
 package by.epam.exercise08.controller;
 
-import java.util.Scanner;
-
 public class Runner {
     public static void main(String[] args) {
-        double lineStart;
-        double lineEnd;
-        double step;
-        double c;
-        double x;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the start of line:");
-        lineStart = scanner.nextDouble();
-        System.out.println("Enter the end of line:");
-        lineEnd = scanner.nextDouble();
-        System.out.println("Enter c:");
-        c = scanner.nextDouble();
-        System.out.println("Enter step of value changes:");
-        step = scanner.nextDouble();
-        scanner.close();
-        x = lineStart;
-        while (x < lineEnd) {
-            if (x == 15) {
-                System.out.println("x = " + x + ", y = " + ((x + c) * 2));
+        double lineStart = 15;
+        double lineEnd = 30;
+        double step = 2;
+        double c = 1;
+        solve(lineStart, lineEnd, step, c);
+
+    }
+
+    public static void print(double x, double y) {
+        System.out.println("Function value: x = " + x + ", y = " + y);
+    }
+
+    public static void solve(double lineStart, double lineEnd, double step, double c) {
+        double result;
+        while (lineStart < lineEnd) {
+            if (lineStart == 15) {
+                result = (lineStart + c) * 2;
+                print(lineStart, result);
             } else {
-                System.out.println("x = " + x + ", y = " + ((x - c) + 2));
+                result = (lineStart - c) + 6;
+                print(lineStart, result);
             }
-            x += step;
+            lineStart += step;
         }
     }
 }
