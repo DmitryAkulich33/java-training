@@ -3,7 +3,7 @@ package by.epam.exercise18.runner;
 public class Main {
     public static void main(String[] args) {
         int length = 3;
-        double e = 1;
+        double e = 1.0;
         findTheNecessaryResult(length, e);
     }
 

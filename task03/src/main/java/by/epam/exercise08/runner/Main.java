@@ -2,10 +2,10 @@ package by.epam.exercise08.runner;
 
 public class Main {
     public static void main(String[] args) {
-        double lineStart = 15;
-        double lineEnd = 30;
-        double step = 2;
-        double c = 1;
+        double lineStart = 15.0;
+        double lineEnd = 30.0;
+        double step = 2.0;
+        double c = 1.0;
         solve(lineStart, lineEnd, step, c);
 
     }
@@ -16,7 +16,7 @@ public class Main {
 
     public static void solve(double lineStart, double lineEnd, double step, double c) {
         double result;
-        while (lineStart < lineEnd) {
+        while (lineStart <= lineEnd) {
             if (lineStart == 15) {
                 result = (lineStart + c) * 2;
                 print(lineStart, result);

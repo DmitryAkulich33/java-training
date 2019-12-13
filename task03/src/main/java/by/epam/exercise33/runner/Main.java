@@ -1,14 +1,12 @@
-package by.epam.exercise33.controller;
+package by.epam.exercise33.runner;
 
-import java.util.Scanner;
-
-public class Runner {
+public class Main {
     public static void main(String[] args) {
-        int number;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter number:");
-        number = scanner.nextInt();
-        scanner.close();
+        int number = 1231;
+        solve(number);
+    }
+
+    public static void solve(int number){
         int maximum = 0;
         while (number > 0) {
             if (number % 10 > maximum) {
@@ -16,6 +14,10 @@ public class Runner {
             }
             number = number / 10;
         }
+        print(maximum);
+    }
+
+    public static void print(int maximum){
         System.out.println("The largest digit of the number is: " + maximum);
     }
 }
