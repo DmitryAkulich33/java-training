@@ -13,7 +13,7 @@ public class Main {
             double cubeVolume = findCubeVolume(cubeEdge);
             printCorrectData(faceArea, cubeArea, cubeVolume);
         } else {
-            printUnCorrectData();
+            printInCorrectData();
         }
     }
 
@@ -35,7 +35,7 @@ public class Main {
         System.out.println("The volume of the cube is " + cubeVolume);
     }
 
-    public static void printUnCorrectData() {
+    public static void printInCorrectData() {
         System.out.println("The data is incorrect");
     }
 

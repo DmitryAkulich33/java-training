@@ -11,7 +11,7 @@ public class Main {
             double result = ((b + Math.sqrt(b * b + 4 * a * c)) / (2 * a)) - Math.pow(a, 3) * c + Math.pow(b, -2);
             printCorrectData(result);
         } else {
-            printUnCorrectData();
+            printInCorrectData();
         }
     }
 
@@ -19,7 +19,7 @@ public class Main {
         System.out.println("Answer: " + result);
     }
 
-    public static void printUnCorrectData() {
+    public static void printInCorrectData() {
         System.out.println("Cannot be divided by zero.");
     }
 

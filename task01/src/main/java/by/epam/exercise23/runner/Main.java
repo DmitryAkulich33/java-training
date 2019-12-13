@@ -11,7 +11,7 @@ public class Main {
             double ringArea = (Math.PI * outerRadius * outerRadius) - (Math.PI * innerRadius * innerRadius);
             printCorrectData(ringArea);
         } else {
-            printUnCorrectData();
+            printInCorrectData();
         }
     }
 
@@ -19,7 +19,7 @@ public class Main {
         System.out.println("The ring area is: " + ringArea);
     }
 
-    public static void printUnCorrectData() {
+    public static void printInCorrectData() {
         System.out.println("The data is incorrect");
     }
 }
