@@ -8,7 +8,7 @@ public class Main {
         calculateValue(0, 2, 3);
     }
 
-    public static void calculateValue(double a, double b, double c){
+    public static void calculateValue(double a, double b, double c) {
         if (a != 0) {
             double result = ((b + Math.sqrt(b * b + 4 * a * c)) / (2 * a)) - Math.pow(a, 3) * c + Math.pow(b, -2);
             printCorrectData(result);
@@ -17,11 +17,11 @@ public class Main {
         }
     }
 
-    public static void printCorrectData(double result){
+    public static void printCorrectData(double result) {
         System.out.println("Answer: " + result);
     }
 
-    public static void printUnCorrectData(){
+    public static void printUnCorrectData() {
         System.out.println("Cannot be divided by zero.");
     }
 
