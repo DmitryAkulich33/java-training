@@ -14,7 +14,7 @@ public class DateValidator {
         }
         int notLeapYear = date.isLeap() ? 0 : 1;
 
-        if (month < 0 || month > 13) {
+        if (month < 0 || month > 12) {
             return false;
         }
         if (day < 0 || (month == 2 && day > daysInMonth[month - 1] - notLeapYear) ||

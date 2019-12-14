@@ -29,13 +29,4 @@ public class Date {
         }
         return (year % 4 == 0);
     }
-
-    @Override
-    public String toString() {
-        if(month < 10) {
-            return day + ".0" + month + "." + year;
-        } else {
-            return day + "." + month + "." + year;
-        }
-    }
 }
