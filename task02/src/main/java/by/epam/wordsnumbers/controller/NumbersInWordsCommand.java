@@ -4,14 +4,20 @@ import by.epam.wordsnumbers.exception.WrongNumberException;
 import by.epam.wordsnumbers.scanner.ReadNumbers;
 
 public class NumbersInWordsCommand {
-    public void exec() {
-        ReadNumbers readNumbers = new ReadNumbers();
-        int number = readNumbers.read();
-        print(number, returnNumbersInWords(number));
+    public void exec() throws InterruptedException {
+//        ReadNumbers readNumbers = new ReadNumbers();
+//        int number = readNumbers.read();
+//        print(number, returnNumbersInWords(number));
+        for(int i = 1; i <= 9999; i++){
+            print(i, returnNumbersInWords(i));
+            Thread.sleep(5);
+        }
     }
 
     public String returnNumbersInWords(int number) {
-        if (number > 999 && number < 10000) {
+        if(number == 0){
+            return "ноль";
+        } else if (number > 999 && number < 10000) {
             return getDigit1000(number);
         } else if (number > 99 && number < 1000) {
             return getDigit100(number);
@@ -45,12 +51,12 @@ public class NumbersInWordsCommand {
             default:
                 throw new WrongNumberException("Wrong data");
         }
-        if (number / 1000 != 0) {
-            if (number > 1100) {
+        if (number % 1000 != 0) {
+            if (number % 1000 >= 100) {
                 return getFemaleDigit1(number / 1000) + " " + numberInWord + " " + getDigit100(number % 1000);
-            } else if (number > 1019 && number < 1100) {
+            } else if (number % 1000 > 19 && number % 1000 < 100) {
                 return getFemaleDigit1(number / 1000) + " " + numberInWord + " " + getDigit20(number % 100);
-            } else if (number < 1010) {
+            } else if (number % 1000 < 10) {
                 return getFemaleDigit1(number / 1000) + " " + numberInWord + " " + getMaleDigit1(number % 10);
             } else {
                 return getFemaleDigit1(number / 1000) + " " + numberInWord + " " + getDigit10(number % 100);
@@ -210,11 +216,13 @@ public class NumbersInWordsCommand {
         if (number % 10 != 0) {
             if (number > 19) {
                 return numberInWord + " " + getMaleDigit1(number % 10);
-            } else if (number < 9) {
+            } else if (number < 10) {
                 return numberInWord + getMaleDigit1(number);
             } else {
-                return numberInWord + getDigit10(number);
+                return numberInWord + getDigit10(number); //
             }
+        } else if(number == 10){
+            return getDigit10(10);
         }
         return numberInWord;
     }
