@@ -12,10 +12,10 @@ public class DateCreator {
             int day = numbers.get(0);
             int month = numbers.get(1);
             int year = numbers.get(2);
-            Date readedDate = new Date(day, month, year);
+            Date readDate = new Date(day, month, year);
             DateValidator validator = new DateValidator();
-            if(validator.isValid(readedDate)) {
-                return readedDate;
+            if(validator.isValid(readDate)) {
+                return readDate;
             } else {
                 throw new WrongDateException("The entered date is wrong");
             }

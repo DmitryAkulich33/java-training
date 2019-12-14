@@ -31,11 +31,22 @@ public class Date {
     }
 
     @Override
-    public String toString() {
-        return "Date{" +
-                "day=" + day +
-                ", month=" + month +
-                ", year=" + year +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Date date = (Date) o;
+
+        if (day != date.day) return false;
+        if (month != date.month) return false;
+        return year == date.year;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = day;
+        result = 31 * result + month;
+        result = 31 * result + year;
+        return result;
     }
 }
