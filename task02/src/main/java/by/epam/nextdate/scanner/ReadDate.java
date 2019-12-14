@@ -22,6 +22,7 @@ public class ReadDate {
             System.out.println("Enter a year:");
             buff = scanner.nextInt();
             numbers.add(buff);
+            scanner.close();
         } catch (InputMismatchException e) {
             throw new WrongDateException("The entered value isn't number");
         }
