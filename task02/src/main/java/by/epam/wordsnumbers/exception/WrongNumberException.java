@@ -1,6 +1,6 @@
 package by.epam.wordsnumbers.exception;
 
-public class WrongNumberException extends RuntimeException{
+public class WrongNumberException extends RuntimeException {
     String message;
 
     public WrongNumberException() {

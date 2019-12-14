@@ -16,7 +16,7 @@ public class ReadNumbers {
         } catch (InputMismatchException e) {
             throw new WrongNumberException("The entered value isn't number");
         }
-        if(number < 0 || number > 9999){
+        if (number < 0 || number > 9999) {
             throw new WrongNumberException("The entered number is wrong");
         }
         return number;

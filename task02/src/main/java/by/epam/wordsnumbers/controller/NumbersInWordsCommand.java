@@ -4,18 +4,14 @@ import by.epam.wordsnumbers.exception.WrongNumberException;
 import by.epam.wordsnumbers.scanner.ReadNumbers;
 
 public class NumbersInWordsCommand {
-    public void exec() throws InterruptedException {
-//        ReadNumbers readNumbers = new ReadNumbers();
-//        int number = readNumbers.read();
-//        print(number, returnNumbersInWords(number));
-        for(int i = 1; i <= 9999; i++){
-            print(i, returnNumbersInWords(i));
-            Thread.sleep(5);
-        }
+    public void exec() {
+        ReadNumbers readNumbers = new ReadNumbers();
+        int number = readNumbers.read();
+        print(number, returnNumbersInWords(number));
     }
 
     public String returnNumbersInWords(int number) {
-        if(number == 0){
+        if (number == 0) {
             return "ноль";
         } else if (number > 999 && number < 10000) {
             return getDigit1000(number);
@@ -221,7 +217,7 @@ public class NumbersInWordsCommand {
             } else {
                 return numberInWord + getDigit10(number); //
             }
-        } else if(number == 10){
+        } else if (number == 10) {
             return getDigit10(10);
         }
         return numberInWord;
