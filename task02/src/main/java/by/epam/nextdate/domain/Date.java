@@ -29,4 +29,13 @@ public class Date {
         }
         return (year % 4 == 0);
     }
+
+    @Override
+    public String toString() {
+        return "Date{" +
+                "day=" + day +
+                ", month=" + month +
+                ", year=" + year +
+                '}';
+    }
 }
