@@ -18,7 +18,7 @@ public class DateValidator {
             return false;
         }
         if (day <= 0 || (month == 2 && day > daysInMonth[month - 1] - notLeapYear) ||
-                (month != 2 && day > daysInMonth[month - 1])){
+                (month != 2 && day > daysInMonth[month - 1])) {
             return false;
         }
         return true;
