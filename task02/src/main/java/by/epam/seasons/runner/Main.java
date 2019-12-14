@@ -13,7 +13,7 @@ public class Main {
         findSeason(month);
     }
 
-    public static void findSeason(int month){
+    public static void findSeason(int month) {
         switch (month) {
             case 12:
             case 1:
