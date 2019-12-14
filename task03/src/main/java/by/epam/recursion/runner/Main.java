@@ -8,7 +8,6 @@ public class Main {
     }
 
     public static int sumWithCycle(int[] array) {
-        int length = array.length;
         int result = 0;
         for (int element : array) {
             result = result + element;
