@@ -11,19 +11,73 @@ public class NumbersInWordsCommand {
     }
 
     public String returnNumbersInWords(int number) {
+        String numberInWord;
         if (number == 0) {
-            return "ноль";
+            numberInWord = getFemaleDigit1(number);
         } else if (number > 999 && number < 10000) {
-            return getDigit1000(number);
+            numberInWord = getDigit1000(number);
         } else if (number > 99 && number < 1000) {
-            return getDigit100(number);
+            numberInWord = getDigit100(number);
         } else if (number > 19 && number < 100) {
-            return getDigit20(number);
+            numberInWord = getDigit20(number);
         } else if (number > 9 && number < 20) {
-            return getDigit10(number);
+            numberInWord = getDigit10(number);
         } else {
-            return getMaleDigit1(number);
+            numberInWord = getMaleDigit1(number);
         }
+        return numberInWord
+                + addRuble(number);
+    }
+
+    public String addRuble(int number) {
+        if(number > 99 && number < 10000){
+            if(number % 100 > 19){
+                return " " + getRuble(number % 10);
+            } else {
+                return " " + getRuble(number % 100);
+            }
+        } else if (number > 19 && number < 100){
+            return " " + getRuble(number % 10);
+        } else {
+            return " " + getRuble(number);
+        }
+    }
+
+    public String getRuble(int number) {
+        String numberInWord;
+        switch (number) {
+            case 0:
+                numberInWord = "рублей";
+                break;
+            case 1:
+                numberInWord = "рубль";
+                break;
+            case 2:
+            case 3:
+            case 4:
+                numberInWord = "рубля";
+                break;
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+                numberInWord = "рублей";
+                break;
+            default:
+                throw new WrongNumberException("Wrong data");
+        }
+        return numberInWord;
     }
 
     public String getDigit1000(int number) {
@@ -62,7 +116,7 @@ public class NumbersInWordsCommand {
     }
 
     public String getMaleDigit1(int number) {
-        String numberInWord = "";
+        String numberInWord;
         switch (number) {
             case 0:
                 numberInWord = "";
@@ -101,8 +155,11 @@ public class NumbersInWordsCommand {
     }
 
     public String getFemaleDigit1(int number) {
-        String numberInWord = "";
+        String numberInWord;
         switch (number) {
+            case 0:
+                numberInWord = "ноль";
+                break;
             case 1:
                 numberInWord = "одна";
                 break;
