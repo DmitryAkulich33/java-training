@@ -30,13 +30,13 @@ public class NumbersInWordsCommand {
     }
 
     public String addRuble(int number) {
-        if(number > 99 && number < 10000){
-            if(number % 100 > 19){
+        if (number > 99 && number < 10000) {
+            if (number % 100 > 19) {
                 return " " + getRuble(number % 10);
             } else {
                 return " " + getRuble(number % 100);
             }
-        } else if (number > 19 && number < 100){
+        } else if (number > 19 && number < 100) {
             return " " + getRuble(number % 10);
         } else {
             return " " + getRuble(number);
