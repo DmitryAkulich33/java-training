@@ -15,6 +15,7 @@ public class LengthReader {
         } catch (InputMismatchException e) {
             throw new WrongDataException("Invalid array length");
         }
+        scanner.close();
         return length;
     }
 }

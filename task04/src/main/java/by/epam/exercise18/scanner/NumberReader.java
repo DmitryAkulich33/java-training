@@ -18,6 +18,7 @@ public class NumberReader {
         if (number <= 0) {
             throw new WrongDataException("The entered data is wrong");
         }
+        scanner.close();
         return number;
     }
 }

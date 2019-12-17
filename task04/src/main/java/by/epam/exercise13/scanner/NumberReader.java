@@ -15,6 +15,7 @@ public class NumberReader {
         } catch (InputMismatchException e) {
             throw new WrongDataException("The entered data is wrong");
         }
+        scanner.close();
         return number;
     }
 }
