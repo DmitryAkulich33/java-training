@@ -1,6 +1,6 @@
-package by.epam.shift.controller;
+package by.epam.shift.service;
 
-import by.epam.shift.exception.WrongDataException;
+import by.epam.shift.service.exception.WrongDataException;
 
 import java.util.Random;
 

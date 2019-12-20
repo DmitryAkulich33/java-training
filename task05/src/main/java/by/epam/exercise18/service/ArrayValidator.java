@@ -1,4 +1,4 @@
-package by.epam.exercise18.validator;
+package by.epam.exercise18.service;
 
 import java.util.List;
 

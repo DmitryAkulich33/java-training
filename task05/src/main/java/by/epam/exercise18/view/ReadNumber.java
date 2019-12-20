@@ -1,9 +1,7 @@
-package by.epam.exercise18.scanner;
+package by.epam.exercise18.view;
 
-import by.epam.exercise18.exception.WrongDataException;
+import by.epam.exercise18.view.exception.WrongDataException;
 
-import java.sql.Array;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class ReadNumber {
@@ -17,7 +15,7 @@ public class ReadNumber {
         int value2;
         try {
             index1 = scanner.nextInt();
-            System.out.println("Enter the first index of array");
+            System.out.println("Enter the second index of array");
             index2 = scanner.nextInt();
             System.out.println("Enter the value array's the first index");
             value1 = scanner.nextInt();
@@ -26,6 +24,7 @@ public class ReadNumber {
         } catch (InputMismatchException e) {
             throw new WrongDataException("The entered data is wrong");
         }
+        scanner.close();
         list.add(index1);
         list.add(index2);
         list.add(value1);

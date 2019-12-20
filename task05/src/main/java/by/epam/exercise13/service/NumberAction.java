@@ -1,6 +1,6 @@
 package by.epam.exercise13.service;
 
-import by.epam.exercise13.exception.WrongDataException;
+import by.epam.exercise13.service.exception.WrongDataException;
 
 public class NumberAction {
     public int getCount(int startValue, int endValue, int number) {

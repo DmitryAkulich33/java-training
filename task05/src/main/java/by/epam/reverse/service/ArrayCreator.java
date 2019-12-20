@@ -1,6 +1,6 @@
-package by.epam.reverse.controller;
+package by.epam.reverse.service;
 
-import by.epam.reverse.exception.WrongDataException;
+import by.epam.reverse.service.exception.WrongDataException;
 
 import java.util.Random;
 

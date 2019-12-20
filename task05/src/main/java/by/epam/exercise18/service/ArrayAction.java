@@ -1,8 +1,5 @@
 package by.epam.exercise18.service;
 
-import by.epam.exercise18.exception.WrongDataException;
-import by.epam.exercise18.validator.ArrayValidator;
-
 public class ArrayAction {
     public int[] getArray(int[] array, int index1, int index2) {
         if (index1 > index2) {

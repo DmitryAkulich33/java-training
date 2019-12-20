@@ -1,11 +1,17 @@
-package by.epam.shift.runner;
+package by.epam.shift.controller;
 
-import by.epam.shift.controller.ArrayCommand;
+import by.epam.reverse.view.ArrayViewer;
+import by.epam.shift.service.ArrayAction;
+import by.epam.shift.service.ArrayCreator;
 
-public class Main {
+public class Runner {
     public static void main(String[] args) {
-        ArrayCommand arrayCommand = new ArrayCommand();
-        arrayCommand.exec();
-
+        ArrayCreator arrayCreator = new ArrayCreator();
+        int[] array = arrayCreator.createIntArray(10);
+        ArrayViewer arrayViewer = new ArrayViewer();
+        arrayViewer.printArray(array);
+        ArrayAction arrayFinder = new ArrayAction();
+        arrayViewer.printArray(arrayFinder.shiftRight(array, 3));
+        arrayViewer.printArray(arrayFinder.shiftLeft(array, 3));
     }
 }

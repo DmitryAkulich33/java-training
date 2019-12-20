@@ -1,7 +1,6 @@
-package by.epam.exercise18.controller;
+package by.epam.exercise18.service;
 
-import by.epam.exercise18.exception.WrongDataException;
-import by.epam.exercise18.validator.ArrayValidator;
+import by.epam.exercise18.service.exception.WrongDataException;
 
 import java.util.List;
 

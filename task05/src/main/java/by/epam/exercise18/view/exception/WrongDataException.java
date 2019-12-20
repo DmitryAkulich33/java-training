@@ -1,4 +1,4 @@
-package by.epam.shift.service.exception;
+package by.epam.exercise18.view.exception;
 
 public class WrongDataException extends RuntimeException {
     String message;

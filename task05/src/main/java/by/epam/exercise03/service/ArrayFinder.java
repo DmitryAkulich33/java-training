@@ -1,7 +1,7 @@
 package by.epam.exercise03.service;
 
 public class ArrayFinder {
-    public String returnElement(int[] array) {
+    public String findElement(int[] array) {
         String message = "";
         int length = array.length;
         for (int i = 0; i < length; i++) {

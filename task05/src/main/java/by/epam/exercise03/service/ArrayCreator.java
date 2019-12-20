@@ -1,6 +1,6 @@
-package by.epam.exercise03.controller;
+package by.epam.exercise03.service;
 
-import by.epam.exercise03.exception.WrongDataException;
+import by.epam.exercise03.service.exception.WrongDataException;
 
 import java.util.Random;
 
