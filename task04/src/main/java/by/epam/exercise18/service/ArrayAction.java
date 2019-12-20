@@ -1,6 +1,6 @@
 package by.epam.exercise18.service;
 
-import by.epam.exercise18.exception.WrongDataException;
+import by.epam.exercise18.service.exception.WrongDataException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class ArrayAction {
         return length;
     }
 
-    public List<Integer> returnArray(int number, int digit) {
+    public List<Integer> returnNumbers(int number, int digit) {
         if (digit > getLengthOfArray(number)) {
             throw new WrongDataException("The digit is wrong");
         }
