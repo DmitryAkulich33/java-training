@@ -67,4 +67,9 @@ public class Car {
     public void setRegNumber(String regNumber) {
         this.regNumber = regNumber;
     }
+
+    @Override
+    public String toString() {
+        return producer + " " + model + " " + year + " " + color + " " + cost + " " + regNumber;
+    }
 }
