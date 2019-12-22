@@ -72,4 +72,30 @@ public class Car {
     public String toString() {
         return producer + " " + model + " " + year + " " + color + " " + cost + " " + regNumber;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Car car = (Car) o;
+
+        if (cost != car.cost) return false;
+        if (producer != car.producer) return false;
+        if (model != null ? !model.equals(car.model) : car.model != null) return false;
+        if (year != null ? !year.equals(car.year) : car.year != null) return false;
+        if (color != null ? !color.equals(car.color) : car.color != null) return false;
+        return regNumber != null ? regNumber.equals(car.regNumber) : car.regNumber == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = producer != null ? producer.hashCode() : 0;
+        result = 31 * result + (model != null ? model.hashCode() : 0);
+        result = 31 * result + (year != null ? year.hashCode() : 0);
+        result = 31 * result + (color != null ? color.hashCode() : 0);
+        result = 31 * result + cost;
+        result = 31 * result + (regNumber != null ? regNumber.hashCode() : 0);
+        return result;
+    }
 }
