@@ -3,12 +3,12 @@ package by.epam.classes.domain;
 public class Car {
     private CarProducer producer;
     private String model;
-    private String year;
+    private int year;
     private String color;
     private int cost;
     private String regNumber;
 
-    public Car(CarProducer producer, String model, String year, String color, int cost, String regNumber) {
+    public Car(CarProducer producer, String model, int year, String color, int cost, String regNumber) {
         this.producer = producer;
         this.model = model;
         this.year = year;
@@ -36,11 +36,11 @@ public class Car {
         this.model = model;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
@@ -70,7 +70,11 @@ public class Car {
 
     @Override
     public String toString() {
-        return producer + " " + model + " " + year + " " + color + " " + cost + " " + regNumber;
+        return "Car is " + producer +
+                " " + model +
+                ", " + year +
+                " year, color is " + color +
+                ", cost is " + cost + " BYN, registration number is " + regNumber;
     }
 
     @Override
@@ -80,10 +84,10 @@ public class Car {
 
         Car car = (Car) o;
 
+        if (year != car.year) return false;
         if (cost != car.cost) return false;
         if (producer != car.producer) return false;
         if (model != null ? !model.equals(car.model) : car.model != null) return false;
-        if (year != null ? !year.equals(car.year) : car.year != null) return false;
         if (color != null ? !color.equals(car.color) : car.color != null) return false;
         return regNumber != null ? regNumber.equals(car.regNumber) : car.regNumber == null;
     }
@@ -92,7 +96,7 @@ public class Car {
     public int hashCode() {
         int result = producer != null ? producer.hashCode() : 0;
         result = 31 * result + (model != null ? model.hashCode() : 0);
-        result = 31 * result + (year != null ? year.hashCode() : 0);
+        result = 31 * result + year;
         result = 31 * result + (color != null ? color.hashCode() : 0);
         result = 31 * result + cost;
         result = 31 * result + (regNumber != null ? regNumber.hashCode() : 0);
