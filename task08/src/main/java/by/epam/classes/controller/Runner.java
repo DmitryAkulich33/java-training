@@ -3,6 +3,8 @@ package by.epam.classes.controller;
 import by.epam.classes.dao.LinesReader;
 import by.epam.classes.domain.Car;
 import by.epam.classes.domain.CarPark;
+import by.epam.classes.domain.CarProducer;
+import by.epam.classes.service.CarFinder;
 import by.epam.classes.service.CarListCreator;
 
 import java.util.List;
@@ -15,5 +17,9 @@ public class Runner {
         List<Car> cars = carListCreator.returnListOfCars(list);
         CarPark carPark = new CarPark("MyPark", cars);
         System.out.println(carPark);
+        CarFinder carFinder = new CarFinder();
+        for (Car car: carFinder.returnNecessaryProducer(cars, CarProducer.BMW)) {
+            System.out.println(car);
+        }
     }
 }
