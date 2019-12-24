@@ -19,10 +19,10 @@ public class LinesReader {
         Path source = Paths.get(path);
         ListValidator validator = new ListValidator();
         try (Stream<String> lineStream = Files.lines(source)) {
-            List<String> tempList = lineStream.collect(Collectors.toList());
-            if(validator.isLineValid(tempList)) {
-                cars = tempList;
-            }
+            cars = lineStream.filter(validator::isLineValid).collect(Collectors.toList());
+//            if(validator.isLineValid(tempList)) {
+//                cars = tempList;
+//            }
         } catch (IOException e){
             throw new StreamNotReadingException("File reading problems", e);
         }
