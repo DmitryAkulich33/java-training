@@ -1,0 +1,8 @@
+Car is VOLKSWAGEN Golf, 1998 year, color is Black, cost is 9000 BYN, registration number is AK-7-1271
+Car is VOLKSWAGEN Polo, 2005 year, color is White, cost is 11000 BYN, registration number is AP-7-7612
+Car is FORD Focus, 2010 year, color is Red, cost is 15000 BYN, registration number is AP-7-4326
+Car is FORD Mondeo, 2012 year, color is White, cost is 17500 BYN, registration number is AH-7-9981
+Car is MERCEDES C-Class, 2007 year, color is White, cost is 27500 BYN, registration number is AK-7-6666
+Car is BMW X5, 2007 year, color is Blue, cost is 28900 BYN, registration number is AK-7-3434
+Car is BMW X6, 2011 year, color is Black, cost is 31100 BYN, registration number is AP-7-2230
+Car is MERCEDES E-Class, 2016 year, color is Black, cost is 35000 BYN, registration number is AM-7-9999

@@ -22,7 +22,7 @@ public class CarListCreator {
         return cars;
     }
 
-    public Car getCurrentCar(String[] line){
+    public Car getCurrentCar(String[] line) {
         CarProducer producer = CarProducer.valueOf(line[0]);
         String model = line[1];
         int year = Integer.parseInt(line[2]);

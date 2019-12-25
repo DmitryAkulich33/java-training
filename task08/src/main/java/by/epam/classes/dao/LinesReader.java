@@ -15,15 +15,12 @@ import java.util.stream.Stream;
 public class LinesReader {
 
     public List<String> returnListCarsFromFile(String path) {
-        List<String> cars = new ArrayList<>();
+        List<String> cars;
         Path source = Paths.get(path);
         ListValidator validator = new ListValidator();
         try (Stream<String> lineStream = Files.lines(source)) {
             cars = lineStream.filter(validator::isLineValid).collect(Collectors.toList());
-//            if(validator.isLineValid(tempList)) {
-//                cars = tempList;
-//            }
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new StreamNotReadingException("File reading problems", e);
         }
         return cars;

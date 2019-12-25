@@ -1,6 +1,6 @@
 package by.epam.classes.domain;
 
-public class CommonConstants {
+public class Constants {
     public static final String PARK_TITLE = "Epam's CARS";
     public static final String REGEX = "^s*(MERCEDES|BMW|FORD|VOLKSWAGEN)\\s+\\S+\\s+[1-2][9|0]\\d{2}\\s+\\D+\\s+\\d+\\s+\\S{2}\\-\\d\\-\\d{4}\\s*";
 
