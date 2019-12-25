@@ -29,7 +29,7 @@ public class CarPark {
 
     @Override
     public String toString() {
-        String line = title + ":\n\n";
+        String line = title + ":\n";
         for (Car car: cars) {
             line = line + car +"\n";
         }
