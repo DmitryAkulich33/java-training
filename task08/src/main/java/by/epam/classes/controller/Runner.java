@@ -19,8 +19,9 @@ public class Runner {
         List<String> list = linesReader.returnListCarsFromFile(Constants.PATH_CARS_DATA);
         List<Car> cars = carListCreator.returnListOfCars(list);
         CarPark carPark = CarPark.getInstance(Constants.PARK_TITLE, cars);
-        CarFinder carFinder = new CarFinder();
         LinesWriter linesWriter = new LinesWriter();
+        linesWriter.writeListCarsInFile(carPark.getCars(), Constants.PATH_EPAM_CARS);
+        CarFinder carFinder = new CarFinder();
         linesWriter.writeListCarsInFile(carFinder.returnCarListWithNecessaryProducer(carPark.getCars(), CarProducer.BMW),
                 Constants.PATH_NECESSARY_PRODUCER);
         linesWriter.writeListCarsInFile(carFinder.returnCarListWithNecessaryAge(carPark.getCars(), CarProducer.FORD, Constants.NECESSARY_AGE),

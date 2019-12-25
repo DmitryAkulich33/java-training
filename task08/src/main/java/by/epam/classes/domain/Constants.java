@@ -10,6 +10,7 @@ public class Constants {
     public static final int NECESSARY_COST = 27000;
 
     public static final String PATH_CARS_DATA = "src\\main\\resources\\allcars.txt";
+    public static final String PATH_EPAM_CARS = "src\\main\\resources\\epamCars.txt";
     public static final String PATH_NECESSARY_AGE = "src\\main\\resources\\necessaryAge.txt";
     public static final String PATH_NECESSARY_COST = "src\\main\\resources\\necessaryCost.txt";
     public static final String PATH_NECESSARY_PRODUCER = "src\\main\\resources\\necessaryProducer.txt";
