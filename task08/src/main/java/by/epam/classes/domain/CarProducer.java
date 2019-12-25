@@ -1,7 +1,7 @@
 package by.epam.classes.domain;
 
 public enum CarProducer {
-    MERSEDES,
+    MERCEDES,
     BMW,
     FORD,
     VOLKSWAGEN

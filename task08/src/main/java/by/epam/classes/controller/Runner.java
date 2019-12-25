@@ -15,7 +15,7 @@ public class Runner {
     public static void main(String[] args) {
         LinesReader linesReader = new LinesReader();
         CarListCreator carListCreator = new CarListCreator();
-        List<String> list = linesReader.returnListCarsFromFile(CommonConstants.CARS_DATA);
+        List<String> list = linesReader.returnListCarsFromFile(CommonConstants.PATH_CARS_DATA);
         List<Car> cars = carListCreator.returnListOfCars(list);
         CarPark carPark = new CarPark(CommonConstants.PARK_TITLE, cars);
         System.out.println(carPark);
