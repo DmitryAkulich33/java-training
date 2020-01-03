@@ -1,0 +1,13 @@
+Minskaya, Minskiy, Minsk, 349
+Minskaya, Smolevichskiy, Smolevichi, 41
+Minskaya, Smolevichskiy, Godino, 22
+Mogilevskaya, Mogilevskiy, Mogilev, 119
+Mogilevskaya, Krichevskiy, Krichev, 11
+Mogilevskaya, Krichevskiy, Baevka, 5
+Brestskaya, Brestskiy, Brest, 146
+Brestskaya, Kobrinskiy, Divin, 16
+Brestskaya, Kobrinskiy, Kobrin, 32
+
+brestskaya, kobrinsky, kobrin, 32
+123456
+Mogilevskaya, Mogilevskiy, Mogilev, sto 
