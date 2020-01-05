@@ -100,7 +100,7 @@ public class Runner {
                         break;
                     }
                 default:
-                    System.out.println("The entered number is wrong. Please try again.");
+                    System.out.println("The entered number is wrong. Please try again.\n");
                     break;
             }
         }
