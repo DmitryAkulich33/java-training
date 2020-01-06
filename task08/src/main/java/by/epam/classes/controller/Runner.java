@@ -37,6 +37,7 @@ public class Runner {
             linesWriter.writeListCarsInFile(carsSorter.sortByYear(carPark.getCars()), Constants.PATH_SORT_BY_YEAR);
         } catch (StreamNotWritingException | StreamNotReadingException | EmptyListException e){
             System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }
