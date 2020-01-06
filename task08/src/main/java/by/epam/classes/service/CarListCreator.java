@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CarListCreator {
 
-    public List<Car> returnListOfCars(List<String> validLines) {
+    public List<Car> returnListOfCars(List<String> validLines) throws EmptyListException {
         if (validLines.isEmpty()) {
             throw new EmptyListException("List of cars is empty");
         }

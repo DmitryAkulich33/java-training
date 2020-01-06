@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 public class LinesReader {
 
-    public List<String> returnListCarsFromFile(String path) {
+    public List<String> returnListCarsFromFile (String path) throws StreamNotReadingException{
         List<String> cars;
         Path source = Paths.get(path);
         ListValidator validator = new ListValidator();

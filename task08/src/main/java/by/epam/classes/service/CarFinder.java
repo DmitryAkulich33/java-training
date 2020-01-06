@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CarFinder {
 
-    public List<Car> returnCarListWithNecessaryProducer(List<Car> cars, CarProducer producer) {
+    public List<Car> returnCarListWithNecessaryProducer(List<Car> cars, CarProducer producer) throws EmptyListException {
         List<Car> sortedCars = new ArrayList<>();
         for (Car car : cars) {
             if (car.getProducer() == producer) {
@@ -23,7 +23,7 @@ public class CarFinder {
         return sortedCars;
     }
 
-    public List<Car> returnCarListWithNecessaryAge(List<Car> cars, CarProducer producer, int age) {
+    public List<Car> returnCarListWithNecessaryAge(List<Car> cars, CarProducer producer, int age) throws EmptyListException {
         List<Car> sortedCars = new ArrayList<>();
         for (Car car : cars) {
             if (car.getProducer() == producer && Constants.CURRENT_YEAR - car.getYear() >= age) {
@@ -36,7 +36,7 @@ public class CarFinder {
         return sortedCars;
     }
 
-    public List<Car> returnCarListWithNecessaryCost(List<Car> cars, int year, int cost) {
+    public List<Car> returnCarListWithNecessaryCost(List<Car> cars, int year, int cost) throws EmptyListException {
         List<Car> sortedCars = new ArrayList<>();
         for (Car car : cars) {
             if (car.getYear() == year && car.getCost() > cost) {

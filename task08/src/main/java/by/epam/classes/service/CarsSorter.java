@@ -6,7 +6,7 @@ import by.epam.classes.service.exception.EmptyListException;
 import java.util.List;
 
 public class CarsSorter {
-    public List<Car> sortByCost(List<Car> cars) {
+    public List<Car> sortByCost(List<Car> cars) throws EmptyListException{
         if (cars.isEmpty()) {
             throw new EmptyListException("List of cars is empty");
         }
@@ -15,7 +15,7 @@ public class CarsSorter {
         return cars;
     }
 
-    public List<Car> sortByYear(List<Car> cars) {
+    public List<Car> sortByYear(List<Car> cars) throws EmptyListException {
         if (cars.isEmpty()) {
             throw new EmptyListException("List of cars is empty");
         }
