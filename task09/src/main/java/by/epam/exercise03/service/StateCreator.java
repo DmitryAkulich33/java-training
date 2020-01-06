@@ -9,49 +9,62 @@ import java.util.List;
 import java.util.Set;
 
 public class StateCreator {
-    public State returnState(List<String> lines, String name, String capital) {
-        return new State(name, capital, returnRegionList(lines), returnDistrictList(lines), returnCityList(lines));
+    public State returnState (String name, String capital, List<String> linesFromFile){
+        List<String> regionNames = findListRegionNames(linesFromFile);
+        List<String> districtNames = findListDistrictsNames(linesFromFile);
+        List<Region> regions = new ArrayList<>();
+        int sizeReg = regionNames.size();
+        int sizeDist = districtNames.size();
+        int sizeLines = linesFromFile.size();
+        for(int i = 0; i < sizeReg; i++){
+            List<District> districts = new ArrayList<>();
+            for(int j = 0; j < sizeDist; j++){
+                List<City> cities = new ArrayList<>();
+                for (int k = 0; k < sizeLines; k++){
+                    String[] array = linesFromFile.get(k).split(",\\s");
+                    int square = Integer.parseInt(array[3]);
+                    if(array[0].equals(regionNames.get(i))){
+                        if(array[1].equals(districtNames.get(j))){
+                            cities.add(new City(array[2], square));
+                        }
+                    }
+                }
+                if(!cities.isEmpty()) {
+                    districts.add(new District(districtNames.get(j), cities));
+                }
+            }
+            String regionCity = returnRegionalCity(regionNames.get(i));
+            regions.add(new Region(regionNames.get(i), regionCity, districts));
+        }
+        return new State(name, capital, regions);
     }
 
-    public List<City> returnCityList(List<String> lines) {
-        if (lines.isEmpty()) {
-            throw new EmptyListException("List of cities is empty");
+    public List<String> findListRegionNames(List<String> linesFromFile) throws EmptyListException {
+        if (linesFromFile.isEmpty()) {
+            throw new EmptyListException("List from file is empty");
         }
-        List<City> cities = new ArrayList<>();
-        for (String line : lines) {
-            String[] valuesFromLine = line.split(",\\s");
-            String name = valuesFromLine[2];
-            int square = Integer.parseInt(valuesFromLine[3]);
-            cities.add(new City(name, square));
+        List<String> regNames = new ArrayList<>();
+        Set<String> sortedNames = new HashSet<>();
+        for (String line : linesFromFile) {
+            String[] array = line.split(",\\s");
+            sortedNames.add(array[0]);
         }
-        return cities;
+        regNames.addAll(sortedNames);
+        return regNames;
     }
 
-    public Set<District> returnDistrictList(List<String> lines) {
-        if (lines.isEmpty()) {
-            throw new EmptyListException("List of cities is empty");
+    public List<String> findListDistrictsNames(List<String> linesFromFile) throws EmptyListException{
+        if (linesFromFile.isEmpty()) {
+            throw new EmptyListException("List from file is empty");
         }
-        Set<District> districts = new HashSet<>();
-        for (String line : lines) {
-            String[] valuesFromLine = line.split(",\\s");
-            String name = valuesFromLine[1];
-            districts.add(new District(name));
+        List<String> distNames = new ArrayList<>();
+        Set<String> sortedNames = new HashSet<>();
+        for (String line : linesFromFile) {
+            String[] array = line.split(",\\s");
+            sortedNames.add(array[1]);
         }
-        return districts;
-    }
-
-    public Set<Region> returnRegionList(List<String> lines) {
-        if (lines.isEmpty()) {
-            throw new EmptyListException("List of cities is empty");
-        }
-        Set<Region> regions = new HashSet<>();
-        for (String line : lines) {
-            String[] valuesFromLine = line.split(",\\s");
-            String name = valuesFromLine[0];
-            String regionalCity = returnRegionalCity(valuesFromLine[0]);
-            regions.add(new Region(name, regionalCity));
-        }
-        return regions;
+        distNames.addAll(sortedNames);
+        return distNames;
     }
 
     public String returnRegionalCity(String name) {

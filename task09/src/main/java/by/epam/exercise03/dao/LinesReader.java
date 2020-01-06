@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LinesReader {
-    public List<String> returnListCitiesFromFile(String path) {
+    public List<String> returnListCitiesFromFile(String path) throws StreamNotReadingException {
         List<String> cities;
         Path source = Paths.get(path);
         ListValidator validator = new ListValidator();

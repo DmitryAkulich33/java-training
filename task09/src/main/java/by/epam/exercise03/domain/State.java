@@ -4,18 +4,14 @@ import java.util.List;
 import java.util.Set;
 
 public class State {
-    String name;
-    String capital;
-    Set<Region> regions;
-    Set<District> districts;
-    List<City> cities;
+    private String name;
+    private String capital;
+    private List<Region> regions;
 
-    public State(String name, String capital, Set<Region> regions, Set<District> districts, List<City> cities) {
+    public State(String name, String capital, List<Region> regions) {
         this.name = name;
         this.capital = capital;
         this.regions = regions;
-        this.districts = districts;
-        this.cities = cities;
     }
 
     public State() {
@@ -37,32 +33,21 @@ public class State {
         this.capital = capital;
     }
 
-    public Set<Region> getRegions() {
+    public List<Region> getRegions() {
         return regions;
     }
 
-    public void setRegions(Set<Region> regions) {
+    public void setRegions(List<Region> regions) {
         this.regions = regions;
     }
 
-    public Set<District> getDistricts() {
-        return districts;
-    }
-
-    public void setDistricts(Set<District> districts) {
-        this.districts = districts;
-    }
-
-    public List<City> getCities() {
-        return cities;
-    }
-
-    public void setCities(List<City> cities) {
-        this.cities = cities;
-    }
 
     @Override
     public String toString() {
-        return "State is " + name + ", capital is " + capital + " :\n" + regions + "\n" + districts + "\n" + cities;
+        String line = "State is " + name + ", capital is " + capital + " :\n" + "regions:";
+        for(Region region : regions){
+            line = line + "\n" + region;
+        }
+        return line;
     }
 }

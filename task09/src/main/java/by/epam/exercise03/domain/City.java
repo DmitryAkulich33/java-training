@@ -30,6 +30,6 @@ public class City {
 
     @Override
     public String toString() {
-        return name + " city";
+        return name + " city (" + square + " m.kv)";
     }
 }

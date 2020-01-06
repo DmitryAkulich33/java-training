@@ -4,7 +4,7 @@ import by.epam.exercise03.domain.Region;
 import by.epam.exercise03.domain.State;
 
 
-public class Print {
+public class Viewer {
     public void printStateCapital(State state) {
         System.out.println("The capital of " + state.getName() + " is " + state.getCapital());
     }
@@ -12,7 +12,7 @@ public class Print {
     public void printStateRegions(State state) {
         System.out.print("Regions: ");
         for (Region region : state.getRegions()) {
-            System.out.print(region + " ");
+            System.out.print(region.getName() + " ");
         }
         System.out.println();
     }
@@ -22,6 +22,6 @@ public class Print {
     }
 
     public void printStateSquare(int square) {
-        System.out.println("The states' square is " + square);
+        System.out.println("The state's square is " + square);
     }
 }

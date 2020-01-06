@@ -1,16 +1,28 @@
 package by.epam.exercise03.domain;
 
 
-public class Region {
-    String name;
-    String regionalCity;
+import java.util.List;
 
-    public Region(String name, String regionalCity) {
+public class Region {
+    private String name;
+    private String regionalCity;
+    private List<District> districts;
+
+    public Region(String name, String regionalCity, List<District> districts) {
         this.name = name;
         this.regionalCity = regionalCity;
+        this.districts = districts;
     }
 
     public Region() {
+    }
+
+    public List<District> getDistricts() {
+        return districts;
+    }
+
+    public void setDistricts(List<District> districts) {
+        this.districts = districts;
     }
 
     public String getName() {
@@ -31,24 +43,10 @@ public class Region {
 
     @Override
     public String toString() {
-        return name + " obl.";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Region region = (Region) o;
-
-        if (name != null ? !name.equals(region.name) : region.name != null) return false;
-        return regionalCity != null ? regionalCity.equals(region.regionalCity) : region.regionalCity == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (regionalCity != null ? regionalCity.hashCode() : 0);
-        return result;
+        String line = "\n" + name + " obl., region city is " + regionalCity + "\ndistricts:";
+        for(District district : districts){
+            line = line + "\n" + district;
+        }
+        return line;
     }
 }

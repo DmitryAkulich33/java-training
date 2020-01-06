@@ -1,10 +1,14 @@
 package by.epam.exercise03.domain;
 
+import java.util.List;
+
 public class District {
     private String name;
+    private List<City> city;
 
-    public District(String name) {
+    public District(String name, List<City> city) {
         this.name = name;
+        this.city = city;
     }
 
     public District() {
@@ -18,23 +22,16 @@ public class District {
         this.name = name;
     }
 
+    public List<City> getCity() {
+        return city;
+    }
+
+    public void setCity(List<City> city) {
+        this.city = city;
+    }
+
     @Override
     public String toString() {
-        return name + " r-n";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        District district = (District) o;
-
-        return name != null ? name.equals(district.name) : district.name == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return name != null ? name.hashCode() : 0;
+        return name + " r-n, " + " cities: " + city;
     }
 }
