@@ -9,27 +9,27 @@ import java.util.List;
 import java.util.Set;
 
 public class StateCreator {
-    public State returnState (String name, String capital, List<String> linesFromFile){
+    public State returnState(String name, String capital, List<String> linesFromFile) {
         List<String> regionNames = findListRegionNames(linesFromFile);
         List<String> districtNames = findListDistrictsNames(linesFromFile);
         List<Region> regions = new ArrayList<>();
         int sizeReg = regionNames.size();
         int sizeDist = districtNames.size();
         int sizeLines = linesFromFile.size();
-        for(int i = 0; i < sizeReg; i++){
+        for (int i = 0; i < sizeReg; i++) {
             List<District> districts = new ArrayList<>();
-            for(int j = 0; j < sizeDist; j++){
+            for (int j = 0; j < sizeDist; j++) {
                 List<City> cities = new ArrayList<>();
-                for (int k = 0; k < sizeLines; k++){
+                for (int k = 0; k < sizeLines; k++) {
                     String[] array = linesFromFile.get(k).split(",\\s");
                     int square = Integer.parseInt(array[3]);
-                    if(array[0].equals(regionNames.get(i))){
-                        if(array[1].equals(districtNames.get(j))){
+                    if (array[0].equals(regionNames.get(i))) {
+                        if (array[1].equals(districtNames.get(j))) {
                             cities.add(new City(array[2], square));
                         }
                     }
                 }
-                if(!cities.isEmpty()) {
+                if (!cities.isEmpty()) {
                     districts.add(new District(districtNames.get(j), cities));
                 }
             }
@@ -53,7 +53,7 @@ public class StateCreator {
         return regNames;
     }
 
-    public List<String> findListDistrictsNames(List<String> linesFromFile) throws EmptyListException{
+    public List<String> findListDistrictsNames(List<String> linesFromFile) throws EmptyListException {
         if (linesFromFile.isEmpty()) {
             throw new EmptyListException("List from file is empty");
         }

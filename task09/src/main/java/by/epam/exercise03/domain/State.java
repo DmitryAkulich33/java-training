@@ -1,7 +1,6 @@
 package by.epam.exercise03.domain;
 
 import java.util.List;
-import java.util.Set;
 
 public class State {
     private String name;
@@ -45,7 +44,7 @@ public class State {
     @Override
     public String toString() {
         String line = "State is " + name + ", capital is " + capital + " :\n" + "regions:";
-        for(Region region : regions){
+        for (Region region : regions) {
             line = line + "\n" + region;
         }
         return line;

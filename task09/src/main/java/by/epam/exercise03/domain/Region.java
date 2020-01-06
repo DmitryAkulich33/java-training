@@ -1,6 +1,5 @@
 package by.epam.exercise03.domain;
 
-
 import java.util.List;
 
 public class Region {
@@ -44,7 +43,7 @@ public class Region {
     @Override
     public String toString() {
         String line = "\n" + name + " obl., region city is " + regionalCity + "\ndistricts:";
-        for(District district : districts){
+        for (District district : districts) {
             line = line + "\n" + district;
         }
         return line;

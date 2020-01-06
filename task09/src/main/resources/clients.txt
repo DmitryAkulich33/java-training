@@ -5,3 +5,9 @@ Sidorov 122009 300 open
 Vasin 000281 -900 locked
 Ivanov 000301 100 open
 Vasin 100098 400 open
+
+123131
+Ivanov 000301 100 wait
+Vasin -000281 -900 locked
+Petrov 123002 -sto locked
+Petrov -sto locked

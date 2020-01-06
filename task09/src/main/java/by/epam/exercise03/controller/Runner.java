@@ -26,7 +26,7 @@ public class Runner {
             List<String> lines = linesReader.returnListCitiesFromFile(Constants.PATH_CITIES_DATA);
             state = stateCreator.returnState(Constants.STATE_NAME, Constants.STATE_CAPITAL, lines);
             linesWriter.writeStateInformationInFile(state, Constants.PATH_STATE_INFO);
-        } catch (StreamNotReadingException | StreamNotWritingException | EmptyListException e){
+        } catch (StreamNotReadingException | StreamNotWritingException | EmptyListException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
