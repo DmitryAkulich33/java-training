@@ -50,6 +50,6 @@ public class Bill {
 
     @Override
     public String toString() {
-        return "Bill's number is " + number + ", balance is " + balance + ", access is " + nameAccess + access + "\n";
+        return "Bill's number is " + number + ", balance is " + balance + ", access is " + nameAccess + " " + access + "\n";
     }
 }

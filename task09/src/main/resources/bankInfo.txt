@@ -1,17 +1,17 @@
 Bank "Gaspadar", clients:
 
 Petrov :
-Bill's number is 123002, balance is -100, access is lockedfalse
+Bill's number is 123002, balance is -100, access is locked false
 
 Vasin :
-Bill's number is 000281, balance is -900, access is lockedfalse
-Bill's number is 100098, balance is 400, access is opentrue
+Bill's number is 000281, balance is -900, access is locked false
+Bill's number is 100098, balance is 400, access is open true
 
 Ivanov :
-Bill's number is 123000, balance is 500, access is opentrue
-Bill's number is 123001, balance is 200, access is opentrue
-Bill's number is 000301, balance is 100, access is opentrue
+Bill's number is 123000, balance is 500, access is open true
+Bill's number is 123001, balance is 200, access is open true
+Bill's number is 000301, balance is 100, access is open true
 
 Sidorov :
-Bill's number is 122009, balance is 300, access is opentrue
+Bill's number is 122009, balance is 300, access is open true
 
