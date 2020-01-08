@@ -23,7 +23,6 @@ public class BankCreator {
                 if (array[0].equals(names.get(i))) {
                     String number = array[1];
                     int balance = Integer.parseInt(array[2]);
-//                    boolean access = array[3].equals("open");
                     bills.add(new Bill(number, balance, array[3]));
                 }
             }
