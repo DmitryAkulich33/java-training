@@ -34,7 +34,7 @@ public class Shop {
     @Override
     public String toString() {
         String line = "Shop is " + name + " :" + "\n";
-        for(Map.Entry entry : forSale.entrySet()){
+        for (Map.Entry entry : forSale.entrySet()) {
             line = line + entry.getKey() + " " + entry.getValue() + " BYN\n";
 
         }

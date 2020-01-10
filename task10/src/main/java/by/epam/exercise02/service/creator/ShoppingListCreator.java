@@ -1,4 +1,4 @@
-package by.epam.exercise02.service;
+package by.epam.exercise02.service.creator;
 
 import by.epam.exercise02.domain.ShoppingList;
 import by.epam.exercise02.service.exception.NoProductsToBuyException;
@@ -8,11 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ShoppingListCreator {
-    public ShoppingList createShoppingList(String ownerName, String lineFromConsole){
-        if(lineFromConsole.isEmpty()){
-            throw new NoProductsToBuyException("No products to buy");
+    public ShoppingList createShoppingList(String ownerName, String lineFromConsole) throws NoProductsToBuyException {
+        if (lineFromConsole.isEmpty()) {
+            throw new NoProductsToBuyException("No products to buy.");
         }
-        String[] array = lineFromConsole.trim().split("\\s");
+        String[] array = lineFromConsole.trim().split("\\s+");
         List<String> shoppingList = new ArrayList<>(Arrays.asList(array));
         return new ShoppingList(ownerName, shoppingList);
     }

@@ -1,4 +1,4 @@
-package by.epam.exercise02.service;
+package by.epam.exercise02.service.validator;
 
 import by.epam.exercise02.domain.Constants;
 

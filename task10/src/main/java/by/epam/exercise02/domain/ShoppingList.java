@@ -33,7 +33,7 @@ public class ShoppingList {
     @Override
     public String toString() {
         String line = "Shop is " + ownerName + " :" + "\n";
-        for(String string: shoppingList){
+        for (String string : shoppingList) {
             line = line + string + "\n";
         }
         return line;

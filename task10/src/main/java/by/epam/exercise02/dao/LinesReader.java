@@ -1,7 +1,7 @@
 package by.epam.exercise02.dao;
 
 import by.epam.exercise02.dao.exception.StreamNotReadingException;
-import by.epam.exercise02.service.ListValidator;
+import by.epam.exercise02.service.validator.ListValidator;
 
 import java.io.IOException;
 import java.nio.file.Files;

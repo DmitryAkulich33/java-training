@@ -7,11 +7,11 @@ public class Payment {
     private int cost;
     private List<Product> productsList;
 
-    public class Product{
+    public class Product {
         private String productName;
         private int productCost;
 
-        private Product() {
+        public Product() {
             productName = "";
             productCost = 0;
         }
@@ -32,6 +32,7 @@ public class Payment {
         @Override
         public String toString() {
             return productName + " " + productCost + " BYN";
+
         }
     }
 
@@ -69,10 +70,13 @@ public class Payment {
 
     @Override
     public String toString() {
-        String line = "The payment's number: " + name + "\n";
-        for(Product product : productsList){
-            line = line + product + "\n";
+        String line = "The payment's name is " + name + "\n====================\n";
+        int i = 1;
+        for (Product product : productsList) {
+            line = line + i + ". " + product + "\n";
+            i++;
         }
+        line = line + "====================\nTotal cost = " + cost + " BYN\n====================";
         return line;
     }
 }
