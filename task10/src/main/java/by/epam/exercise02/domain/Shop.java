@@ -35,7 +35,7 @@ public class Shop {
     public String toString() {
         String line = "Shop is " + name + " :" + "\n";
         for(Map.Entry entry : forSale.entrySet()){
-            line = line + entry.getKey() + " " + entry.getValue() + "\n";
+            line = line + entry.getKey() + " " + entry.getValue() + " BYN\n";
 
         }
         return line;

@@ -1,6 +1,5 @@
 package by.epam.exercise02.controller;
 
-import by.epam.exercise02.dao.LinesReader;
 import by.epam.exercise02.domain.Constants;
 import by.epam.exercise02.domain.Payment;
 import by.epam.exercise02.domain.Shop;
@@ -12,9 +11,8 @@ import by.epam.exercise02.service.ShoppingListCreator;
 
 public class Runner {
     public static void main(String[] args) {
-        LinesReader linesReader = new LinesReader();
         ShopCreator shopCreator = new ShopCreator();
-        Shop shop = shopCreator.createShop(Constants.SHOP_NAME, linesReader.returnListForSaleFromFile(Constants.LIST_FOR_SALE));
+        Shop shop = shopCreator.createShop(Constants.SHOP_NAME, Constants.LIST_FOR_SALE);
         System.out.println(shop);
         PaymentCreator paymentCreator = new PaymentCreator();
         ShoppingListCreator shoppingListCreator = new ShoppingListCreator();
@@ -22,6 +20,5 @@ public class Runner {
         ShoppingList shoppingList = shoppingListCreator.createShoppingList(Constants.CUSTOMER_NAME, line);
         Payment payment = paymentCreator.createPayment("001", shop, shoppingList);
         System.out.println(payment);
-
     }
 }

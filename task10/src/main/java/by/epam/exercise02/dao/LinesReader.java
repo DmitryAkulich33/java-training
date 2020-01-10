@@ -12,16 +12,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LinesReader {
-    public List<String> returnListForSaleFromFile(String path) throws StreamNotReadingException {
-        List<String> cities;
+    public List<String> createListForSaleFromFile(String path) throws StreamNotReadingException {
+        List<String> productsForSale;
         Path source = Paths.get(path);
         ListValidator validator = new ListValidator();
         try (Stream<String> lineStream = Files.lines(source)) {
-            cities = lineStream.filter(validator::isLineValid).collect(Collectors.toList());
+            productsForSale = lineStream.filter(validator::isLineValid).collect(Collectors.toList());
         } catch (IOException e) {
             throw new StreamNotReadingException("File reading problems", e);
         }
-        return cities;
+        return productsForSale;
     }
 }
 

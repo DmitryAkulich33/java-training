@@ -31,7 +31,7 @@ public class Payment {
 
         @Override
         public String toString() {
-            return productName + " " + productCost;
+            return productName + " " + productCost + " BYN";
         }
     }
 

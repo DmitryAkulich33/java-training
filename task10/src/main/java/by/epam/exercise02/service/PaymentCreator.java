@@ -10,26 +10,65 @@ import java.util.List;
 import java.util.Map;
 
 public class PaymentCreator {
-    public Payment createPayment(String name, Shop shop, ShoppingList shoppingList) throws WrongProductsToBuyException{
+    public Payment createPayment1(String name, Shop shop, ShoppingList shoppingList) throws WrongProductsToBuyException {
         Payment payment = new Payment(name);
         int cost = 0;
         List<Payment.Product> list = new ArrayList<>();
-        for(Map.Entry entry : shop.getForSale().entrySet()){
-            for(String line : shoppingList.getShoppingList()){
-                if(line.equalsIgnoreCase((String)entry.getKey())){
+        for (String line : shoppingList.getShoppingList()) {
+            boolean flag = false;
+            for (Map.Entry entry : shop.getForSale().entrySet()) {
+                if (line.equalsIgnoreCase((String) entry.getKey())) {
                     String productName = (String) entry.getKey();
                     int productCost = (int) entry.getValue();
                     Payment.Product product = payment.new Product(productName, productCost);
                     list.add(product);
                     cost = cost + productCost;
+                    flag = true;
                 }
             }
-        }
-        if(list.isEmpty()){
-            throw new WrongProductsToBuyException("Wrong names of products");
+            if (!flag) {
+                throw new WrongProductsToBuyException("Wrong names of products");
+            }
         }
         payment.setCost(cost);
         payment.setProductsList(list);
         return payment;
+    }
+
+    public Payment createPayment(String name, Shop shop, ShoppingList shoppingList){
+        Payment payment = new Payment(name);
+        List<Payment.Product> listToBuy = createListToBuy(shop, payment, shoppingList);
+        int cost = findCost(listToBuy);
+        payment.setProductsList(listToBuy);
+        payment.setCost(cost);
+        return payment;
+    }
+
+    public List<Payment.Product> createListToBuy(Shop shop, Payment payment, ShoppingList shoppingList) throws WrongProductsToBuyException {
+        List<Payment.Product> listToBuy = new ArrayList<>();
+        for (String line : shoppingList.getShoppingList()) {
+            boolean flag = false;
+            for (Map.Entry entry : shop.getForSale().entrySet()) {
+                if (line.equalsIgnoreCase((String) entry.getKey())) {
+                    String productName = (String) entry.getKey();
+                    int productCost = (int) entry.getValue();
+                    Payment.Product product = payment.new Product(productName, productCost);
+                    listToBuy.add(product);
+                    flag = true;
+                }
+            }
+            if (!flag) {
+                throw new WrongProductsToBuyException("Wrong names of products");
+            }
+        }
+        return listToBuy;
+    }
+
+    public int findCost(List<Payment.Product> listToBuy){
+        int cost = 0;
+        for(Payment.Product product : listToBuy){
+            cost = cost + product.getProductCost();
+        }
+        return cost;
     }
 }
