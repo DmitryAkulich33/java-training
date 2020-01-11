@@ -21,7 +21,7 @@ public class LinesWriter {
         try {
             Files.write(source, list, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
         } catch (IOException e) {
-            throw new StreamNotWritingException("File writing problems", e);
+            throw new StreamNotWritingException("EpamFile writing problems", e);
         }
     }
 }

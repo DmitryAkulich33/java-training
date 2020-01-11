@@ -34,6 +34,24 @@ public class Payment {
             return productName + " " + productCost + " BYN";
 
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Product product = (Product) o;
+
+            if (productCost != product.productCost) return false;
+            return productName != null ? productName.equals(product.productName) : product.productName == null;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = productName != null ? productName.hashCode() : 0;
+            result = 31 * result + productCost;
+            return result;
+        }
     }
 
     public Payment() {
@@ -78,5 +96,25 @@ public class Payment {
         }
         line = line + "====================\nTotal cost = " + cost + " BYN\n====================";
         return line;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Payment payment = (Payment) o;
+
+        if (cost != payment.cost) return false;
+        if (name != null ? !name.equals(payment.name) : payment.name != null) return false;
+        return productsList != null ? productsList.equals(payment.productsList) : payment.productsList == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + cost;
+        result = 31 * result + (productsList != null ? productsList.hashCode() : 0);
+        return result;
     }
 }

@@ -19,7 +19,7 @@ public class LinesReader {
         try (Stream<String> lineStream = Files.lines(source)) {
             productsForSale = lineStream.filter(validator::isLineValid).collect(Collectors.toList());
         } catch (IOException e) {
-            throw new StreamNotReadingException("File reading problems", e);
+            throw new StreamNotReadingException("EpamFile reading problems", e);
         }
         return productsForSale;
     }
