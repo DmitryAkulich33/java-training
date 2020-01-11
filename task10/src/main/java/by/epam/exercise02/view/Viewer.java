@@ -15,6 +15,7 @@ public class Viewer {
 
         }
         System.out.println("Please, write through the space on the next line the name of the products from the list you want to buy:");
+
     }
 
     public String returnLine() {

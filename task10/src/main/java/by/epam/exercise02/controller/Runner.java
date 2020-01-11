@@ -16,20 +16,22 @@ public class Runner {
         Shop shop = null;
         try {
             shop = shopCreator.createShop(Constants.SHOP_NAME, Constants.LIST_FOR_SALE_PATH);
-        } catch (NoProductsForSaleException | StreamNotReadingException e){
-            e.getMessage();
+        } catch (NoProductsForSaleException e){
+            System.out.println(e.getMessage());
         }
-        while(true){
-            viewer.printProductForSale(shop);
-            String productNames = viewer.returnLine();
-            viewer.printCommandMenu();
-            String request = viewer.returnLine();
-            if(request.equals("0")){
-                return;
-            } else {
-                viewer.printRequest(controller.executeTask(productNames, request, shop));
+        if(!(shop == null)) {
+            while (true) {
+                viewer.printProductForSale(shop);
+                String productNames = viewer.returnLine();
+                viewer.printCommandMenu();
+                String request = viewer.returnLine();
+                if (request.equals("0")) {
+                    return;
+                } else {
+                    viewer.printRequest(controller.executeTask(productNames, request, shop));
+                }
+                viewer.printNewAttempt();
             }
-            viewer.printNewAttempt();
         }
     }
 }

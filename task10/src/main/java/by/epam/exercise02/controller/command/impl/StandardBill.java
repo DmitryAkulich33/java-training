@@ -20,7 +20,7 @@ public class StandardBill implements Command {
             paymentService.createStandardBill(Constants.STANDARD_BILL_PATH, productNames, shop,
                     Constants.CUSTOMER_NAME, Constants.STANDARD_BILL_NAME);
             response = "Standard bill was created successfully in the file";
-        } catch (NoProductsToBuyException | NoProductsForSaleException | WrongProductsToBuyException | StreamNotReadingException | StreamNotWritingException ex){
+        } catch (NoProductsToBuyException | NoProductsForSaleException | WrongProductsToBuyException ex){
             response = ex.getMessage();
         }
         return response;

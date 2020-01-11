@@ -21,18 +21,19 @@ public class DirectoryDAOImpl implements DirectoryDAO {
         }
     }
 
-    public List<String> findFileList(Directory directory) throws EmptyDirectoryException{
+    public List<String> findFileList(Directory directory) throws EmptyDirectoryException {
         File folder = new File(directory.getPath());
         List<String> fileList = Arrays.asList(folder.list());
-        if(fileList.isEmpty()){
+        if (fileList.isEmpty()) {
             throw new EmptyDirectoryException("Directory is empty.");
         }
         return fileList;
     }
 
-    public void deleteFile(Directory directory, String name){
-        File file = new File(directory.getPath()+ "\\" + name);
-        if(!file.delete()){
+    public void deleteFile(Directory directory, String fileName, String type) throws FileDeletingException {
+        String path = directory.getPath() + "\\" + fileName + "." + type;
+        File file = new File(path);
+        if (!file.delete()) {
             throw new FileDeletingException("File is not deleted.");
         }
     }

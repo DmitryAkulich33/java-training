@@ -10,14 +10,18 @@ import java.util.List;
 import java.util.Map;
 
 public class ShopCreator {
-    public Shop createShop(String name, String path) throws NoProductsForSaleException, StreamNotReadingException {
+    public Shop createShop(String name, String path) throws NoProductsForSaleException {
         return new Shop(name, createProductListForSale(path));
     }
 
-    public Map<String, Integer> createProductListForSale(String path) throws NoProductsForSaleException,
-            StreamNotReadingException {
+    public Map<String, Integer> createProductListForSale(String path) throws NoProductsForSaleException{
         LinesReader linesReader = new LinesReader();
-        List<String> linesFromFile = linesReader.createListForSaleFromFile(path);
+        List<String> linesFromFile = null;
+        try {
+            linesFromFile = linesReader.createListForSaleFromFile(path);
+        } catch (StreamNotReadingException e){
+            throw new NoProductsForSaleException(e.getMessage());
+        }
         if (linesFromFile.isEmpty()) {
             throw new NoProductsForSaleException("No products for sale.");
         }

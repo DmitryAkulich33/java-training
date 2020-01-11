@@ -19,7 +19,7 @@ public class IncreasingBill implements Command {
             paymentService.createBillIncreaseByCost(Constants.BILL_INCREASE_BY_COST_PATH, productNames, shop,
                     Constants.CUSTOMER_NAME, Constants.BILL_INCREASE_BY_COST_NAME);
             response = "Increasing by cost bill was created successfully in the file";
-        } catch (NoProductsToBuyException | NoProductsForSaleException | WrongProductsToBuyException | StreamNotReadingException | StreamNotWritingException ex){
+        } catch (NoProductsToBuyException | NoProductsForSaleException | WrongProductsToBuyException ex){
             response = ex.getMessage();
         }
         return response;
