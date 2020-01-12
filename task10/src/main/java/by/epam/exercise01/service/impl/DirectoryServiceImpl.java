@@ -23,7 +23,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         try {
             return fileFactory(directoryDAO.create(path));
         } catch (FileCreatingException e) {
-            throw new FilesSearchingException(e);
+            throw new FilesSearchingException(e.getMessage());
         }
     }
 
