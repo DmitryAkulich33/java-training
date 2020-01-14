@@ -9,7 +9,7 @@ public class Runner {
         Controller controller = new Controller();
 
         Directory directory = controller.createDirectory(viewer.printCreatingDirectory());
-        if(!(directory == null)) {
+        if(directory != null) {
             while (true) {
                 String request = viewer.printCommandMenu();
                 if (request.equals("0")) {
