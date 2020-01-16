@@ -3,15 +3,15 @@ package by.epam.exercise04.domain;
 public abstract class Treasure {
     private String name;
     private int cost;
-    private MaterialType type;
+    private String materialType;
 
     public Treasure() {
     }
 
-    public Treasure(String name, int cost, MaterialType type) {
+    public Treasure(String name, int cost, String materialType) {
         this.name = name;
         this.cost = cost;
-        this.type = type;
+        this.materialType = materialType;
     }
 
     public String getName() {
@@ -30,12 +30,12 @@ public abstract class Treasure {
         this.cost = cost;
     }
 
-    public MaterialType getType() {
-        return type;
+    public String getMaterialType() {
+        return materialType;
     }
 
-    public void setType(MaterialType type) {
-        this.type = type;
+    public void setMaterialType(String materialType) {
+        this.materialType = materialType;
     }
 
     @Override
@@ -47,19 +47,19 @@ public abstract class Treasure {
 
         if (cost != treasure.cost) return false;
         if (name != null ? !name.equals(treasure.name) : treasure.name != null) return false;
-        return type == treasure.type;
+        return materialType != null ? materialType.equals(treasure.materialType) : treasure.materialType == null;
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + cost;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (materialType != null ? materialType.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Name: " + name + "  cost: " + cost + "  type:" + type;
+        return "Name: " + name + "  cost: " + cost + "  material type: " + materialType;
     }
 }

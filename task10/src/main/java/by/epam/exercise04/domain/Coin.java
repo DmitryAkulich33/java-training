@@ -6,8 +6,8 @@ public class Coin extends Treasure{
     public Coin() {
     }
 
-    public Coin(String name, int cost, MaterialType type, int coinYear) {
-        super(name, cost, type);
+    public Coin(String name, int cost, String materialType, int coinYear) {
+        super(name, cost, materialType);
         this.coinYear = coinYear;
     }
 
@@ -39,6 +39,6 @@ public class Coin extends Treasure{
 
     @Override
     public String toString() {
-        return super.toString() + "  coin year:" + coinYear;
+        return super.toString() + "  coin year: " + coinYear;
     }
 }

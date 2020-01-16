@@ -6,8 +6,8 @@ public class Necklace extends Treasure {
     public Necklace() {
     }
 
-    public Necklace(String name, int cost, MaterialType type, int length) {
-        super(name, cost, type);
+    public Necklace(String name, int cost, String materialType, int length) {
+        super(name, cost, materialType);
         this.length = length;
     }
 
@@ -39,6 +39,6 @@ public class Necklace extends Treasure {
 
     @Override
     public String toString() {
-        return super.toString() + "  necklace length:" + length;
+        return super.toString() + "  necklace length: " + length;
     }
 }

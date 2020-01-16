@@ -6,11 +6,11 @@ Coin 10 Gold 1995
 Coin 15 Gold 1993
 Ring 45 Gold 16
 Ring 47 Gold 16
-Necklace 130 Gold 23
-Necklace 135 Gold 24
-Coin 5 Gold 1999
+Necklace 127 Gold 23
+Necklace 132 Gold 24
+Coin 1 Gold 1999
 Coin 7 Gold 1997
-Ring 30 Silver 17
+Ring 2 Silver 17
 Ring 41 Bronze 16
 Necklace 100 Silver 25
 Necklace 105 Bronze 27

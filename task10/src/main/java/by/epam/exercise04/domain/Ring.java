@@ -6,8 +6,8 @@ public class Ring extends Treasure {
     public Ring() {
     }
 
-    public Ring(String name, int cost, MaterialType type, int size) {
-        super(name, cost, type);
+    public Ring(String name, int cost, String materialType, int size) {
+        super(name, cost, materialType);
         this.size = size;
     }
 
@@ -39,6 +39,6 @@ public class Ring extends Treasure {
 
     @Override
     public String toString() {
-        return super.toString() + "  ring size:" + size;
+        return super.toString() + "  ring size: " + size;
     }
 }
