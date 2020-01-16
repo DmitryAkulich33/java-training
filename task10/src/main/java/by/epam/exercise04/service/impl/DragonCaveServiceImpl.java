@@ -1,7 +1,9 @@
 package by.epam.exercise04.service.impl;
 
 import by.epam.exercise04.dao.TreasureReaderDAO;
+import by.epam.exercise04.dao.TreasureWriterDAO;
 import by.epam.exercise04.dao.exception.StreamNotReadingException;
+import by.epam.exercise04.dao.exception.StreamNotWritingException;
 import by.epam.exercise04.dao.factory.DAOFactory;
 import by.epam.exercise04.domain.DragonCave;
 import by.epam.exercise04.domain.Treasure;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 public class DragonCaveServiceImpl implements DragonCaveService {
     private DAOFactory daoObjectFactory = DAOFactory.getInstance();
     private TreasureReaderDAO readerDAO = daoObjectFactory.getReaderDAO();
+    private TreasureWriterDAO writerDAO = daoObjectFactory.getWriterDAO();
     private LinesValidator validator = new LinesValidator();
     private TreasureFactory treasureFactory = new TreasureFactory();
 
@@ -48,5 +51,13 @@ public class DragonCaveServiceImpl implements DragonCaveService {
             treasures.add(treasureFactory.getCurrentTreasure(valuesFromLine));
         }
         return treasures;
+    }
+
+    public void saveTreasureInFile(DragonCave dragonCave, String path) throws ServiceException{
+        try {
+            writerDAO.writeTreasureInFile(dragonCave, path);
+        } catch (StreamNotWritingException e){
+            throw new ServiceException(e.getMessage(), e);
+        }
     }
 }

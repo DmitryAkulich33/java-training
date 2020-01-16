@@ -37,8 +37,10 @@ public class DragonCave {
 
     @Override
     public String toString() {
-        return "DragonCave{" +
-                "treasures=" + treasures +
-                '}';
+        String line = "";
+        for(Treasure treasure : treasures){
+            line = line + treasure.toString() + "\n";
+        }
+        return line;
     }
 }

@@ -11,4 +11,5 @@ public interface DragonCaveService {
     DragonCave createDragonCave(String path) throws ServiceException, EmptyListException;
     List<String> findValidLines(String pathFile) throws ServiceException, EmptyListException;
     List<Treasure> findTreasureList(List<String> lines);
+    void saveTreasureInFile(DragonCave dragonCave, String path) throws ServiceException;
 }

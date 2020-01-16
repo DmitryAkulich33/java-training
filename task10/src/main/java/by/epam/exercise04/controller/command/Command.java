@@ -1,4 +1,4 @@
-package by.epam.exercise04.controller.Command;
+package by.epam.exercise04.controller.command;
 
 import by.epam.exercise04.domain.DragonCave;
 

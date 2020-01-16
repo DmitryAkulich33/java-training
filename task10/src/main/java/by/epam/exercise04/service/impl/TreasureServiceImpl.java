@@ -1,15 +1,22 @@
 package by.epam.exercise04.service.impl;
 
+import by.epam.exercise04.dao.TreasureWriterDAO;
+import by.epam.exercise04.dao.exception.StreamNotWritingException;
+import by.epam.exercise04.dao.factory.DAOFactory;
 import by.epam.exercise04.domain.DragonCave;
 import by.epam.exercise04.domain.Treasure;
 import by.epam.exercise04.service.TreasureService;
 import by.epam.exercise04.service.exception.EmptyListException;
+import by.epam.exercise04.service.exception.ServiceException;
 import by.epam.exercise04.service.exception.WrongNumberException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TreasureServiceImpl implements TreasureService {
+    private DAOFactory daoObjectFactory = DAOFactory.getInstance();
+    private TreasureWriterDAO writerDAO = daoObjectFactory.getWriterDAO();
+
     public Treasure getTheMostExpensiveTreasure(DragonCave dragonCave){
         List<Treasure> treasures = dragonCave.getTreasures();
         Treasure treasure = treasures.get(0);
@@ -22,7 +29,7 @@ public class TreasureServiceImpl implements TreasureService {
         return treasure;
     }
 
-    public List<Treasure> selectTreasure(DragonCave dragonCave, int necessarySum){
+    public List<Treasure> selectTreasure(DragonCave dragonCave, int necessarySum) throws WrongNumberException{
         if(necessarySum <= 0){
             throw new WrongNumberException("Necessary sum is wrong.");
         }
@@ -58,7 +65,7 @@ public class TreasureServiceImpl implements TreasureService {
         dragonCave.setTreasures(treasures);
     }
 
-    public void deleteTreasures(List<Treasure> delTreasures, DragonCave dragonCave){
+    public void deleteTreasures(List<Treasure> delTreasures, DragonCave dragonCave) throws EmptyListException{
         if(delTreasures.isEmpty()){
             throw new EmptyListException("The treasure list is empty.");
         }
