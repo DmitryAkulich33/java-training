@@ -1,6 +1,5 @@
 package by.epam.exercise04.view;
 
-import by.epam.exercise04.domain.DragonCave;
 import by.epam.exercise04.domain.Treasure;
 
 import java.util.List;

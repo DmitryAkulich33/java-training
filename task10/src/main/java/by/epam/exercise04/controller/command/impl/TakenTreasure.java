@@ -24,10 +24,10 @@ public class TakenTreasure implements Command {
             treasures = treasureService.selectTreasure(dragonCave, sum);
             treasureService.deleteTreasures(treasures, dragonCave);
             response = "Treasures were taken successfully.";
-        } catch (WrongNumberException | EmptyListException ex){
+            viewer.printTreasure(treasures);
+        } catch (WrongNumberException | EmptyListException ex) {
             response = ex.getMessage();
         }
-        viewer.printTreasure(treasures);
         return response;
     }
 }

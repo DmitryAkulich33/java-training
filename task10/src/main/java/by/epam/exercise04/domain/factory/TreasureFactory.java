@@ -3,10 +3,10 @@ package by.epam.exercise04.domain.factory;
 import by.epam.exercise04.domain.*;
 
 public class TreasureFactory {
-    public Treasure getCurrentTreasure(String[] lineValues){
+    public Treasure getCurrentTreasure(String[] lineValues) {
         TreasureType type = TreasureType.valueOf(lineValues[0].toUpperCase());
         Treasure treasure = null;
-        switch (type){
+        switch (type) {
             case COIN:
                 String coinName = lineValues[0];
                 int coinCost = Integer.parseInt(lineValues[1]);

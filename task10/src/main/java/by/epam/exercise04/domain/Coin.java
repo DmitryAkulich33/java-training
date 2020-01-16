@@ -1,6 +1,6 @@
 package by.epam.exercise04.domain;
 
-public class Coin extends Treasure{
+public class Coin extends Treasure {
     private int coinYear;
 
     public Coin() {

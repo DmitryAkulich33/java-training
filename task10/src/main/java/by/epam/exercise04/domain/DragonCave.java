@@ -37,10 +37,10 @@ public class DragonCave {
 
     @Override
     public String toString() {
-        String line = "";
-        for(Treasure treasure : treasures){
-            line = line + treasure.toString() + "\n";
+        StringBuilder line = new StringBuilder();
+        for (Treasure treasure : treasures) {
+            line.append(treasure).append("\n");
         }
-        return line;
+        return line.toString();
     }
 }

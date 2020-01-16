@@ -1,13 +1,11 @@
 package by.epam.exercise04.service.impl;
 
 import by.epam.exercise04.dao.TreasureWriterDAO;
-import by.epam.exercise04.dao.exception.StreamNotWritingException;
 import by.epam.exercise04.dao.factory.DAOFactory;
 import by.epam.exercise04.domain.DragonCave;
 import by.epam.exercise04.domain.Treasure;
 import by.epam.exercise04.service.TreasureService;
 import by.epam.exercise04.service.exception.EmptyListException;
-import by.epam.exercise04.service.exception.ServiceException;
 import by.epam.exercise04.service.exception.WrongNumberException;
 
 import java.util.ArrayList;

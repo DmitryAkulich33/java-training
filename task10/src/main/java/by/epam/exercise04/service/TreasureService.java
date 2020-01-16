@@ -3,7 +3,6 @@ package by.epam.exercise04.service;
 import by.epam.exercise04.domain.DragonCave;
 import by.epam.exercise04.domain.Treasure;
 import by.epam.exercise04.service.exception.EmptyListException;
-import by.epam.exercise04.service.exception.ServiceException;
 import by.epam.exercise04.service.exception.WrongNumberException;
 
 import java.util.List;

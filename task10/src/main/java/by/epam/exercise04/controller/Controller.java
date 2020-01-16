@@ -15,7 +15,7 @@ public final class Controller {
         return executionCommand.execute(request, dragonCave);
     }
 
-    public DragonCave createDragonCave(String path){
+    public DragonCave createDragonCave(String path) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         DragonCaveService dragonCaveService = serviceFactory.getDragonCaveService();
         DragonCave dragonCave = null;
