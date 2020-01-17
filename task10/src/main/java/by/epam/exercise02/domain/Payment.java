@@ -107,14 +107,8 @@ public class Payment {
 
     @Override
     public String toString() {
-        StringBuilder line = new StringBuilder("The payment's name is " + name + "\n====================\n");
-        line.append(basket);
-//        int i = 1;
-//        for(Product product : basket.getProducts()){
-//            line.append(i).append(". ").append(product).append("\n");
-//            i++;
-//        }
-        line.append("====================\nTotal cost = ").append(cost).append(" BYN\n====================");
-        return line.toString();
+        String line = "The payment's name is " + name + "\n====================\n" + basket +
+                "====================\nTotal cost = " + cost + " BYN\n====================";
+        return line;
     }
 }

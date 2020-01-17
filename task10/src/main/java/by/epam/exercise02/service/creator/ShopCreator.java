@@ -34,7 +34,7 @@ public class ShopCreator {
                 products.add(getProduct(line));
             }
         }
-        if(products.isEmpty()){
+        if (products.isEmpty()) {
             throw new NoProductsForSaleException("No products for sale.");
         }
         return products;

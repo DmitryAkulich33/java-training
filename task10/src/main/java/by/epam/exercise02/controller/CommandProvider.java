@@ -13,21 +13,22 @@ import java.util.Map;
 final class CommandProvider {
     private final Map<CommandName, Command> repository = new HashMap<>();
 
-    CommandProvider(){
+    CommandProvider() {
         repository.put(CommandName.STANDARD, new StandardBill());
         repository.put(CommandName.INCREASE, new IncreasingBill());
         repository.put(CommandName.DECREASE, new DecreasingBill());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
-     Command getCommand(String name){
+
+    Command getCommand(String name) {
         CommandName commandName = null;
         Command command = null;
-        try{
+        try {
             commandName = CommandName.valueOf(name.toUpperCase());
             command = repository.get(commandName);
-        } catch (IllegalArgumentException | NullPointerException ex){
+        } catch (IllegalArgumentException | NullPointerException ex) {
             command = repository.get(CommandName.WRONG_COMMAND);
         }
         return command;
-     }
+    }
 }

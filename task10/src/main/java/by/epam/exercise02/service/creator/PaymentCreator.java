@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PaymentCreator {
 
-    public Payment createPayment(String name, Shop shop, ShoppingList shoppingList){
+    public Payment createPayment(String name, Shop shop, ShoppingList shoppingList) {
         Payment payment = new Payment();
         List<Product> products = findProductList(shop, shoppingList);
         payment.setBasket(payment.new Basket(products));
@@ -21,12 +21,12 @@ public class PaymentCreator {
         return payment;
     }
 
-    public List<Product> findProductList(Shop shop, ShoppingList shoppingList) throws WrongProductsToBuyException{
+    public List<Product> findProductList(Shop shop, ShoppingList shoppingList) throws WrongProductsToBuyException {
         List<Product> productsToBuy = new ArrayList<>();
         for (String line : shoppingList.getShoppingList()) {
             boolean flag = false;
-            for(Product product : shop.getProducts()){
-                if (line.equalsIgnoreCase(product.getProductName())){
+            for (Product product : shop.getProducts()) {
+                if (line.equalsIgnoreCase(product.getProductName())) {
                     productsToBuy.add(product);
                     flag = true;
                     break;

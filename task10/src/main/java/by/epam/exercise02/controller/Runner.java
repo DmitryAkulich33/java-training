@@ -10,7 +10,7 @@ public class Runner {
         Controller controller = new Controller();
 
         Shop shop = controller.createShop(Constants.SHOP_NAME, Constants.LIST_FOR_SALE_PATH);
-        if(shop != null) {
+        if (shop != null) {
             while (true) {
                 viewer.printProductForSale(shop);
                 String productNames = viewer.returnLine();
