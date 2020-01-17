@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 
 public class TreasureWriterDAOImpl implements TreasureWriterDAO {
 
-    public void writeTreasureInFile(DragonCave dragonCave, String path) throws by.epam.exercise02.dao.exception.StreamNotWritingException {
+    public void writeTreasureInFile(DragonCave dragonCave, String path) throws StreamNotWritingException {
         Path source = Paths.get(path);
         List<String> list = Stream.of(dragonCave).map(Objects::toString).collect(Collectors.toList());
         try {

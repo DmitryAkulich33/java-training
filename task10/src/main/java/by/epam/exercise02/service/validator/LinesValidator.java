@@ -5,7 +5,7 @@ import by.epam.exercise02.domain.Constants;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ListValidator {
+public class LinesValidator {
     public boolean isLineValid(String line) {
         if (line == null) {
             return false;

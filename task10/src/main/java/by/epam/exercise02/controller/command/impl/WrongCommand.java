@@ -1,7 +1,7 @@
 package by.epam.exercise02.controller.command.impl;
 
-import by.epam.exercise02.controller.command.Command;
 import by.epam.exercise02.domain.Shop;
+import by.epam.exercise02.controller.command.Command;
 
 public class WrongCommand implements Command {
     @Override

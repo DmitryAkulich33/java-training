@@ -1,8 +1,8 @@
 package by.epam.exercise02.view;
 
+import by.epam.exercise02.domain.Product;
 import by.epam.exercise02.domain.Shop;
 
-import java.util.Map;
 import java.util.Scanner;
 
 public class Viewer {
@@ -10,9 +10,8 @@ public class Viewer {
 
     public void printProductForSale(Shop shop) {
         System.out.println("Shop is " + shop.getName() + ", products for sale:");
-        for (Map.Entry entry : shop.getForSale().entrySet()) {
-            System.out.printf("%-10s %7s" + " BYN\n", entry.getKey(), entry.getValue());
-
+        for(Product product : shop.getProducts()){
+            System.out.printf("%-10s %7s" + " BYN\n", product.getProductName(), product.getProductCost());
         }
         System.out.println("Please, write through the space on the next line the name of the products from the list you want to buy:");
 

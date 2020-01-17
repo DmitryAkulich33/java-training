@@ -32,10 +32,10 @@ public class ShoppingList {
 
     @Override
     public String toString() {
-        String line = "Shop is " + ownerName + " :" + "\n";
+        StringBuilder line = new StringBuilder("Shop is " + ownerName + " :" + "\n");
         for (String string : shoppingList) {
-            line = line + string + "\n";
+            line.append(string).append("\n");
         }
-        return line;
+        return line.toString();
     }
 }

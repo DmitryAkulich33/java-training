@@ -1,55 +1,49 @@
 package by.epam.exercise02.service.creator;
 
-import by.epam.exercise02.dao.LinesReader;
+import by.epam.exercise02.dao.ProductsReaderDAO;
 import by.epam.exercise02.dao.exception.StreamNotReadingException;
+import by.epam.exercise02.dao.factory.DAOFactory;
+import by.epam.exercise02.domain.Product;
 import by.epam.exercise02.domain.Shop;
 import by.epam.exercise02.service.exception.NoProductsForSaleException;
-import by.epam.exercise02.service.validator.ListValidator;
+import by.epam.exercise02.service.exception.ServiceException;
+import by.epam.exercise02.service.validator.LinesValidator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ShopCreator {
+    private DAOFactory daoObjectFactory = DAOFactory.getInstance();
+    private ProductsReaderDAO readerDAO = daoObjectFactory.getReaderDAO();
+
     public Shop createShop(String name, String path) throws NoProductsForSaleException {
         return new Shop(name, createProductListForSale(path));
     }
 
-    public Map<String, Integer> createProductListForSale(String path) throws NoProductsForSaleException{
-        LinesReader linesReader = new LinesReader();
-
+    public List<Product> createProductListForSale(String path) throws NoProductsForSaleException, ServiceException {
+        List<Product> products = new ArrayList<>();
         List<String> linesFromFile;
         try {
-            linesFromFile = linesReader.createListForSaleFromFile(path);
-        } catch (StreamNotReadingException e){
-            throw new NoProductsForSaleException(e.getMessage());
+            linesFromFile = readerDAO.createListForSaleFromFile(path);
+        } catch (StreamNotReadingException e) {
+            throw new ServiceException(e);
         }
-        if (linesFromFile.isEmpty()) {
-            throw new NoProductsForSaleException("No products for sale.");
-        }
-        List<String> validLines = findValidLines(linesFromFile);
-        Map<String, Integer> forSale = new HashMap<>();
-        for (String line : validLines) {
-            String[] array = line.trim().split("\\s+");
-            String productName = array[0];
-            int productCost = Integer.parseInt(array[1]);
-            forSale.put(productName, productCost);
-        }
-        return forSale;
-    }
-
-    public List<String> findValidLines(List<String> linesFromFile) throws NoProductsForSaleException{
-        ListValidator listValidator = new ListValidator();
-        List<String> validLine = new ArrayList<>();
-        for(String lineFromFile : linesFromFile){
-            if(listValidator.isLineValid(lineFromFile)){
-                validLine.add(lineFromFile);
+        LinesValidator validator = new LinesValidator();
+        for (String line : linesFromFile) {
+            if (validator.isLineValid(line)) {
+                products.add(getProduct(line));
             }
         }
-        if (validLine.isEmpty()) {
+        if(products.isEmpty()){
             throw new NoProductsForSaleException("No products for sale.");
         }
-        return validLine;
+        return products;
+    }
+
+    public Product getProduct(String line) {
+        String[] array = line.trim().split("\\s+");
+        String productName = array[0];
+        int productCost = Integer.parseInt(array[1]);
+        return new Product(productName, productCost);
     }
 }

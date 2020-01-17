@@ -5,34 +5,24 @@ import java.util.List;
 public class Payment {
     private String name;
     private int cost;
-    private List<Product> productsList;
+    private Basket basket;
 
-    public class Product {
-        private String productName;
-        private int productCost;
+    public class Basket {
+        private List<Product> products;
 
-        public Product() {
-            productName = "";
-            productCost = 0;
+        public Basket() {
         }
 
-        public Product(String productName, int productCost) {
-            this.productName = productName;
-            this.productCost = productCost;
+        public Basket(List<Product> products) {
+            this.products = products;
         }
 
-        public String getProductName() {
-            return productName;
+        public List<Product> getProducts() {
+            return products;
         }
 
-        public int getProductCost() {
-            return productCost;
-        }
-
-        @Override
-        public String toString() {
-            return productName + " " + productCost + " BYN";
-
+        public void setProducts(List<Product> products) {
+            this.products = products;
         }
 
         @Override
@@ -40,26 +30,35 @@ public class Payment {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
 
-            Product product = (Product) o;
+            Basket basket = (Basket) o;
 
-            if (productCost != product.productCost) return false;
-            return productName != null ? productName.equals(product.productName) : product.productName == null;
+            return products != null ? products.equals(basket.products) : basket.products == null;
         }
 
         @Override
         public int hashCode() {
-            int result = productName != null ? productName.hashCode() : 0;
-            result = 31 * result + productCost;
-            return result;
+            return products != null ? products.hashCode() : 0;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder line = new StringBuilder();
+            int i = 1;
+            for (Product product : products) {
+                line.append(i).append(". ").append(product).append("\n");
+                i++;
+            }
+            return line.toString();
         }
     }
 
     public Payment() {
-
     }
 
-    public Payment(String name) {
+    public Payment(String name, int cost, Basket basket) {
         this.name = name;
+        this.cost = cost;
+        this.basket = basket;
     }
 
     public String getName() {
@@ -70,14 +69,6 @@ public class Payment {
         this.name = name;
     }
 
-    public List<Product> getProductsList() {
-        return productsList;
-    }
-
-    public void setProductsList(List<Product> productsList) {
-        this.productsList = productsList;
-    }
-
     public int getCost() {
         return cost;
     }
@@ -86,16 +77,12 @@ public class Payment {
         this.cost = cost;
     }
 
-    @Override
-    public String toString() {
-        String line = "The payment's name is " + name + "\n====================\n";
-        int i = 1;
-        for (Product product : productsList) {
-            line = line + i + ". " + product + "\n";
-            i++;
-        }
-        line = line + "====================\nTotal cost = " + cost + " BYN\n====================";
-        return line;
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
     }
 
     @Override
@@ -107,14 +94,27 @@ public class Payment {
 
         if (cost != payment.cost) return false;
         if (name != null ? !name.equals(payment.name) : payment.name != null) return false;
-        return productsList != null ? productsList.equals(payment.productsList) : payment.productsList == null;
+        return basket != null ? basket.equals(payment.basket) : payment.basket == null;
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + cost;
-        result = 31 * result + (productsList != null ? productsList.hashCode() : 0);
+        result = 31 * result + (basket != null ? basket.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder line = new StringBuilder("The payment's name is " + name + "\n====================\n");
+        line.append(basket);
+//        int i = 1;
+//        for(Product product : basket.getProducts()){
+//            line.append(i).append(". ").append(product).append("\n");
+//            i++;
+//        }
+        line.append("====================\nTotal cost = ").append(cost).append(" BYN\n====================");
+        return line.toString();
     }
 }

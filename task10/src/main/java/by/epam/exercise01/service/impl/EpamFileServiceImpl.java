@@ -10,7 +10,7 @@ import by.epam.exercise01.domain.Directory;
 import by.epam.exercise01.domain.EpamFile;
 import by.epam.exercise01.domain.TextFile;
 import by.epam.exercise01.service.EpamFileService;
-import by.epam.exercise01.service.exception.FilesSearchingException;
+import by.epam.exercise01.service.exception.ServiceException;
 
 import java.io.File;
 import java.util.List;
@@ -19,47 +19,47 @@ public class EpamFileServiceImpl implements EpamFileService {
     private DAOFactory daoObjectFactory = DAOFactory.getInstance();
     private TextFileDAO textFileDAO = daoObjectFactory.getTextFileDAOImpl();
 
-    public void createFile(Directory directory, String fileName, String type) throws FilesSearchingException {
+    public void createFile(Directory directory, String fileName, String type) throws ServiceException {
         try {
             fileFactory(textFileDAO.create(directory, fileName, type));
         } catch (FileCreatingException e) {
-            throw new FilesSearchingException(e);
+            throw new ServiceException(e);
         }
     }
 
-    public void renameFile(Directory directory, String fileName, String type, String newFileName, String newType) throws FilesSearchingException {
+    public void renameFile(Directory directory, String fileName, String type, String newFileName, String newType) throws ServiceException {
         try {
             fileFactory(textFileDAO.rename(directory, fileName, type, newFileName, newType));
         } catch (FileRenamingException e) {
-            throw new FilesSearchingException(e);
+            throw new ServiceException(e);
         }
     }
 
-    public void addContent(Directory directory, String fileName, String type, List<String> content) throws FilesSearchingException {
+    public void addContent(Directory directory, String fileName, String type, List<String> content) throws ServiceException {
         try {
             textFileDAO.writeContent(directory, fileName, type, content);
         } catch (FileWritingException e) {
-            throw new FilesSearchingException(e);
+            throw new ServiceException(e);
         }
     }
 
-    public void addWrittenContent(Directory directory, String fileName, String type, List<String> content) throws FilesSearchingException {
+    public void addWrittenContent(Directory directory, String fileName, String type, List<String> content) throws ServiceException {
         try {
             textFileDAO.addWrittenContent(directory, fileName, type, content);
         } catch (FileWritingException e) {
-            throw new FilesSearchingException(e);
+            throw new ServiceException(e);
         }
     }
 
-    public List<String> getContent(Directory directory, String fileName, String type) throws FilesSearchingException {
+    public List<String> getContent(Directory directory, String fileName, String type) throws ServiceException {
         List<String> content;
         try {
             content = textFileDAO.returnFileContent(directory, fileName, type);
         } catch (FileReadingException e) {
-            throw new FilesSearchingException(e);
+            throw new ServiceException(e);
         }
         if (content.isEmpty()) {
-            throw new FilesSearchingException("File is empty.");
+            throw new ServiceException("File is empty.");
         }
         return content;
     }

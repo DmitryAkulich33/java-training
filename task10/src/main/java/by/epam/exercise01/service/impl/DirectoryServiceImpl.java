@@ -9,7 +9,7 @@ import by.epam.exercise01.domain.Directory;
 import by.epam.exercise01.domain.EpamFile;
 import by.epam.exercise01.domain.TextFile;
 import by.epam.exercise01.service.DirectoryService;
-import by.epam.exercise01.service.exception.FilesSearchingException;
+import by.epam.exercise01.service.exception.ServiceException;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -19,20 +19,20 @@ public class DirectoryServiceImpl implements DirectoryService {
     private DAOFactory daoObjectFactory = DAOFactory.getInstance();
     private DirectoryDAO directoryDAO = daoObjectFactory.getDirectoryDAOImpl();
 
-    public Directory createDirectory(String path) throws FilesSearchingException {
+    public Directory createDirectory(String path) throws ServiceException {
         try {
             return fileFactory(directoryDAO.create(path));
         } catch (FileCreatingException e) {
-            throw new FilesSearchingException(e.getMessage());
+            throw new ServiceException(e);
         }
     }
 
-    public void addFileList(Directory directory) throws FilesSearchingException {
+    public void addFileList(Directory directory) throws ServiceException {
         List<String> fileList = null;
         try {
             fileList = directoryDAO.findFileList(directory);
         } catch (EmptyDirectoryException e) {
-            throw new FilesSearchingException(e.getMessage());
+            throw new ServiceException(e);
         }
         List<EpamFile> epamFileList = new ArrayList<>();
         for (String line : fileList) {
@@ -41,7 +41,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         directory.setFileList(epamFileList);
     }
 
-    public void deleteFile(Directory directory, String fileName, String type) throws FilesSearchingException {
+    public void deleteFile(Directory directory, String fileName, String type) throws ServiceException {
         List<EpamFile> fileList = directory.getFileList();
         int size = fileList.size();
         for (int i = 0; i < size; i++) {
@@ -52,7 +52,7 @@ public class DirectoryServiceImpl implements DirectoryService {
         try {
             directoryDAO.deleteFile(directory, fileName, type);
         } catch (FileDeletingException e) {
-            throw new FilesSearchingException(e);
+            throw new ServiceException(e);
         }
         directory.setFileList(fileList);
     }

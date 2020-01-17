@@ -1,18 +1,17 @@
 package by.epam.exercise02.domain;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class Shop {
     private String name;
-    private Map<String, Integer> forSale = new HashMap<>();
+    private List<Product> products;
 
     public Shop() {
     }
 
-    public Shop(String name, Map<String, Integer> forSale) {
+    public Shop(String name, List<Product> products) {
         this.name = name;
-        this.forSale = forSale;
+        this.products = products;
     }
 
     public String getName() {
@@ -23,21 +22,39 @@ public class Shop {
         this.name = name;
     }
 
-    public Map<String, Integer> getForSale() {
-        return forSale;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setForSale(Map<String, Integer> forSale) {
-        this.forSale = forSale;
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Shop shop = (Shop) o;
+
+        if (name != null ? !name.equals(shop.name) : shop.name != null) return false;
+        return products != null ? products.equals(shop.products) : shop.products == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (products != null ? products.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        String line = "Shop is " + name + " :" + "\n";
-        for (Map.Entry entry : forSale.entrySet()) {
-            line = line + entry.getKey() + " " + entry.getValue() + " BYN\n";
+        StringBuilder line = new StringBuilder("Shop is " + name + " :" + "\n");
+        for (Product product : products) {
+            line.append(product.getProductName()).append(" ").append(product.getProductCost()).append(" BYN\n");
 
         }
-        return line;
+        return line.toString();
     }
 }

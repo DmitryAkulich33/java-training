@@ -3,7 +3,7 @@ package by.epam.exercise01.controller.command.impl;
 import by.epam.exercise01.controller.command.Command;
 import by.epam.exercise01.domain.Directory;
 import by.epam.exercise01.service.DirectoryService;
-import by.epam.exercise01.service.exception.FilesSearchingException;
+import by.epam.exercise01.service.exception.ServiceException;
 import by.epam.exercise01.service.factory.ServiceFactory;
 import by.epam.exercise01.view.Viewer;
 
@@ -21,7 +21,7 @@ public class FileDeleter implements Command {
             directoryService.addFileList(directory);
             directoryService.deleteFile(directory, fileName, fileType);
             response = "The file was deleted successfully";
-        } catch (FilesSearchingException ex) {
+        } catch (ServiceException ex) {
             response = ex.getMessage();
         }
         return response;

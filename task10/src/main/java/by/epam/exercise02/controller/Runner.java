@@ -4,7 +4,6 @@ import by.epam.exercise02.domain.Constants;
 import by.epam.exercise02.domain.Shop;
 import by.epam.exercise02.view.Viewer;
 
-
 public class Runner {
     public static void main(String[] args) {
         Viewer viewer = new Viewer();
