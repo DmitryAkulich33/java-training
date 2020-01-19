@@ -1,6 +1,6 @@
 package by.epam.exercise01.dao.exception;
 
-public class FileCreatingException extends RuntimeException {
+public class FileCreatingException extends Exception {
     public FileCreatingException() {
     }
 

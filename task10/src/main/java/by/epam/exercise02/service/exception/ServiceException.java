@@ -1,6 +1,6 @@
 package by.epam.exercise02.service.exception;
 
-public class ServiceException extends RuntimeException {
+public class ServiceException extends Exception {
     public ServiceException() {
     }
 

@@ -1,6 +1,6 @@
 package by.epam.exercise04.service.exception;
 
-public class WrongNumberException extends RuntimeException {
+public class WrongNumberException extends Exception {
     public WrongNumberException() {
     }
 

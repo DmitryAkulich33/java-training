@@ -1,6 +1,6 @@
 package by.epam.exercise02.dao.exception;
 
-public class StreamNotWritingException extends RuntimeException {
+public class StreamNotWritingException extends Exception {
     public StreamNotWritingException() {
     }
 

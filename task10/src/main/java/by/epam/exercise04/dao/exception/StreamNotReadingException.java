@@ -1,6 +1,6 @@
 package by.epam.exercise04.dao.exception;
 
-public class StreamNotReadingException extends RuntimeException {
+public class StreamNotReadingException extends Exception {
     public StreamNotReadingException() {
     }
 

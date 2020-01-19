@@ -1,6 +1,6 @@
 package by.epam.exercise04.service.exception;
 
-public class EmptyListException extends RuntimeException {
+public class EmptyListException extends Exception {
     public EmptyListException() {
     }
 

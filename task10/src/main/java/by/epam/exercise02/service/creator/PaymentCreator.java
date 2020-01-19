@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PaymentCreator {
 
-    public Payment createPayment(String name, Shop shop, ShoppingList shoppingList) {
+    public Payment createPayment(String name, Shop shop, ShoppingList shoppingList) throws WrongProductsToBuyException {
         Payment payment = new Payment();
         List<Product> products = findProductList(shop, shoppingList);
         payment.setBasket(payment.new Basket(products));

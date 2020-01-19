@@ -1,6 +1,6 @@
 package by.epam.exercise02.service.exception;
 
-public class WrongProductsToBuyException extends RuntimeException {
+public class WrongProductsToBuyException extends Exception {
     public WrongProductsToBuyException() {
     }
 

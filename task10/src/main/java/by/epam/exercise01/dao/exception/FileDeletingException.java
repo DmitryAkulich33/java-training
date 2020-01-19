@@ -1,6 +1,6 @@
 package by.epam.exercise01.dao.exception;
 
-public class FileDeletingException extends RuntimeException {
+public class FileDeletingException extends Exception {
     public FileDeletingException() {
     }
 

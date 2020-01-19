@@ -16,7 +16,7 @@ public class ShopCreator {
     private DAOFactory daoObjectFactory = DAOFactory.getInstance();
     private ProductsReaderDAO readerDAO = daoObjectFactory.getReaderDAO();
 
-    public Shop createShop(String name, String path) throws NoProductsForSaleException {
+    public Shop createShop(String name, String path) throws NoProductsForSaleException, ServiceException {
         return new Shop(name, createProductListForSale(path));
     }
 

@@ -1,6 +1,6 @@
 package by.epam.exercise01.dao.exception;
 
-public class FileReadingException extends RuntimeException {
+public class FileReadingException extends Exception {
     public FileReadingException() {
     }
 

@@ -1,6 +1,6 @@
 package by.epam.exercise02.service.exception;
 
-public class NoProductsForSaleException extends RuntimeException {
+public class NoProductsForSaleException extends Exception {
     public NoProductsForSaleException() {
     }
 

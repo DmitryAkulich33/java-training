@@ -4,6 +4,7 @@ import by.epam.exercise02.controller.command.Command;
 import by.epam.exercise02.domain.Shop;
 import by.epam.exercise02.service.creator.ShopCreator;
 import by.epam.exercise02.service.exception.NoProductsForSaleException;
+import by.epam.exercise02.service.exception.ServiceException;
 
 public final class Controller {
     private final CommandProvider commandProvider = new CommandProvider();
@@ -18,7 +19,7 @@ public final class Controller {
         ShopCreator shopCreator = new ShopCreator();
         try {
             shop = shopCreator.createShop(name, path);
-        } catch (NoProductsForSaleException e) {
+        } catch (NoProductsForSaleException | ServiceException e) {
             System.out.println(e.getMessage());
         }
         return shop;

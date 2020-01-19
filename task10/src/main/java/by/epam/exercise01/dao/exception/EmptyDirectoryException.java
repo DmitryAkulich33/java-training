@@ -1,6 +1,6 @@
 package by.epam.exercise01.dao.exception;
 
-public class EmptyDirectoryException extends RuntimeException {
+public class EmptyDirectoryException extends Exception {
     public EmptyDirectoryException() {
     }
 

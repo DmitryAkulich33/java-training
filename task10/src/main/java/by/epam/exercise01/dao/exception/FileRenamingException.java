@@ -1,6 +1,6 @@
 package by.epam.exercise01.dao.exception;
 
-public class FileRenamingException extends RuntimeException {
+public class FileRenamingException extends Exception {
     public FileRenamingException() {
     }
 
