@@ -3,7 +3,7 @@ package by.epam.composite.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Composite implements Component{
+public class Composite implements Component {
     private List<Component> childComponents = new ArrayList<Component>();
     private ComponentType type;
 
@@ -40,9 +40,9 @@ public class Composite implements Component{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < childComponents.size(); i++){
+        for (int i = 0; i < childComponents.size(); i++) {
             Component child = childComponents.get(i);
-            switch (child.getType()){
+            switch (child.getType()) {
                 case PARAGRAPH:
                     sb.append("    ").append(child);
                     if (i != childComponents.size() - 1) {
@@ -52,7 +52,7 @@ public class Composite implements Component{
                 case SENTENCE:
                 case LEXEME:
                     sb.append(child);
-                    if (i != childComponents.size() - 1){
+                    if (i != childComponents.size() - 1) {
                         sb.append(" ");
                     }
                     break;
@@ -67,11 +67,11 @@ public class Composite implements Component{
         return sb.toString();
     }
 
-    public void addChild(Component component){
+    public void addChild(Component component) {
         childComponents.add(component);
     }
 
-    public void removeChild(Component component){
+    public void removeChild(Component component) {
         childComponents.remove(component);
     }
 }
