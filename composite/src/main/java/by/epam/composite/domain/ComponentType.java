@@ -5,6 +5,7 @@ public enum ComponentType {
     PARAGRAPH,
     SENTENCE,
     LEXEME,
+    WORD,
     SYMBOL,
-    LISTING
+    LISTING,
 }
