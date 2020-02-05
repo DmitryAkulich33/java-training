@@ -1,14 +1,22 @@
 package by.epam.composite.service.parser;
 
-import by.epam.composite.domain.Composite;
-import by.epam.composite.service.exception.CompositeParseException;
+import by.epam.composite.domain.Component;
 
 public abstract class AbstractParser {
-    protected AbstractParser successor;
+    private AbstractParser successor;
 
-    public void setSuccessor (AbstractParser successor){
+    public AbstractParser getSuccessor() {
+        return successor;
+    }
+
+    public void setSuccessor(AbstractParser successor) {
         this.successor = successor;
     }
 
-    public abstract Composite parse (String input) throws CompositeParseException;
+    public boolean checkNextSuccessor() {
+        return getSuccessor() != null;
+    }
+
+    public abstract Component parse (String input);
 }
+

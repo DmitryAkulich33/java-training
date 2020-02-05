@@ -1,5 +1,11 @@
 package by.epam.composite.domain;
 
+import java.util.List;
+
 public interface Component {
-    ComponentType getType();
+    void add(Component component);
+
+    List<Component> getComponents();
+
+    String getValue();
 }
