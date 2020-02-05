@@ -1,5 +1,6 @@
-package by.epam.composite.dao;
+package by.epam.composite.dao.impl;
 
+import by.epam.composite.dao.FileReaderDAO;
 import by.epam.composite.dao.exception.FileNotReadingException;
 
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class FileReaderDAOImpl {
+public class FileReaderDAOImpl implements FileReaderDAO {
 
     public String read(String path) throws FileNotReadingException {
         String readString;
