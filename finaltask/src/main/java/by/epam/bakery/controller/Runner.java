@@ -1,0 +1,7 @@
+package by.epam.bakery.controller;
+
+public class Runner {
+    public static void main(String[] args) {
+
+    }
+}
