@@ -3,42 +3,16 @@ package by.epam.composite.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextComposite implements Component {
-    private List<Component> components;
+public abstract class TextComposite implements Component {
+    public List<Component> components = new ArrayList<>();
 
-    public TextComposite(List<Component> components) {
-        this.components = components;
-    }
+    public abstract Object getChild(int index);
 
-    public TextComposite(){
-        components = new ArrayList<>();
-    }
+    public abstract void add(Component component);
 
-    @Override
-    public List<Component> getComponents() {
-        return components;
-    }
+    public abstract void remove(Component component);
 
-    public void setComponents(List<Component> components) {
-        this.components = components;
-    }
+    public abstract List<Component> getComponents();
 
-    @Override
-    public void add(Component component) {
-        components.add(component);
-    }
 
-    @Override
-    public String getValue() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Component component : getComponents()) {
-            stringBuilder.append(component.toString());
-        }
-        return stringBuilder.toString();
-    }
 }
