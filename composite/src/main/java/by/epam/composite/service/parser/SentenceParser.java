@@ -1,10 +1,7 @@
 package by.epam.composite.service.parser;
 
 import by.epam.composite.domain.Component;
-import by.epam.composite.domain.Paragraph;
 import by.epam.composite.domain.Sentence;
-import by.epam.composite.domain.TextComposite;
-import by.epam.composite.service.creator.TokenLeafCreator;
 
 import java.util.ArrayList;
 import java.util.List;

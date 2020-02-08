@@ -41,16 +41,7 @@ public class Text implements Component {
     public String operation() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Component component : getComponents()) {
-            stringBuilder.append(component.toString());
-        }
-        return stringBuilder.toString();
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Component component : getComponents()) {
-            stringBuilder.append(component.toString());
+            stringBuilder.append(component.operation());
         }
         return stringBuilder.toString();
     }

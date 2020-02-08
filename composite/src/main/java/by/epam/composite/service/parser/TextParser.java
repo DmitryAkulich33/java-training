@@ -2,7 +2,6 @@ package by.epam.composite.service.parser;
 
 import by.epam.composite.domain.Component;
 import by.epam.composite.domain.Text;
-import by.epam.composite.domain.TextComposite;
 
 import java.util.ArrayList;
 import java.util.List;

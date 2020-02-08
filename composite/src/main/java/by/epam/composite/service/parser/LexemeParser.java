@@ -31,8 +31,6 @@ public class LexemeParser extends AbstractParser {
 
     private List<String> parseToWord(String lexeme) {
         List<String> list = new ArrayList<>();
-        Pattern notLetterStart = Pattern.compile("^\\W");
-        Pattern notLetterEnd = Pattern.compile("\\W$");
         int length = lexeme.length();
 
         Matcher matcher1 = notLetterStart.matcher(Character.toString(lexeme.charAt(0)));

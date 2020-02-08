@@ -41,17 +41,7 @@ public class Paragraph implements Component {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("    ");
         for (Component component : getComponents()) {
-            stringBuilder.append(component.toString());
-        }
-        return stringBuilder.toString() + delimiter;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("    ");
-        for (Component component : getComponents()) {
-            stringBuilder.append(component.toString());
+            stringBuilder.append(component.operation());
         }
         return stringBuilder.toString() + delimiter;
     }

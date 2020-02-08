@@ -8,4 +8,6 @@ public interface Component {
     Component getChild(int index);
     void add(Component component);
     void remove(Component component);
+    ComponentType getComponentType();
+    List<Component> getComponents();
 }

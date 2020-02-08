@@ -19,6 +19,11 @@ public class Symbol implements Component {
     }
 
     @Override
+    public List<Component> getComponents() {
+        return null;
+    }
+
+    @Override
     public String operation() {
         return symbol;
     }
@@ -36,11 +41,6 @@ public class Symbol implements Component {
     @Override
     public void remove(Component component) {
 
-    }
-
-    @Override
-    public String toString() {
-        return symbol;
     }
 
     @Override
