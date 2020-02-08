@@ -2,7 +2,7 @@ package by.epam.composite.domain;
 
 import java.util.List;
 
-public class Word extends TextComposite{
+public class Word implements Component{
     private List<Component> components;
     private final ComponentType componentType = ComponentType.WORD;
 
@@ -19,7 +19,7 @@ public class Word extends TextComposite{
     }
 
     @Override
-    public Object getChild(int index) {
+    public Component getChild(int index) {
         return components.get(index);
     }
 

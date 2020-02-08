@@ -3,12 +3,11 @@ package by.epam.composite.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Text extends TextComposite {
-    private List<Component> components;
+public class Text implements Component {
+    private List<Component> components = new ArrayList<>();
     private final ComponentType componentType = ComponentType.TEXT;
 
     public Text() {
-        components = new ArrayList<>();;
     }
 
     public Text(List<Component> components) {
@@ -24,7 +23,7 @@ public class Text extends TextComposite {
     }
 
     @Override
-    public Object getChild(int index) {
+    public Component getChild(int index) {
         return components.get(index);
     }
 

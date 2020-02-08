@@ -2,7 +2,7 @@ package by.epam.composite.domain;
 
 import java.util.List;
 
-public class Paragraph extends TextComposite {
+public class Paragraph implements Component {
     private List<Component> components;
     private final ComponentType componentType = ComponentType.PARAGRAPH;
     private String delimiter;
@@ -22,7 +22,7 @@ public class Paragraph extends TextComposite {
     }
 
     @Override
-    public Object getChild(int index) {
+    public Component getChild(int index) {
         return components.get(index);
     }
 
@@ -39,6 +39,7 @@ public class Paragraph extends TextComposite {
     @Override
     public String operation() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("    ");
         for (Component component : getComponents()) {
             stringBuilder.append(component.toString());
         }

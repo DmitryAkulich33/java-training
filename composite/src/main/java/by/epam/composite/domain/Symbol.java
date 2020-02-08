@@ -1,7 +1,10 @@
 package by.epam.composite.domain;
 
+import java.util.List;
+
 public class Symbol implements Component {
     private String symbol;
+    private final ComponentType componentType = ComponentType.SYMBOL;
 
     public Symbol(String symbol) {
         this.symbol = symbol;
@@ -11,9 +14,28 @@ public class Symbol implements Component {
         return symbol;
     }
 
+    public ComponentType getComponentType() {
+        return componentType;
+    }
+
     @Override
     public String operation() {
         return symbol;
+    }
+
+    @Override
+    public Component getChild(int index) {
+        return null;
+    }
+
+    @Override
+    public void add(Component component) {
+
+    }
+
+    @Override
+    public void remove(Component component) {
+
     }
 
     @Override

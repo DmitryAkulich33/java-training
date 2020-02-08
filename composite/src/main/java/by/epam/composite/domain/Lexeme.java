@@ -2,7 +2,7 @@ package by.epam.composite.domain;
 
 import java.util.List;
 
-public class Lexeme extends TextComposite {
+public class Lexeme implements Component {
     private List<Component> components;
     private final ComponentType componentType = ComponentType.LEXEME;
     private String delimiter;
@@ -21,7 +21,7 @@ public class Lexeme extends TextComposite {
     }
 
     @Override
-    public Object getChild(int index) {
+    public Component getChild(int index) {
         return components.get(index);
     }
 

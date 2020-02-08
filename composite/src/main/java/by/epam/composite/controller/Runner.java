@@ -14,10 +14,9 @@ public class Runner {
 
         String text = daoObjectFactory.getReaderDAO().read("src\\main\\resources\\text.txt");
 
-//        Component component = ChainTextParser.parse(text);
-        TextComposite textComposite = (TextComposite) ChainTextParser.parse(text);
-        System.out.println(textComposite);
-        System.out.println();
+        Component component = ChainTextParser.parse(text);
+
+        System.out.println((component.operation()));
 
 //        try {
 //            daoObjectFactory.getWriterDAO().write(component,"src\\main\\resources\\text2.txt");

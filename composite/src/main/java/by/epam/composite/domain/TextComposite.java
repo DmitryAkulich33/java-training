@@ -3,7 +3,7 @@ package by.epam.composite.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class TextComposite implements Component {
+public abstract class TextComposite {
     public List<Component> components = new ArrayList<>();
 
     public abstract Object getChild(int index);
