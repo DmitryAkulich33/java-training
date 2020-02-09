@@ -6,6 +6,11 @@ public class Sentence implements Component {
     private List<Component> components;
     private final ComponentType componentType = ComponentType.SENTENCE;
 
+    @Override
+    public int getSize() {
+        return components.size();
+    }
+
     public Sentence(List<Component> components) {
         this.components = components;
     }

@@ -7,6 +7,17 @@ public class Lexeme implements Component {
     private final ComponentType componentType = ComponentType.LEXEME;
     private String delimiter;
 
+    @Override
+    public int getSize() {
+        int size = 0;
+        for(Component component: components){
+            if(component.getComponentType() == ComponentType.WORD) {
+                size = size + component.getSize();
+            }
+        }
+        return size;
+    }
+
     public Lexeme(List<Component> components) {
         this.components = components;
         delimiter = " ";

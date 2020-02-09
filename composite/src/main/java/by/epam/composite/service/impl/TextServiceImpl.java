@@ -1,4 +1,4 @@
-package by.epam.composite.service;
+package by.epam.composite.service.impl;
 
 import by.epam.composite.dao.FileReaderDAO;
 import by.epam.composite.dao.FileWriterDAO;

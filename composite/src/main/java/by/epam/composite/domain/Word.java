@@ -6,6 +6,11 @@ public class Word implements Component{
     private List<Component> components;
     private final ComponentType componentType = ComponentType.WORD;
 
+    @Override
+    public int getSize() {
+        return components.size();
+    }
+
     public Word(List<Component> components) {
         this.components = components;
     }

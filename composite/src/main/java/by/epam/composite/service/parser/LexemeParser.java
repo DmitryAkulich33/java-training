@@ -2,7 +2,7 @@ package by.epam.composite.service.parser;
 
 import by.epam.composite.domain.Component;
 import by.epam.composite.domain.Lexeme;
-import by.epam.composite.domain.Paragraph;
+import by.epam.composite.domain.Symbol;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
 public class LexemeParser extends AbstractParser {
     private Pattern notLetterStart = Pattern.compile("^\\W");
     private Pattern notLetterEnd = Pattern.compile("\\W$");
+//    private Pattern forWord = Pattern.compile("\\w+");
+    private Pattern forCharacter = Pattern.compile("\\W+");
 
 
     @Override
@@ -20,16 +22,20 @@ public class LexemeParser extends AbstractParser {
         List<Component> components = new ArrayList<>();
         if (checkNextSuccessor()) {
             getSuccessor().parse(lexeme);
-            List<String> parts = parseToWord(lexeme.trim());
+            List<String> parts = parseToPart(lexeme.trim());
             for (String part : parts) {
-                Component component = getSuccessor().parse(part);
-                components.add(component);
+                if (checkForCharacter(part)){
+                    components.add(new Symbol(part));
+                } else {
+                    Component component = getSuccessor().parse(part);
+                    components.add(component);
+                }
             }
         }
         return new Lexeme(components);
     }
 
-    private List<String> parseToWord(String lexeme) {
+    private List<String> parseToPart(String lexeme) {
         List<String> list = new ArrayList<>();
         int length = lexeme.length();
 
@@ -46,5 +52,13 @@ public class LexemeParser extends AbstractParser {
             list = Arrays.asList(Character.toString(lexeme.charAt(0)), lexeme.substring(1, lexeme.length() - 1), Character.toString(lexeme.charAt(length - 1)));
         }
         return list;
+    }
+
+//    public boolean checkForWord (String part){
+//        return forWord.matcher(part).matches();
+//    }
+
+    public boolean checkForCharacter (String part){
+        return forCharacter.matcher(part).matches();
     }
 }

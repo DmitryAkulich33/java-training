@@ -10,4 +10,5 @@ public interface Component {
     void remove(Component component);
     ComponentType getComponentType();
     List<Component> getComponents();
+    int getSize();
 }

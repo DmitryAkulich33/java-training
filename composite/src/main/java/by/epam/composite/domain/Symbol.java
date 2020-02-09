@@ -5,6 +5,12 @@ import java.util.List;
 public class Symbol implements Component {
     private String symbol;
     private final ComponentType componentType = ComponentType.SYMBOL;
+    private int size;
+
+    @Override
+    public int getSize() {
+        return 1;
+    }
 
     public Symbol(String symbol) {
         this.symbol = symbol;

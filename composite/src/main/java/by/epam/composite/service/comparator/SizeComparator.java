@@ -5,9 +5,9 @@ import by.epam.composite.domain.Paragraph;
 
 import java.util.Comparator;
 
-public class ParagraphComparator implements Comparator<Component> {
+public class SizeComparator implements Comparator<Component> {
     @Override
     public int compare(Component o1, Component o2) {
-        return Integer.compare(o1.getComponents().size(), o2.getComponents().size());
+        return Integer.compare(o1.getSize(), o2.getSize());
     }
 }

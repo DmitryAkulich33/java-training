@@ -10,6 +10,11 @@ public class Text implements Component {
     public Text() {
     }
 
+    @Override
+    public int getSize() {
+        return components.size();
+    }
+
     public Text(List<Component> components) {
         this.components = components;
     }

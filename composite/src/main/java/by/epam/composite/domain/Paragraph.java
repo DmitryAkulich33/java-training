@@ -7,6 +7,10 @@ public class Paragraph implements Component {
     private final ComponentType componentType = ComponentType.PARAGRAPH;
     private String delimiter;
 
+    @Override
+    public int getSize() {
+        return components.size();
+    }
 
     public Paragraph(List<Component> components) {
         this.components = components;
