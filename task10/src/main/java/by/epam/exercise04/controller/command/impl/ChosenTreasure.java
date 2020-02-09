@@ -12,10 +12,9 @@ public class ChosenTreasure implements Command {
     public String execute(String request, DragonCave dragonCave) {
         Viewer viewer = new Viewer();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        TreasureService treasureService = serviceFactory.getTreasureService();
-        Treasure treasure = treasureService.getTheMostExpensiveTreasure(dragonCave);
+        Treasure treasure = serviceFactory.getTreasureService().getTheMostExpensiveTreasure(dragonCave);
         viewer.printTreasure(treasure);
-        treasureService.deleteOneTreasure(treasure, dragonCave);
+        serviceFactory.getTreasureService().deleteOneTreasure(treasure, dragonCave);
         return "The most expensive treasure was found successfully.";
     }
 }

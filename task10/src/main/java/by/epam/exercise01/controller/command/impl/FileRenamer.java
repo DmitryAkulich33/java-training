@@ -12,14 +12,13 @@ public class FileRenamer implements Command {
     public String execute(String request, Directory directory) {
         String response = null;
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        EpamFileService epamFileService = serviceFactory.getEpamFileService();
         Viewer viewer = new Viewer();
         String fileName = viewer.returnFileName();
         String fileType = viewer.returnFileType();
         String newFileName = viewer.returnNewFileName();
         String newFileType = viewer.returnNewFileType();
         try {
-            epamFileService.renameFile(directory, fileName, fileType, newFileName, newFileType);
+            serviceFactory.getEpamFileService().renameFile(directory, fileName, fileType, newFileName, newFileType);
             response = "The file has been renamed";
         } catch (ServiceException ex) {
             response = ex.getMessage();

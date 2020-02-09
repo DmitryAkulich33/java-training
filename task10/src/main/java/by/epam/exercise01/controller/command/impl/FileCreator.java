@@ -10,14 +10,13 @@ import by.epam.exercise01.view.Viewer;
 public class FileCreator implements Command {
     @Override
     public String execute(String request, Directory directory) {
-        String response = null;
+        String response;
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        EpamFileService epamFileService = serviceFactory.getEpamFileService();
         Viewer viewer = new Viewer();
         String fileName = viewer.returnFileName();
         String fileType = viewer.returnFileType();
         try {
-            epamFileService.createFile(directory, fileName, fileType);
+            serviceFactory.getEpamFileService().createFile(directory, fileName, fileType);
             response = "The file was created successfully";
         } catch (ServiceException ex) {
             response = ex.getMessage();

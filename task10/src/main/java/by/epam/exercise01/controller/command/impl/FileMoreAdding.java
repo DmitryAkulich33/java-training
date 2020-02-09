@@ -14,13 +14,12 @@ public class FileMoreAdding implements Command {
     public String execute(String request, Directory directory) {
         String response = null;
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        EpamFileService epamFileService = serviceFactory.getEpamFileService();
         Viewer viewer = new Viewer();
         String fileName = viewer.returnFileName();
         String fileType = viewer.returnFileType();
         List<String> content = viewer.printTextForFile();
         try {
-            epamFileService.addWrittenContent(directory, fileName, fileType, content);
+            serviceFactory.getEpamFileService().addWrittenContent(directory, fileName, fileType, content);
             response = "The lines were added successfully";
         } catch (ServiceException ex) {
             response = ex.getMessage();

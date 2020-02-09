@@ -17,12 +17,11 @@ public class TakenTreasure implements Command {
         String response;
         Viewer viewer = new Viewer();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        TreasureService treasureService = serviceFactory.getTreasureService();
         int sum = viewer.returnNumber();
-        List<Treasure> treasures = null;
+        List<Treasure> treasures;
         try {
-            treasures = treasureService.selectTreasure(dragonCave, sum);
-            treasureService.deleteTreasures(treasures, dragonCave);
+            treasures = serviceFactory.getTreasureService().selectTreasure(dragonCave, sum);
+            serviceFactory.getTreasureService().deleteTreasures(treasures, dragonCave);
             response = "Treasures were taken successfully.";
             viewer.printTreasure(treasures);
         } catch (WrongNumberException | EmptyListException ex) {

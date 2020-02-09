@@ -11,14 +11,13 @@ import by.epam.exercise01.view.Viewer;
 public class FileContentPrinter implements Command {
     @Override
     public String execute(String request, Directory directory) {
-        String response = null;
+        String response;
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        EpamFileService epamFileService = serviceFactory.getEpamFileService();
         Viewer viewer = new Viewer();
         String fileName = viewer.returnFileName();
         String fileType = viewer.returnFileType();
         try {
-            viewer.printContent(epamFileService.getContent(directory, fileName, fileType));
+            viewer.printContent(serviceFactory.getEpamFileService().getContent(directory, fileName, fileType));
             response = "The content was printed successfully";
         } catch (ServiceException ex) {
             response = ex.getMessage();

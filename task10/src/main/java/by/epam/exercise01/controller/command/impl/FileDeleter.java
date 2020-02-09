@@ -13,13 +13,12 @@ public class FileDeleter implements Command {
     public String execute(String request, Directory directory) {
         String response = null;
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        DirectoryService directoryService = serviceFactory.getDirectoryService();
         Viewer viewer = new Viewer();
         String fileName = viewer.returnFileName();
         String fileType = viewer.returnFileType();
         try {
-            directoryService.addFileList(directory);
-            directoryService.deleteFile(directory, fileName, fileType);
+            serviceFactory.getDirectoryService().addFileList(directory);
+            serviceFactory.getDirectoryService().deleteFile(directory, fileName, fileType);
             response = "The file was deleted successfully";
         } catch (ServiceException ex) {
             response = ex.getMessage();

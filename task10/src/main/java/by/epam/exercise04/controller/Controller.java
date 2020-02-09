@@ -17,10 +17,9 @@ public final class Controller {
 
     public DragonCave createDragonCave(String path) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        DragonCaveService dragonCaveService = serviceFactory.getDragonCaveService();
         DragonCave dragonCave = null;
         try {
-            dragonCave = dragonCaveService.createDragonCave(path);
+            dragonCave = serviceFactory.getDragonCaveService().createDragonCave(path);
         } catch (ServiceException | EmptyListException ex) {
             System.out.println(ex.getMessage());
         }

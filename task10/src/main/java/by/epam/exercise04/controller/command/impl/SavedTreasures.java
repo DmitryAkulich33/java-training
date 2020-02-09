@@ -12,9 +12,8 @@ public class SavedTreasures implements Command {
     public String execute(String request, DragonCave dragonCave) {
         String response;
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        DragonCaveService dragonCaveService = serviceFactory.getDragonCaveService();
         try {
-            dragonCaveService.saveTreasureInFile(dragonCave, Constants.SAVING_TREASURE_LIST_PATH);
+            serviceFactory.getDragonCaveService().saveTreasureInFile(dragonCave, Constants.SAVING_TREASURE_LIST_PATH);
             response = "Treasure list successfully saved.";
         } catch (ServiceException ex) {
             response = ex.getMessage();
