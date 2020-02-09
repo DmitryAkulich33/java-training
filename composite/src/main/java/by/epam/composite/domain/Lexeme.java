@@ -10,8 +10,8 @@ public class Lexeme implements Component {
     @Override
     public int getSize() {
         int size = 0;
-        for(Component component: components){
-            if(component.getComponentType() == ComponentType.WORD) {
+        for (Component component : components) {
+            if (component.getComponentType() == ComponentType.WORD) {
                 size = size + component.getSize();
             }
         }

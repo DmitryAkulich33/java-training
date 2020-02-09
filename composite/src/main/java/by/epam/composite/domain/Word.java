@@ -2,7 +2,7 @@ package by.epam.composite.domain;
 
 import java.util.List;
 
-public class Word implements Component{
+public class Word implements Component {
     private List<Component> components;
     private final ComponentType componentType = ComponentType.WORD;
 

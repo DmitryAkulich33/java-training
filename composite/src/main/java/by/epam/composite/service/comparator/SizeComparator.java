@@ -1,7 +1,6 @@
 package by.epam.composite.service.comparator;
 
 import by.epam.composite.domain.Component;
-import by.epam.composite.domain.Paragraph;
 
 import java.util.Comparator;
 

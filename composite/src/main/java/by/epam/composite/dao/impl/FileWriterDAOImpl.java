@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 public class FileWriterDAOImpl implements FileWriterDAO {
     public void write (Component component, String path) throws FileNotWritingException{
         Path source = Paths.get(path);
-        List<String> list = Stream.of(component).map(Objects::toString).collect(Collectors.toList());
+        List<String> list = Stream.of(component.operation()).collect(Collectors.toList());
         try {
             Files.write(source, list, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
         } catch (IOException e) {
