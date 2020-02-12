@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Text implements Component {
     private List<Component> components = new ArrayList<>();
-    private final ComponentType componentType = ComponentType.TEXT;
 
     public Text() {
     }
@@ -21,10 +20,6 @@ public class Text implements Component {
 
     public List<Component> getComponents() {
         return components;
-    }
-
-    public ComponentType getComponentType() {
-        return componentType;
     }
 
     @Override
@@ -58,14 +53,11 @@ public class Text implements Component {
 
         Text text = (Text) o;
 
-        if (components != null ? !components.equals(text.components) : text.components != null) return false;
-        return componentType == text.componentType;
+        return components != null ? components.equals(text.components) : text.components == null;
     }
 
     @Override
     public int hashCode() {
-        int result = components != null ? components.hashCode() : 0;
-        result = 31 * result + componentType.hashCode();
-        return result;
+        return components != null ? components.hashCode() : 0;
     }
 }

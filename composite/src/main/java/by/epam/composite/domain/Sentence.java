@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Sentence implements Component {
     private List<Component> components;
-    private final ComponentType componentType = ComponentType.SENTENCE;
 
     @Override
     public int calcSize() {
@@ -20,10 +19,6 @@ public class Sentence implements Component {
 
     public List<Component> getComponents() {
         return components;
-    }
-
-    public ComponentType getComponentType() {
-        return componentType;
     }
 
     @Override
@@ -58,14 +53,11 @@ public class Sentence implements Component {
 
         Sentence sentence = (Sentence) o;
 
-        if (components != null ? !components.equals(sentence.components) : sentence.components != null) return false;
-        return componentType == sentence.componentType;
+        return components != null ? components.equals(sentence.components) : sentence.components == null;
     }
 
     @Override
     public int hashCode() {
-        int result = components != null ? components.hashCode() : 0;
-        result = 31 * result + (componentType != null ? componentType.hashCode() : 0);
-        return result;
+        return components != null ? components.hashCode() : 0;
     }
 }

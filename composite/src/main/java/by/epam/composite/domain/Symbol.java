@@ -1,11 +1,8 @@
 package by.epam.composite.domain;
 
-import java.util.List;
 
 public class Symbol implements Component {
     private String symbol;
-    private final ComponentType componentType = ComponentType.SYMBOL;
-    private int size;
 
     @Override
     public int calcSize() {
@@ -23,10 +20,6 @@ public class Symbol implements Component {
         return symbol;
     }
 
-    public ComponentType getComponentType() {
-        return componentType;
-    }
-
     @Override
     public String operation() {
         return symbol;
@@ -34,17 +27,17 @@ public class Symbol implements Component {
 
     @Override
     public Component getChild(int index) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void add(Component component) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void remove(Component component) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override

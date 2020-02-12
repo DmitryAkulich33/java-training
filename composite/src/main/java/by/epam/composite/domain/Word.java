@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Word implements Component {
     private List<Component> components;
-    private final ComponentType componentType = ComponentType.WORD;
 
     @Override
     public int calcSize() {
@@ -20,10 +19,6 @@ public class Word implements Component {
 
     public List<Component> getComponents() {
         return components;
-    }
-
-    public ComponentType getComponentType() {
-        return componentType;
     }
 
     @Override
@@ -57,14 +52,11 @@ public class Word implements Component {
 
         Word word = (Word) o;
 
-        if (components != null ? !components.equals(word.components) : word.components != null) return false;
-        return componentType == word.componentType;
+        return components != null ? components.equals(word.components) : word.components == null;
     }
 
     @Override
     public int hashCode() {
-        int result = components != null ? components.hashCode() : 0;
-        result = 31 * result + componentType.hashCode();
-        return result;
+        return components != null ? components.hashCode() : 0;
     }
 }

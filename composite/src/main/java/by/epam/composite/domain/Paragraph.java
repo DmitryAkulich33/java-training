@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Paragraph implements Component {
     private List<Component> components;
-    private final ComponentType componentType = ComponentType.PARAGRAPH;
     private String delimiter;
 
     @Override
@@ -22,10 +21,6 @@ public class Paragraph implements Component {
 
     public List<Component> getComponents() {
         return components;
-    }
-
-    public ComponentType getComponentType() {
-        return componentType;
     }
 
     @Override
@@ -61,14 +56,12 @@ public class Paragraph implements Component {
         Paragraph paragraph = (Paragraph) o;
 
         if (components != null ? !components.equals(paragraph.components) : paragraph.components != null) return false;
-        if (componentType != paragraph.componentType) return false;
         return delimiter != null ? delimiter.equals(paragraph.delimiter) : paragraph.delimiter == null;
     }
 
     @Override
     public int hashCode() {
         int result = components != null ? components.hashCode() : 0;
-        result = 31 * result + componentType.hashCode();
         result = 31 * result + (delimiter != null ? delimiter.hashCode() : 0);
         return result;
     }

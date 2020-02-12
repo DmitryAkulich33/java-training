@@ -4,14 +4,13 @@ import java.util.List;
 
 public class Lexeme implements Component {
     private List<Component> components;
-    private final ComponentType componentType = ComponentType.LEXEME;
     private String delimiter;
 
     @Override
     public int calcSize() {
         int size = 0;
         for (Component component : components) {
-            if (component.getComponentType() == ComponentType.WORD) {
+            if (component.getClass() == Word.class) {
                 size = size + component.calcSize();
             }
         }
@@ -28,10 +27,6 @@ public class Lexeme implements Component {
 
     public List<Component> getComponents() {
         return components;
-    }
-
-    public ComponentType getComponentType() {
-        return componentType;
     }
 
     @Override
@@ -66,14 +61,12 @@ public class Lexeme implements Component {
         Lexeme lexeme = (Lexeme) o;
 
         if (components != null ? !components.equals(lexeme.components) : lexeme.components != null) return false;
-        if (componentType != lexeme.componentType) return false;
         return delimiter != null ? delimiter.equals(lexeme.delimiter) : lexeme.delimiter == null;
     }
 
     @Override
     public int hashCode() {
         int result = components != null ? components.hashCode() : 0;
-        result = 31 * result + componentType.hashCode();
         result = 31 * result + (delimiter != null ? delimiter.hashCode() : 0);
         return result;
     }
