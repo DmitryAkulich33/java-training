@@ -1,7 +1,7 @@
-﻿INSERT INTO `users` (
-	`PersonID`,
-	`Login`,
-	`Password`,
+﻿INSERT INTO `user` (
+	`id`,
+	`login`,
+	`password`,
 	`role`
 ) VALUES (
 	2,
@@ -20,28 +20,28 @@
 	4
 );
 
-INSERT INTO `clients` 
-	(`PersonID`, `Surname`, `Name`, `Patronymic`, `Address`, `Phone`, `Note`)
+INSERT INTO `client` 
+	(`id`, `surname`, `name`, `patronymic`, `address`, `phone`, `note`)
 VALUES
-	(1,	"Иванов",	"Иван",	"Иванович",	"г.Минск, ул.Рафиева, д.44, кв.18",	"+375 29 7434546",	"Во дворе проблемы с парковочными местами"),
-	(2,	"Петров",	"Петр",	"Петрович",	"г.Минск, ул.Казинца, д.15, кв.87",	"+375 44 5737640",	"Во дворе хватает парковочных мест"),
-	(3,	"Сидоров",	"Сидр",	"Сидорович",	"г.Минск, ул.Аранская, д.31, кв.35",	"+375 44 5982331",	"Возле дома идут строительные работы");
+	(1,	"Ivanov",	"Ivan",	"Ivanovich",	"Apt 18, 44 Rafieva St, Minsk",		"+375 29 7434546",	"In the yard problems with parking spaces"),
+	(2,	"Petrov",	"Petr",	"Petrovich",	"Apt 45, 17 Kazinca St, Minsk",		"+375 44 5737640",	"There are enough parking spaces in the yard"),
+	(3,	"Sidorov",	"Sidr",	"Sidorovich",	"Apt 95, 27 Lubimova St, Minsk",	"+375 44 5982331",	"Near the house there are construction work");
 
 INSERT INTO `status`
-	(`StatusID`, `Name`)
+	(`id`, `name`)
 VALUES
-	(1,	"Готов"),
-	(2,	"Доставлен"),
-	(3,	"Не доставлен");
+	(1,	"Ready"),
+	(2,	"Delivered"),
+	(3,	"Undelivered");
 
-INSERT INTO `pies`
-	(`PieID`, `Name`, `Weight`, `Price`, `Discription`)
+INSERT INTO `pie`
+	(`id`, `name`, `weight`, `price`, `discription`)
 VALUES
-	(1,	"Белорусский",	1000,	24.00,	"Фирменное тесто, картофель по-деревенски, со шкварками, жареными грибами, тмином и кориандром"),
-	(2,	"Итальянский",	950,	22.00,	"Фирменное тесто, солнечный лимон с витаминной цедрой и перечной мятой"),
-	(3,	"Немецкий",	1050,	26.00,	"Фирменное тесто, сочная ароматная клубника с рикоттой"),
-	(4,	"Французский",	1000,	25.00,	"Фирменное тесто, спелая пряная вишня с нотками гвоздики"),
-	(5,	"Бельгийский",	900,	20.00,	"Фирменное тесто с нежной, ароматной малиной"),
-	(6,	"Голландский",	1000,	27.00,	"Фирменное тесто, ароматный мак с лесными орехами"),
-	(7,	"Греческий",	1100,	28.00,	"Фирменное тесто, ароматная ежевика в сливочном сыре"),
-	(8,	"Ирландский",	1000,	25.00,	"Фирменное тесто, томленая морковь с тыквой в мягком сыре, с луком и сельдереем");
+	(1,	"Belorussian",	1000,	24.00,	"Signature dough, rustic potatoes, with cracklings, fried mushrooms, caraway seeds and coriander"),
+	(2,	"Italian",		950,	22.00,	"Signature dough, sunny lemon with vitamin zest and peppermint"),
+	(3,	"Deutsch",		1050,	26.00,	"Signature dough, juicy flavored strawberries with ricotta"),
+	(4,	"French",		1000,	25.00,	"Signature dough, ripe spicy cherry with hints of clove"),
+	(5,	"Belgian",		900,	20.00,	"Signature dough with delicate, fragrant raspberries"),
+	(6,	"Dutch",		1000,	27.00,	"Signature Dough, Flavored Hazelnut Poppy"),
+	(7,	"Greek",		1100,	28.00,	"Signature dough, flavored blackberries in cream cheese"),
+	(8,	"Irish",		1000,	25.00,	"Signature dough, stewed carrots with pumpkin in soft cheese, with onions and celery");

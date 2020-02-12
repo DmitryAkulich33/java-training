@@ -1,7 +1,7 @@
-﻿INSERT INTO `users` (
-	`PersonID`,
-	`Login`,
-	`Password`,
+﻿INSERT INTO `user` (
+	`id`,
+	`login`,
+	`password`,
 	`role`
 ) VALUES (
 	1,

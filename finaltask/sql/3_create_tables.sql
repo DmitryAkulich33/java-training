@@ -1,70 +1,71 @@
 ﻿USE `bakery_db`;
 
-# Roles:
-# 1 - administrator
-# 2 - courier
-# 3 - client
+-- Roles:
+-- 1 - administrator
+-- 2 - courier
+-- 3 - client
 
-CREATE TABLE `users` (
-	`PersonID` int NOT NULL AUTO_INCREMENT,
-	`Login` varchar(20) NOT NULL UNIQUE,
-	`Password` char(32),
-	`role` tinyint NOT NULL CHECK (`role` IN (1, 2, 3)),
+CREATE TABLE `user` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`login` VARCHAR(40) NOT NULL UNIQUE,
+	`password` CHAR(40),
+	`role` TINYINT NOT NULL CHECK (`role` IN (1, 2, 3)),
 	
-	CONSTRAINT pk_users PRIMARY KEY (`PersonID`)
+	CONSTRAINT pk_user PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `clients` (
-	`PersonID` int NOT NULL AUTO_INCREMENT,
-	`Surname` varchar(60) NOT NULL,
-	`Name` varchar(60) NOT NULL,
-	`Patronymic` varchar(60) NOT NULL,
-	`Address` varchar(100) NOT NULL,
-	`Phone` varchar(30) NOT NULL,
-	`Note` varchar(255),
+CREATE TABLE `client` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`surname` VARCHAR(100) NOT NULL,
+	`name` VARCHAR(100) NOT NULL,
+	`patronymic` VARCHAR(100) NOT NULL,
+	`address` VARCHAR(100) NOT NULL,
+	`phone` VARCHAR(40) NOT NULL,
+	`note` VARCHAR(255),
 	
-	CONSTRAINT pk_clients PRIMARY KEY (`PersonID`)
+	CONSTRAINT pk_client PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `pies` (
-	`PieID` int NOT NULL AUTO_INCREMENT,
-	`Name` varchar(50) NOT NULL,
-	`Weight` int NOT NULL,
-	`Price` double NOT NULL,
-	`Discription` varchar(255) NOT NULL,
+CREATE TABLE `pie` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(60) NOT NULL,
+	`weight` INTEGER NOT NULL,
+	`price` DOUBLE NOT NULL,
+	`discription` VARCHAR(255) NOT NULL,
 
-	CONSTRAINT pk_pies PRIMARY KEY (`PieID`)
+	CONSTRAINT pk_pie PRIMARY KEY (`id`)
 );
-
-CREATE TABLE `orders` (
-	`OrderID` int NOT NULL AUTO_INCREMENT,
-	`ClientsID` int NOT NULL,
-	`PieID` int NOT NULL,
-	`ProductionDate` datetime,
-	`DeliveryDate` datetime,
-	`StatusID` int,
-	
-	CONSTRAINT pk_orders PRIMARY KEY (`OrderID`),
-	CONSTRAINT fk_orders_client FOREIGN KEY (`ClientsID`)
-	REFERENCES `clients`(`PersonID`),
-	CONSTRAINT fk_orders_pie FOREIGN KEY (`PieID`)
-	REFERENCES `pies`(`PieID`),
-	CONSTRAINT fk_orders_status FOREIGN KEY (`StatusID`)
-	REFERENCES `status`(`StatusID`)
-);
-
 
 CREATE TABLE `status` (
-	`StatusID` int NOT NULL AUTO_INCREMENT,
-	`Name` varchar(25) NOT NULL,
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(40) NOT NULL,
 
-	CONSTRAINT pk_status PRIMARY KEY (`StatusID`)
+	CONSTRAINT pk_status PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `order` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`client_id` INTEGER NOT NULL,
+	`pie_id` INTEGER NOT NULL,
+	`productionDate` DATETIME,
+	`deliveryDate` DATETIME,
+	`status_id` INTEGER,
+	
+	CONSTRAINT pk_order PRIMARY KEY (`id`),
+	CONSTRAINT fk_order_client FOREIGN KEY (`client_id`)
+	REFERENCES `client`(`id`),
+	CONSTRAINT fk_order_pie FOREIGN KEY (`pie_id`)
+	REFERENCES `pie`(`id`),
+	CONSTRAINT fk_orders_status FOREIGN KEY (`status_id`)
+	REFERENCES `status`(`id`)
 );
 
 CREATE TABLE `black_list` (
-	`ID` int NOT NULL AUTO_INCREMENT,
-	`ClientsID` int NOT NULL,
+	`id` INTEGER NOT NULL AUTO_INCREMENT,
+	`client_id` INTEGER NOT NULL,
 	
-	CONSTRAINT pk_black_list PRIMARY KEY (`ID`)
+	CONSTRAINT pk_black_list PRIMARY KEY (`id`),
+    CONSTRAINT fk_black_list_client FOREIGN KEY (`client_id`)
+	REFERENCES `client`(`id`)
 );
 
