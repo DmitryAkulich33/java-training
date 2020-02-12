@@ -1,12 +1,8 @@
 package by.epam.composite.service.impl;
 
 import by.epam.composite.domain.Component;
-import by.epam.composite.domain.Text;
 import by.epam.composite.service.LexemeService;
-import by.epam.composite.service.comparator.SizeComparator;
-import by.epam.composite.service.copier.ComponentCopy;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
