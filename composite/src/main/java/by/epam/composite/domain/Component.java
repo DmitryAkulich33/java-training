@@ -13,7 +13,7 @@ public interface Component {
 
     ComponentType getComponentType();
 
-    List<Component> getComponents();
+//    List<Component> getComponents();
 
-    int getSize();
+    int calcSize();
 }

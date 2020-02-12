@@ -9,12 +9,14 @@ import by.epam.composite.view.Viewer;
 public class ParagraphSort implements Command {
     @Override
     public String execute(String request, Component component) {
+        Viewer viewer = new Viewer();
         String response;
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         Component newComponent = serviceFactory.getParagraphService().sort(component);
         try {
             serviceFactory.getTextService().writeToFile(newComponent, "src\\main\\resources\\paragraph.txt");
             response = "Text successfully saved.";
+            viewer.print(newComponent);
         } catch (ServiceException ex) {
             response = ex.getMessage();
         }

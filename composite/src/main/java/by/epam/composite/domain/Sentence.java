@@ -7,8 +7,11 @@ public class Sentence implements Component {
     private final ComponentType componentType = ComponentType.SENTENCE;
 
     @Override
-    public int getSize() {
+    public int calcSize() {
         return components.size();
+    }
+
+    public Sentence() {
     }
 
     public Sentence(List<Component> components) {

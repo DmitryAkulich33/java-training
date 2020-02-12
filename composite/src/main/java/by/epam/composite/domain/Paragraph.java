@@ -8,8 +8,11 @@ public class Paragraph implements Component {
     private String delimiter;
 
     @Override
-    public int getSize() {
+    public int calcSize() {
         return components.size();
+    }
+
+    public Paragraph() {
     }
 
     public Paragraph(List<Component> components) {

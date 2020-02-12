@@ -7,8 +7,11 @@ public class Word implements Component {
     private final ComponentType componentType = ComponentType.WORD;
 
     @Override
-    public int getSize() {
+    public int calcSize() {
         return components.size();
+    }
+
+    public Word() {
     }
 
     public Word(List<Component> components) {

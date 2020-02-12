@@ -8,8 +8,11 @@ public class Symbol implements Component {
     private int size;
 
     @Override
-    public int getSize() {
+    public int calcSize() {
         return 1;
+    }
+
+    public Symbol() {
     }
 
     public Symbol(String symbol) {
@@ -22,11 +25,6 @@ public class Symbol implements Component {
 
     public ComponentType getComponentType() {
         return componentType;
-    }
-
-    @Override
-    public List<Component> getComponents() {
-        return null;
     }
 
     @Override

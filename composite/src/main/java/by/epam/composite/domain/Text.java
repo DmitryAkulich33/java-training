@@ -11,7 +11,7 @@ public class Text implements Component {
     }
 
     @Override
-    public int getSize() {
+    public int calcSize() {
         return components.size();
     }
 

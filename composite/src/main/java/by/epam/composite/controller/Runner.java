@@ -16,7 +16,6 @@ public class Runner {
                 if (request.equals("0")) {
                     return;
                 } else {
-
                     viewer.printResponse(controller.executeTask(request, component));
                 }
                 viewer.printNewAttempt();

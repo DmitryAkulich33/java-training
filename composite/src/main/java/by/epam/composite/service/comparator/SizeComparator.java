@@ -7,6 +7,6 @@ import java.util.Comparator;
 public class SizeComparator implements Comparator<Component> {
     @Override
     public int compare(Component o1, Component o2) {
-        return Integer.compare(o1.getSize(), o2.getSize());
+        return Integer.compare(o1.calcSize(), o2.calcSize());
     }
 }

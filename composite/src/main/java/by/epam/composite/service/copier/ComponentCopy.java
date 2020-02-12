@@ -8,7 +8,12 @@ import java.util.List;
 
 public class ComponentCopy {
     public Component copyComponent(Component original) {
-        List<Component> copy = new ArrayList<>(original.getComponents());
+        List<Component> copy = new ArrayList<>();
+        int length = original.calcSize();
+        for(int i = 0; i < length; i++){
+            copy.add(original.getChild(i));
+        }
         return new Text(copy);
+
     }
 }
