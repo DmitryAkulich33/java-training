@@ -31,9 +31,17 @@ public class TextServiceImpl implements TextService {
         return ChainTextParser.parse(text);
     }
 
-    public void writeToFile(Component component, String path) throws ServiceException {
+    public void writeToFileComponent(Component component, String path) throws ServiceException {
         try {
-            writerDAO.write(component, path);
+            writerDAO.writeComponent(component, path);
+        } catch (FileNotWritingException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void writeToFileComponent(String line, String path) throws ServiceException {
+        try {
+            writerDAO.writeLine(line, path);
         } catch (FileNotWritingException e) {
             throw new ServiceException(e);
         }

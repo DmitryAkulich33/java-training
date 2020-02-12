@@ -14,7 +14,7 @@ public class ParagraphSort implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         Component newComponent = serviceFactory.getParagraphService().sort(component);
         try {
-            serviceFactory.getTextService().writeToFile(newComponent, "src\\main\\resources\\paragraph.txt");
+            serviceFactory.getTextService().writeToFileComponent(newComponent, "src\\main\\resources\\task1.txt");
             response = "Text successfully saved.";
             viewer.print(newComponent);
         } catch (ServiceException ex) {

@@ -24,6 +24,10 @@ public class Viewer {
         System.out.println(component.operation());
     }
 
+    public void print(String line){
+        System.out.println(line);
+    }
+
     public void printResponse(String line) {
         System.out.println(line);
     }

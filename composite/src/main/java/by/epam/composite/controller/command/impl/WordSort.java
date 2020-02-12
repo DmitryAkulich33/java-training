@@ -14,7 +14,7 @@ public class WordSort implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         Component newComponent = serviceFactory.getSentenceService().sort(component);
         try {
-            serviceFactory.getTextService().writeToFile(newComponent, "src\\main\\resources\\word.txt");
+            serviceFactory.getTextService().writeToFileComponent(newComponent, "src\\main\\resources\\task2.txt");
             response = "Text successfully saved.";
             viewer.print(newComponent);
         } catch (ServiceException ex) {

@@ -4,5 +4,6 @@ import by.epam.composite.dao.exception.FileNotWritingException;
 import by.epam.composite.domain.Component;
 
 public interface FileWriterDAO {
-    void write (Component component, String path) throws FileNotWritingException;
+    void writeComponent(Component component, String path) throws FileNotWritingException;
+    void writeLine (String line, String path) throws FileNotWritingException;
 }

@@ -8,5 +8,7 @@ public interface TextService {
 
     Component divideIntoComponents(String text) throws ServiceException;
 
-    void writeToFile(Component component, String path) throws ServiceException;
+    void writeToFileComponent(Component component, String path) throws ServiceException;
+
+    void writeToFileComponent(String line, String path) throws ServiceException;
 }
