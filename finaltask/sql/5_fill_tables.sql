@@ -35,7 +35,7 @@ VALUES
 	(3,	"Undelivered");
 
 INSERT INTO `pie`
-	(`id`, `name`, `weight`, `price`, `discription`)
+	(`id`, `name`, `weight`, `price`, `description`)
 VALUES
 	(1,	"Belorussian",	1000,	24.00,	"Signature dough, rustic potatoes, with cracklings, fried mushrooms, caraway seeds and coriander"),
 	(2,	"Italian",		950,	22.00,	"Signature dough, sunny lemon with vitamin zest and peppermint"),
