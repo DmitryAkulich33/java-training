@@ -27,7 +27,7 @@ public class FileWriterDAOImpl implements FileWriterDAO {
     }
 
     public void writeLine (String line, String path) throws FileNotWritingException{
-        try (FileWriter fileWriter = new FileWriter(line)){
+        try (FileWriter fileWriter = new FileWriter(path)){
             fileWriter.write(line);
         } catch (IOException e) {
             throw new FileNotWritingException("File writing problems", e);

@@ -31,4 +31,17 @@ public class Viewer {
     public void printResponse(String line) {
         System.out.println(line);
     }
+
+    public char getLetter() {
+        System.out.println("Enter the letter:");
+        String line;
+        while (true) {
+            line = scanner.nextLine();
+            if(line.length() == 1) {
+                break;
+            }
+            System.out.println("The entered line is not a letter. Please try again.");
+        }
+        return line.charAt(0);
+    }
 }

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class LexemeServiceImpl implements LexemeService {
     public String sort(Component original, char letter) {
         List<String> sorted = Arrays.stream(original.operation().trim().split("\\s+"))
-                .sorted(Comparator.comparingInt((String lexeme) -> getCount(letter, lexeme)).thenComparing(String.CASE_INSENSITIVE_ORDER))
+                .sorted(Comparator.comparingInt((String lexeme) -> getCount(letter, lexeme)).reversed().thenComparing(String.CASE_INSENSITIVE_ORDER))
                 .collect(Collectors.toList());
         return String.join(" ", sorted);
     }

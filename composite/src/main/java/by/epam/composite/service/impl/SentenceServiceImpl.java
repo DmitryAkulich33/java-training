@@ -12,17 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SentenceServiceImpl implements SentenceService {
-//    public Component sort(Component original) {
-//        ComponentCopy componentCopy = new ComponentCopy();
-//        Component copy = componentCopy.copyComponent(original);
-//        SizeComparator sizeComparator = new SizeComparator();
-//        for (int i = 0; i < copy.calcSize(); i++) {
-//            for (int j = 0; j < copy.getChild(i).calcSize(); j++) {
-//                copy.getChild(i).getChild(j).getComponents().sort(sizeComparator);
-//            }
-//        }
-//        return copy;
-//    }
 
     public Component sort(Component original) {
         SizeComparator sizeComparator = new SizeComparator();

@@ -39,7 +39,7 @@ public class TextServiceImpl implements TextService {
         }
     }
 
-    public void writeToFileComponent(String line, String path) throws ServiceException {
+    public void writeToFileLine(String line, String path) throws ServiceException {
         try {
             writerDAO.writeLine(line, path);
         } catch (FileNotWritingException e) {

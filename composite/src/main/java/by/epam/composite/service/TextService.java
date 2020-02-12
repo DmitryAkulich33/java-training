@@ -10,5 +10,5 @@ public interface TextService {
 
     void writeToFileComponent(Component component, String path) throws ServiceException;
 
-    void writeToFileComponent(String line, String path) throws ServiceException;
+    void writeToFileLine(String line, String path) throws ServiceException;
 }

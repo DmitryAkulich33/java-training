@@ -2,7 +2,6 @@ package by.epam.composite.controller;
 
 
 import by.epam.composite.domain.Component;
-import by.epam.composite.service.exception.ServiceException;
 import by.epam.composite.view.Viewer;
 
 public class Runner {
