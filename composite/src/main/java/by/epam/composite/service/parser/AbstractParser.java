@@ -17,6 +17,6 @@ public abstract class AbstractParser {
         return getSuccessor() != null;
     }
 
-    public abstract Component parse (String input);
+    public abstract Component parse(String input);
 }
 

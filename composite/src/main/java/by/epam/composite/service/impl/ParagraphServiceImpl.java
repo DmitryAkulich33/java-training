@@ -7,6 +7,7 @@ import by.epam.composite.service.comparator.SizeComparator;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,7 +17,7 @@ public class ParagraphServiceImpl implements ParagraphService {
     public Component sort(Component component) {
         SizeComparator sizeComparator = new SizeComparator();
         List<Component> newListParagraphs = new ArrayList<>();
-        for(int i = 0; i < component.calcSize(); i++){
+        for (int i = 0; i < component.calcSize(); i++) {
             newListParagraphs.add(component.getChild(i));
         }
         newListParagraphs.sort(sizeComparator);

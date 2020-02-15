@@ -20,11 +20,11 @@ public class Viewer {
         System.out.println("\nPlease choose again\n");
     }
 
-    public void print(Component component){
+    public void print(Component component) {
         System.out.println(component.operation());
     }
 
-    public void print(String line){
+    public void print(String line) {
         System.out.println(line);
     }
 
@@ -37,7 +37,7 @@ public class Viewer {
         String line;
         while (true) {
             line = scanner.nextLine();
-            if(line.length() == 1) {
+            if (line.length() == 1) {
                 break;
             }
             System.out.println("The entered line is not a letter. Please try again.");

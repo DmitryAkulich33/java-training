@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,7 +29,7 @@ public class LexemeParser extends AbstractParser {
             getSuccessor().parse(lexeme);
             List<String> parts = parseToPart(lexeme.trim());
             for (String part : parts) {
-                if (checkForCharacter(part)){
+                if (checkForCharacter(part)) {
                     components.add(new Symbol(part));
                 } else {
                     Component component = getSuccessor().parse(part);
@@ -59,7 +60,7 @@ public class LexemeParser extends AbstractParser {
     }
 
 
-    public boolean checkForCharacter (String part){
+    public boolean checkForCharacter(String part) {
         return forCharacter.matcher(part).matches();
     }
 }

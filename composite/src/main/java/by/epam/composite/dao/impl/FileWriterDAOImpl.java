@@ -14,13 +14,14 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class FileWriterDAOImpl implements FileWriterDAO {
     private static Logger log = LogManager.getLogger(FileWriterDAOImpl.class.getName());
 
-    public void writeComponent(Component component, String path) throws FileNotWritingException{
+    public void writeComponent(Component component, String path) throws FileNotWritingException {
         Path source = Paths.get(path);
         List<String> list = Stream.of(component.operation()).collect(Collectors.toList());
         try {
@@ -33,8 +34,8 @@ public class FileWriterDAOImpl implements FileWriterDAO {
         log.info("Text written to file successfully");
     }
 
-    public void writeLine (String line, String path) throws FileNotWritingException{
-        try (FileWriter fileWriter = new FileWriter(path)){
+    public void writeLine(String line, String path) throws FileNotWritingException {
+        try (FileWriter fileWriter = new FileWriter(path)) {
             log.info("Writing text to file...");
             fileWriter.write(line);
         } catch (IOException e) {
