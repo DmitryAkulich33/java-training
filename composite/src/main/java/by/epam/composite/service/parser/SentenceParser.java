@@ -5,12 +5,17 @@ import by.epam.composite.domain.Sentence;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class SentenceParser extends AbstractParser {
+    private static Logger log = LogManager.getLogger(SentenceParser.class.getName());
+
     private static final String SPLIT_LEXEME = "\\s+";
 
     @Override
     public Component parse(String sentence) {
+        log.info("Sentence division...");
         List<Component> components = new ArrayList<>();
         if (checkNextSuccessor()) {
             getSuccessor().parse(sentence);
@@ -22,20 +27,4 @@ public class SentenceParser extends AbstractParser {
         }
         return new Sentence(components);
     }
-//    public Component parse(String string) {
-//        List<Component> components = new ArrayList<>();
-//        String[] parts = string.trim().split(SPLIT_WORDS);
-//        TokenLeafCreator leafCreator = new TokenLeafCreator();
-//
-//        for (String part : parts) {
-//            Component leaf = leafCreator.createTokenLeaf(part);
-//            components.add(leaf);
-//        }
-//
-//        String lastTokenSentence = parts[parts.length-1];
-//        Component mark = leafCreator.createMark(lastTokenSentence);
-//        components.add(mark);
-//
-//        return new TextComposite(components);
-//    }
 }

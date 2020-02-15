@@ -6,11 +6,14 @@ import by.epam.composite.domain.Sentence;
 import by.epam.composite.domain.Text;
 import by.epam.composite.service.SentenceService;
 import by.epam.composite.service.comparator.SizeComparator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SentenceServiceImpl implements SentenceService {
+    private static Logger log = LogManager.getLogger(SentenceServiceImpl.class.getName());
 
     public Component sort(Component component) {
         SizeComparator sizeComparator = new SizeComparator();
@@ -32,6 +35,7 @@ public class SentenceServiceImpl implements SentenceService {
             paragraph = new Paragraph(newListSentences);
             newListParagraphs.add(paragraph);
         }
+        log.info("All lexemes are sorted.");
         return new Text(newListParagraphs);
     }
 }

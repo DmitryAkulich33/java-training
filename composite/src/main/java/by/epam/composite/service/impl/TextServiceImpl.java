@@ -11,6 +11,7 @@ import by.epam.composite.service.exception.ServiceException;
 import by.epam.composite.service.parser.ChainTextParser;
 
 public class TextServiceImpl implements TextService {
+
     private DAOFactory daoObjectFactory = DAOFactory.getInstance();
     private FileReaderDAO readerDAO = daoObjectFactory.getReaderDAO();
     private FileWriterDAO writerDAO = daoObjectFactory.getWriterDAO();
@@ -46,5 +47,4 @@ public class TextServiceImpl implements TextService {
             throw new ServiceException(e);
         }
     }
-
 }

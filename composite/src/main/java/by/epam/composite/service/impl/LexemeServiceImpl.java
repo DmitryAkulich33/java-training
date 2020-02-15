@@ -7,12 +7,17 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class LexemeServiceImpl implements LexemeService {
+    private static Logger log = LogManager.getLogger(LexemeServiceImpl.class.getName());
+
     public String sort(Component original, char letter) {
         List<String> sorted = Arrays.stream(original.operation().trim().split("\\s+"))
                 .sorted(Comparator.comparingInt((String lexeme) -> getCount(letter, lexeme)).reversed().thenComparing(String.CASE_INSENSITIVE_ORDER))
                 .collect(Collectors.toList());
+        log.info("Lexemes in sentence are sorted.");
         return String.join(" ", sorted);
     }
 

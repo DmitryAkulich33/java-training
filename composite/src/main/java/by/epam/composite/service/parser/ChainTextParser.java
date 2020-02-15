@@ -1,8 +1,12 @@
 package by.epam.composite.service.parser;
 
 import by.epam.composite.domain.Component;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ChainTextParser {
+    private static Logger log = LogManager.getLogger(ChainTextParser.class.getName());
+
     private static TextParser textParser = new TextParser();
 
     static {
@@ -20,6 +24,7 @@ public class ChainTextParser {
     }
 
     public static Component parse(String text) {
+        log.info("Division into components...");
         return textParser.parse(text);
     }
 }

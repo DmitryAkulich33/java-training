@@ -1,8 +1,13 @@
 package by.epam.composite.domain;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.List;
 
 public class Lexeme implements Component {
+    private static Logger log = LogManager.getLogger(Lexeme.class.getName());
+
     private List<Component> components;
     private String delimiter;
 
@@ -14,6 +19,7 @@ public class Lexeme implements Component {
                 size = size + component.calcSize();
             }
         }
+        log.info("Lexeme's size is calculated.");
         return size;
     }
 
@@ -31,25 +37,29 @@ public class Lexeme implements Component {
 
     @Override
     public Component getChild(int index) {
+        log.info("Get word.");
         return components.get(index);
     }
 
     @Override
     public void add(Component component) {
+        log.info("Add word in list.");
         components.add(component);
     }
 
     @Override
     public void remove(Component component) {
+        log.info("Remove word from list.");
         components.remove(component);
     }
 
     @Override
     public String operation() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Component component : getComponents()) {
+        for (Component component : components) {
             stringBuilder.append(component.operation());
         }
+        log.info("Compile lexeme");
         return stringBuilder.toString() + delimiter;
     }
 

@@ -1,13 +1,19 @@
 package by.epam.composite.domain;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.List;
 
 public class Paragraph implements Component {
+    private static Logger log = LogManager.getLogger(Paragraph.class.getName());
+
     private List<Component> components;
     private String delimiter;
 
     @Override
     public int calcSize() {
+        log.info("Paragraph's size is calculated.");
         return components.size();
     }
 
@@ -25,16 +31,19 @@ public class Paragraph implements Component {
 
     @Override
     public Component getChild(int index) {
+        log.info("Get sentence.");
         return components.get(index);
     }
 
     @Override
     public void add(Component component) {
+        log.info("Add sentence in list.");
         components.add(component);
     }
 
     @Override
     public void remove(Component component) {
+        log.info("Remove sentence from list.");
         components.remove(component);
     }
 
@@ -42,9 +51,10 @@ public class Paragraph implements Component {
     public String operation() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("    ");
-        for (Component component : getComponents()) {
+        for (Component component : components) {
             stringBuilder.append(component.operation());
         }
+        log.info("Compile paragraph");
         return stringBuilder.toString() + delimiter;
     }
 

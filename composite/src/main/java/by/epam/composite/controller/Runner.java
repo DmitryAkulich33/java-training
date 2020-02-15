@@ -8,7 +8,7 @@ public class Runner {
     public static void main(String[] args) {
         Controller controller = new Controller();
         Viewer viewer = new Viewer();
-        Component component = controller.splitTextFromFile("src\\main\\resources\\wholeText.txt");
+        Component component = controller.splitTextFromFile("src\\main\\resources\\composite\\wholeText.txt");
         if (component != null) {
             while (true) {
                 String request = viewer.printCommandMenu();

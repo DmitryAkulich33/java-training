@@ -1,11 +1,17 @@
 package by.epam.composite.domain;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Symbol implements Component {
+    private static Logger log = LogManager.getLogger(Symbol.class.getName());
+
     private String symbol;
 
     @Override
     public int calcSize() {
+        log.info("Symbol's size is calculated.");
         return 1;
     }
 
@@ -22,21 +28,25 @@ public class Symbol implements Component {
 
     @Override
     public String operation() {
+        log.info("Compile symbol");
         return symbol;
     }
 
     @Override
     public Component getChild(int index) {
+        log.error("Symbol is not divided into components");
         throw new UnsupportedOperationException();
     }
 
     @Override
     public void add(Component component) {
+        log.error("Symbol is not divided into components");
         throw new UnsupportedOperationException();
     }
 
     @Override
     public void remove(Component component) {
+        log.error("Symbol is not divided into components");
         throw new UnsupportedOperationException();
     }
 

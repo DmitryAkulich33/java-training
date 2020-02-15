@@ -9,11 +9,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class LexemeParser extends AbstractParser {
+    private static Logger log = LogManager.getLogger(LexemeParser.class.getName());
+
     private Pattern notLetterStart = Pattern.compile("^\\W");
     private Pattern notLetterEnd = Pattern.compile("\\W$");
-//    private Pattern forWord = Pattern.compile("\\w+");
     private Pattern forCharacter = Pattern.compile("\\W+");
 
 
@@ -21,6 +24,7 @@ public class LexemeParser extends AbstractParser {
     public Component parse(String lexeme) {
         List<Component> components = new ArrayList<>();
         if (checkNextSuccessor()) {
+            log.info("Lexeme division...");
             getSuccessor().parse(lexeme);
             List<String> parts = parseToPart(lexeme.trim());
             for (String part : parts) {
@@ -54,9 +58,6 @@ public class LexemeParser extends AbstractParser {
         return list;
     }
 
-//    public boolean checkForWord (String part){
-//        return forWord.matcher(part).matches();
-//    }
 
     public boolean checkForCharacter (String part){
         return forCharacter.matcher(part).matches();
