@@ -1,26 +1,17 @@
 package by.epam.demothreads.exercise12;
 
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
 
 public class Consumer implements Runnable {
-    private final List<String> data;
+    Store store;
 
-    Consumer(List<String> data) {
-        this.data = requireNonNull(data);
+    Consumer(Store store) {
+        this.store = store;
     }
 
-    @Override
     public void run() {
-        while (true) {
-            synchronized (data) {
-                if (data.size() > 0) {
-                    System.out.println("reading:: " + data.get(data.size() - 1));
-                    data.remove(data.size() - 1);
-                }
-                data.notify();
-            }
+        for (int i = 1; i < 6; i++) {
+            store.get();
         }
     }
+
 }
