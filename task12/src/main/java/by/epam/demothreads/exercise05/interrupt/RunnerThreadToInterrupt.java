@@ -1,4 +1,4 @@
-package by.epam.demothreads.exercise05;
+package by.epam.demothreads.exercise05.interrupt;
 
 public class RunnerThreadToInterrupt {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package by.epam.demothreads.exercise05;
+package by.epam.demothreads.exercise05.interrupt;
 
 import java.util.concurrent.TimeUnit;
 

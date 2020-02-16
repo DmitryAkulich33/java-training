@@ -1,4 +1,4 @@
-package by.epam.demothreads.exercise05;
+package by.epam.demothreads.exercise05.disable;
 
 public class ThreadToDisable implements Runnable {
     private boolean isActive;
