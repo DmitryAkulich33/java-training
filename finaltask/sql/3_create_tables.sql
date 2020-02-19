@@ -31,7 +31,7 @@ CREATE TABLE `pie` (
 	`name` VARCHAR(60) NOT NULL,
 	`weight` INTEGER NOT NULL,
 	`price` DOUBLE NOT NULL,
-	`discription` VARCHAR(255) NOT NULL,
+	`description` VARCHAR(255) NOT NULL,
 
 	CONSTRAINT pk_pie PRIMARY KEY (`id`)
 );

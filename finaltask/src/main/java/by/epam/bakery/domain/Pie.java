@@ -9,12 +9,12 @@ public class Pie extends Entity {
     public Pie() {
     }
 
-    public Pie(int id, String name, int weight, double price, String discription) {
+    public Pie(int id, String name, int weight, double price, String description) {
         super(id);
         this.name = name;
         this.weight = weight;
         this.price = price;
-        this.description = discription;
+        this.description = description;
     }
 
     public String getName() {
@@ -51,7 +51,7 @@ public class Pie extends Entity {
 
     @Override
     public String toString() {
-        return super.toString() +
+        return "Pie" + super.toString() +
                 " name: " + name +
                 ", weight: " + weight +
                 ", price: " + price +

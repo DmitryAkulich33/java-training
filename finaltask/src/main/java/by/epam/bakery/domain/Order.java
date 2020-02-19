@@ -63,7 +63,7 @@ public class Order extends Entity{
 
     @Override
     public String toString() {
-        return super.toString() +
+        return "Order" + super.toString() +
                 ", clientId: " + clientId +
                 ", pieId: " + pieId +
                 ", productionDate: " + productionDate +

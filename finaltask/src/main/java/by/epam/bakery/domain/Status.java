@@ -21,6 +21,6 @@ public class Status extends Entity{
 
     @Override
     public String toString() {
-        return super.toString() + ", name:" + name;
+        return "Status" + super.toString() + ", name:" + name;
     }
 }

@@ -71,11 +71,11 @@ public class Client extends Entity {
 
     @Override
     public String toString() {
-        return super.toString() + ", " + surname +
+        return "Client" + super.toString() + ", " + surname +
                 " " + name +
                 " " + patronymic +
                 ", address: " + address +
                 ", phone: " + phone +
-                ", note: '" + note;
+                ", note: " + note;
     }
 }

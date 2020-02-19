@@ -20,6 +20,6 @@ public abstract class Entity {
 
     @Override
     public String toString() {
-        return "Client id is " + id;
+        return " id is " + id;
     }
 }

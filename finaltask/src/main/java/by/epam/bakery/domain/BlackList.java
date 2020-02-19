@@ -21,6 +21,6 @@ public class BlackList extends Entity {
 
     @Override
     public String toString() {
-        return super.toString() + " clientId: " + clientId;
+        return "Client" + super.toString() + " clientId: " + clientId;
     }
 }
