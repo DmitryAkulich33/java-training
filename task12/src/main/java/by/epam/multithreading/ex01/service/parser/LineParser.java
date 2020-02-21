@@ -1,8 +1,5 @@
 package by.epam.multithreading.ex01.service.parser;
 
-import by.epam.multithreading.ex01.dao.exception.StreamNotReadingException;
-import by.epam.multithreading.ex01.dao.impl.ReaderDAOImpl;
-import by.epam.multithreading.ex01.service.exception.ServiceException;
 import by.epam.multithreading.ex01.service.exception.WrongArrayException;
 import by.epam.multithreading.ex01.service.exception.WrongThreadCountException;
 import by.epam.multithreading.ex01.service.validator.ArrayValidator;
@@ -29,7 +26,7 @@ public class LineParser {
         }
     }
 
-    public int[] returnArray(String line) throws WrongArrayException {
+    private int[] returnArray(String line) throws WrongArrayException {
         ArrayValidator validator = new ArrayValidator();
         int[] array;
         if(validator.isLineValid(line)){
@@ -45,7 +42,7 @@ public class LineParser {
         return array;
     }
 
-    public boolean checkDiagonal(int[][] array) {
+    private boolean checkDiagonal(int[][] array) {
         int length = array.length;
         for(int i = 0; i < length; i++){
             if (array[i][i] != 0){
@@ -54,7 +51,7 @@ public class LineParser {
         }
         return true;
     }
-    public boolean checkLength(int[][] array) throws WrongArrayException{
+    private boolean checkLength(int[][] array) throws WrongArrayException{
         if(array.length != array[array.length - 1].length){
             throw new WrongArrayException("Array is wrong.");
         }
