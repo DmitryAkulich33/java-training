@@ -1,21 +1,21 @@
-package by.epam.multithreading.method01.domain;
+package by.epam.multithreading.method02.domain;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.Semaphore;
 
 public class Matrix {
     private int[][] matrix;
     private List<Element> diagonal;
-    private ReentrantLock locker;
+    private Semaphore sem;
 
     public Matrix() {
     }
 
-    public Matrix(int[][] matrix, List<Element> diagonal, ReentrantLock locker) {
+    public Matrix(int[][] matrix, List<Element> diagonal, Semaphore sem) {
         this.matrix = matrix;
         this.diagonal = diagonal;
-        this.locker = locker;
+        this.sem = sem;
     }
 
     public int[][] getMatrix() {
@@ -43,14 +43,14 @@ public class Matrix {
 
         if (!Arrays.deepEquals(matrix, matrix1.matrix)) return false;
         if (diagonal != null ? !diagonal.equals(matrix1.diagonal) : matrix1.diagonal != null) return false;
-        return locker != null ? locker.equals(matrix1.locker) : matrix1.locker == null;
+        return sem != null ? sem.equals(matrix1.sem) : matrix1.sem == null;
     }
 
     @Override
     public int hashCode() {
         int result = Arrays.deepHashCode(matrix);
         result = 31 * result + (diagonal != null ? diagonal.hashCode() : 0);
-        result = 31 * result + (locker != null ? locker.hashCode() : 0);
+        result = 31 * result + (sem != null ? sem.hashCode() : 0);
         return result;
     }
 
@@ -59,7 +59,7 @@ public class Matrix {
         return "Matrix{" +
                 "matrix=" + Arrays.toString(matrix) +
                 ", diagonal=" + diagonal +
-                ", locker=" + locker +
+                ", sem=" + sem +
                 '}';
     }
 }

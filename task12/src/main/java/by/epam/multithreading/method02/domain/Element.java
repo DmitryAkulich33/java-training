@@ -1,30 +1,30 @@
-package by.epam.multithreading.method01.domain;
+package by.epam.multithreading.method02.domain;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.Semaphore;
 
 public class Element {
     private static Logger log = LogManager.getLogger(Element.class.getName());
-    private ReentrantLock locker;
-    int value;
-    int x;
-    int y;
+    private Semaphore sem;
+    private int value;
+    private int x;
+    private int y;
 
     public Element() {
     }
 
-    public Element(ReentrantLock locker, int value, int x, int y) {
-        this.locker = locker;
+    public Element(Semaphore sem, int value, int x, int y) {
+        this.sem = sem;
         this.value = value;
         this.x = x;
         this.y = y;
     }
 
-    public void lockElement() {
+    public void lockElement() throws InterruptedException {
         log.info("Element is lock.");
-        locker.lock();
+        sem.acquire();
     }
 
     public int getValue() {
@@ -37,7 +37,7 @@ public class Element {
 
     public void unLock() {
         log.info("Element is unlock.");
-        locker.unlock();
+        sem.release();
     }
 
     @Override
@@ -50,12 +50,12 @@ public class Element {
         if (value != element.value) return false;
         if (x != element.x) return false;
         if (y != element.y) return false;
-        return locker != null ? locker.equals(element.locker) : element.locker == null;
+        return sem != null ? sem.equals(element.sem) : element.sem == null;
     }
 
     @Override
     public int hashCode() {
-        int result = locker != null ? locker.hashCode() : 0;
+        int result = sem != null ? sem.hashCode() : 0;
         result = 31 * result + value;
         result = 31 * result + x;
         result = 31 * result + y;
@@ -65,7 +65,7 @@ public class Element {
     @Override
     public String toString() {
         return "Element{" +
-                "locker=" + locker +
+                "sem=" + sem +
                 ", value=" + value +
                 ", x=" + x +
                 ", y=" + y +
