@@ -1,5 +1,6 @@
-package by.epam.xml.xmlorders;
+package by.epam.xml.parser;
 
+import by.epam.xml.xmlorders.Client;
 import by.epam.xml.xmlorders.Order;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -9,6 +10,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
+
+import by.epam.xml.xmlorders.Pie;
+import by.epam.xml.xmlorders.StatusEnum;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,11 +20,11 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
-public class OrderDOMHandler {
+public class OrderDOMBuilder {
     private Set<Order> orders;
     private DocumentBuilder docBuilder;
 
-    public OrderDOMHandler() {
+    public OrderDOMBuilder() {
         this.orders = new HashSet<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {

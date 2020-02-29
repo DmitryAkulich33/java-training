@@ -1,5 +1,8 @@
-package by.epam.xml.xmlorders;
+package by.epam.xml.parser;
 
+import by.epam.xml.xmlorders.Order;
+import by.epam.xml.xmlorders.OrderEnum;
+import by.epam.xml.xmlorders.StatusEnum;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 

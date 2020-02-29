@@ -1,7 +1,6 @@
 package by.epam.xml.parser;
 
 import by.epam.xml.xmlorders.Order;
-import by.epam.xml.xmlorders.OrderSAXHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
