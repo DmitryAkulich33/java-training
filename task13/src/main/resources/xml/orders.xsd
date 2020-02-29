@@ -46,7 +46,7 @@
     </complexType>
     <complexType name="Pie">
         <sequence>
-            <element name="name" type="string"/>
+            <element name="title" type="string"/>
             <element name="weight" type="int"/>
             <element name="price" type="double"/>
             <element name="description" type="string"/>

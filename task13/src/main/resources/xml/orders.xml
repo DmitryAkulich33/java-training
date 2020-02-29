@@ -11,7 +11,7 @@
             <note>In the yard problems with parking spaces</note>
         </client>
         <pie id="1">
-            <name>Belorussian</name>
+            <title>Belorussian</title>
             <weight>1000</weight>
             <price>24.00</price>
             <description>Signature dough, rustic potatoes, with cracklings, fried mushrooms, caraway seeds and
@@ -22,7 +22,7 @@
         <deliveryDate>2020-01-30T12:30:00</deliveryDate>
     </order>
     <order id="2" status="delivered">
-        <client id="2">
+        <client id="3">
             <surname>Sidorov</surname>
             <name>Sidr</name>
             <patronymic>Sidorovich</patronymic>
@@ -31,7 +31,7 @@
             <note>Near the house there are construction work</note>
         </client>
         <pie id="2">
-            <name>Italian</name>
+            <title>Italian</title>
             <weight>950</weight>
             <price>22.00</price>
             <description>Signature dough, sunny lemon with vitamin zest and peppermint</description>
@@ -49,7 +49,7 @@
             <note>In the yard problems with parking spaces</note>
         </client>
         <pie id="4">
-            <name>French</name>
+            <title>French</title>
             <weight>1000</weight>
             <price>25.00</price>
             <description>Signature dough, ripe spicy cherry with hints of clove</description>
@@ -67,7 +67,7 @@
             <note>There are enough parking spaces in the yard</note>
         </client>
         <pie id="1">
-            <name>Belorussian</name>
+            <title>Belorussian</title>
             <weight>1000</weight>
             <price>24.00</price>
             <description>Signature dough, rustic potatoes, with cracklings, fried mushrooms, caraway seeds and
@@ -87,7 +87,7 @@
             <note>There are enough parking spaces in the yard</note>
         </client>
         <pie id="8">
-            <name>Irish</name>
+            <title>Irish</title>
             <weight>1000</weight>
             <price>25.00</price>
             <description>Signature dough, stewed carrots with pumpkin in soft cheese, with onions and celery
@@ -106,7 +106,7 @@
             <note>In the yard problems with parking spaces</note>
         </client>
         <pie id="8">
-            <name>Irish</name>
+            <title>Irish</title>
             <weight>1000</weight>
             <price>25.00</price>
             <description>Signature dough, stewed carrots with pumpkin in soft cheese, with onions and celery
