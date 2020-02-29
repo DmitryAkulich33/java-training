@@ -1,8 +1,10 @@
-package by.epam.xml.parser;
+package by.epam.xml.builder;
 
-import by.epam.xml.xmlorders.Order;
-import by.epam.xml.xmlorders.OrderEnum;
-import by.epam.xml.xmlorders.StatusEnum;
+import by.epam.xml.domain.Order;
+import by.epam.xml.domain.OrderEnum;
+import by.epam.xml.domain.StatusEnum;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
@@ -10,6 +12,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class OrderSAXHandler extends DefaultHandler {
+    private static Logger log = LogManager.getLogger(OrderSAXBuilder.class.getName());
+
     private Set<Order> orders;
     private Order current = null;
     private OrderEnum currentEnum = null;
@@ -26,16 +30,21 @@ public class OrderSAXHandler extends DefaultHandler {
 
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
         if ("order".equals(localName)) {
+            log.info("Creating order.");
             current = new Order();
+            log.info("Get order's attribute values");
             current.setId(Integer.parseInt(attrs.getValue(0)));
             if (attrs.getLength() == 2) {
                 current.setStatusEnum(StatusEnum.valueOf(attrs.getValue(1).toUpperCase()));
             }
-        } else if ("client".equals(localName)){
+        } else if ("client".equals(localName)) {
+            log.info("Get client's attribute values");
             current.getClient().setId(Integer.parseInt(attrs.getValue(0)));
-        } else if ("pie".equals(localName)){
+        } else if ("pie".equals(localName)) {
+            log.info("Get pie's attribute values");
             current.getPie().setId(Integer.parseInt(attrs.getValue(0)));
         } else {
+            log.info("Creating elements.");
             OrderEnum temp = OrderEnum.valueOf(localName.toUpperCase());
             if (withText.contains(temp)) {
                 currentEnum = temp;
@@ -90,9 +99,8 @@ public class OrderSAXHandler extends DefaultHandler {
                     current.setDeliveryDate(LocalDateTime.parse(s));
                     break;
                 default:
-                    System.out.println("недоделал");
-//                    throw new EnumConstantNotPresentException(
-//                            currentEnum.getDeclaringClass(), currentEnum.name());
+                    throw new EnumConstantNotPresentException(
+                            currentEnum.getDeclaringClass(), currentEnum.name());
             }
         }
         currentEnum = null;

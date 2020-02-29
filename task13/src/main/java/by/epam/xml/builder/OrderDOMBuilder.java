@@ -1,7 +1,7 @@
-package by.epam.xml.parser;
+package by.epam.xml.builder;
 
-import by.epam.xml.xmlorders.Client;
-import by.epam.xml.xmlorders.Order;
+import by.epam.xml.domain.Client;
+import by.epam.xml.domain.Order;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -11,8 +11,10 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import by.epam.xml.xmlorders.Pie;
-import by.epam.xml.xmlorders.StatusEnum;
+import by.epam.xml.domain.Pie;
+import by.epam.xml.domain.StatusEnum;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -20,7 +22,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 
-public class OrderDOMBuilder {
+public class OrderDOMBuilder extends BaseBuilder {
+    private static Logger log = LogManager.getLogger(OrderDOMBuilder.class.getName());
+
     private Set<Order> orders;
     private DocumentBuilder docBuilder;
 
@@ -30,7 +34,8 @@ public class OrderDOMBuilder {
         try {
             docBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            System.err.println("Ошибка конфигурации парсера: " + e);
+            log.error("Parser configuration error.");
+            System.err.println("Parser configuration error: " + e);
         }
     }
 
@@ -41,14 +46,14 @@ public class OrderDOMBuilder {
     public void buildSetOrders(String fileName) {
         Document doc = null;
         try {
-        // parsing XML-документа и создание древовидной структуры
+            log.info("Parsing an XML document and creating a tree structure.");
             doc = docBuilder.parse(fileName);
             Element root = doc.getDocumentElement();
-            // получение списка дочерних элементов <order>
+            log.info("Getting a list of children.");
             NodeList ordersList = root.getElementsByTagName("order");
             for (int i = 0; i < ordersList.getLength(); i++) {
                 Element orderElement = (Element) ordersList.item(i);
-                Order order = buildOrder (orderElement);
+                Order order = buildOrder(orderElement);
                 orders.add(order);
             }
         } catch (IOException e) {
@@ -60,34 +65,35 @@ public class OrderDOMBuilder {
 
     private Order buildOrder(Element orderElement) {
         Order order = new Order();
-        // заполнение объекта order
+        log.info("Filling the object <order>");
         order.setId(Integer.parseInt(orderElement.getAttribute("id")));
         order.setStatusEnum(StatusEnum.valueOf(orderElement.getAttribute("status").toUpperCase()));
-        order.setDeliveryDate(LocalDateTime.parse(getElementTextContent(orderElement, "deliveryDate")));
-        order.setProductionDate(LocalDateTime.parse(getElementTextContent(orderElement, "productionDate")));
-        // заполнение объекта client
+        log.info("Filling the object <client>");
         Client client = order.getClient();
         Element clientElement = (Element) orderElement.getElementsByTagName("client").item(0);
-        client.setName(getElementTextContent(clientElement, "name"));
+        client.setId(Integer.parseInt(clientElement.getAttribute("id")));
         client.setSurname(getElementTextContent(clientElement, "surname"));
+        client.setName(getElementTextContent(clientElement, "name"));
         client.setPatronymic(getElementTextContent(clientElement, "patronymic"));
         client.setAddress(getElementTextContent(clientElement, "address"));
         client.setPhone(getElementTextContent(clientElement, "phone"));
         client.setNote(getElementTextContent(clientElement, "note"));
-        client.setId(Integer.parseInt(clientElement.getAttribute("id")));
-        // заполнение объекта pie
+        log.info("Filling the object <pie>");
         Pie pie = order.getPie();
         Element pieElement = (Element) orderElement.getElementsByTagName("pie").item(0);
+        pie.setId(Integer.parseInt(pieElement.getAttribute("id")));
         pie.setTitle(getElementTextContent(pieElement, "title"));
         pie.setWeight(Integer.parseInt(getElementTextContent(pieElement, "weight")));
         pie.setPrice(Double.parseDouble(getElementTextContent(pieElement, "price")));
         pie.setDescription(getElementTextContent(pieElement, "description"));
-        pie.setId(Integer.parseInt(pieElement.getAttribute("id")));
+        log.info("Attribute filling order");
+        order.setProductionDate(LocalDateTime.parse(getElementTextContent(orderElement, "productionDate")));
+        order.setDeliveryDate(LocalDateTime.parse(getElementTextContent(orderElement, "deliveryDate")));
         return order;
     }
 
-    // получение текстового содержимого тега
     private static String getElementTextContent(Element element, String elementName) {
+        log.info("Getting the text content of a tag");
         NodeList nList = element.getElementsByTagName(elementName);
         Node node = nList.item(0);
         String text = node.getTextContent();

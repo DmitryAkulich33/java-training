@@ -1,4 +1,4 @@
-package by.epam.xml.xmlorders;
+package by.epam.xml.domain;
 
 public enum StatusEnum {
     NOT_READY("not ready"),

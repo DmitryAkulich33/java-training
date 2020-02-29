@@ -1,6 +1,6 @@
-package by.epam.xml.xmlorders;
+package by.epam.xml.domain;
 
-public enum  OrderEnum {
+public enum OrderEnum {
     ORDERS("orders"),
     ID("id"),
     STATUS("status"),

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orders xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.epam.training.by/orders" xsi:schemaLocation="http://www.epam.training.by/classes orders.xsd">
+    <order id="1" status="delivered">
+        <client id="1">
+            <surname>Ivanov</surname>
+            <name>Ivan</name>
+            <patronymic>Ivanovich</patronymic>
+            <address>Apt 18, 44 Rafieva St, Minsk</address>
+            <phone>+375 29 7434546</phone>
+            <note>In the yard problems with parking spaces</note>
+        </client>
+        <pie id="1">
+            <title>Belorussian</title>
+            <weight>1000</weight>
+            <price>24.00</price>
+            <description>Signature dough, rustic potatoes, with cracklings, fried mushrooms, caraway seeds and coriander</description>
+        </pie>
+        <productionDate>2020-01-30T09:00:00</productionDate>
+        <deliveryDate>2020-01-30T12:30:00</deliveryDate>
+    </order>
+    <order id="2" status="delivered">
+        <client id="3">
+            <surname>Sidorov</surname>
+            <name>Sidr</name>
+            <patronymic>Sidorovich</patronymic>
+            <address>Apt 95, 27 Lubimova St, Minsk</address>
+            <phone>+375 44 5982331</phone>
+            <note>Near the house there are construction work</note>
+        </client>
+        <pie id="2">
+            <title>Italian</title>
+            <weight>950</weight>
+            <price>22.00</price>
+            <description>Signature dough, sunny lemon with vitamin zest and peppermint</description>
+        </pie>
+        <productionDate>2020-01-31T10:00:00</productionDate>
+        <deliveryDate>2020-01-31T12:30:00</deliveryDate>
+    </order>
+</orders>
