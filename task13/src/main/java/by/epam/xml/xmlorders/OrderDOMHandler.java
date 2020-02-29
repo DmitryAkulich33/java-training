@@ -34,7 +34,7 @@ public class OrderDOMHandler {
         return orders;
     }
 
-    public void buildSetStudents(String fileName) {
+    public void buildSetOrders(String fileName) {
         Document doc = null;
         try {
         // parsing XML-документа и создание древовидной структуры
@@ -61,23 +61,25 @@ public class OrderDOMHandler {
         order.setStatusEnum(StatusEnum.valueOf(orderElement.getAttribute("status").toUpperCase()));
         order.setDeliveryDate(LocalDateTime.parse(getElementTextContent(orderElement, "deliveryDate")));
         order.setProductionDate(LocalDateTime.parse(getElementTextContent(orderElement, "productionDate")));
-
+        // заполнение объекта client
         Client client = order.getClient();
         Element clientElement = (Element) orderElement.getElementsByTagName("client").item(0);
-        // заполнение объекта client
         client.setName(getElementTextContent(clientElement, "name"));
         client.setSurname(getElementTextContent(clientElement, "surname"));
-
-
-
-
-
-
-        address.setCountry(getElementTextContent(adressElement, "country"));
-        address.setCity(getElementTextContent(adressElement, "city"));
-        address.setStreet(getElementTextContent(adressElement, "street"));
-        student.setLogin(studentElement.getAttribute("login"));
-        return student;
+        client.setPatronymic(getElementTextContent(clientElement, "patronymic"));
+        client.setAddress(getElementTextContent(clientElement, "address"));
+        client.setPhone(getElementTextContent(clientElement, "phone"));
+        client.setNote(getElementTextContent(clientElement, "note"));
+        client.setId(Integer.parseInt(clientElement.getAttribute("id")));
+        // заполнение объекта pie
+        Pie pie = order.getPie();
+        Element pieElement = (Element) orderElement.getElementsByTagName("pie").item(0);
+        pie.setTitle(getElementTextContent(pieElement, "title"));
+        pie.setWeight(Integer.parseInt(getElementTextContent(pieElement, "weight")));
+        pie.setPrice(Double.parseDouble(getElementTextContent(pieElement, "price")));
+        pie.setDescription(getElementTextContent(pieElement, "description"));
+        pie.setId(Integer.parseInt(pieElement.getAttribute("id")));
+        return order;
     }
 
     // получение текстового содержимого тега

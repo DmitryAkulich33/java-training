@@ -72,6 +72,6 @@ public class Order {
                 ", client: " + client +
                 ", pie: " + pie +
                 ", productionDate: " + productionDate +
-                ", deliveryDate: " + deliveryDate + "\n";
+                ", deliveryDate: " + deliveryDate;
     }
 }
