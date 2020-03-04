@@ -1,26 +1,28 @@
 package by.epam.bakery.domain;
 
 public class BlackList extends Entity {
-    private int clientId;
+    private Client client;
 
     public BlackList() {
     }
 
-    public BlackList(int id, int clientId) {
+    public BlackList(int id, Client client) {
         super(id);
-        this.clientId = clientId;
+        this.client = client;
     }
 
-    public int getClientId() {
-        return clientId;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override
     public String toString() {
-        return "Client" + super.toString() + " clientId: " + clientId;
+        return "BlackList{" +
+                "client=" + client +
+                '}';
     }
 }

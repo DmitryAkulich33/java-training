@@ -3,39 +3,24 @@ package by.epam.bakery.domain;
 import java.text.DateFormat;
 
 public class Order extends Entity{
-    private int clientId;
-    private int pieId;
+    private Client client;
+    private Pie pie;
     private DateFormat productionDate;
     private DateFormat deliveryDate;
-    private int statusId;
+    private Status status;
 
     public Order() {
     }
 
-    public Order(int id, int clientId, int pieId, DateFormat productionDate, DateFormat deliveryDate, int statusId) {
+    public Order(int id, Client client, Pie pie, DateFormat productionDate, DateFormat deliveryDate, Status status) {
         super(id);
-        this.clientId = clientId;
-        this.pieId = pieId;
+        this.client = client;
+        this.pie = pie;
         this.productionDate = productionDate;
         this.deliveryDate = deliveryDate;
-        this.statusId = statusId;
+        this.status = status;
     }
 
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
-    public int getPieId() {
-        return pieId;
-    }
-
-    public void setPieId(int pieId) {
-        this.pieId = pieId;
-    }
 
     public DateFormat getProductionDate() {
         return productionDate;
@@ -53,21 +38,38 @@ public class Order extends Entity{
         this.deliveryDate = deliveryDate;
     }
 
-    public int getStatusId() {
-        return statusId;
+    public Client getClient() {
+        return client;
     }
 
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public Pie getPie() {
+        return pie;
+    }
+
+    public void setPie(Pie pie) {
+        this.pie = pie;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return "Order" + super.toString() +
-                ", clientId: " + clientId +
-                ", pieId: " + pieId +
-                ", productionDate: " + productionDate +
-                ", deliveryDate: " + deliveryDate +
-                ", statusId: " + statusId;
+        return "Order{" +
+                "client=" + client +
+                ", pie=" + pie +
+                ", productionDate=" + productionDate +
+                ", deliveryDate=" + deliveryDate +
+                ", status=" + status +
+                '}';
     }
 }

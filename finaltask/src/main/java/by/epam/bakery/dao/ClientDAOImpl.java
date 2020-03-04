@@ -39,7 +39,7 @@ public class ClientDAOImpl {
             try {
                 cn.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                e.printStackTrace(); // TODO log
             }
         }
         return clients;
