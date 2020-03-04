@@ -1,6 +1,7 @@
-package by.epam.xml.builder;
+package by.epam.xml.service;
 
 import by.epam.xml.domain.Order;
+import by.epam.xml.service.builder.BaseBuilder;
 
 import java.util.Set;
 

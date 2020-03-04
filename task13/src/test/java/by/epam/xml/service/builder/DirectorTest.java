@@ -1,9 +1,10 @@
-package by.epam.xml.builder;
+package by.epam.xml.service.builder;
 
 import by.epam.xml.domain.Client;
 import by.epam.xml.domain.Order;
 import by.epam.xml.domain.Pie;
 import by.epam.xml.domain.StatusEnum;
+import by.epam.xml.service.Director;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -11,8 +12,6 @@ import org.testng.annotations.Test;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
-
-import static org.testng.Assert.*;
 
 public class DirectorTest {
     private String fileName1 = "src/test/resources/ordersTest1.xml";

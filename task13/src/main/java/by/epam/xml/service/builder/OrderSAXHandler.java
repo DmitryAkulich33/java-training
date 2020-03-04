@@ -1,4 +1,4 @@
-package by.epam.xml.builder;
+package by.epam.xml.service.builder;
 
 import by.epam.xml.domain.Order;
 import by.epam.xml.domain.OrderEnum;
