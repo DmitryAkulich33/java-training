@@ -5,6 +5,7 @@ public class User extends Entity {
     private String password;
     private int role;
 
+
     public User() {
     }
 

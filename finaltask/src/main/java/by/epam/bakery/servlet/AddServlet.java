@@ -1,5 +1,8 @@
 package by.epam.bakery.servlet;
 
+import by.epam.bakery.domain.Basket;
+import by.epam.bakery.domain.Pie;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -7,8 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
-@WebServlet("/addaction")
+//@WebServlet("/addaction")
+@WebServlet("/addPie")
 public class AddServlet extends HttpServlet{
+    public Basket basket =  new Basket();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -21,10 +27,16 @@ public class AddServlet extends HttpServlet{
     }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Example example = new Example();
-        example.setName(request.getParameter("pieName"));
-        example.setPrice(Double.parseDouble(request.getParameter("piePrice")));
-        request.setAttribute("example", example);
+        Pie pie = new Pie();
+        pie.setName(request.getParameter("pieName"));
+        pie.setPrice(Double.parseDouble(request.getParameter("piePrice")));
+        basket.getPies().add(pie);
+        request.setAttribute("basket", basket);
         request.getRequestDispatcher("index.jsp").forward(request, response);
+//        Example example = new Example();
+//        example.setName(request.getParameter("pieName"));
+//        example.setPrice(Double.parseDouble(request.getParameter("piePrice")));
+//        request.setAttribute("example", example);
+//        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

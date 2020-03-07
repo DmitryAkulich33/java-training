@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="example" class="by.epam.bakery.servlet.Example" scope="application"/>
+<%--<jsp:useBean id="example" class="by.epam.bakery.servlet.Example" scope="application"/>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>
+<jsp:useBean id="basket" class="by.epam.bakery.domain.Basket" scope="application"/>
 <!doctype html>
 <html>
 <head>
@@ -18,34 +21,8 @@
     <title>Bakery</title>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <div class="container-fluid pt-3">
-    <div class="p-3 m-3 bg-dark text-white">
-        <table>
-            <tr>
-                <td class="logo" rowspan="2"><img class="image_logo" src="image/logo1.png"></td>
-                <td class="name_organization">T A S T Y P I E . C O M</td>
-                <td class="a1_logo"><img class="image_logo_a1" src="image/a1.png"></td>
-                <td class="a1_phone">+375-44-564-61-30</td>
-            </tr>
-            <tr>
-                <td class="address_organization">27 Lubimova St, Minsk</td>
-                <td class="mts_logo"><img class="image_logo_a1" src="image/mts.png"></td>
-                <td class="mts_phone">+375-29-564-61-30</td>
-            </tr>
-        </table>
-    </div>
-    <div class="login">
-        <label for="login-field">Login</label>
-        <input type="text" name="login" id="login-field">
-    </div>
-    <div class="password">
-        <label for="password-field">Password</label>
-        <input type="password" name="password" id="password-field" value="">
-    </div>
-    <div class="enter">
-        <input type="submit" value="Submit" class="button_enter">
-    </div>
-    <br>
     <div class="row">
         <ul class="ul_pages">
             <li class="li_pages">
@@ -94,8 +71,14 @@
 
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    <p>
-                                        Pie ${example.name} price is ${example.price}</p>
+<%--                                    <p>Pie ${basket.pies.get(0).name} price is ${basket.pies.get(0).price}</p>--%>
+                                    <table class="text_basket">
+                                        <c:forEach var="elem" items="${basket.pies}" varStatus="status">
+                                            <tr>
+                                                <td>Pie is <c:out value="${ elem.name }" />, price is <c:out value="${ elem.price}" /></td>
+                                            </tr>
+                                        </c:forEach>
+                                    </table>
                                 </div>
 
                                 <!-- Modal footer -->
@@ -136,15 +119,11 @@
                 </tr>
                 <tr>
                     <td class="button_navbar_menu">
-                        <form action="addaction" method="POST">
+                        <form action="addPie" method="POST">
                             <input type="hidden" name="pieName" value="Belorussian"/>
                             <input type="hidden" name="piePrice" value="24.00"/>
                             <input type="submit" name="button" class="in_basket" value="BUY"/>
 
-<%--                            <button class="in_basket" type="button">--%>
-<%--                                <span class="txt">BUY</span>--%>
-<%--                                <span class="ico"></span>--%>
-<%--                            </button>--%>
                         </form>
 
                     </td>
@@ -170,10 +149,12 @@
                 </tr>
                 <tr>
                     <td class="button_navbar_menu">
-                        <button class="in_basket" type="button">
-                            <span class="txt">BUY</span>
-                            <span class="ico"></span>
-                        </button>
+                        <form action="addPie" method="POST">
+                            <input type="hidden" name="pieName" value="Italian"/>
+                            <input type="hidden" name="piePrice" value="22.00"/>
+                            <input type="submit" name="button" class="in_basket" value="BUY"/>
+
+                        </form>
                     </td>
                 </tr>
             </table>
