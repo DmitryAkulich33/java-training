@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<jsp:useBean id="example" class="by.epam.bakery.servlet.Example" scope="application"/>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>
 <jsp:useBean id="basket" class="by.epam.bakery.domain.Basket" scope="application"/>
