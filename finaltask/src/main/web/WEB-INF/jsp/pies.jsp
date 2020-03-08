@@ -70,7 +70,6 @@
 
                                 <!-- Modal body -->
                                 <div class="modal-body">
-<%--                                    <p>Pie ${basket.pies.get(0).name} price is ${basket.pies.get(0).price}</p>--%>
                                     <table class="text_basket">
                                         <c:forEach var="elem" items="${basket.pies}" varStatus="status">
                                             <tr>

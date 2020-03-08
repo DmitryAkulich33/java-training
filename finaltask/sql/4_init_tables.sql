@@ -1,11 +1,5 @@
 ﻿USE `bakery_db`;
-INSERT INTO `user` (
-	`login`,
-	`password`,
-	`role`
-) VALUES (
-	"admin",
-	"21232F297A57A5A743894A0E4A801FC3", /* MD5 хэш пароля "admin" */
-	1
-);
-
+INSERT INTO `user`
+    (`login`, `password`, `role`, `surname`, `name`, `patronymic`, `address`, `phone`, `note`)
+VALUES
+    ("admin", "admin", 1, "Akulich", "Dmitry", "Viktorovich", "Apt 229, 33 Lubimova St, Minsk", "+375 44 5646130", "admin");
