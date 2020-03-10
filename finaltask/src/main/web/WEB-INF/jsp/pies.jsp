@@ -26,7 +26,7 @@
         <ul class="ul_pages">
             <li class="li_pages">
                 <div class="button_navbar_menu">
-                    <a href="about.jsp" class="a_link"><img src="image/group.png" class="ico"> ABOUT US</a>
+                    <a href="WEB-INF/jsp/about.jsp" class="a_link"><img src="image/group.png" class="ico"> ABOUT US</a>
                 </div>
             </li>
             <li class="li_pages">

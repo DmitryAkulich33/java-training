@@ -1,28 +1,46 @@
 package by.epam.bakery.domain;
 
-public class BlackList extends Entity {
-    private Client client;
+import java.io.Serializable;
+
+public class BlackList extends Entity implements Serializable {
+    private User user;
 
     public BlackList() {
     }
 
-    public BlackList(int id, Client client) {
+    public BlackList(int id, User user) {
         super(id);
-        this.client = client;
+        this.user = user;
     }
 
-    public Client getClient() {
-        return client;
+    public User getUser() {
+        return user;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BlackList)) return false;
+        if (!super.equals(o)) return false;
+
+        BlackList blackList = (BlackList) o;
+
+        return user != null ? user.equals(blackList.user) : blackList.user == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (user != null ? user.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "BlackList{" +
-                "client=" + client +
-                '}';
+        return "BlackList user: " + user;
     }
 }

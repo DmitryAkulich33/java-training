@@ -64,8 +64,8 @@ CREATE TABLE `feedback` (
 );
 
 CREATE TABLE `order_product` (
-    `pie_id` INTEGER NOT NULL,
     `order_id` INTEGER NOT NULL,
+    `pie_id` INTEGER NOT NULL,
 
     CONSTRAINT order_product_pie FOREIGN KEY (`pie_id`)
     REFERENCES `pie`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,

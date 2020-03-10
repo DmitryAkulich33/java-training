@@ -1,7 +1,5 @@
 package by.epam.bakery.dao;
 
-import by.epam.bakery.domain.Client;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

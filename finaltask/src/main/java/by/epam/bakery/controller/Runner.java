@@ -1,12 +1,5 @@
 package by.epam.bakery.controller;
 
-import by.epam.bakery.dao.ClientDAOImpl;
-import by.epam.bakery.dao.PieDAOImpl;
-import by.epam.bakery.domain.Client;
-import by.epam.bakery.domain.Pie;
-
-import java.util.List;
-
 public class Runner {
     public static void main(String[] args) {
 //        ClientDAOImpl clientDAOImpl = new ClientDAOImpl();

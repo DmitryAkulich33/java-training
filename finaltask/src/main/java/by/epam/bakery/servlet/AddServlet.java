@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
 
-//@WebServlet("/addaction")
 @WebServlet("/addPie")
 public class AddServlet extends HttpServlet{
     public Basket basket =  new Basket();
@@ -33,10 +32,5 @@ public class AddServlet extends HttpServlet{
         basket.getPies().add(pie);
         request.setAttribute("basket", basket);
         request.getRequestDispatcher("index.jsp").forward(request, response);
-//        Example example = new Example();
-//        example.setName(request.getParameter("pieName"));
-//        example.setPrice(Double.parseDouble(request.getParameter("piePrice")));
-//        request.setAttribute("example", example);
-//        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }
