@@ -12,36 +12,36 @@ public class ClientDAOImpl {
     public static final String SQL_DELETE_CLIENT = "DELETE FROM client WHERE id = '%d'";
     public static final String SQL_CHANGE_NOTE = "UPDATE client SET note = '%s' WHERE id = '%d'";
 
-    public List<Client> findAll(){
-        List<Client> clients = new ArrayList<Client>();
-        Connection cn = null;
-        Statement st = null;
-        try {
-            cn = ConnectorDB.getConnection();
-            st = cn.createStatement();
-            ResultSet resultSet = st.executeQuery(SQL_SELECT_ALL_CLIENTS);
-            while (resultSet.next()) {
-                Client client = new Client();
-                client.setId(resultSet.getInt("id"));
-                client.setSurname(resultSet.getString("surname"));
-                client.setName(resultSet.getString("name"));
-                client.setPatronymic(resultSet.getString("patronymic"));
-                client.setAddress(resultSet.getString("address"));
-                client.setPhone(resultSet.getString("phone"));
-                client.setNote(resultSet.getString("note"));
-                clients.add(client);
-            }
-        } catch (SQLException ex){
-            System.err.println("SQL exception (request or table failed): " + ex);
-        } finally {
-            try {
-                cn.close();
-            } catch (SQLException e) {
-                e.printStackTrace(); // TODO log
-            }
-        }
-        return clients;
-    }
+//    public List<Client> findAll(){
+//        List<Client> clients = new ArrayList<Client>();
+//        Connection cn = null;
+//        Statement st = null;
+//        try {
+//            cn = ConnectorDB.getConnection();
+//            st = cn.createStatement();
+//            ResultSet resultSet = st.executeQuery(SQL_SELECT_ALL_CLIENTS);
+//            while (resultSet.next()) {
+//                Client client = new Client();
+//                client.setId(resultSet.getInt("id"));
+//                client.setSurname(resultSet.getString("surname"));
+//                client.setName(resultSet.getString("name"));
+//                client.setPatronymic(resultSet.getString("patronymic"));
+//                client.setAddress(resultSet.getString("address"));
+//                client.setPhone(resultSet.getString("phone"));
+//                client.setNote(resultSet.getString("note"));
+//                clients.add(client);
+//            }
+//        } catch (SQLException ex){
+//            System.err.println("SQL exception (request or table failed): " + ex);
+//        } finally {
+//            try {
+//                cn.close();
+//            } catch (SQLException e) {
+//                e.printStackTrace(); // TODO log
+//            }
+//        }
+//        return clients;
+//    }
 
     public void deleteClient(int id){
         Connection cn = null;
