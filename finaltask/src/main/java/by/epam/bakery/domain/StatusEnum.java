@@ -2,9 +2,9 @@ package by.epam.bakery.domain;
 
 public enum StatusEnum {
     READY("ready"),
-    NOT_READY("not ready"),
+    NOTREADY("not ready"),
     DELIVERED("delivered"),
-    NOT_DELIVERED("not delivered");
+    NOTDELIVERED("not delivered");
 
     private String value;
 

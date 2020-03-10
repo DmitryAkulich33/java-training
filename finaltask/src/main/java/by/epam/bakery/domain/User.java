@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class User extends Entity implements Serializable {
     private String login;
     private String password;
-    private RoleEnum role;
+    private int role;
     private String surname;
     private String name;
     private String patronymic;
@@ -17,7 +17,7 @@ public class User extends Entity implements Serializable {
     public User() {
     }
 
-    public User(int id, String login, String password, RoleEnum role, String surname, String name, String patronymic, String address, String phone, String note) {
+    public User(int id, String login, String password, int role, String surname, String name, String patronymic, String address, String phone, String note) {
         super(id);
         this.login = login;
         this.password = password;
@@ -54,11 +54,11 @@ public class User extends Entity implements Serializable {
         this.password = password;
     }
 
-    public RoleEnum getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(RoleEnum role) {
+    public void setRole(int role) {
         this.role = role;
     }
 
@@ -118,9 +118,9 @@ public class User extends Entity implements Serializable {
 
         User user = (User) o;
 
+        if (role != user.role) return false;
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (role != user.role) return false;
         if (surname != null ? !surname.equals(user.surname) : user.surname != null) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (patronymic != null ? !patronymic.equals(user.patronymic) : user.patronymic != null) return false;
@@ -135,7 +135,7 @@ public class User extends Entity implements Serializable {
         int result = super.hashCode();
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + role;
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);

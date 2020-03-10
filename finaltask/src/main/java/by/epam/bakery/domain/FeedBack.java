@@ -6,16 +6,16 @@ import java.time.LocalDateTime;
 public class FeedBack extends Entity implements Serializable {
     private User user;
     private LocalDateTime localDateTime;
-    private String note;
+    private String review;
 
     public FeedBack() {
     }
 
-    public FeedBack(int id, User user, LocalDateTime localDateTime, String note) {
+    public FeedBack(int id, User user, LocalDateTime localDateTime, String review) {
         super(id);
         this.user = user;
         this.localDateTime = localDateTime;
-        this.note = note;
+        this.review = review;
     }
 
     public User getUser() {
@@ -34,12 +34,12 @@ public class FeedBack extends Entity implements Serializable {
         this.localDateTime = localDateTime;
     }
 
-    public String getNote() {
-        return note;
+    public String getReview() {
+        return review;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setReview(String review) {
+        this.review = review;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class FeedBack extends Entity implements Serializable {
         if (user != null ? !user.equals(feedBack.user) : feedBack.user != null) return false;
         if (localDateTime != null ? !localDateTime.equals(feedBack.localDateTime) : feedBack.localDateTime != null)
             return false;
-        return note != null ? note.equals(feedBack.note) : feedBack.note == null;
+        return review != null ? review.equals(feedBack.review) : feedBack.review == null;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class FeedBack extends Entity implements Serializable {
         int result = super.hashCode();
         result = 31 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (localDateTime != null ? localDateTime.hashCode() : 0);
-        result = 31 * result + (note != null ? note.hashCode() : 0);
+        result = 31 * result + (review != null ? review.hashCode() : 0);
         return result;
     }
 
@@ -69,6 +69,6 @@ public class FeedBack extends Entity implements Serializable {
     public String toString() {
         return "FeedBack user: " + user +
                 ", localDateTime: " + localDateTime +
-                ", note: " + note;
+                ", note: " + review;
     }
 }

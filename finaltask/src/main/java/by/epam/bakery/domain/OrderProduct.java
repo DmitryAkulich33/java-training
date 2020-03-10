@@ -2,7 +2,7 @@ package by.epam.bakery.domain;
 
 import java.io.Serializable;
 
-public class OrderProduct implements Serializable {
+public class OrderProduct extends Entity implements Serializable {
     private Order order;
     private Pie pie;
 
@@ -10,7 +10,8 @@ public class OrderProduct implements Serializable {
     public OrderProduct() {
     }
 
-    public OrderProduct(Order order, Pie pie) {
+    public OrderProduct(int id, Order order, Pie pie) {
+        super(id);
         this.order = order;
         this.pie = pie;
     }
@@ -35,6 +36,7 @@ public class OrderProduct implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof OrderProduct)) return false;
+        if (!super.equals(o)) return false;
 
         OrderProduct that = (OrderProduct) o;
 
@@ -44,7 +46,8 @@ public class OrderProduct implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = order != null ? order.hashCode() : 0;
+        int result = super.hashCode();
+        result = 31 * result + (order != null ? order.hashCode() : 0);
         result = 31 * result + (pie != null ? pie.hashCode() : 0);
         return result;
     }

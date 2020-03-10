@@ -1,7 +1,7 @@
 ﻿USE `bakery_db`;
 
 INSERT INTO `user`
-(`login`, `password`, `role`, `surname`, `name`, `patronymic`, `address`, `phone`, `note`)
+(`login`, `password`, `role`, `surname`, `name_user`, `patronymic`, `address`, `phone`, `note`)
 VALUES
 ("courier", "courier",  2,  "Aleksievich", "Aleksey", "Alekseevich", "Apt 110, 31 Lubimova St, Minsk", "+375 29 1656130", "courier"),
 ("user1",   "user1",    3,  "Ivanov", "Ivan",	"Ivanovich", "Apt 18, 44 Rafieva St, Minsk", "+375 29 7434546",	"In the yard problems with parking spaces"),
@@ -11,7 +11,7 @@ VALUES
 ("user5",   "user5",    3,  "Sergeev", "Sergey", "Sergeevich", "Apt 15, 5 Asanalieva St, Minsk",  "+375 29 5056150", "In the yard problems with parking spaces");
 
 INSERT INTO `pie`
-	(`name`, `weight`, `price`, `description`, `picture`)
+	(`name_pie`, `weight`, `price`, `description`, `picture`)
 VALUES
 	("Belorussian",	1000,	24.00,	"Signature dough, rustic potatoes, with cracklings, fried mushrooms, caraway seeds and coriander", "image/Belarus.png"),
 	("Italian",		950,	22.00,	"Signature dough, sunny lemon with vitamin zest and peppermint", "image/Ital.png"),
