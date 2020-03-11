@@ -91,7 +91,7 @@ public class Pie extends Entity implements Serializable {
 
     @Override
     public String toString() {
-        return "Pie name='" + name +
+        return super.toString() + "Pie name='" + name +
                 ", weight: " + weight +
                 ", price: " + price +
                 ", description: " + description +

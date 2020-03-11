@@ -71,7 +71,7 @@ public class Order extends Entity implements Serializable {
 
     @Override
     public String toString() {
-        return "Order user: " + user +
+        return super.toString() + "Order user: " + user +
                 ", productionDate: " + productionDate +
                 ", deliveryDate: " + deliveryDate +
                 ", status: " + status;

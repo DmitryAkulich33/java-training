@@ -54,7 +54,7 @@ public class OrderProduct extends Entity implements Serializable {
 
     @Override
     public String toString() {
-        return "OrderProduct order: " + order +
+        return super.toString() + "OrderProduct order: " + order +
                 ", pie: " + pie;
     }
 }

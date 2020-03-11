@@ -83,13 +83,13 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
         executeUpdate(REMOVE_BY_ID + table + WHERE + idName, id);
     }
 
-    @Override
-    public Optional<T> findById(int id) throws DaoException {
-        String table = getTableName();
-        String idName = getIdName();
-        RowMapper<T> mapper = (RowMapper<T>) RowMapper.create(table);
-        return executeForSingleResult(FIND_ALL + table + WHERE + idName, mapper, id);
-    }
+//    @Override
+//    public Optional<T> findById(int id) throws DaoException {
+//        String table = getTableName();
+//        String idName = getIdName();
+//        RowMapper<T> mapper = (RowMapper<T>) RowMapper.create(table);
+//        return executeForSingleResult(FIND_ALL + table + WHERE + idName, mapper, id);
+//    }
 
     protected abstract String getTableName();
 

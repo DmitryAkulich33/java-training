@@ -67,7 +67,7 @@ public class FeedBack extends Entity implements Serializable {
 
     @Override
     public String toString() {
-        return "FeedBack user: " + user +
+        return super.toString() + "FeedBack user: " + user +
                 ", localDateTime: " + localDateTime +
                 ", note: " + review;
     }

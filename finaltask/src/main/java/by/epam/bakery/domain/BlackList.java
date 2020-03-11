@@ -41,6 +41,6 @@ public class BlackList extends Entity implements Serializable {
 
     @Override
     public String toString() {
-        return "BlackList user: " + user;
+        return super.toString() + "BlackList user: " + user;
     }
 }

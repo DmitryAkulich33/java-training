@@ -148,7 +148,7 @@ public class User extends Entity implements Serializable {
 
     @Override
     public String toString() {
-        return " User login: " + login +
+        return super.toString() + " User login: " + login +
                 ", password: " + password +
                 ", role: " + role +
                 ", surname: " + surname +
