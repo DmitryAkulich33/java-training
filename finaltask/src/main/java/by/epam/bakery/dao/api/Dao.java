@@ -11,7 +11,7 @@ public interface Dao<T extends Entity> {
 
     List<T> findAll() throws DaoException;
 
-    void save(String query, Object... parameters) throws DaoException;
+    void save(Object... parameters) throws DaoException;
 
     void removeById(int id) throws DaoException;
 }

@@ -16,8 +16,8 @@ import java.util.Optional;
 public abstract class AbstractDao<T extends Entity> implements Dao<T> {
     private Connection connection;
     private static final String FIND_ALL = "SELECT * FROM ";
-    private static final String REMOVE_BY_ID = "DELETE FROM";
-    private static final String WHERE = "WHERE ";
+    private static final String REMOVE_BY_ID = "DELETE FROM ";
+    private static final String WHERE = " WHERE ";
 
     AbstractDao(Connection connection) {
         this.connection = connection;
@@ -71,25 +71,29 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
         return executeQuery(FIND_ALL + table, mapper);
     }
 
-    @Override
-    public void save(String query, Object... parameters) throws DaoException {
-        executeUpdate(query, parameters);
-    }
+//    @Override
+//    public void save(String query, Object... parameters) throws DaoException {
+//        executeUpdate(query, parameters);
+//    }
 
     @Override
     public void removeById(int id) throws DaoException {
         String table = getTableName();
         String idName = getIdName();
-        executeUpdate(REMOVE_BY_ID + table + WHERE + idName, id);
+//        executeUpdate(REMOVE_BY_ID + table + WHERE + idName, id);
+        String query = REMOVE_BY_ID + table + WHERE + idName + " = ?";
+        executeUpdate(query, id);
     }
 
-//    @Override
-//    public Optional<T> findById(int id) throws DaoException {
-//        String table = getTableName();
-//        String idName = getIdName();
-//        RowMapper<T> mapper = (RowMapper<T>) RowMapper.create(table);
+    @Override
+    public Optional<T> findById(int id) throws DaoException {
+        String table = getTableName();
+        String idName = getIdName();
+        RowMapper<T> mapper = (RowMapper<T>) RowMapper.create(table);
+        String query = FIND_ALL + table + WHERE + idName + " =? ";
 //        return executeForSingleResult(FIND_ALL + table + WHERE + idName, mapper, id);
-//    }
+        return executeForSingleResult(query, mapper, id);
+    }
 
     protected abstract String getTableName();
 

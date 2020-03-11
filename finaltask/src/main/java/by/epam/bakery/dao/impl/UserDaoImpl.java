@@ -14,10 +14,12 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     public static final String ID_USER = "id_user";
     private static final String FIND_BY_LOGIN_AND_PASSWORD ="SELECT * FROM user WHERE login = ? AND password = ?";
     private static final String FIND_BY_SURNAME ="SELECT * FROM user WHERE surname = ?";
-    private static final String FIND_BY_ID ="SELECT * FROM user WHERE id_user = ?";
+//    private static final String FIND_BY_ID ="SELECT * FROM user WHERE id_user = ?";
     private static final String FIND_ALL_CLIENTS ="SELECT * FROM user WHERE role = 3";
     private static final String CHANGE_NOTE = "UPDATE user SET note = ? WHERE id_user = ?";
-//    private static final String ID_NAME = "user_id=?";
+//    private static final String REMOVE_USER_BY_ID = "DELETE FROM user WHERE id_user = ?";
+    private static final String SAVE_USER = "INSERT INTO user (login, password, role, surname, name_user, patronymic, address, phone, note)" +
+            " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     public UserDaoImpl(Connection connection) {
         super(connection);
@@ -43,9 +45,19 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         return executeQuery(FIND_ALL_CLIENTS, new UserRowMapper());
     }
 
+//    @Override
+//    public Optional<User> findById(int id) throws DaoException {
+//        return executeForSingleResult(FIND_BY_ID, new UserRowMapper(), id);
+//    }
+
+//    @Override
+//    public void removeById(int id) throws DaoException {
+//        executeUpdate(REMOVE_USER_BY_ID, id);
+//    }
+
     @Override
-    public Optional<User> findById(int id) throws DaoException {
-        return executeForSingleResult(FIND_BY_ID, new UserRowMapper(), id);
+    public void save(Object... parameters) throws DaoException {
+        executeUpdate(SAVE_USER, parameters);
     }
 
     @Override

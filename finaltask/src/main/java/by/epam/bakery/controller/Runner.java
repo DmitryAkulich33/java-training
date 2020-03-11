@@ -17,12 +17,11 @@ public class Runner {
     public static void main(String[] args) throws DaoException {
         DaoHelper daoHelper = daoHelperFactory.create();
         UserDao userDao = daoHelper.createUserDao();
-        Optional<User> user = userDao.findById(5);
+        Optional<User> user = userDao.findById(7);
         System.out.println(user);
         List<User> users = userDao.getAllClients();
         for(User userTest : users) {
             System.out.println(userTest);
         }
-
     }
 }
