@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserDaoImpl extends AbstractDao<User> implements UserDao {
-    public static final String USER_TABLE = "user";
-    public static final String ID_USER = "id_user";
+    private static final String USER_TABLE = "user";
+    private static final String ID_USER = "id_user";
     private static final String FIND_BY_LOGIN_AND_PASSWORD ="SELECT * FROM user WHERE login = ? AND password = ?";
     private static final String FIND_BY_SURNAME ="SELECT * FROM user WHERE surname = ?";
 //    private static final String FIND_BY_ID ="SELECT * FROM user WHERE id_user = ?";
