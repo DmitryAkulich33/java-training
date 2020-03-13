@@ -38,6 +38,11 @@ public class ConnectionFactory {
     }
 
     public Connection create() {
+        try {
+            Class.forName ("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         Connection connection;
         try {
             connection = DriverManager.getConnection(databaseUrl, databaseUsername, databasePassword);

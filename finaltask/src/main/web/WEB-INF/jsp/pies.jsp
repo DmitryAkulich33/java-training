@@ -20,7 +20,7 @@
     <title>Bakery</title>
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp"/>
 <div class="container-fluid pt-3">
     <div class="row">
         <ul class="ul_pages">
@@ -54,9 +54,9 @@
             <li class="li_pages">
                 <div class="button_navbar_menu">
 
-                        <button type="button" class="in_basket_menu h5" data-toggle="modal" data-target="#myModal">
-                            <a href="#" class="a_link"><img src="image/basket.png" class="ico"> BASKET</a>
-                        </button>
+                    <button type="button" class="in_basket_menu h5" data-toggle="modal" data-target="#myModal">
+                        <a href="#" class="a_link"><img src="image/basket.png" class="ico"> BASKET</a>
+                    </button>
 
                     <div class="modal fade" id="myModal">
                         <div class="modal-dialog modal-lg">
@@ -73,7 +73,8 @@
                                     <table class="text_basket">
                                         <c:forEach var="elem" items="${basket.pies}" varStatus="status">
                                             <tr>
-                                                <td>Pie is <c:out value="${ elem.name }" />, price is <c:out value="${ elem.price}" /></td>
+                                                <td>Pie is <c:out value="${ elem.name }"/>, price is <c:out
+                                                        value="${ elem.price}"/></td>
                                             </tr>
                                         </c:forEach>
                                     </table>
@@ -95,246 +96,280 @@
         </ul>
     </div>
     <br>
-    <c:forEach var="elem" items="${pies}" varStatus="status">
-        <tr>
-            <td>Pie is <c:out value="${ elem.id }"/></td>
-        </tr>
-    </c:forEach>
     <ul class="ul_pie">
+        <c:forEach var="element" items="${pies}" varStatus="status">
         <li class="li_pie">
             <table class="table_pie">
                 <tr>
-                    <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/Belarus.png">
+                    <td class="product_width" rowspan="5"><img class="image_pie rounded" src="<c:out value="${ element.picture }"/>">
                     </td>
-                    <td class="product_name">Belorussian</td>
+                    <td class="product_name"><c:out value="${ element.name }"/></td>
                 <tr>
-                    <td class="product_description">Signature dough, rustic potatoes, with cracklings, fried mushrooms,
-                        caraway seeds and coriander
-                    </td>
+                    <td class="product_description"><c:out value="${ element.description }"/></td>
                 </tr>
                 <tr>
-                    <td class="product_weight">1,0 kg.</td>
+                    <td class="product_weight"><c:out value="${ element.weight }"/> gramm</td>
                 </tr>
                 <tr>
                     <td class="product_price">
-                        <mark>24.00 BYN</mark>
+                        <mark><c:out value="${ element.price }"/>0 BYN</mark>
                     </td>
                 </tr>
                 <tr>
                     <td class="button_navbar_menu">
                         <form action="addPie" method="POST">
-                            <input type="hidden" name="pieName" value="Belorussian"/>
-                            <input type="hidden" name="piePrice" value="24.00"/>
+                            <input type="hidden" name="pieName" value="${ element.name }"/>
+                            <input type="hidden" name="piePrice" value="${ element.price }"/>
                             <input type="submit" name="button" class="in_basket" value="BUY"/>
-
-                        </form>
-
-                    </td>
-                </tr>
-            </table>
-        </li>
-        <li class="li_pie">
-            <table class="table_pie">
-                <tr>
-                    <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/Ital.png"></td>
-                    <td class="product_name">Italian</td>
-                </tr>
-                <tr>
-                    <td class="product_description">Signature dough, sunny lemon with vitamin zest and peppermint</td>
-                </tr>
-                <tr>
-                    <td class="product_weight">0,95 kg.</td>
-                </tr>
-                <tr>
-                    <td class="product_price">
-                        <mark>22.00 BYN</mark>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="button_navbar_menu">
-                        <form action="addPie" method="POST">
-                            <input type="hidden" name="pieName" value="Italian"/>
-                            <input type="hidden" name="piePrice" value="22.00"/>
-                            <input type="submit" name="button" class="in_basket" value="BUY"/>
-
                         </form>
                     </td>
                 </tr>
             </table>
         </li>
-        <li class="li_pie">
-            <table class="table_pie">
-                <tr>
-                    <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/Germ.jpg"></td>
-                    <td class="product_name">Deutsch</td>
-                </tr>
-                <tr>
-                    <td class="product_description">Signature dough, juicy flavored strawberries with ricotta</td>
-                </tr>
-                <tr>
-                    <td class="product_weight">1,05 kg.</td>
-                </tr>
-                <tr>
-                    <td class="product_price">
-                        <mark>26.00 BYN</mark>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="button_navbar_menu">
-                        <button class="in_basket" type="button">
-                            <span class="txt">BUY</span>
-                            <span class="ico"></span>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </li>
-        <li class="li_pie">
-            <table class="table_pie">
-                <tr>
-                    <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/france.png">
-                    </td>
-                    <td class="product_name">French</td>
-                </tr>
-                <tr>
-                    <td class="product_description">Signature dough, ripe spicy cherry with hints of clove</td>
-                </tr>
-                <tr>
-                    <td class="product_weight">1,0 kg.</td>
-                </tr>
-                <tr>
-                    <td class="product_price">
-                        <mark>25.00 BYN</mark>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="button_navbar_menu">
-                        <button class="in_basket" type="button">
-                            <span class="txt">BUY</span>
-                            <span class="ico"></span>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </li>
-        <li class="li_pie">
-            <table class="table_pie">
-                <tr>
-                    <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/Belg.png"></td>
-                    <td class="product_name">Belgian</td>
-                </tr>
-                <tr>
-                    <td class="product_description">Signature dough with delicate, fragrant raspberries</td>
-                </tr>
-                <tr>
-                    <td class="product_weight">0,9 kg.</td>
-                </tr>
-                <tr>
-                    <td class="product_price">
-                        <mark>20.00 BYN</mark>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="button_navbar_menu">
-                        <button class="in_basket" type="button">
-                            <span class="txt">BUY</span>
-                            <span class="ico"></span>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </li>
-        <li class="li_pie">
-            <table class="table_pie">
-                <tr>
-                    <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/Goland.png">
-                    </td>
-                    <td class="product_name">Dutch</td>
-                </tr>
-                <tr>
-                    <td class="product_description">Signature Dough, Flavored Hazelnut Poppy</td>
-                </tr>
-                <tr>
-                    <td class="product_weight">1,0 kg.</td>
-                </tr>
-                <tr>
-                    <td class="product_price">
-                        <mark>27.00 BYN</mark>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="button_navbar_menu">
-                        <button class="in_basket" type="button">
-                            <span class="txt">BUY</span>
-                            <span class="ico"></span>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </li>
-        <li class="li_pie">
-            <table class="table_pie">
-                <tr>
-                    <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/grec2.png">
-                    </td>
-                    <td class="product_name">Greek</td>
-                </tr>
-                <tr>
-                    <td class="product_description">Signature dough, flavored blackberries in cream cheese</td>
-                </tr>
-                <tr>
-                    <td class="product_weight">1,1 kg.</td>
-                </tr>
-                <tr>
-                    <td class="product_price">
-                        <mark>28.00 BYN</mark>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="button_navbar_menu">
-                        <button class="in_basket" type="button">
-                            <span class="txt">BUY</span>
-                            <span class="ico"></span>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </li>
-        <li class="li_pie">
-            <table class="table_pie">
-                <tr>
-                    <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/Irla.png"></td>
-                    <td class="product_name">Irish</td>
-                </tr>
-                <tr>
-                    <td class="product_description">Signature dough, stewed carrots with pumpkin in soft cheese, with
-                        onions
-                        and celery
-                    </td>
-                </tr>
-                <tr>
-                    <td class="product_wight">1,0 kg.</td>
-                </tr>
-                <tr>
-                    <td class="product_price">
-                        <mark>25.00 BYN</mark>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="button_navbar_menu">
-                        <button class="in_basket" type="button">
-                            <span class="txt">BUY</span>
-                            <span class="ico"></span>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </li>
+        </c:forEach>
     </ul>
-    <div class="footer">
-        <jsp:include page="footer.jsp" />
-    </div>
 
+<%--    <ul class="ul_pie">--%>
+<%--        <ul class="ul_pie">--%>
+<%--            <li class="li_pie">--%>
+<%--                <table class="table_pie">--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_width" rowspan="5"><img class="image_pie rounded" src="Belarus.png">--%>
+<%--                        </td>--%>
+<%--                        <td class="product_name">Belorussian</td>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_description">Signature dough, rustic potatoes, with cracklings, fried--%>
+<%--                            mushrooms,--%>
+<%--                            caraway seeds and coriander--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_weight">1,0 kg.</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_price">--%>
+<%--                            <mark>24.00 BYN</mark>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="button_navbar_menu">--%>
+<%--                            <form action="addPie" method="POST">--%>
+<%--                                <input type="hidden" name="pieName" value="Belorussian"/>--%>
+<%--                                <input type="hidden" name="piePrice" value="24.00"/>--%>
+<%--                                <input type="submit" name="button" class="in_basket" value="BUY"/>--%>
+
+<%--                            </form>--%>
+
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </table>--%>
+<%--            </li>--%>
+<%--            <li class="li_pie">--%>
+<%--                <table class="table_pie">--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_width" rowspan="5"><img class="image_pie rounded"--%>
+<%--                                                                   src="d:/java-training/finaltask/src/main/web/image/Ital.png">--%>
+<%--                        </td>--%>
+<%--                        <td class="product_name">Italian</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_description">Signature dough, sunny lemon with vitamin zest and peppermint--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_weight">0,95 kg.</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_price">--%>
+<%--                            <mark>22.00 BYN</mark>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="button_navbar_menu">--%>
+<%--                            <form action="addPie" method="POST">--%>
+<%--                                <input type="hidden" name="pieName" value="Italian"/>--%>
+<%--                                <input type="hidden" name="piePrice" value="22.00"/>--%>
+<%--                                <input type="submit" name="button" class="in_basket" value="BUY"/>--%>
+
+<%--                            </form>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </table>--%>
+<%--            </li>--%>
+<%--            <li class="li_pie">--%>
+<%--                <table class="table_pie">--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_width" rowspan="5"><img class="image_pie rounded" src="../../image/Germ.jpg">--%>
+<%--                        </td>--%>
+<%--                        <td class="product_name">Deutsch</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_description">Signature dough, juicy flavored strawberries with ricotta</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_weight">1,05 kg.</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_price">--%>
+<%--                            <mark>26.00 BYN</mark>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="button_navbar_menu">--%>
+<%--                            <button class="in_basket" type="button">--%>
+<%--                                <span class="txt">BUY</span>--%>
+<%--                                <span class="ico"></span>--%>
+<%--                            </button>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </table>--%>
+<%--            </li>--%>
+<%--            <li class="li_pie">--%>
+<%--                <table class="table_pie">--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_width" rowspan="5"><img class="image_pie rounded" src="/image/france.png">--%>
+<%--                        </td>--%>
+<%--                        <td class="product_name">French</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_description">Signature dough, ripe spicy cherry with hints of clove</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_weight">1,0 kg.</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_price">--%>
+<%--                            <mark>25.00 BYN</mark>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="button_navbar_menu">--%>
+<%--                            <button class="in_basket" type="button">--%>
+<%--                                <span class="txt">BUY</span>--%>
+<%--                                <span class="ico"></span>--%>
+<%--                            </button>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </table>--%>
+<%--            </li>--%>
+<%--            <li class="li_pie">--%>
+<%--                <table class="table_pie">--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/Belg.png"></td>--%>
+<%--                        <td class="product_name">Belgian</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_description">Signature dough with delicate, fragrant raspberries</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_weight">0,9 kg.</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_price">--%>
+<%--                            <mark>20.00 BYN</mark>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="button_navbar_menu">--%>
+<%--                            <button class="in_basket" type="button">--%>
+<%--                                <span class="txt">BUY</span>--%>
+<%--                                <span class="ico"></span>--%>
+<%--                            </button>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </table>--%>
+<%--            </li>--%>
+<%--            <li class="li_pie">--%>
+<%--                <table class="table_pie">--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/Goland.png">--%>
+<%--                        </td>--%>
+<%--                        <td class="product_name">Dutch</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_description">Signature Dough, Flavored Hazelnut Poppy</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_weight">1,0 kg.</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_price">--%>
+<%--                            <mark>27.00 BYN</mark>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="button_navbar_menu">--%>
+<%--                            <button class="in_basket" type="button">--%>
+<%--                                <span class="txt">BUY</span>--%>
+<%--                                <span class="ico"></span>--%>
+<%--                            </button>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </table>--%>
+<%--            </li>--%>
+<%--            <li class="li_pie">--%>
+<%--                <table class="table_pie">--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/grec2.png">--%>
+<%--                        </td>--%>
+<%--                        <td class="product_name">Greek</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_description">Signature dough, flavored blackberries in cream cheese</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_weight">1,1 kg.</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_price">--%>
+<%--                            <mark>28.00 BYN</mark>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="button_navbar_menu">--%>
+<%--                            <button class="in_basket" type="button">--%>
+<%--                                <span class="txt">BUY</span>--%>
+<%--                                <span class="ico"></span>--%>
+<%--                            </button>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </table>--%>
+<%--            </li>--%>
+<%--            <li class="li_pie">--%>
+<%--                <table class="table_pie">--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_width" rowspan="5"><img class="image_pie rounded" src="image/Irla.png"></td>--%>
+<%--                        <td class="product_name">Irish</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_description">Signature dough, stewed carrots with pumpkin in soft cheese,--%>
+<%--                            with--%>
+<%--                            onions--%>
+<%--                            and celery--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_wight">1,0 kg.</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="product_price">--%>
+<%--                            <mark>25.00 BYN</mark>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td class="button_navbar_menu">--%>
+<%--                            <button class="in_basket" type="button">--%>
+<%--                                <span class="txt">BUY</span>--%>
+<%--                                <span class="ico"></span>--%>
+<%--                            </button>--%>
+<%--                        </td>--%>
+<%--                    </tr>--%>
+<%--                </table>--%>
+<%--            </li>--%>
+<%--        </ul>--%>
+        <div class="footer">
+            <jsp:include page="footer.jsp"/>
+        </div>
 </div>
 </body>
 </html>
