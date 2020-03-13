@@ -355,11 +355,13 @@
 <%--</body>--%>
 <%--</html>--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="rdct" uri="/WEB-INF/tld/RedirectTag.tld" %>
 <!doctype html>
 <html>
 <head>
 </head>
 <body>
-<jsp:forward page="WEB-INF/jsp/pies.jsp"></jsp:forward>
+<%--<jsp:forward page="WEB-INF/jsp/pies.jsp"></jsp:forward>--%>
+<rdct:redirect page="controller?command=showMainPage"/>
 </body>
 </html>

@@ -95,6 +95,11 @@
         </ul>
     </div>
     <br>
+    <c:forEach var="elem" items="${pies}" varStatus="status">
+        <tr>
+            <td>Pie is <c:out value="${ elem.id }"/></td>
+        </tr>
+    </c:forEach>
     <ul class="ul_pie">
         <li class="li_pie">
             <table class="table_pie">

@@ -14,7 +14,7 @@ import java.util.Properties;
 public class ConnectionFactory {
     private static final String CONNECTION_ERROR = "Failed to create a database connection";
     private static final String READ_ERROR ="Could not read the property file to create a database connection";
-    private static final String PATH_TO_PROPERTIES = "src/main/resources/database.properties";
+    private static final String PATH_TO_PROPERTIES = "d:/java-training/finaltask/src/main/resources/database.properties";
     private static String databaseUrl;
     private static String databaseUsername;
     private static String databasePassword;
@@ -29,9 +29,12 @@ public class ConnectionFactory {
         final String url = "url";
         final String username = "username";
         final String password = "password";
-        databaseUrl = properties.getProperty(url);
-        databaseUsername = properties.getProperty(username);
-        databasePassword = properties.getProperty(password);
+//        databaseUrl = properties.getProperty(url);
+//        databaseUsername = properties.getProperty(username);
+//        databasePassword = properties.getProperty(password);
+        databaseUrl = "jdbc:mysql://localhost:3306/bakery_db?user=root&password=5646130";
+        databaseUsername = "root";
+        databasePassword = "5646130";
     }
 
     public Connection create() {

@@ -13,19 +13,21 @@ public class PieDaoImpl extends AbstractDao<Pie> implements PieDao {
     private static final String PIE_TABLE = "pie";
     private static final String ID_PIE = "id_pie";
     private static final String FIND_BY_WEIGHT ="SELECT * FROM pie WHERE weight = ?";
+    private static final String SORT_BY_INCREASE_PRICE ="SELECT * FROM pie ORDER BY price";
+    private static final String SORT_BY_DECREASE_PRICE ="SELECT * FROM pie ORDER BY price DESC";
 
     public PieDaoImpl(Connection connection) {
         super(connection);
     }
 
     @Override
-    public List<Pie> sortByIncreasePrice(List<Pie> pies) throws DaoException {
-        return null;
+    public List<Pie> sortByIncreasePrice() throws DaoException {
+        return executeQuery(SORT_BY_INCREASE_PRICE, new PieRowMapper());
     }
 
     @Override
-    public List<Pie> sortByDecreasePrice(List<Pie> pies) throws DaoException {
-        return null;
+    public List<Pie> sortByDecreasePrice() throws DaoException {
+        return executeQuery(SORT_BY_DECREASE_PRICE, new PieRowMapper());
     }
 
     @Override
