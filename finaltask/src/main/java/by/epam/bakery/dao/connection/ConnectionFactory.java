@@ -29,12 +29,9 @@ public class ConnectionFactory {
         final String url = "url";
         final String username = "username";
         final String password = "password";
-//        databaseUrl = properties.getProperty(url);
-//        databaseUsername = properties.getProperty(username);
-//        databasePassword = properties.getProperty(password);
-        databaseUrl = "jdbc:mysql://localhost:3306/bakery_db?user=root&password=5646130";
-        databaseUsername = "root";
-        databasePassword = "5646130";
+        databaseUrl = properties.getProperty(url);
+        databaseUsername = properties.getProperty(username);
+        databasePassword = properties.getProperty(password);
     }
 
     public Connection create() {

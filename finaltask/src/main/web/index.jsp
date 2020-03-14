@@ -363,6 +363,6 @@
 </head>
 <body>
 <%--<jsp:forward page="WEB-INF/jsp/pies.jsp"></jsp:forward>--%>
-<rdct:redirect page="controller?command=showMainPage"/>
+<rdct:redirect page="controller?command=show_main_page"/>
 </body>
 </html>

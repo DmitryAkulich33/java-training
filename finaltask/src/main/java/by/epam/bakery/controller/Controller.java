@@ -1,10 +1,7 @@
 package by.epam.bakery.controller;
 
 import by.epam.bakery.controller.command.Command;
-import by.epam.bakery.controller.command.CommandFactory;
-import by.epam.bakery.controller.command.CommandName;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.service.exception.ServiceException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,8 +28,10 @@ public class Controller extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String command = request.getParameter(COMMAND);
-        CommandFactory factory = new CommandFactory();
-        Command concreteCommand = factory.findCommand(command);
+//        CommandFactory factory = new CommandFactory();
+        CommandProvider commandProvider = new CommandProvider();
+//        Command concreteCommand = factory.findCommand(command);
+        Command concreteCommand = commandProvider.getCommand(command);
         CommandResult result = concreteCommand.execute(request, response);
         dispatch(request, response, result);
     }
@@ -49,10 +48,10 @@ public class Controller extends HttpServlet {
         }
     }
 
-    private String createRedirectExceprion(Throwable exception){
-        String error = exception.getMessage();
-        String url = RedirectUrlCreator.create(CommandName.SHOW_ERROR_PAGE) + ERROR_PARAMETER + error;
-        return url;
-    }
+//    private String createRedirectExceprion(Throwable exception){
+//        String error = exception.getMessage();
+//        String url = RedirectUrlCreator.create(CommandName.SHOW_ERROR_PAGE) + ERROR_PARAMETER + error;
+//        return url;
+//    }
 }
 
