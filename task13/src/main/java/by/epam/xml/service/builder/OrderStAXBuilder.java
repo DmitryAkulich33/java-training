@@ -49,19 +49,16 @@ public class OrderStAXBuilder extends BaseBuilder {
                 }
             }
         } catch (XMLStreamException ex) {
-            log.error("StAX parsing error!");
-            System.err.println("StAX parsing error! " + ex.getMessage());
+            log.error("StAX parsing error!" + ex.getMessage());
         } catch (FileNotFoundException ex) {
-            log.error("File not found.");
-            System.err.println("File " + fileName + " not found! " + ex);
+            log.error("File not found." + ex.getMessage());
         } finally {
             try {
                 if (inputStream != null) {
                     inputStream.close();
                 }
             } catch (IOException e) {
-                log.error("Impossible close file.");
-                System.err.println("Impossible close file " + fileName + " : " + e);
+                log.error("Impossible close file." + e.getMessage());
             }
         }
     }

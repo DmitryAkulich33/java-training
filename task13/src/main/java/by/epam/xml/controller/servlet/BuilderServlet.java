@@ -1,5 +1,6 @@
 package by.epam.xml.controller.servlet;
 
+import by.epam.xml.controller.Controller;
 import by.epam.xml.domain.*;
 import by.epam.xml.service.Director;
 import by.epam.xml.service.builder.OrderDOMBuilder;
@@ -25,6 +26,7 @@ import java.util.*;
 @MultipartConfig
 public class BuilderServlet extends HttpServlet {
     private static Logger log = LogManager.getLogger(BuilderServlet.class.getName());
+    Controller controller = new Controller();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -48,6 +50,7 @@ public class BuilderServlet extends HttpServlet {
             for (FileItem part: parts) {
                 if (!part.isFormField()){
                     filePath = "d:/java-training/task13/src/main/resources/uploads/" + part.getName();
+//                    filePath = "e:/myjava/task13/src/main/resources/uploads/" + part.getName();
                     File file = new File(filePath);
                     part.write(file);
                     log.info("Text path is " + filePath);
@@ -60,7 +63,8 @@ public class BuilderServlet extends HttpServlet {
             log.error("Problems with servlet: " + e.getMessage());
         }
 
-        Set<Order> orders = createSet(parserValue, filePath);
+        Set<Order> orders = controller.execute(parserValue, filePath);
+//        Set<Order> orders = createSet(parserValue, filePath);
 
         request.setAttribute("orders", orders);
         request.getRequestDispatcher("/WEB-INF/jsp/table.jsp").forward(request, response);

@@ -35,7 +35,6 @@ public class OrderDOMBuilder extends BaseBuilder {
             docBuilder = factory.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
             log.error("Parser configuration error.");
-            System.err.println("Parser configuration error: " + e);
         }
     }
 
@@ -57,9 +56,9 @@ public class OrderDOMBuilder extends BaseBuilder {
                 orders.add(order);
             }
         } catch (IOException e) {
-            System.err.println("File error or I/O error: " + e);
+            log.error("File error or I/O error: " + e);
         } catch (SAXException e) {
-            System.err.println("Parsing failure: " + e);
+            log.error("Parsing failure: " + e);
         }
     }
 

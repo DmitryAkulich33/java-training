@@ -38,11 +38,9 @@ public class OrderSAXBuilder extends BaseBuilder {
             log.info("Parsing an XML document.");
             reader.parse(fileName);
         } catch (SAXException e) {
-            log.error("SAX parser error.");
-            System.err.print("SAX parser error: " + e);
+            log.error("SAX parser error." + e);
         } catch (IOException e) {
-            log.error("Error I/O flow.");
-            System.err.print("Error I/O flow: " + e);
+            log.error("Error I/O flow." + e);
         }
         orders = sh.getOrders();
     }

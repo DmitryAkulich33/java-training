@@ -13,7 +13,7 @@
     <input type="radio" id="sax" name="parser" value="sax">
     <label for="sax">SAX</label><br>
     <input type="radio" id="stax" name="parser" value="stax">
-    <label for="stax">StAX</label><br>
+    <label for="stax">STAX</label><br>
     <input type="radio" id="dom" name="parser" value="dom">
     <label for="dom">DOM</label>
     <br>
