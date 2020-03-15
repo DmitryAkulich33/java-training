@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>
 <jsp:useBean id="basket" class="by.epam.bakery.domain.Basket" scope="application"/>
+<jsp:useBean id="user" class="by.epam.bakery.domain.User" scope="application"/>
 <!doctype html>
 <html>
 <head>
@@ -21,7 +22,33 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
+<%--<jsp:include page="login.jsp"/>--%>
 <div class="container-fluid pt-3">
+    <div>
+    <c:choose>
+        <c:when test="${user.login=='user1'}">
+            Welcome, <c:out value="${ user.surname }"/>
+            <br />
+        </c:when>
+        <c:otherwise>
+            <form action="controller" method="POST">
+                <div class="login">
+                    <label for="login-field">Login</label>
+                    <input type="text" name="login" id="login-field">
+                </div>
+                <div class="password">
+                    <label for="password-field">Password</label>
+                    <input type="password" name="password" id="password-field" value="">
+                </div>
+                <input type="hidden" name="command" value="login">
+                <div class="enter">
+                    <input type="submit" value="Submit" class="button_enter">
+                </div>
+            </form>
+            <br>
+        </c:otherwise>
+    </c:choose>
+    </div>
     <div class="row">
         <ul class="ul_pages">
             <li class="li_pages">
@@ -90,7 +117,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </li>
         </ul>
