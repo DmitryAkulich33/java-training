@@ -16,7 +16,7 @@ public class UserService {
         this.daoHelperFactory = daoHelperFactory;
     }
 
-    public Optional<User> login(String login, String password) throws ServiceException {
+    public User login(String login, String password) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             return dao.findUserByLoginAndPassword(login, password);

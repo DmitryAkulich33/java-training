@@ -26,12 +26,12 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public Optional<User> findUserByLoginAndPassword(String login, String password) throws DaoException {
+    public User findUserByLoginAndPassword(String login, String password) throws DaoException {
         return executeForSingleResult(FIND_BY_LOGIN_AND_PASSWORD, new UserRowMapper(), login, password);
     }
 
     @Override
-    public Optional<User> findUserBySurname(String surname) throws DaoException {
+    public User findUserBySurname(String surname) throws DaoException {
         return executeForSingleResult(FIND_BY_SURNAME, new UserRowMapper(), surname);
     }
 

@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserDao extends Dao<User> {
-    Optional<User> findUserByLoginAndPassword(String login, String password) throws DaoException;
-    Optional<User> findUserBySurname(String surname) throws DaoException;
+    User findUserByLoginAndPassword(String login, String password) throws DaoException;
+    User findUserBySurname(String surname) throws DaoException;
     void changeNote(String note, int userId) throws DaoException;
     List<User> getAllClients() throws DaoException;
 }

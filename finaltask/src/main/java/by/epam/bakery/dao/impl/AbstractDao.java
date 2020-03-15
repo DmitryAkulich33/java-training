@@ -53,14 +53,14 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
         return statement;
     }
 
-    Optional<T> executeForSingleResult(String query, RowMapper<T> builder, Object... params) throws DaoException {
+    T executeForSingleResult(String query, RowMapper<T> builder, Object... params) throws DaoException {
         List<T> items = executeQuery(query, builder, params);
         if (items.size() == 1) {
-            return Optional.of(items.get(0));
+            return items.get(0);
         } else if (items.size() > 1) {
             throw new DaoException("More than one record found");
         } else {
-            return Optional.empty();
+            throw new DaoException("No records");
         }
     }
 
@@ -86,7 +86,7 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
     }
 
     @Override
-    public Optional<T> findById(int id) throws DaoException {
+    public T findById(int id) throws DaoException {
         String table = getTableName();
         String idName = getIdName();
         RowMapper<T> mapper = (RowMapper<T>) RowMapper.create(table);

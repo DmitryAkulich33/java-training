@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="rdct" uri="/WEB-INF/tld/RedirectTag.tld" %>
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>
 <jsp:useBean id="basket" class="by.epam.bakery.domain.Basket" scope="application"/>
 <jsp:useBean id="user" class="by.epam.bakery.domain.User" scope="application"/>
@@ -32,18 +34,19 @@
         </c:when>
         <c:otherwise>
             <form action="controller" method="POST">
-                <div class="login">
+<%--                <div class="login">--%>
                     <label for="login-field">Login</label>
                     <input type="text" name="login" id="login-field">
-                </div>
-                <div class="password">
+<%--                </div>--%>
+<%--                <div class="password">--%>
                     <label for="password-field">Password</label>
-                    <input type="password" name="password" id="password-field" value="">
-                </div>
-                <input type="hidden" name="command" value="login">
-                <div class="enter">
+                    <input type="password" name="password" id="password-field">
+<%--                </div>--%>
+
+<%--                <div class="enter">--%>
+                    <input type="hidden" name="command" value="login">
                     <input type="submit" value="Submit" class="button_enter">
-                </div>
+<%--                </div>--%>
             </form>
             <br>
         </c:otherwise>
