@@ -221,3 +221,14 @@
 .text_basket {
     text-align: left;
 }
+.welcome {
+    margin-left: 100px;
+    font: 20px/1 Malina,sans-serif;
+    font-weight: 600;
+}
+.wrong_login {
+    margin-left: 40px;
+    font: 16px/1 Malina,sans-serif;
+    font-weight: 600;
+    color: #FF0000
+}

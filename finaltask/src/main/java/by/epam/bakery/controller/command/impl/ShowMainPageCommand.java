@@ -3,7 +3,8 @@ package by.epam.bakery.controller.command.impl;
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.domain.Pie;
-import by.epam.bakery.service.PieService;
+import by.epam.bakery.service.factory.ServiceFactory;
+import by.epam.bakery.service.impl.PieServiceImpl;
 import by.epam.bakery.service.exception.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,17 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowMainPageCommand implements Command {
-    private PieService pieService;
-
-    public ShowMainPageCommand(PieService pieService){
-        this.pieService = pieService;
-    }
+//    private PieServiceImpl pieServiceImpl;
+//
+//    public ShowMainPageCommand(PieServiceImpl pieServiceImpl){
+//        this.pieServiceImpl = pieServiceImpl;
+//    }
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
         List<Pie> pies = new ArrayList<>();
         try {
-            pies = pieService.showAllPies();
+//            pies = pieServiceImpl.showAllPies();
+            pies = serviceFactory.getPieService().showAllPies();
         } catch (ServiceException e) {
             System.out.println(e.getMessage());
         }

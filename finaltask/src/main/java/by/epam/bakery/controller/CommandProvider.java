@@ -6,8 +6,8 @@ import by.epam.bakery.controller.command.impl.LoginCommand;
 import by.epam.bakery.controller.command.impl.ShowMainPageCommand;
 import by.epam.bakery.controller.command.impl.WrongCommand;
 import by.epam.bakery.dao.DaoHelperFactory;
-import by.epam.bakery.service.PieService;
-import by.epam.bakery.service.UserService;
+import by.epam.bakery.service.impl.PieServiceImpl;
+import by.epam.bakery.service.impl.UserServiceImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,8 +16,8 @@ final class CommandProvider {
     private final Map<CommandName, Command> repository = new HashMap<>();
 
     CommandProvider() {
-        repository.put(CommandName.SHOW_MAIN_PAGE, new ShowMainPageCommand(new PieService(new DaoHelperFactory())));
-        repository.put(CommandName.LOGIN, new LoginCommand(new UserService(new DaoHelperFactory())));
+        repository.put(CommandName.SHOW_MAIN_PAGE, new ShowMainPageCommand());
+        repository.put(CommandName.LOGIN, new LoginCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

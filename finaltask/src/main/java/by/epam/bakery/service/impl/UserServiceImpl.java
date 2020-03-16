@@ -1,18 +1,19 @@
-package by.epam.bakery.service;
+package by.epam.bakery.service.impl;
 
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
 import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.User;
+import by.epam.bakery.service.api.UserService;
 import by.epam.bakery.service.exception.ServiceException;
 
 import java.util.Optional;
 
-public class UserService {
+public class UserServiceImpl implements UserService {
     private DaoHelperFactory daoHelperFactory;
 
-    public UserService(DaoHelperFactory daoHelperFactory) {
+    public UserServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
 

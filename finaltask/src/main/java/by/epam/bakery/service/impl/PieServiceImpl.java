@@ -1,18 +1,19 @@
-package by.epam.bakery.service;
+package by.epam.bakery.service.impl;
 
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
 import by.epam.bakery.dao.api.PieDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.Pie;
+import by.epam.bakery.service.api.PieService;
 import by.epam.bakery.service.exception.ServiceException;
 
 import java.util.List;
 
-public class PieService {
+public class PieServiceImpl implements PieService {
     private DaoHelperFactory daoHelperFactory;
 
-    public PieService(DaoHelperFactory daoHelperFactory) {
+    public PieServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
 

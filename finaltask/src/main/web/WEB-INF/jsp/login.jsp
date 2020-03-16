@@ -16,45 +16,46 @@
 </head>
 <body>
 <div class="container-fluid pt-3">
-    <c:choose>
-        <c:when test="${user.login=='user1'}">
-            Welcome, <c:out value="${ user.surname }"/>
-            <br />
-        </c:when>
-        <c:otherwise>
-            <form action="controller" method="POST">
-                <div class="login">
+    <div>
+        <c:choose>
+            <c:when test="${user.role == 3}">
+                <div class="welcome">
+                    <p>Welcome, <c:out value="${ user.surname }"/> <c:out value="${ user.name }"/> <c:out value="${ user.patronymic }"/></p>
+                </div>
+                <br/>
+            </c:when>
+            <c:otherwise>
+                <form action="controller" method="POST">
                     <label for="login-field">Login</label>
                     <input type="text" name="login" id="login-field">
-                </div>
-                <div class="password">
                     <label for="password-field">Password</label>
-                    <input type="password" name="password" id="password-field" value="">
-                </div>
-                <input type="hidden" name="command" value="login">
-                <div class="enter">
+                    <input type="password" name="password" id="password-field">
+                    <input type="hidden" name="command" value="login">
                     <input type="submit" value="Submit" class="button_enter">
-                </div>
-            </form>
-            <br>
-        </c:otherwise>
-    </c:choose>
+                    <div class="wrong_login">
+                        <p><c:out value="${ message }"/></p>
+                    </div>
+                </form>
+                <br>
+            </c:otherwise>
+        </c:choose>
+    </div>
 
-<%--    <form action="controller" method="POST">--%>
-<%--        <div class="login">--%>
-<%--            <label for="login-field">Login</label>--%>
-<%--            <input type="text" name="login" id="login-field">--%>
-<%--        </div>--%>
-<%--        <div class="password">--%>
-<%--            <label for="password-field">Password</label>--%>
-<%--            <input type="password" name="password" id="password-field" value="">--%>
-<%--        </div>--%>
-<%--        <input type="hidden" name="command" value="login">--%>
-<%--        <div class="enter">--%>
-<%--            <input type="submit" value="Submit" class="button_enter">--%>
-<%--        </div>--%>
-<%--    </form>--%>
-<%--    <br>--%>
+    <%--    <form action="controller" method="POST">--%>
+    <%--        <div class="login">--%>
+    <%--            <label for="login-field">Login</label>--%>
+    <%--            <input type="text" name="login" id="login-field">--%>
+    <%--        </div>--%>
+    <%--        <div class="password">--%>
+    <%--            <label for="password-field">Password</label>--%>
+    <%--            <input type="password" name="password" id="password-field" value="">--%>
+    <%--        </div>--%>
+    <%--        <input type="hidden" name="command" value="login">--%>
+    <%--        <div class="enter">--%>
+    <%--            <input type="submit" value="Submit" class="button_enter">--%>
+    <%--        </div>--%>
+    <%--    </form>--%>
+    <%--    <br>--%>
 </div>
 </body>
 </html>
