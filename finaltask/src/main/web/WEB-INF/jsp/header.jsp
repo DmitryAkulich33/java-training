@@ -29,18 +29,6 @@
             </tr>
         </table>
     </div>
-<%--    <div class="login">--%>
-<%--        <label for="login-field">Login</label>--%>
-<%--        <input type="text" name="login" id="login-field">--%>
-<%--    </div>--%>
-<%--    <div class="password">--%>
-<%--        <label for="password-field">Password</label>--%>
-<%--        <input type="password" name="password" id="password-field" value="">--%>
-<%--    </div>--%>
-<%--    <div class="enter">--%>
-<%--        <input type="submit" value="Submit" class="button_enter">--%>
-<%--    </div>--%>
-<%--    <br>--%>
 </div>
 </body>
 </html>

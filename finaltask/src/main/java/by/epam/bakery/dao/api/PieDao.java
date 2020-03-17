@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface PieDao extends Dao<Pie> {
     List<Pie> sortByIncreasePrice() throws DaoException;
-    List<Pie> sortByDecreasePrice() throws DaoException;
+    List<Pie> sortByReducePrice() throws DaoException;
     List<Pie> findByWeight(int weight) throws DaoException;
 }

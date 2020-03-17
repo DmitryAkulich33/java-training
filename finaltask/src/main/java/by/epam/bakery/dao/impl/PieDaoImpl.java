@@ -26,7 +26,7 @@ public class PieDaoImpl extends AbstractDao<Pie> implements PieDao {
     }
 
     @Override
-    public List<Pie> sortByDecreasePrice() throws DaoException {
+    public List<Pie> sortByReducePrice() throws DaoException {
         return executeQuery(SORT_BY_DECREASE_PRICE, new PieRowMapper());
     }
 

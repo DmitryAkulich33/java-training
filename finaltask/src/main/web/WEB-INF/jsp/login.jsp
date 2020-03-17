@@ -21,6 +21,7 @@
             <c:when test="${user.role == 3}">
                 <div class="welcome">
                     <p>Welcome, <c:out value="${ user.surname }"/> <c:out value="${ user.name }"/> <c:out value="${ user.patronymic }"/></p>
+                    <a class= "nav_link" href="${request.contextPath}controller?command=log_out">Exit</a>
                 </div>
                 <br/>
             </c:when>

@@ -141,13 +141,6 @@
     background-color: #7CFC00;
 }
 
-/*html {*/
-/*    background: url(images/fon1.png) no-repeat center center fixed;*/
-/*    -webkit-background-size: cover;*/
-/*    -moz-background-size: cover;*/
-/*    -o-background-size: cover;*/
-/*    background-size: cover;*/
-/*}*/
 .in_type_menu {
     color: #000000;
     font: 20px/22px Malina,sans-serif;
@@ -231,4 +224,24 @@
     font: 16px/1 Malina,sans-serif;
     font-weight: 600;
     color: #FF0000
+}
+
+.dropdown_sort{
+    color: #fff;
+    background-color: #778899;
+    border-color: #000000;
+    margin-left: 90px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.dropdown_sort:hover {
+    color: #fff;
+    background-color: #778899;
+    border-color: #000000;
+}
+.dropdown_sort:focus {
+    color: #fff;
+    background-color: #778899;
+    border-color: #000000;
 }

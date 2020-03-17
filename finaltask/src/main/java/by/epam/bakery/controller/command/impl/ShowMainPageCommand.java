@@ -9,27 +9,40 @@ import by.epam.bakery.service.exception.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShowMainPageCommand implements Command {
-//    private PieServiceImpl pieServiceImpl;
-//
-//    public ShowMainPageCommand(PieServiceImpl pieServiceImpl){
-//        this.pieServiceImpl = pieServiceImpl;
-//    }
+    private static final String SORT_STATUS = "sortStatus";
+    private static final String PRICE_INCREASE = "increasePrice";
+    private static final String PRICE_REDUCE = "reducePrice";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        HttpSession session = request.getSession();
+        String value = (String) session.getAttribute(SORT_STATUS);
+        List<Pie> pies = getList(value);
+        request.setAttribute("pies", pies);
+        return CommandResult.forward("/WEB-INF/jsp/pies.jsp");
+    }
+
+    public List<Pie> getList (String value){
         List<Pie> pies = new ArrayList<>();
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
         try {
-//            pies = pieServiceImpl.showAllPies();
-            pies = serviceFactory.getPieService().showAllPies();
+            if (value != null) {
+                if (value.equals(PRICE_INCREASE)) {
+                    pies = serviceFactory.getPieService().sortByPriceIncrease();
+                } else if (value.equals(PRICE_REDUCE)) {
+                    pies =serviceFactory.getPieService().sortByPriceReduce();
+                }
+            } else {
+                pies = serviceFactory.getPieService().showAllPies();
+            }
         } catch (ServiceException e) {
             System.out.println(e.getMessage());
         }
-        request.setAttribute("pies", pies);
-        return CommandResult.forward("/WEB-INF/jsp/pies.jsp");
+        return pies;
     }
 }

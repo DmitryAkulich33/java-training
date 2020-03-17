@@ -25,7 +25,7 @@ public class Runner {
             System.out.println(piesTest);
         }
         System.out.println();
-        List<Pie> pies2 = pieDao.sortByDecreasePrice();
+        List<Pie> pies2 = pieDao.sortByReducePrice();
         for(Pie piesTest : pies2) {
             System.out.println(piesTest);
         }

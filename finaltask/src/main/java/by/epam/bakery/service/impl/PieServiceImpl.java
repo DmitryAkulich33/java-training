@@ -25,4 +25,22 @@ public class PieServiceImpl implements PieService {
             throw new ServiceException(e);
         }
     }
+
+    public List<Pie> sortByPriceIncrease() throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            return dao.sortByIncreasePrice();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public List<Pie> sortByPriceReduce() throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            return dao.sortByReducePrice();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

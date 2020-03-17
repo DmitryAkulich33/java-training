@@ -2,12 +2,7 @@ package by.epam.bakery.controller;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandName;
-import by.epam.bakery.controller.command.impl.LoginCommand;
-import by.epam.bakery.controller.command.impl.ShowMainPageCommand;
-import by.epam.bakery.controller.command.impl.WrongCommand;
-import by.epam.bakery.dao.DaoHelperFactory;
-import by.epam.bakery.service.impl.PieServiceImpl;
-import by.epam.bakery.service.impl.UserServiceImpl;
+import by.epam.bakery.controller.command.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +13,9 @@ final class CommandProvider {
     CommandProvider() {
         repository.put(CommandName.SHOW_MAIN_PAGE, new ShowMainPageCommand());
         repository.put(CommandName.LOGIN, new LoginCommand());
+        repository.put(CommandName.LOG_OUT, new LogoutCommand());
+        repository.put(CommandName.SORT_BY_INCREASE_PRICE, new SorterByPriceIncreaseCommand());
+        repository.put(CommandName.SORT_BY_REDUCTION_PRICE, new SorterByPriceReductionCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 
