@@ -1,11 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="pie" class="by.epam.xml.domain.Pie" scope="application"/>
 <jsp:useBean id="client" class="by.epam.xml.domain.Client" scope="application"/>
 <jsp:useBean id="order" class="by.epam.xml.domain.Order" scope="application"/>
 <%@ page import="java.util.Set" %>
 <%@ page import="java.time.LocalDateTime" %>
-
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
 
 <!doctype html>
 <html>
@@ -18,16 +20,16 @@
     <br>
 <table>
     <tr>
-        <th>OrderId</th>
-        <th>OrderStatus</th>
-        <th>ClientName</th>
-        <th>ClientSurname</th>
-        <th>ClientPatronymic</th>
-        <th>PieName</th>
-        <th>PieWeight</th>
-        <th>PiePrice</th>
-        <th>ProductionDate</th>
-        <th>DeliveryDate</th>
+        <th><fmt:message key="table.orderId"/></th>
+        <th><fmt:message key="table.orderStatus"/></th>
+        <th><fmt:message key="table.clientName"/></th>
+        <th><fmt:message key="table.clientSurname"/></th>
+        <th><fmt:message key="table.clientPatronymic"/></th>
+        <th><fmt:message key="table.pieName"/></th>
+        <th><fmt:message key="table.pieWeight"/></th>
+        <th><fmt:message key="table.piePrice"/></th>
+        <th><fmt:message key="table.productionDate"/></th>
+        <th><fmt:message key="table.deliveryDate"/></th>
     </tr>
     <c:forEach var="elem" items="${orders}">
     <tr>
@@ -66,6 +68,6 @@
     </tr>
 </table>
 <br>
-<a href="<c:url value="index.jsp"/>">Back</a>
+<a href="<c:url value="index.jsp"/>"><fmt:message key="message.back"/></a>
 </body>
 </html>

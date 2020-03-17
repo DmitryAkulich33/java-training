@@ -16,7 +16,8 @@ import java.io.IOException;
 public class ValidatorXSD {
     private static Logger log = LogManager.getLogger(ValidatorXSD.class.getName());
     private final String language =  XMLConstants.W3C_XML_SCHEMA_NS_URI;
-    private final String schemaName =  "e:/myjava/task13/src/main/resources/xml/orders.xsd";
+//    private final String schemaName =  "e:/myjava/task13/src/main/resources/xml/orders.xsd";
+    private final String schemaName =  "d:/java-training/task13/src/main/resources/xml/orders.xsd";
 
     public Boolean isValid (String fileName){
         SchemaFactory factory = SchemaFactory.newInstance(language);

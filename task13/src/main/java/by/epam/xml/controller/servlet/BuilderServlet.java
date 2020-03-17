@@ -26,7 +26,7 @@ import java.util.*;
 @MultipartConfig
 public class BuilderServlet extends HttpServlet {
     private static Logger log = LogManager.getLogger(BuilderServlet.class.getName());
-    Controller controller = new Controller();
+    private Controller controller = new Controller();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -64,8 +64,6 @@ public class BuilderServlet extends HttpServlet {
         }
 
         Set<Order> orders = controller.execute(parserValue, filePath);
-//        Set<Order> orders = createSet(parserValue, filePath);
-
         request.setAttribute("orders", orders);
         request.getRequestDispatcher("/WEB-INF/jsp/table.jsp").forward(request, response);
     }
