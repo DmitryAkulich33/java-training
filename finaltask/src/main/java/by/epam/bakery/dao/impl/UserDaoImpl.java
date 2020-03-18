@@ -14,10 +14,13 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String ID_USER = "id_user";
     private static final String FIND_BY_LOGIN_AND_PASSWORD ="SELECT * FROM user WHERE login = ? AND password = ?";
     private static final String FIND_BY_SURNAME ="SELECT * FROM user WHERE surname = ?";
-//    private static final String FIND_BY_ID ="SELECT * FROM user WHERE id_user = ?";
     private static final String FIND_ALL_CLIENTS ="SELECT * FROM user WHERE role = 3";
     private static final String CHANGE_NOTE = "UPDATE user SET note = ? WHERE id_user = ?";
-//    private static final String REMOVE_USER_BY_ID = "DELETE FROM user WHERE id_user = ?";
+    private static final String CHANGE_NAME = "UPDATE user SET name_user = ? WHERE id_user = ?";
+    private static final String CHANGE_SURNAME = "UPDATE user SET surname = ? WHERE id_user = ?";
+    private static final String CHANGE_PATRONYMIC = "UPDATE user SET patronymic = ? WHERE id_user = ?";
+    private static final String CHANGE_ADDRESS = "UPDATE user SET address = ? WHERE id_user = ?";
+    private static final String CHANGE_PHONE = "UPDATE user SET phone = ? WHERE id_user = ?";
     private static final String SAVE_USER = "INSERT INTO user (login, password, role, surname, name_user, patronymic, address, phone, note)" +
             " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -38,6 +41,31 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     @Override
     public void changeNote(String note, int userId) throws DaoException {
         executeUpdate(CHANGE_NOTE, note, userId);
+    }
+
+    @Override
+    public void changeName(String newName, int userId) throws DaoException {
+        executeUpdate(CHANGE_NAME, newName, userId);
+    }
+
+    @Override
+    public void changeSurname(String newSurname, int userId) throws DaoException {
+        executeUpdate(CHANGE_SURNAME, newSurname, userId);
+    }
+
+    @Override
+    public void changePatronymic(String newPatronymic, int userId) throws DaoException {
+        executeUpdate(CHANGE_PATRONYMIC, newPatronymic, userId);
+    }
+
+    @Override
+    public void changeAddress(String newAddress, int userId) throws DaoException {
+        executeUpdate(CHANGE_ADDRESS, newAddress, userId);
+    }
+
+    @Override
+    public void changePhone(String newPhone, int userId) throws DaoException {
+        executeUpdate(CHANGE_PHONE, newPhone, userId);
     }
 
     @Override

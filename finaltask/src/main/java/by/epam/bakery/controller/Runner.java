@@ -16,6 +16,7 @@ public class Runner {
         DaoHelper daoHelper = daoHelperFactory.create();
         UserDao userDao = daoHelper.createUserDao();
         PieDao pieDao = daoHelper.createPieDao();
+        userDao.changeName("Ivan", 3);
         User user = userDao.findUserByLoginAndPassword("user1", "user1");
 //        List<User> users = userDao.getAllClients();
         System.out.println(user);

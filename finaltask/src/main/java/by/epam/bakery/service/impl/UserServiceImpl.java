@@ -25,4 +25,49 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException(e);
         }
     }
+
+    public void changeName(String newName, int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            dao.changeName(newName, userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void changeSurname(String newSurname, int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            dao.changeSurname(newSurname, userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void changePatronymic(String newPatronymic, int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            dao.changePatronymic(newPatronymic, userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void changeAddress(String newAddress, int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            dao.changeAddress(newAddress, userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void changePhone(String newPhone, int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            dao.changePhone(newPhone, userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

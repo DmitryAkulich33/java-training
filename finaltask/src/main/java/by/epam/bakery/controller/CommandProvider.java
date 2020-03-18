@@ -16,6 +16,12 @@ final class CommandProvider {
         repository.put(CommandName.LOG_OUT, new LogoutCommand());
         repository.put(CommandName.SORT_BY_INCREASE_PRICE, new SorterByPriceIncreaseCommand());
         repository.put(CommandName.SORT_BY_REDUCTION_PRICE, new SorterByPriceReductionCommand());
+        repository.put(CommandName.PERSONAL_ACCOUNT, new PersonalAccountCommand());
+        repository.put(CommandName.CHANGE_NAME, new ChangeNameCommand());
+        repository.put(CommandName.CHANGE_SURNAME, new ChangeSurnameCommand());
+        repository.put(CommandName.CHANGE_PATRONYMIC, new ChangePatronymicCommand());
+        repository.put(CommandName.CHANGE_ADDRESS, new ChangeAddressCommand());
+        repository.put(CommandName.CHANGE_PHONE, new ChangePhoneCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 
