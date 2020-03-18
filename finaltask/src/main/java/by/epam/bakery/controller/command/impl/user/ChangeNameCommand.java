@@ -1,4 +1,4 @@
-package by.epam.bakery.controller.command.impl;
+package by.epam.bakery.controller.command.impl.user;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
@@ -10,23 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class ChangeAddressCommand implements Command {
+public class ChangeNameCommand implements Command {
     private static final String USER = "user";
-    private static final String NEW_ADDRESS = "newAddress";
+    private static final String NEW_NAME = "newName";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        String newAddress = request.getParameter(NEW_ADDRESS);
+        String newName = request.getParameter(NEW_NAME);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(USER);
         int userId = user.getId();
         try {
-            serviceFactory.getUserService().changeAddress(newAddress, userId);
+            serviceFactory.getUserService().changeName(newName, userId);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        user.setAddress(newAddress);
+        user.setName(newName);
         session.setAttribute(USER, user);
         return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account");
     }

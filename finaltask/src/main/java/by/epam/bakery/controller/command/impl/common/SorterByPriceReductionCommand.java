@@ -1,4 +1,4 @@
-package by.epam.bakery.controller.command.impl;
+package by.epam.bakery.controller.command.impl.common;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
@@ -12,18 +12,21 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogoutCommand implements Command {
+public class SorterByPriceReductionCommand implements Command {
+    private static final String SORT_STATUS = "sortStatus";
+    private static final String PRICE_REDUCE = "reducePrice";
+
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        session.invalidate();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         List<Pie> pies = new ArrayList<>();
+        HttpSession session = request.getSession();
         try {
-            pies = serviceFactory.getPieService().showAllPies();
+            pies = serviceFactory.getPieService().sortByPriceReduce();
         } catch (ServiceException e) {
             System.out.println(e.getMessage());
         }
+        session.setAttribute(SORT_STATUS, PRICE_REDUCE);
         request.setAttribute("pies", pies);
         return CommandResult.forward("/WEB-INF/jsp/pies.jsp");
     }

@@ -1,11 +1,9 @@
-package by.epam.bakery.controller.command.impl;
+package by.epam.bakery.controller.command.impl.common;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.domain.User;
-import by.epam.bakery.service.api.UserService;
 import by.epam.bakery.service.factory.ServiceFactory;
-import by.epam.bakery.service.impl.UserServiceImpl;
 import by.epam.bakery.service.exception.ServiceException;
 
 import javax.servlet.http.HttpServletRequest;

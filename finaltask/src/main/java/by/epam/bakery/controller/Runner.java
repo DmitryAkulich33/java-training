@@ -18,7 +18,6 @@ public class Runner {
         PieDao pieDao = daoHelper.createPieDao();
         userDao.changeName("Ivan", 3);
         User user = userDao.findUserByLoginAndPassword("user1", "user1");
-//        List<User> users = userDao.getAllClients();
         System.out.println(user);
         System.out.println();
         List<Pie> pies = pieDao.sortByIncreasePrice();

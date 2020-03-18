@@ -1,4 +1,4 @@
-package by.epam.bakery.controller.command.impl;
+package by.epam.bakery.controller.command.impl.common;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;

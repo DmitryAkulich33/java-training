@@ -2,7 +2,8 @@ package by.epam.bakery.controller;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandName;
-import by.epam.bakery.controller.command.impl.*;
+import by.epam.bakery.controller.command.impl.common.*;
+import by.epam.bakery.controller.command.impl.user.*;
 
 import java.util.HashMap;
 import java.util.Map;
