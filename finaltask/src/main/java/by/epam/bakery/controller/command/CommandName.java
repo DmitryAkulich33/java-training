@@ -12,5 +12,6 @@ public enum CommandName {
     CHANGE_SURNAME,
     CHANGE_ADDRESS,
     CHANGE_PATRONYMIC,
-    CHANGE_PHONE
+    CHANGE_PHONE,
+    SHOW_FEEDBACK
 }

@@ -3,6 +3,7 @@ package by.epam.bakery.controller;
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandName;
 import by.epam.bakery.controller.command.impl.common.*;
+import by.epam.bakery.controller.command.impl.feedback.ShowFeedBackCommand;
 import by.epam.bakery.controller.command.impl.user.*;
 
 import java.util.HashMap;
@@ -23,6 +24,7 @@ final class CommandProvider {
         repository.put(CommandName.CHANGE_PATRONYMIC, new ChangePatronymicCommand());
         repository.put(CommandName.CHANGE_ADDRESS, new ChangeAddressCommand());
         repository.put(CommandName.CHANGE_PHONE, new ChangePhoneCommand());
+        repository.put(CommandName.SHOW_FEEDBACK, new ShowFeedBackCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

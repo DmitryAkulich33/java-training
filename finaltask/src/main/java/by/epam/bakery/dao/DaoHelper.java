@@ -3,6 +3,7 @@ package by.epam.bakery.dao;
 import by.epam.bakery.dao.connection.ConnectionPool;
 import by.epam.bakery.dao.connection.ProxyConnection;
 import by.epam.bakery.dao.exception.DaoException;
+import by.epam.bakery.dao.impl.FeedBackDaoImpl;
 import by.epam.bakery.dao.impl.PieDaoImpl;
 import by.epam.bakery.dao.impl.UserDaoImpl;
 
@@ -21,6 +22,10 @@ public class DaoHelper implements AutoCloseable {
 
     public PieDaoImpl createPieDao() {
         return new PieDaoImpl(connection);
+    }
+
+    public FeedBackDaoImpl createFeedBackDao() {
+        return new FeedBackDaoImpl(connection);
     }
 
     @Override

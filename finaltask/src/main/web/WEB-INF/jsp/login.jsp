@@ -23,11 +23,10 @@
                     <p>Welcome, <c:out value="${ user.surname }"/> <c:out value="${ user.name }"/> <c:out value="${ user.patronymic }"/></p>
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class= "nav_link" href="${request.contextPath}controller?command=personal_account">Personal account</a>
+                            <a class= "nav_link pl-1" href="${request.contextPath}controller?command=personal_account">Personal account</a>
                         </li>
-                        <li> </li>
                         <li class="nav-item">
-                            <a class= "nav_link" href="${request.contextPath}controller?command=log_out"> Exit</a>
+                            <a class= "nav_link pl-1" href="${request.contextPath}controller?command=log_out">Exit</a>
                         </li>
                     </ul>
 <%--                    <a class= "nav_link" href="${request.contextPath}controller?command=personal_account">Personal account</a>--%>
