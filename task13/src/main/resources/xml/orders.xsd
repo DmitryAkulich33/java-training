@@ -47,7 +47,15 @@
     <complexType name="Pie">
         <sequence>
             <element name="title" type="string"/>
-            <element name="weight" type="int"/>
+<!--            <element name="weight" type="int"/>-->
+            <element name="weight">
+                <simpleType>
+                    <restriction base="int">
+                        <minInclusive value="700"/>
+                        <maxInclusive value="2000"/>
+                    </restriction>
+                </simpleType>
+            </element>
             <element name="price" type="double"/>
             <element name="description" type="string"/>
         </sequence>

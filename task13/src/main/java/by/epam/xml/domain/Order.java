@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 public class Order {
     private int id;
     private StatusEnum statusEnum;
-    private Client client = new Client();
-    private Pie pie = new Pie();
+    private Client client;
+    private Pie pie;
     private LocalDateTime productionDate;
     private LocalDateTime deliveryDate;
 
