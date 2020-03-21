@@ -13,7 +13,7 @@ public class FeedBackRowMapper implements RowMapper<FeedBack> {
     public FeedBack map(ResultSet resultSet) throws SQLException {
         FeedBack feedBack = new FeedBack();
         feedBack.setId(resultSet.getInt("id_feedback"));
-        feedBack.setLocalDateTime(LocalDateTime.parse(resultSet.getString("feedback_date")));
+        feedBack.setLocalDateTime(LocalDateTime.parse(resultSet.getString("feedback_date").replace(" ", "T")));
         feedBack.setReview(resultSet.getString("review"));
         User user = new User();
         user.setId(resultSet.getInt("id_user"));

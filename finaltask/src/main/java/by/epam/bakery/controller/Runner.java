@@ -6,6 +6,7 @@ import by.epam.bakery.dao.api.FeedBackDao;
 import by.epam.bakery.dao.api.PieDao;
 import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
+import by.epam.bakery.dao.impl.FeedBackDaoImpl;
 import by.epam.bakery.domain.FeedBack;
 import by.epam.bakery.domain.Pie;
 import by.epam.bakery.domain.User;
@@ -24,20 +25,24 @@ public class Runner {
         FeedBackDao feedBackDao = daoHelper.createFeedBackDao();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
+
         userDao.changeName("Ivan", 3);
         User user = userDao.findUserByLoginAndPassword("user1", "user1");
         System.out.println(user);
 
-//        serviceFactory.getFeedBackService().save(user.getId(), LocalDateTime.parse("2020-02-02T09:00:00"), "It was delicious!");
-        System.out.println(LocalDateTime.parse("2020-02-02T09:00:00"));
+//        serviceFactory.getFeedBackService().save(4, LocalDateTime.now(), "It was delicious, too!");
 
         System.out.println();
 
-
-        List<Pie> pies = pieDao.sortByIncreasePrice();
-        for(Pie piesTest : pies) {
-            System.out.println(piesTest);
+        List<FeedBack> feedBacks = serviceFactory.getFeedBackService().showAllFeedBacks();
+        for(FeedBack feedbackTest : feedBacks) {
+            System.out.println(feedbackTest);
         }
         System.out.println();
+
+        LocalDateTime localDateTime = LocalDateTime.parse("2020-02-02T09:00:00");
+        System.out.println(localDateTime.toString().replace("T", " "));
+        System.out.println("d\"d");
+        System.out.println(LocalDateTime.now().toString().substring(0, 19));
     }
 }
