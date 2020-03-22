@@ -2,6 +2,7 @@ package by.epam.bakery.controller.command.impl.common;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
+import by.epam.bakery.domain.Basket;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.factory.ServiceFactory;
 import by.epam.bakery.service.exception.ServiceException;
@@ -19,6 +20,7 @@ public class LoginCommand implements Command {
     private static final String PASSWORD = "password";
     private static final String USER = "user";
     private static final String WRONG_LOGIN = "Incorrect login or password!";
+    private static final String BASKET = "basket";
 
 
     @Override
@@ -36,11 +38,12 @@ public class LoginCommand implements Command {
         HttpSession session = request.getSession();
         if(user != null){
             session.setAttribute(USER, user);
+            Basket basket = new Basket();
+            session.setAttribute(BASKET, basket);
         } else {
             session.setAttribute(USER, null);
             session.setAttribute("message", WRONG_LOGIN);
         }
-
         return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
     }
 }

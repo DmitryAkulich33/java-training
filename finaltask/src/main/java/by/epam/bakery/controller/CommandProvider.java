@@ -30,6 +30,7 @@ final class CommandProvider {
         repository.put(CommandName.SHOW_ABOUT_US, new ShowAboutUsCommand());
         repository.put(CommandName.SHOW_CONTACTS, new ShowContactsCommand());
         repository.put(CommandName.SHOW_DELIVERY, new ShowDeliveryCommand());
+        repository.put(CommandName.ADD_PIE, new AddPieCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

@@ -61,10 +61,15 @@
                     </tr>
                     <tr>
                         <td class="button_navbar_menu">
-                            <form action="addPie" method="POST">
-                                <input type="hidden" name="pieName" value="${ element.name }"/>
-                                <input type="hidden" name="piePrice" value="${ element.price }"/>
-                                <input type="submit" name="button" class="in_basket" value="BUY"/>
+                            <form action="controller" method="POST">
+                                <input type="hidden" name="pieId" value="${ element.id }"/>
+<%--                                <input type="hidden" name="pieName" value="${ element.name }"/>--%>
+<%--                                <input type="hidden" name="piePrice" value="${ element.price }"/>--%>
+<%--                                <input type="hidden" name="pieWeight" value="${ element.weight }"/>--%>
+<%--                                <input type="hidden" name="piePicture" value="${ element.picture }"/>--%>
+<%--                                <input type="hidden" name="pieDescription" value="${ element.description }"/>--%>
+                                <input type="hidden" name="command" value="add_pie">
+                                <input type="submit" name="button" class="in_basket" value="TO BASKET"/>
                             </form>
                         </td>
                     </tr>

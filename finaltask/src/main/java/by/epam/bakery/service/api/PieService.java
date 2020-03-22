@@ -9,4 +9,5 @@ public interface PieService {
     List<Pie> showAllPies() throws ServiceException;
     List<Pie> sortByPriceIncrease() throws ServiceException;
     List<Pie> sortByPriceReduce() throws ServiceException;
+    Pie findPieById (int pieId) throws ServiceException;
 }

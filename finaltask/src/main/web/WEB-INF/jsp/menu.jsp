@@ -27,28 +27,33 @@
         <ul class="ul_pages">
             <li class="li_pages">
                 <div class="button_navbar_menu">
-                    <a href="${request.contextPath}controller?command=show_about_us" class="a_link"><img src="image/group.png" class="ico"> ABOUT US</a>
+                    <a href="${request.contextPath}controller?command=show_about_us" class="a_link"><img
+                            src="image/group.png" class="ico"> ABOUT US</a>
                 </div>
             </li>
             <li class="li_pages">
                 <div class="button_navbar_menu">
-                    <a href="${request.contextPath}controller?command=show_main_page" class="a_link"><img src="image/magazine.png" class="ico"> OUR
+                    <a href="${request.contextPath}controller?command=show_main_page" class="a_link"><img
+                            src="image/magazine.png" class="ico"> OUR
                         PIES</a>
                 </div>
             </li>
             <li class="li_pages">
                 <div class="button_navbar_menu">
-                    <a href="${request.contextPath}controller?command=show_contacts" class="a_link"><img src="image/hours.png" class="ico"> CONTACTS</a>
+                    <a href="${request.contextPath}controller?command=show_contacts" class="a_link"><img
+                            src="image/hours.png" class="ico"> CONTACTS</a>
                 </div>
             </li>
             <li class="li_pages">
                 <div class="button_navbar_menu">
-                    <a href="${request.contextPath}controller?command=show_delivery" class="a_link"><img src="image/runner.png" class="ico"> DELIVERY</a>
+                    <a href="${request.contextPath}controller?command=show_delivery" class="a_link"><img
+                            src="image/runner.png" class="ico"> DELIVERY</a>
                 </div>
             </li>
             <li class="li_pages">
                 <div class="button_navbar_menu">
-                    <a href="${request.contextPath}controller?command=show_feedback" class="a_link"><img src="image/pen.png" class="ico">
+                    <a href="${request.contextPath}controller?command=show_feedback" class="a_link"><img
+                            src="image/pen.png" class="ico">
                         FEEDBACK</a>
                 </div>
             </li>
@@ -67,14 +72,27 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    <table class="text_basket">
+                                    <table class="table table-striped">
+                                        <tbody>
                                         <c:forEach var="elem" items="${basket.pies}" varStatus="status">
                                             <tr>
-                                                <td>Pie is <c:out value="${ elem.name }"/>, price is <c:out
-                                                        value="${ elem.price}"/></td>
+                                                <td><img class="image_pie_basket"
+                                                         src="<c:out value="${ elem.picture }"/>"></td>
+                                                <td><c:out value="${ elem.name }"/></td>
+                                                <td><c:out value="${ elem.weight }"/> gramm</td>
+                                                <td><c:out value="${ elem.price }"/>0 BYN</td>
                                             </tr>
                                         </c:forEach>
+                                        </tbody>
                                     </table>
+                                    <%--                                    <table class="text_basket">--%>
+                                    <%--                                        <c:forEach var="elem" items="${basket.pies}" varStatus="status">--%>
+                                    <%--                                            <tr>--%>
+                                    <%--                                                <td>Pie is <c:out value="${ elem.name }"/>, price is <c:out--%>
+                                    <%--                                                        value="${ elem.price}"/></td>--%>
+                                    <%--                                            </tr>--%>
+                                    <%--                                        </c:forEach>--%>
+                                    <%--                                    </table>--%>
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">

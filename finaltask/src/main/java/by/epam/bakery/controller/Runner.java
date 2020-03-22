@@ -39,10 +39,11 @@ public class Runner {
             System.out.println(feedbackTest);
         }
         System.out.println();
-
-        LocalDateTime localDateTime = LocalDateTime.parse("2020-02-02T09:00:00");
-        System.out.println(localDateTime.toString().replace("T", " "));
-        System.out.println("d\"d");
-        System.out.println(LocalDateTime.now().toString().substring(0, 19));
+        Pie pie = serviceFactory.getPieService().findPieById(2);
+        System.out.println(pie);
+//        LocalDateTime localDateTime = LocalDateTime.parse("2020-02-02T09:00:00");
+//        System.out.println(localDateTime.toString().replace("T", " "));
+//        System.out.println("d\"d");
+//        System.out.println(LocalDateTime.now().toString().substring(0, 19));
     }
 }

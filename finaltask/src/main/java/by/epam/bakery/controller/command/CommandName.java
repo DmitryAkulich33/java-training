@@ -17,5 +17,6 @@ public enum CommandName {
     ADD_FEEDBACK,
     SHOW_ABOUT_US,
     SHOW_CONTACTS,
-    SHOW_DELIVERY
+    SHOW_DELIVERY,
+    ADD_PIE
 }
