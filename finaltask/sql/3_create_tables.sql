@@ -34,6 +34,7 @@ CREATE TABLE `pie` (
 CREATE TABLE `order` (
 	`id_order` INTEGER NOT NULL AUTO_INCREMENT,
 	`user_id` INTEGER NOT NULL,
+    `total` DOUBLE NOT NULL,
 	`productionDate` DATETIME,
 	`deliveryDate` DATETIME,
 	`status` VARCHAR(50),

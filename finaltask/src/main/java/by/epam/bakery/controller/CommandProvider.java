@@ -5,6 +5,7 @@ import by.epam.bakery.controller.command.CommandName;
 import by.epam.bakery.controller.command.impl.common.*;
 import by.epam.bakery.controller.command.impl.feedback.CreatorFeedbackCommand;
 import by.epam.bakery.controller.command.impl.feedback.ShowFeedBackCommand;
+import by.epam.bakery.controller.command.impl.order.AddOrderCommand;
 import by.epam.bakery.controller.command.impl.user.*;
 
 import java.util.HashMap;
@@ -32,6 +33,7 @@ final class CommandProvider {
         repository.put(CommandName.SHOW_DELIVERY, new ShowDeliveryCommand());
         repository.put(CommandName.ADD_PIE, new AddPieCommand());
         repository.put(CommandName.CLEAR_BASKET, new ClearBasketCommand());
+        repository.put(CommandName.ADD_ORDER, new AddOrderCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

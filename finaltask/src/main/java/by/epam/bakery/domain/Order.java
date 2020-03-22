@@ -5,11 +5,20 @@ import java.time.LocalDateTime;
 
 public class Order extends Entity implements Serializable {
     private User user;
+    private double total;
     private LocalDateTime productionDate;
     private LocalDateTime deliveryDate;
     private StatusEnum status;
 
     public Order() {
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public User getUser() {
@@ -52,6 +61,7 @@ public class Order extends Entity implements Serializable {
 
         Order order = (Order) o;
 
+        if (Double.compare(order.total, total) != 0) return false;
         if (user != null ? !user.equals(order.user) : order.user != null) return false;
         if (productionDate != null ? !productionDate.equals(order.productionDate) : order.productionDate != null)
             return false;
@@ -62,7 +72,10 @@ public class Order extends Entity implements Serializable {
     @Override
     public int hashCode() {
         int result = super.hashCode();
+        long temp;
         result = 31 * result + (user != null ? user.hashCode() : 0);
+        temp = Double.doubleToLongBits(total);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (productionDate != null ? productionDate.hashCode() : 0);
         result = 31 * result + (deliveryDate != null ? deliveryDate.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
@@ -72,6 +85,7 @@ public class Order extends Entity implements Serializable {
     @Override
     public String toString() {
         return super.toString() + "Order user: " + user +
+                ", total: " + total +
                 ", productionDate: " + productionDate +
                 ", deliveryDate: " + deliveryDate +
                 ", status: " + status;

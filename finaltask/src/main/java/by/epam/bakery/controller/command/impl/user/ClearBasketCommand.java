@@ -10,12 +10,14 @@ import javax.servlet.http.HttpSession;
 
 public class ClearBasketCommand implements Command {
     private static final String BASKET = "basket";
+    private static final String TOTAL = "total";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         Basket basket = new Basket();
         HttpSession session = request.getSession();
         session.setAttribute(BASKET, basket);
+        session.setAttribute(TOTAL, null);
         return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
     }
 }

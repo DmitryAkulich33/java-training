@@ -9,6 +9,7 @@ import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.dao.impl.FeedBackDaoImpl;
 import by.epam.bakery.domain.FeedBack;
 import by.epam.bakery.domain.Pie;
+import by.epam.bakery.domain.StatusEnum;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
@@ -25,15 +26,11 @@ public class Runner {
         FeedBackDao feedBackDao = daoHelper.createFeedBackDao();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
-
         userDao.changeName("Ivan", 3);
         User user = userDao.findUserByLoginAndPassword("user1", "user1");
         System.out.println(user);
-
 //        serviceFactory.getFeedBackService().save(4, LocalDateTime.now(), "It was delicious, too!");
-
         System.out.println();
-
         List<FeedBack> feedBacks = serviceFactory.getFeedBackService().showAllFeedBacks();
         for(FeedBack feedbackTest : feedBacks) {
             System.out.println(feedbackTest);
@@ -45,5 +42,6 @@ public class Runner {
 //        System.out.println(localDateTime.toString().replace("T", " "));
 //        System.out.println("d\"d");
 //        System.out.println(LocalDateTime.now().toString().substring(0, 19));
+//        serviceFactory.getOrderService().save(4, 76.00, null, null, StatusEnum.NOTREADY.getValue());
     }
 }

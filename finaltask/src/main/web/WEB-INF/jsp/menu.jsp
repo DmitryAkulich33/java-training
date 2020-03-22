@@ -83,16 +83,34 @@
                                                 <td><c:out value="${ elem.price }"/>0 BYN</td>
                                             </tr>
                                         </c:forEach>
+                                        <tr>
+                                            <td>
+                                                Total:
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                            </td>
+                                            <td>
+                                                <c:out value="${ total }0 BYN"/>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary">To order
-                                    </button>
+                                    <form action="controller" method="POST">
+                                        <input type="hidden" name="command" value="add_order">
+                                        <input type="submit" name="button" class="btn btn-secondary"
+                                               value="To order"/>
+                                    </form>
+<%--                                    <button type="button" class="btn btn-secondary">To order--%>
+<%--                                    </button>--%>
                                     <form action="controller" method="POST">
                                         <input type="hidden" name="command" value="clear_basket">
-                                        <input type="submit" name="button" class="btn btn-secondary" value="Clear basket"/>
+                                        <input type="submit" name="button" class="btn btn-secondary"
+                                               value="Clear basket"/>
                                     </form>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>

@@ -1,12 +1,8 @@
 package by.epam.bakery.service.factory;
 
 import by.epam.bakery.dao.DaoHelperFactory;
-import by.epam.bakery.service.api.FeedBackService;
-import by.epam.bakery.service.api.PieService;
-import by.epam.bakery.service.api.UserService;
-import by.epam.bakery.service.impl.FeedBackServiceImpl;
-import by.epam.bakery.service.impl.PieServiceImpl;
-import by.epam.bakery.service.impl.UserServiceImpl;
+import by.epam.bakery.service.api.*;
+import by.epam.bakery.service.impl.*;
 
 public final class ServiceFactory {
     private static final ServiceFactory instance = new ServiceFactory();
@@ -14,8 +10,14 @@ public final class ServiceFactory {
     private final PieService pieService = new PieServiceImpl(new DaoHelperFactory());
     private final UserService userService = new UserServiceImpl(new DaoHelperFactory());
     private final FeedBackService feedBackService = new FeedBackServiceImpl(new DaoHelperFactory());
+    private final BasketService basketService = new BasketServiceImpl(new DaoHelperFactory());
+    private final OrderService orderService = new OrderServiceImpl(new DaoHelperFactory());
 
     private ServiceFactory() {
+    }
+
+    public BasketService getBasketService() {
+        return basketService;
     }
 
     public static ServiceFactory getInstance() {
@@ -32,5 +34,9 @@ public final class ServiceFactory {
 
     public FeedBackService getFeedBackService() {
         return feedBackService;
+    }
+
+    public OrderService getOrderService() {
+        return orderService;
     }
 }
