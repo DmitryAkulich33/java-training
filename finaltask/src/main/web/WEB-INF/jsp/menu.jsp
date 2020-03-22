@@ -85,19 +85,15 @@
                                         </c:forEach>
                                         </tbody>
                                     </table>
-                                    <%--                                    <table class="text_basket">--%>
-                                    <%--                                        <c:forEach var="elem" items="${basket.pies}" varStatus="status">--%>
-                                    <%--                                            <tr>--%>
-                                    <%--                                                <td>Pie is <c:out value="${ elem.name }"/>, price is <c:out--%>
-                                    <%--                                                        value="${ elem.price}"/></td>--%>
-                                    <%--                                            </tr>--%>
-                                    <%--                                        </c:forEach>--%>
-                                    <%--                                    </table>--%>
                                 </div>
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">To order
+                                    <button type="button" class="btn btn-secondary">To order
                                     </button>
+                                    <form action="controller" method="POST">
+                                        <input type="hidden" name="command" value="clear_basket">
+                                        <input type="submit" name="button" class="btn btn-secondary" value="Clear basket"/>
+                                    </form>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 </div>
                             </div>

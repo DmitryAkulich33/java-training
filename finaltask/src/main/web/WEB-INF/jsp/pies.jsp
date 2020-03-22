@@ -60,18 +60,44 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="button_navbar_menu">
-                            <form action="controller" method="POST">
-                                <input type="hidden" name="pieId" value="${ element.id }"/>
-<%--                                <input type="hidden" name="pieName" value="${ element.name }"/>--%>
-<%--                                <input type="hidden" name="piePrice" value="${ element.price }"/>--%>
-<%--                                <input type="hidden" name="pieWeight" value="${ element.weight }"/>--%>
-<%--                                <input type="hidden" name="piePicture" value="${ element.picture }"/>--%>
-<%--                                <input type="hidden" name="pieDescription" value="${ element.description }"/>--%>
-                                <input type="hidden" name="command" value="add_pie">
-                                <input type="submit" name="button" class="in_basket" value="TO BASKET"/>
-                            </form>
-                        </td>
+                        <c:choose>
+                            <c:when test="${user.role == 3}">
+                                <td class="button_navbar_menu">
+                                    <form action="controller" method="POST">
+                                        <input type="hidden" name="pieId" value="${ element.id }"/>
+                                        <input type="hidden" name="command" value="add_pie">
+                                        <input type="submit" name="button" class="in_basket" value="TO BASKET"/>
+                                    </form>
+                                </td>
+                            </c:when>
+                            <c:otherwise>
+                                <td class="button_navbar_menu">
+                                    <input type="submit" name="button" class="in_basket" value="TO BASKET"
+                                           data-toggle="modal" data-target="#myModalBasket"/>
+                                    <div class="modal fade" id="myModalBasket">
+                                        <div class="modal-dialog modal-dialog-centered modal-sm">
+                                            <div class="modal-content">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;
+                                                    </button>
+                                                </div>
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    You need to log in as a user!
+                                                </div>
+                                                <!-- Modal footer -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </c:otherwise>
+                        </c:choose>
                     </tr>
                 </table>
             </li>

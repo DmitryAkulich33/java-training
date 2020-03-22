@@ -18,5 +18,6 @@ public enum CommandName {
     SHOW_ABOUT_US,
     SHOW_CONTACTS,
     SHOW_DELIVERY,
-    ADD_PIE
+    ADD_PIE,
+    CLEAR_BASKET
 }
