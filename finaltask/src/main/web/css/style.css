@@ -257,3 +257,13 @@
     width: 40px;
     height: 40px;
 }
+.li_admin {
+    list-style-type: none;
+    padding-right: 10px;
+}
+.link_acc {
+    padding-right: 10px;
+}
+.admin_padding {
+    padding-top: 300px;
+}

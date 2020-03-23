@@ -20,5 +20,8 @@ public enum CommandName {
     SHOW_DELIVERY,
     ADD_PIE,
     CLEAR_BASKET,
-    ADD_ORDER
+    ADD_ORDER,
+    ADMIN_ACCOUNT,
+    ADMIN_PIES,
+    ADMIN_FEEDBACK
 }

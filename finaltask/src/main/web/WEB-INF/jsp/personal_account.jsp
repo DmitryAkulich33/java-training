@@ -25,10 +25,10 @@
 <div class="container">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the homepage</a>
+            <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the homepage</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="${request.contextPath}controller?command=log_out">Exit</a>
+            <a class="link_acc nav-link" href="${request.contextPath}controller?command=log_out">Exit</a>
         </li>
     </ul>
     <br>

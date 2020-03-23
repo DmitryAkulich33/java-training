@@ -18,9 +18,23 @@
 <div class="container-fluid pt-3">
     <div>
         <c:choose>
+            <c:when test="${user.role == 1}">
+                <div class="welcome">
+                    <p><em>Welcome, <c:out value="${ user.surname }"/> <c:out value="${ user.name }"/> <c:out value="${ user.patronymic }"/></em></p>
+                    <ul class="nav">
+                        <li class="li_admin">
+                            <a class= "link_acc nav_link" href="${request.contextPath}controller?command=admin_account">Admin account</a>
+                        </li>
+                        <li class="li_admin">
+                            <a class= "link_acc nav_link" href="${request.contextPath}controller?command=log_out">Exit</a>
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+            </c:when>
             <c:when test="${user.role == 3}">
                 <div class="welcome">
-                    <p>Welcome, <c:out value="${ user.surname }"/> <c:out value="${ user.name }"/> <c:out value="${ user.patronymic }"/></p>
+                    <p><em>Welcome, <c:out value="${ user.surname }"/> <c:out value="${ user.name }"/> <c:out value="${ user.patronymic }"/></em></p>
                     <ul class="nav">
                         <li class="nav-item">
                             <a class= "nav_link pl-1" href="${request.contextPath}controller?command=personal_account">Personal account</a>
@@ -29,8 +43,6 @@
                             <a class= "nav_link pl-1" href="${request.contextPath}controller?command=log_out">Exit</a>
                         </li>
                     </ul>
-<%--                    <a class= "nav_link" href="${request.contextPath}controller?command=personal_account">Personal account</a>--%>
-<%--                    <a class= "nav_link" href="${request.contextPath}controller?command=log_out">Exit</a>--%>
                 </div>
                 <br/>
             </c:when>
@@ -50,22 +62,6 @@
             </c:otherwise>
         </c:choose>
     </div>
-
-    <%--    <form action="controller" method="POST">--%>
-    <%--        <div class="login">--%>
-    <%--            <label for="login-field">Login</label>--%>
-    <%--            <input type="text" name="login" id="login-field">--%>
-    <%--        </div>--%>
-    <%--        <div class="password">--%>
-    <%--            <label for="password-field">Password</label>--%>
-    <%--            <input type="password" name="password" id="password-field" value="">--%>
-    <%--        </div>--%>
-    <%--        <input type="hidden" name="command" value="login">--%>
-    <%--        <div class="enter">--%>
-    <%--            <input type="submit" value="Submit" class="button_enter">--%>
-    <%--        </div>--%>
-    <%--    </form>--%>
-    <%--    <br>--%>
 </div>
 </body>
 </html>

@@ -2,6 +2,9 @@ package by.epam.bakery.controller;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandName;
+import by.epam.bakery.controller.command.impl.admin.AdminAccountCommand;
+import by.epam.bakery.controller.command.impl.admin.AdminFeedbackCommand;
+import by.epam.bakery.controller.command.impl.admin.AdminPiesCommand;
 import by.epam.bakery.controller.command.impl.common.*;
 import by.epam.bakery.controller.command.impl.feedback.CreatorFeedbackCommand;
 import by.epam.bakery.controller.command.impl.feedback.ShowFeedBackCommand;
@@ -34,6 +37,9 @@ final class CommandProvider {
         repository.put(CommandName.ADD_PIE, new AddPieCommand());
         repository.put(CommandName.CLEAR_BASKET, new ClearBasketCommand());
         repository.put(CommandName.ADD_ORDER, new AddOrderCommand());
+        repository.put(CommandName.ADMIN_ACCOUNT, new AdminAccountCommand());
+        repository.put(CommandName.ADMIN_PIES, new AdminPiesCommand());
+        repository.put(CommandName.ADMIN_FEEDBACK, new AdminFeedbackCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 
