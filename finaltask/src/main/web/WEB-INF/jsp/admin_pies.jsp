@@ -153,9 +153,6 @@
                 <input type="hidden" name="command" value="admin_pies">
                 <input type="submit" class="change-info btn btn-primary" value="Show all pies">
             </form>
-<%--            <button type="button" class="change-info btn btn-primary">--%>
-<%--                Show all pies--%>
-<%--            </button>--%>
         </li>
     </ul>
     <br>
@@ -193,7 +190,12 @@
                                     Do you want to remove the pie from the database?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary">Delete</button>
+                                    <form action="controller" method="POST">
+                                        <input type="hidden" name="delId" value="${ element.id }"/>
+                                        <input type="hidden" name="command" value="delete_pie">
+                                        <input type="submit" class="btn btn-secondary" value="Delete">
+                                    </form>
+<%--                                    <button type="button" class="btn btn-secondary">Delete</button>--%>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>

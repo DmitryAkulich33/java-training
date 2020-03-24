@@ -61,4 +61,13 @@ public class PieServiceImpl implements PieService {
             throw new ServiceException(e);
         }
     }
+
+    public void deletePie (int id) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            dao.removeById(id);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

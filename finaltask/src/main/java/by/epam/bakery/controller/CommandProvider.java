@@ -40,6 +40,7 @@ final class CommandProvider {
         repository.put(CommandName.ADMIN_FEEDBACK, new AdminFeedbackCommand());
         repository.put(CommandName.FIND_PIE_BY_ID, new FindPieByIdCommand());
         repository.put(CommandName.FIND_PIE_BY_NAME, new FindPieByNameCommand());
+        repository.put(CommandName.DELETE_PIE, new DeletePieCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

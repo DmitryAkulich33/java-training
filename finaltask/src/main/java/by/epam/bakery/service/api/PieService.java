@@ -11,4 +11,5 @@ public interface PieService {
     List<Pie> sortByPriceReduce() throws ServiceException;
     Pie findPieById (int pieId) throws ServiceException;
     Pie findPieByName (String name) throws ServiceException;
+    void deletePie (int id) throws ServiceException;
 }
