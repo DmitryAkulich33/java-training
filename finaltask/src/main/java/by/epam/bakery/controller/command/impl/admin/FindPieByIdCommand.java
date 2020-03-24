@@ -9,17 +9,22 @@ import by.epam.bakery.service.factory.ServiceFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdminPiesCommand implements Command {
+public class FindPieByIdCommand implements Command {
+    private static final String PIE_ID = "pieId";
     private static final String PIES = "pies";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        List<Pie> pies = null;
+        int pieId = Integer.parseInt(request.getParameter(PIE_ID));
+        List<Pie> pies = new ArrayList<>();
+        Pie pie = null;
         try {
-            pies = serviceFactory.getPieService().showAllPies();
+            pie = serviceFactory.getPieService().findPieById(pieId);
+            pies.add(pie);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

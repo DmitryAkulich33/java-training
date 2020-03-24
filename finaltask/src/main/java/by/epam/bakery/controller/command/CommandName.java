@@ -23,5 +23,7 @@ public enum CommandName {
     ADD_ORDER,
     ADMIN_ACCOUNT,
     ADMIN_PIES,
-    ADMIN_FEEDBACK
+    ADMIN_FEEDBACK,
+    FIND_PIE_BY_ID,
+    FIND_PIE_BY_NAME
 }

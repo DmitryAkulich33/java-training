@@ -100,18 +100,19 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Enter Id</span>
                                     </div>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="pieId">
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="command" value="find_pie_by_id">
+                                    <input type="submit" value="Find pie" class="btn btn-secondary">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary">Find pie</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -129,27 +130,32 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Enter Name</span>
+                                        <span class="input-group-text">Enter Id</span>
                                     </div>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="pieName">
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="command" value="find_pie_by_name">
+                                    <input type="submit" value="Find pie" class="btn btn-secondary">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary">Find pie</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
         </li>
         <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary">
-                Show all pies
-            </button>
+            <form action="controller" method="POST">
+                <input type="hidden" name="command" value="admin_pies">
+                <input type="submit" class="change-info btn btn-primary" value="Show all pies">
+            </form>
+<%--            <button type="button" class="change-info btn btn-primary">--%>
+<%--                Show all pies--%>
+<%--            </button>--%>
         </li>
     </ul>
     <br>
@@ -167,94 +173,97 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td></td>
-            <td>Belorussian</td>
-            <td>1000</td>
-            <td>27.00</td>
-            <td>Signature dough, stewed carrots with pumpkin in soft cheese, with onions and celery</td>
-            <td>
-                <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal6">
-                    Delete
-                </button>
-                <div class="modal fade" id="myModal6">
-                    <div class="modal-dialog modal-dialog-centered modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                Do you want to remove the pie from the database?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary">Delete</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <button type="button" class="change-info btn btn-primary" data-toggle="modal"
-                        data-target="#myModal1">
-                    Change
-                </button>
-                <div class="modal fade" id="myModal1">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title">Change information</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">New picture</span>
-                                        </div>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </form>
-                                <form>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">New name</span>
-                                        </div>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </form>
-                                <form>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">New weight</span>
-                                        </div>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </form>
-                                <form>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">New price</span>
-                                        </div>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </form>
-                                <form>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">New description</span>
-                                        </div>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary">Change</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <c:forEach var="element" items="${pies}" varStatus="status">
+            <tr>
+                <td><c:out value="${ element.id }"/></td>
+                <td><img class="image_pie_basket" src="<c:out value="${ element.picture }"/>"></td>
+                <td><c:out value="${ element.name }"/></td>
+                <td><c:out value="${ element.weight }"/></td>
+                <td><c:out value="${ element.price }"/></td>
+                <td><c:out value="${ element.description }"/></td>
+                <td>
+                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"
+                            data-target="#myModal6">
+                        Delete
+                    </button>
+                    <div class="modal fade" id="myModal6">
+                        <div class="modal-dialog modal-dialog-centered modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    Do you want to remove the pie from the database?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary">Delete</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </td>
-        </tr>
+                </td>
+                <td>
+                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"
+                            data-target="#myModal1">
+                        Change
+                    </button>
+                    <div class="modal fade" id="myModal1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Change information</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">New picture</span>
+                                            </div>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </form>
+                                    <form>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">New name</span>
+                                            </div>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </form>
+                                    <form>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">New weight</span>
+                                            </div>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </form>
+                                    <form>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">New price</span>
+                                            </div>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </form>
+                                    <form>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">New description</span>
+                                            </div>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary">Change</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

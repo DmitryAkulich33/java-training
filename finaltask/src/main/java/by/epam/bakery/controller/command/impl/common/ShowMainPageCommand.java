@@ -17,13 +17,14 @@ public class ShowMainPageCommand implements Command {
     private static final String SORT_STATUS = "sortStatus";
     private static final String PRICE_INCREASE = "increasePrice";
     private static final String PRICE_REDUCE = "reducePrice";
+    private static final String PIES = "pies";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         String value = (String) session.getAttribute(SORT_STATUS);
         List<Pie> pies = getList(value);
-        request.setAttribute("pies", pies);
+        request.setAttribute(PIES, pies);
         return CommandResult.forward("/WEB-INF/jsp/pies.jsp");
     }
 
