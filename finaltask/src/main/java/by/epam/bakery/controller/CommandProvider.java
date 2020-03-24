@@ -41,6 +41,8 @@ final class CommandProvider {
         repository.put(CommandName.FIND_PIE_BY_ID, new FindPieByIdCommand());
         repository.put(CommandName.FIND_PIE_BY_NAME, new FindPieByNameCommand());
         repository.put(CommandName.DELETE_PIE, new DeletePieCommand());
+        repository.put(CommandName.SAVE_PIE, new SavePieCommand());
+        repository.put(CommandName.CHANGE_PIE, new ChangePieCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

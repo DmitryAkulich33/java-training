@@ -70,4 +70,13 @@ public class PieServiceImpl implements PieService {
             throw new ServiceException(e);
         }
     }
+
+    public void addPie (String name, int weight, double price, String description, String picture) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            dao.save(name, weight, price, description, picture);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

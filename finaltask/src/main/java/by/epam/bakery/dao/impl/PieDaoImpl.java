@@ -16,6 +16,8 @@ public class PieDaoImpl extends AbstractDao<Pie> implements PieDao {
     private static final String SORT_BY_INCREASE_PRICE ="SELECT * FROM pie ORDER BY price";
     private static final String SORT_BY_DECREASE_PRICE ="SELECT * FROM pie ORDER BY price DESC";
     private static final String FIND_BY_NAME ="SELECT * FROM pie WHERE name_pie = ?";
+    private static final String SAVE_PIE = "INSERT INTO pie (name_pie, weight, price, description, picture)" +
+            " VALUES(?, ?, ?, ?, ?)";
 
     public PieDaoImpl(Connection connection) {
         super(connection);
@@ -53,6 +55,6 @@ public class PieDaoImpl extends AbstractDao<Pie> implements PieDao {
 
     @Override
     public void save(Object... parameters) throws DaoException {
-
+        executeUpdate(SAVE_PIE, parameters);
     }
 }

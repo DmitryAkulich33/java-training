@@ -105,8 +105,6 @@
                                         <input type="submit" name="button" class="btn btn-secondary"
                                                value="To order"/>
                                     </form>
-<%--                                    <button type="button" class="btn btn-secondary">To order--%>
-<%--                                    </button>--%>
                                     <form action="controller" method="POST">
                                         <input type="hidden" name="command" value="clear_basket">
                                         <input type="submit" name="button" class="btn btn-secondary"

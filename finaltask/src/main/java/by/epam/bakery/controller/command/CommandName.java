@@ -26,5 +26,7 @@ public enum CommandName {
     ADMIN_FEEDBACK,
     FIND_PIE_BY_ID,
     FIND_PIE_BY_NAME,
-    DELETE_PIE
+    DELETE_PIE,
+    SAVE_PIE,
+    CHANGE_PIE
 }

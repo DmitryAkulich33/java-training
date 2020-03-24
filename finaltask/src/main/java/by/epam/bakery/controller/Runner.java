@@ -36,8 +36,9 @@ public class Runner {
             System.out.println(feedbackTest);
         }
         System.out.println();
-        Pie pie = serviceFactory.getPieService().findPieById(2);
-        System.out.println(pie);
+        serviceFactory.getPieService().deletePie(7);
+//        Pie pie = serviceFactory.getPieService().findPieById(5);
+//        System.out.println(pie);
 //        LocalDateTime localDateTime = LocalDateTime.parse("2020-02-02T09:00:00");
 //        System.out.println(localDateTime.toString().replace("T", " "));
 //        System.out.println("d\"d");

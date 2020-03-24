@@ -80,7 +80,6 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
     public void removeById(int id) throws DaoException {
         String table = getTableName();
         String idName = getIdName();
-//        executeUpdate(REMOVE_BY_ID + table + WHERE + idName, id);
         String query = REMOVE_BY_ID + table + WHERE + idName + " = ?";
         executeUpdate(query, id);
     }

@@ -28,10 +28,10 @@
     <br>
     <ul class="nav">
         <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal3">
+            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal3">
                 Add new pie
             </button>
-            <div class="modal fade" id="myModal3">
+            <div class="modal fade" id="myTopModal3">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -39,60 +39,53 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Picture</span>
                                     </div>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="savePicture">
                                 </div>
-                            </form>
-                            <form>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Name</span>
                                     </div>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="saveName">
                                 </div>
-                            </form>
-                            <form>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Weight</span>
                                     </div>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="saveWeight">
                                 </div>
-                            </form>
-                            <form>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Price</span>
                                     </div>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="savePrice">
                                 </div>
-                            </form>
-                            <form>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Description</span>
                                     </div>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="saveDescription">
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="command" value="save_pie">
+                                    <input type="submit" value="Add pie" class="btn btn-secondary">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary">Add pie</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
         </li>
         <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal4">
+            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal4">
                 Find pie by Id
             </button>
-            <div class="modal fade" id="myModal4">
+            <div class="modal fade" id="myTopModal4">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -119,10 +112,10 @@
             </div>
         </li>
         <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal5">
+            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal5">
                 Find pie by Name
             </button>
-            <div class="modal fade" id="myModal5">
+            <div class="modal fade" id="myTopModal5">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -169,7 +162,6 @@
             <th></th>
         </tr>
         </thead>
-        <tbody>
         <c:forEach var="element" items="${pies}" varStatus="status">
             <tr>
                 <td><c:out value="${ element.id }"/></td>
@@ -180,10 +172,10 @@
                 <td><c:out value="${ element.description }"/></td>
                 <td>
                     <button type="button" class="change-info btn btn-primary" data-toggle="modal"
-                            data-target="#myModal6">
+                            data-target="#myModal${ element.id }">
                         Delete
                     </button>
-                    <div class="modal fade" id="myModal6">
+                    <div class="modal fade" id="myModal${ element.id }">
                         <div class="modal-dialog modal-dialog-centered modal-sm">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -194,9 +186,9 @@
                                         <input type="hidden" name="delId" value="${ element.id }"/>
                                         <input type="hidden" name="command" value="delete_pie">
                                         <input type="submit" class="btn btn-secondary" value="Delete">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
+                                        </button>
                                     </form>
-<%--                                    <button type="button" class="btn btn-secondary">Delete</button>--%>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -204,10 +196,10 @@
                 </td>
                 <td>
                     <button type="button" class="change-info btn btn-primary" data-toggle="modal"
-                            data-target="#myModal1">
+                            data-target="#mySecModal${ element.id }">
                         Change
                     </button>
-                    <div class="modal fade" id="myModal1">
+                    <div class="modal fade" id="mySecModal${ element.id }">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -215,50 +207,46 @@
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form action="controller" method="POST">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New picture</span>
                                             </div>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="changePicture">
                                         </div>
-                                    </form>
-                                    <form>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New name</span>
                                             </div>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="changeName">
                                         </div>
-                                    </form>
-                                    <form>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New weight</span>
                                             </div>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="changeWeight">
                                         </div>
-                                    </form>
-                                    <form>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New price</span>
                                             </div>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="changePrice">
                                         </div>
-                                    </form>
-                                    <form>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New description</span>
                                             </div>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="changeDescription">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="hidden" name="changeId" value="${ element.id }"/>
+                                            <input type="hidden" name="command" value="change_pie">
+                                            <input type="submit" class="btn btn-secondary" value="Change">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                Cancel
+                                            </button>
                                         </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary">Change</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +254,6 @@
                 </td>
             </tr>
         </c:forEach>
-        </tbody>
     </table>
 </div>
 
