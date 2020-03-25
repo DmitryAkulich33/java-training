@@ -6,29 +6,31 @@ import by.epam.bakery.domain.Feedback;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.List;
 
-public class FindFeedbackByUserCommand implements Command {
-    private static final String USER_ID = "userId";
+public class ShowLastFeedbackCommand implements Command {
+    private static final String AMOUNT = "amount";
     private static final String FEEDBACK = "feedback";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        HttpSession session = request.getSession();
-        int userId = Integer.parseInt(request.getParameter(USER_ID));
-        List<Feedback> feedbacks = null;
+        int amount = Integer.parseInt(request.getParameter(AMOUNT));
+        List<Feedback> allFeedback = null;
         try {
-            feedbacks = serviceFactory.getFeedBackService().findFeedbackByUserId(userId);
-            Collections.reverse(feedbacks);
+            allFeedback = serviceFactory.getFeedBackService().showAllFeedBacks();
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        session.setAttribute(FEEDBACK, feedbacks);
+        List<Feedback> sortFeedback = serviceFactory.getFeedBackService().findNecessaryFeedbackAmount(amount, allFeedback);
+        Collections.reverse(sortFeedback);
+        HttpSession session = request.getSession();
+        session.setAttribute(FEEDBACK, sortFeedback);
         return CommandResult.forward("/WEB-INF/jsp/admin_feedback.jsp");
     }
 }

@@ -45,6 +45,7 @@ final class CommandProvider {
         repository.put(CommandName.CHANGE_PIE, new ChangePieCommand());
         repository.put(CommandName.FIND_FEEDBACK_BY_USER, new FindFeedbackByUserCommand());
         repository.put(CommandName.DELETE_FEEDBACK, new DeleteFeedbackCommand());
+        repository.put(CommandName.SHOW_LAST_FEEDBACK, new ShowLastFeedbackCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

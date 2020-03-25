@@ -31,4 +31,5 @@ public enum CommandName {
     CHANGE_PIE,
     FIND_FEEDBACK_BY_USER,
     DELETE_FEEDBACK,
+    SHOW_LAST_FEEDBACK
 }

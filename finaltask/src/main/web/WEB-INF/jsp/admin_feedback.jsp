@@ -64,15 +64,41 @@
             </form>
         </li>
         <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary">
-                Show last 5
+            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModalLast">
+                Show the latest feedbacks
             </button>
+            <div class="modal fade" id="myModalLast">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Enter amount of the latest feedbacks</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="controller" method="POST">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Amount</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="amount">
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="command" value="show_last_feedback">
+                                    <input type="submit" class="btn btn-secondary" value="Find feedbacks">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </li>
-        <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary">
-                Show last 10
-            </button>
-        </li>
+<%--        <li class="li_admin nav-item">--%>
+<%--            <form action="controller" method="POST">--%>
+<%--                <input type="hidden" name="command" value="show_ten_feedback">--%>
+<%--                <input type="submit" class="change-info btn btn-primary" value="Show last 10">--%>
+<%--            </form>--%>
+<%--        </li>--%>
     </ul>
     <br>
     <table class="table table-hover">

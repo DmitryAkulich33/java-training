@@ -58,7 +58,10 @@ public class FeedbackServiceImpl implements FeedbackService {
 
     public List<Feedback> findNecessaryFeedbackAmount(int amount, List<Feedback> allFeedback){
         int size = allFeedback.size();
-        System.out.println(size);
-        return new ArrayList<>(allFeedback.subList(size - amount, size));
+        if(size >= amount) {
+            return new ArrayList<>(allFeedback.subList(size - amount, size));
+        } else {
+            return allFeedback;
+        }
     }
 }
