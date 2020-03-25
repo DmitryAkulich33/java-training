@@ -16,15 +16,15 @@ public class BasketServiceImpl implements BasketService {
     }
 
     public double getTotal(Basket basket) throws ServiceException{
-        if(basket == null){
-            throw new ServiceException("Basket is null.");
-        }
-        double sum = 0;
-        if(!basket.getPies().isEmpty()) {
-            for (Pie pie : basket.getPies()) {
-                sum = sum + pie.getPrice();
-            }
-        }
-        return sum;
+//        if(basket == null){
+//            throw new ServiceException("Basket is null.");
+//        }
+//        double sum = 0;
+//        if(!basket.getPies().isEmpty()) {
+//            for (Pie pie : basket.getPies()) {
+//                sum = sum + pie.getPrice();
+//            }
+//        }
+        return 0;
     }
 }

@@ -16,7 +16,6 @@ public interface RowMapper<T extends Entity> {
             case "user": return new UserRowMapper();
             case "pie": return new PieRowMapper();
             case "order": return new OrderRowMapper();
-            case "black_list": return new BlackListRowMapper();
             case "feedback": return new FeedBackRowMapper();
 
             default: throw new DaoException("Unknown table = " + table);

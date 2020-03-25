@@ -13,4 +13,9 @@ public interface PieService {
     Pie findPieByName (String name) throws ServiceException;
     void deletePie (int id) throws ServiceException;
     void addPie (String name, int weight, double price, String description, String picture) throws ServiceException;
+    void changeName(String newName, int pieId) throws ServiceException;
+    void changePicture(String newPicture, int pieId) throws ServiceException;
+    void changeDescription(String newDescription, int pieId) throws ServiceException;
+    void changeWeight(int newWeight, int pieId) throws ServiceException;
+    void changePrice(double newPrice, int pieId) throws ServiceException;
 }

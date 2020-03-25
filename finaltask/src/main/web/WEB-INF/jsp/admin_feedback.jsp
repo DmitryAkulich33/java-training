@@ -87,6 +87,18 @@
         </tr>
         </thead>
         <tbody>
+
+        <c:forEach var="element" items="${feedback}" varStatus="status">
+            <br>
+            <div class="feedback media border p-3">
+                <div class="media-body">
+                    <h4><c:out value="${ element.user.surname }"/> <c:out value="${ element.user.name }"/><small><i> posted
+                        <c:out value="${ element.localDateTime.toString().replace(\"T\", \" \") }"/></i></small></h4>
+                    <p><c:out value="${ element.review }"/></p>
+                </div>
+            </div>
+        </c:forEach>
+        
         <tr>
             <td>1</td>
             <td>Ivanov</td>

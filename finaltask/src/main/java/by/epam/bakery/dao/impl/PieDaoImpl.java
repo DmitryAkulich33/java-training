@@ -18,6 +18,11 @@ public class PieDaoImpl extends AbstractDao<Pie> implements PieDao {
     private static final String FIND_BY_NAME ="SELECT * FROM pie WHERE name_pie = ?";
     private static final String SAVE_PIE = "INSERT INTO pie (name_pie, weight, price, description, picture)" +
             " VALUES(?, ?, ?, ?, ?)";
+    private static final String CHANGE_NAME = "UPDATE pie SET name_pie = ? WHERE id_pie = ?";
+    private static final String CHANGE_PICTURE = "UPDATE pie SET picture = ? WHERE id_pie = ?";
+    private static final String CHANGE_DESCRIPTION = "UPDATE pie SET description = ? WHERE id_pie = ?";
+    private static final String CHANGE_WEIGHT = "UPDATE pie SET weight = ? WHERE id_pie = ?";
+    private static final String CHANGE_PRICE = "UPDATE pie SET price = ? WHERE id_pie = ?";
 
     public PieDaoImpl(Connection connection) {
         super(connection);
@@ -56,5 +61,30 @@ public class PieDaoImpl extends AbstractDao<Pie> implements PieDao {
     @Override
     public void save(Object... parameters) throws DaoException {
         executeUpdate(SAVE_PIE, parameters);
+    }
+
+    @Override
+    public void changeName(String newName, int pieId) throws DaoException {
+        executeUpdate(CHANGE_NAME, newName, pieId);
+    }
+
+    @Override
+    public void changePicture(String newPicture, int pieId) throws DaoException {
+        executeUpdate(CHANGE_PICTURE, newPicture, pieId);
+    }
+
+    @Override
+    public void changeDescription(String newDescription, int pieId) throws DaoException {
+        executeUpdate(CHANGE_DESCRIPTION, newDescription, pieId);
+    }
+
+    @Override
+    public void changeWeight(int newWeight, int pieId) throws DaoException {
+        executeUpdate(CHANGE_WEIGHT, newWeight, pieId);
+    }
+
+    @Override
+    public void changePrice(double newPrice, int pieId) throws DaoException {
+        executeUpdate(CHANGE_PRICE, newPrice, pieId);
     }
 }

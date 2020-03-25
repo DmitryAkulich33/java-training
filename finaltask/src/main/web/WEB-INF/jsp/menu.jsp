@@ -74,15 +74,15 @@
                                 <div class="modal-body">
                                     <table class="table table-striped">
                                         <tbody>
-                                        <c:forEach var="elem" items="${basket.pies}" varStatus="status">
-                                            <tr>
-                                                <td><img class="image_pie_basket"
-                                                         src="<c:out value="${ elem.picture }"/>"></td>
-                                                <td><c:out value="${ elem.name }"/></td>
-                                                <td><c:out value="${ elem.weight }"/> gramm</td>
-                                                <td><c:out value="${ elem.price }"/>0 BYN</td>
-                                            </tr>
-                                        </c:forEach>
+<%--                                        <c:forEach var="elem" items="${basket.pies}" varStatus="status">--%>
+<%--                                            <tr>--%>
+<%--                                                <td><img class="image_pie_basket"--%>
+<%--                                                         src="<c:out value="${ elem.picture }"/>"></td>--%>
+<%--                                                <td><c:out value="${ elem.name }"/></td>--%>
+<%--                                                <td><c:out value="${ elem.weight }"/> gramm</td>--%>
+<%--                                                <td><c:out value="${ elem.price }"/>0 BYN</td>--%>
+<%--                                            </tr>--%>
+<%--                                        </c:forEach>--%>
                                         <tr>
                                             <td>
                                                 Total:
@@ -92,7 +92,7 @@
                                             <td>
                                             </td>
                                             <td>
-                                                <c:out value="${ total }0 BYN"/>
+<%--                                                <c:out value="${ total }0 BYN"/>--%>
                                             </td>
                                         </tr>
                                         </tbody>

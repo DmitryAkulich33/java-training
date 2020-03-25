@@ -79,4 +79,49 @@ public class PieServiceImpl implements PieService {
             throw new ServiceException(e);
         }
     }
+
+    public void changeName(String newName, int pieId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            dao.changeName(newName, pieId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void changePicture(String newPicture, int pieId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            dao.changePicture(newPicture, pieId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void changeDescription(String newDescription, int pieId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            dao.changeDescription(newDescription, pieId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void changeWeight(int newWeight, int pieId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            dao.changeWeight(newWeight, pieId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void changePrice(double newPrice, int pieId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            dao.changePrice(newPrice, pieId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

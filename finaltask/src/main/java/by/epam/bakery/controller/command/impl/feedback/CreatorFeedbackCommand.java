@@ -46,6 +46,5 @@ public class CreatorFeedbackCommand implements Command {
             session.setAttribute("noLogin", NO_LOGIN);
             return CommandResult.forward("/WEB-INF/jsp/feedback.jsp");
         }
-
     }
 }

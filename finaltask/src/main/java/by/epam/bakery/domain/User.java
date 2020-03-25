@@ -12,7 +12,6 @@ public class User extends Entity implements Serializable {
     private String address;
     private String phone;
     private String note;
-    private Basket basket = new Basket();
 
     public User() {
     }
@@ -30,13 +29,6 @@ public class User extends Entity implements Serializable {
         this.note = note;
     }
 
-    public Basket getBasket() {
-        return basket;
-    }
-
-    public void setBasket(Basket basket) {
-        this.basket = basket;
-    }
 
     public String getLogin() {
         return login;
@@ -126,8 +118,7 @@ public class User extends Entity implements Serializable {
         if (patronymic != null ? !patronymic.equals(user.patronymic) : user.patronymic != null) return false;
         if (address != null ? !address.equals(user.address) : user.address != null) return false;
         if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
-        if (note != null ? !note.equals(user.note) : user.note != null) return false;
-        return basket != null ? basket.equals(user.basket) : user.basket == null;
+        return note != null ? note.equals(user.note) : user.note == null;
     }
 
     @Override
@@ -142,7 +133,6 @@ public class User extends Entity implements Serializable {
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (note != null ? note.hashCode() : 0);
-        result = 31 * result + (basket != null ? basket.hashCode() : 0);
         return result;
     }
 
