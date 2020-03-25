@@ -34,4 +34,13 @@ INSERT INTO `feedback`
 VALUES
        (3, "2020-02-02T09:00:00", "I ordered two pies - Belorussian and Greek. They were delivered on time. I was surprised because it was very fast. The administrator is polite and attentive. I think that team of 'TastyPie' is professional. I will order their pies in future and will recommend this company to all of my friends."),
        (4, "2020-02-05T10:00:00", "I ordered Italian pie. It was not expensive. I think that pie costs its money, because it was delicious. All my family liked this pie and we  want to order more and more. I think we need to try every pie of this company."),
-       (5, "2020-02-08T11:00:00", "I wanted to order pies to the office for my birthday party. I did it in the morning and I got my pies at lunchtime. They were hot and looked tasty. I liked Irish pie most of all, but my collegues liked Belgian and French. Irish pie was good for me, because I am a vegetarian and I like pumpkin very much. There was a lot of filling im the pies. My birhday party was excelent. 'TastyPie', thank you very much for your work. You are the best!");
+       (5, "2020-02-08T11:00:00", "I wanted to order pies to the office for my birthday party. I did it in the morning and I got my pies at lunchtime. They were hot and looked tasty. I liked Irish pie most of all, but my collegues liked Belgian and French. Irish pie was good for me, because I am a vegetarian and I like pumpkin very much. There was a lot of filling im the pies. My birhday party was excelent. 'TastyPie', thank you very much for your work. You are the best!"),
+       (3, "2020-02-08T12:00:00", "It was delicious!"),
+       (4, "2020-02-08T13:00:00", "It was delicious!"),
+       (3, "2020-02-08T14:00:00", "It was delicious!"),
+       (5, "2020-02-08T15:00:00", "It was delicious!"),
+       (4, "2020-02-08T16:00:00", "It was delicious!"),
+       (5, "2020-02-08T17:00:00", "It was delicious!"),
+       (5, "2020-02-08T18:00:00", "It was delicious!"),
+       (3, "2020-02-08T19:00:00", "It was delicious!"),
+       (3, "2020-02-08T20:00:00", "It was delicious!COOL");

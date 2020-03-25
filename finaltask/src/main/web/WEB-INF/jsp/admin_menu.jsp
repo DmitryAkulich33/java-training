@@ -49,10 +49,6 @@
             <input type="hidden" name="command" value="order_product_admin">
             <input type="submit" class="change-info btn btn-primary" value="OrderProduct">
         </form>
-        <form action="controller" method="POST">
-            <input type="hidden" name="command" value="blacklist_admin">
-            <input type="submit" class="change-info btn btn-primary" value="Blacklist">
-        </form>
     </div>
 </div>
 </body>

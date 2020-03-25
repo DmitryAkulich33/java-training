@@ -1,28 +1,30 @@
 package by.epam.bakery.dao.impl;
 
-import by.epam.bakery.dao.api.FeedBackDao;
+import by.epam.bakery.dao.api.FeedbackDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.dao.mapper.RowMapper;
-import by.epam.bakery.domain.FeedBack;
+import by.epam.bakery.dao.mapper.impl.FeedBackRowMapper;
+import by.epam.bakery.domain.Feedback;
 
 import java.sql.Connection;
 import java.util.List;
 
-public class FeedBackDaoImpl extends AbstractDao<FeedBack> implements FeedBackDao {
+public class FeedbackDaoImpl extends AbstractDao<Feedback> implements FeedbackDao {
     private static final String FEEDBACK_TABLE = "feedback";
     private static final String ID_FEEDBACK = "id_feedback";
     private static final String FIND_ALL_FEEDBACK = "SELECT * FROM user INNER JOIN feedback ON user.id_user=feedback.user_id";
     private static final String SAVE_FEEDBACK = "INSERT INTO feedback (user_id, feedback_date, review)" +
             " VALUES(?, ?, ?)";
+    private static final String FIND_FEEDBACK_BY_USER_ID ="SELECT * FROM user INNER JOIN feedback ON user.id_user=feedback.user_id WHERE id_user = ? ";
 
-    public FeedBackDaoImpl(Connection connection) {
+    public FeedbackDaoImpl(Connection connection) {
         super(connection);
     }
 
     @Override
-    public List<FeedBack> findAll() throws DaoException {
+    public List<Feedback> findAll() throws DaoException {
         String table = getTableName();
-        RowMapper<FeedBack> mapper = (RowMapper<FeedBack>) RowMapper.create(table);
+        RowMapper<Feedback> mapper = (RowMapper<Feedback>) RowMapper.create(table);
         return executeQuery(FIND_ALL_FEEDBACK, mapper);
     }
 
@@ -44,5 +46,9 @@ public class FeedBackDaoImpl extends AbstractDao<FeedBack> implements FeedBackDa
     @Override
     protected String getIdName() {
         return ID_FEEDBACK;
+    }
+
+    public List<Feedback> getFeedbackByUserId(int userId) throws DaoException {
+        return executeQuery(FIND_FEEDBACK_BY_USER_ID, new FeedBackRowMapper(), userId);
     }
 }

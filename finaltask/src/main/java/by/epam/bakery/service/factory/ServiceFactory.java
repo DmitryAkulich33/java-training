@@ -9,7 +9,7 @@ public final class ServiceFactory {
 
     private final PieService pieService = new PieServiceImpl(new DaoHelperFactory());
     private final UserService userService = new UserServiceImpl(new DaoHelperFactory());
-    private final FeedBackService feedBackService = new FeedBackServiceImpl(new DaoHelperFactory());
+    private final FeedbackService feedBackService = new FeedbackServiceImpl(new DaoHelperFactory());
     private final BasketService basketService = new BasketServiceImpl(new DaoHelperFactory());
     private final OrderService orderService = new OrderServiceImpl(new DaoHelperFactory());
 
@@ -32,7 +32,7 @@ public final class ServiceFactory {
         return userService;
     }
 
-    public FeedBackService getFeedBackService() {
+    public FeedbackService getFeedBackService() {
         return feedBackService;
     }
 

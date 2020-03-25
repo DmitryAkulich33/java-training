@@ -2,7 +2,7 @@ package by.epam.bakery.controller.command.impl.feedback;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.FeedBack;
+import by.epam.bakery.domain.Feedback;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
@@ -32,15 +32,15 @@ public class CreatorFeedbackCommand implements Command {
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
-            List<FeedBack> feedBacks = null;
+            List<Feedback> feedbacks = null;
             try {
-                feedBacks = serviceFactory.getFeedBackService().showAllFeedBacks();
-                Collections.reverse(feedBacks);
+                feedbacks = serviceFactory.getFeedBackService().showAllFeedBacks();
+                Collections.reverse(feedbacks);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
             session.setAttribute("noLogin", "");
-            session.setAttribute(FEEDBACK, feedBacks);
+            session.setAttribute(FEEDBACK, feedbacks);
             return CommandResult.forward("/WEB-INF/jsp/feedback.jsp");
         } else {
             session.setAttribute("noLogin", NO_LOGIN);

@@ -1,17 +1,17 @@
 package by.epam.bakery.dao.mapper.impl;
 
 import by.epam.bakery.dao.mapper.RowMapper;
-import by.epam.bakery.domain.FeedBack;
+import by.epam.bakery.domain.Feedback;
 import by.epam.bakery.domain.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
-public class FeedBackRowMapper implements RowMapper<FeedBack> {
+public class FeedBackRowMapper implements RowMapper<Feedback> {
     @Override
-    public FeedBack map(ResultSet resultSet) throws SQLException {
-        FeedBack feedBack = new FeedBack();
+    public Feedback map(ResultSet resultSet) throws SQLException {
+        Feedback feedBack = new Feedback();
         feedBack.setId(resultSet.getInt("id_feedback"));
         feedBack.setLocalDateTime(LocalDateTime.parse(resultSet.getString("feedback_date").replace(" ", "T")));
         feedBack.setReview(resultSet.getString("review"));

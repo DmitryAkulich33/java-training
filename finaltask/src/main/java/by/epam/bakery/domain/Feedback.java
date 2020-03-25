@@ -3,15 +3,15 @@ package by.epam.bakery.domain;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class FeedBack extends Entity implements Serializable {
+public class Feedback extends Entity implements Serializable {
     private User user;
     private LocalDateTime localDateTime;
     private String review;
 
-    public FeedBack() {
+    public Feedback() {
     }
 
-    public FeedBack(int id, User user, LocalDateTime localDateTime, String review) {
+    public Feedback(int id, User user, LocalDateTime localDateTime, String review) {
         super(id);
         this.user = user;
         this.localDateTime = localDateTime;
@@ -45,10 +45,10 @@ public class FeedBack extends Entity implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof FeedBack)) return false;
+        if (!(o instanceof Feedback)) return false;
         if (!super.equals(o)) return false;
 
-        FeedBack feedBack = (FeedBack) o;
+        Feedback feedBack = (Feedback) o;
 
         if (user != null ? !user.equals(feedBack.user) : feedBack.user != null) return false;
         if (localDateTime != null ? !localDateTime.equals(feedBack.localDateTime) : feedBack.localDateTime != null)

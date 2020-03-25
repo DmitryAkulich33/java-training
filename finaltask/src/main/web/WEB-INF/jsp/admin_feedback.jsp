@@ -39,27 +39,29 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Enter user Id</span>
                                     </div>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="userId">
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="command" value="find_feedback_by_user">
+                                    <input type="submit" class="btn btn-secondary" value="Find feedbacks">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary">Find feedbacks</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
         </li>
         <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary">
-                Show all feedbacks
-            </button>
+            <form action="controller" method="POST">
+                <input type="hidden" name="command" value="admin_feedback">
+                <input type="submit" class="change-info btn btn-primary" value="Show all feedbacks">
+            </form>
         </li>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary">
@@ -87,44 +89,38 @@
         </tr>
         </thead>
         <tbody>
-
         <c:forEach var="element" items="${feedback}" varStatus="status">
-            <br>
-            <div class="feedback media border p-3">
-                <div class="media-body">
-                    <h4><c:out value="${ element.user.surname }"/> <c:out value="${ element.user.name }"/><small><i> posted
-                        <c:out value="${ element.localDateTime.toString().replace(\"T\", \" \") }"/></i></small></h4>
-                    <p><c:out value="${ element.review }"/></p>
-                </div>
-            </div>
-        </c:forEach>
-        
         <tr>
-            <td>1</td>
-            <td>Ivanov</td>
-            <td>Ivan</td>
-            <td>3</td>
-            <td>2020-02-02T09:00:00</td>
-            <td>I wanted to order pies to the office for my birthday party. I did it in the morning and I got my pies at lunchtime. They were hot and looked tasty. I liked Irish pie most of all, but my collegues liked Belgian and French. Irish pie was good for me, because I am a vegetarian and I like pumpkin very much. There was a lot of filling im the pies. My birhday party was excelent. 'TastyPie', thank you very much for your work. You are the best!</td>
+            <td><c:out value="${ element.id}"/></td>
+            <td><c:out value="${ element.user.surname }"/></td>
+            <td><c:out value="${ element.user.name }"/></td>
+            <td><c:out value="${ element.user.id }"/></td>
+            <td><c:out value="${ element.localDateTime.toString().replace(\"T\", \" \") }"/></td>
+            <td><c:out value="${ element.review }"/></td>
             <td>
-                <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal6">
+                <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModalFeed${ element.id }">
                     Delete
                 </button>
-                <div class="modal fade" id="myModal6">
+                <div class="modal fade" id="myModalFeed${ element.id }">
                     <div class="modal-dialog modal-dialog-centered modal-sm">
                         <div class="modal-content">
                             <div class="modal-body">
                                 Do you want to remove the feedback from the database?
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary">Delete</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            </div>
+                            <form action="controller" method="POST">
+                                <div class="modal-footer">
+                                    <input type="hidden" name="feedbackId" value="${ element.id }"/>
+                                    <input type="hidden" name="command" value="delete_feedback">
+                                    <input type="submit" class="btn btn-secondary" value="Delete">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </td>
         </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

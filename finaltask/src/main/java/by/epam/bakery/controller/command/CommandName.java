@@ -28,5 +28,7 @@ public enum CommandName {
     FIND_PIE_BY_NAME,
     DELETE_PIE,
     SAVE_PIE,
-    CHANGE_PIE
+    CHANGE_PIE,
+    FIND_FEEDBACK_BY_USER,
+    DELETE_FEEDBACK,
 }

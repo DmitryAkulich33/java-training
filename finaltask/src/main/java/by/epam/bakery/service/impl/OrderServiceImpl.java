@@ -2,10 +2,8 @@ package by.epam.bakery.service.impl;
 
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
-import by.epam.bakery.dao.api.FeedBackDao;
 import by.epam.bakery.dao.api.OrderDao;
 import by.epam.bakery.dao.exception.DaoException;
-import by.epam.bakery.domain.StatusEnum;
 import by.epam.bakery.service.api.OrderService;
 import by.epam.bakery.service.exception.ServiceException;
 
