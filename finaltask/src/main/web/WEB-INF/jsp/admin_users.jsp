@@ -24,12 +24,12 @@
 <div class="container">
     <br>
     <br>
-    <h2>Pies:</h2>
+    <h2>Users:</h2>
     <br>
     <ul class="nav">
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal3">
-                Add new pie
+                Add new user
             </button>
             <div class="modal fade" id="myTopModal3">
                 <div class="modal-dialog modal-dialog-centered">
@@ -83,7 +83,7 @@
         </li>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal4">
-                Find pie by Id
+                Find user by Id
             </button>
             <div class="modal fade" id="myTopModal4">
                 <div class="modal-dialog modal-dialog-centered">
@@ -113,7 +113,7 @@
         </li>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal5">
-                Find pie by Name
+                Find user by Surname
             </button>
             <div class="modal fade" id="myTopModal5">
                 <div class="modal-dialog modal-dialog-centered">
@@ -153,23 +153,26 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Picture</th>
+            <th>Role</th>
+            <th>Surname</th>
             <th>Name</th>
-            <th>Weight</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Action</th>
+            <th>Patronymic</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Note</th>
             <th></th>
         </tr>
         </thead>
-        <c:forEach var="element" items="${pies}" varStatus="status">
+        <c:forEach var="element" items="${users}" varStatus="status">
             <tr>
                 <td><c:out value="${ element.id }"/></td>
-                <td><img class="image_pie_basket" src="<c:out value="${ element.picture }"/>"></td>
+                <td><c:out value="${ element.role }"/></td>
+                <td><c:out value="${ element.surname }"/></td>
                 <td><c:out value="${ element.name }"/></td>
-                <td><c:out value="${ element.weight }"/></td>
-                <td><c:out value="${ element.price }"/></td>
-                <td><c:out value="${ element.description }"/></td>
+                <td><c:out value="${ element.patronymic }"/></td>
+                <td><c:out value="${ element.address }"/></td>
+                <td><c:out value="${ element.phone }"/></td>
+                <td><c:out value="${ element.note }"/></td>
                 <td>
                     <button type="button" class="change-info btn btn-primary" data-toggle="modal"
                             data-target="#myModal${ element.id }">
@@ -179,12 +182,12 @@
                         <div class="modal-dialog modal-dialog-centered modal-sm">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    Do you want to remove the pie from the database?
+                                    Do you want to remove the user from the database?
                                 </div>
                                 <div class="modal-footer">
                                     <form action="controller" method="POST">
                                         <input type="hidden" name="delId" value="${ element.id }"/>
-                                        <input type="hidden" name="command" value="delete_pie">
+                                        <input type="hidden" name="command" value="delete_user">
                                         <input type="submit" class="btn btn-secondary" value="Delete">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
                                         </button>

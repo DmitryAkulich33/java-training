@@ -16,7 +16,7 @@
     <script>
         <%@include file="../../js/bootstrap.js" %>
     </script>
-    <title>Personal account</title>
+    <title>Admin account</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>

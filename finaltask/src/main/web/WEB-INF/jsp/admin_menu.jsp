@@ -16,7 +16,7 @@
     <script>
         <%@include file="../../js/bootstrap.js" %>
     </script>
-    <title>Personal account</title>
+    <title>Admin account</title>
 </head>
 <body>
 <div class="container">
@@ -34,7 +34,7 @@
             <input type="submit" class="change-info btn btn-primary" value="Pie">
         </form>
         <form action="controller" method="POST">
-            <input type="hidden" name="command" value="users_admin">
+            <input type="hidden" name="command" value="admin_users">
             <input type="submit" class="change-info btn btn-primary" value="User">
         </form>
         <form action="controller" method="POST">

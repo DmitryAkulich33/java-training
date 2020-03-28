@@ -2,12 +2,15 @@ package by.epam.bakery.service.impl;
 
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
+import by.epam.bakery.dao.api.PieDao;
 import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
+import by.epam.bakery.domain.Pie;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.api.UserService;
 import by.epam.bakery.service.exception.ServiceException;
 
+import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
@@ -66,6 +69,24 @@ public class UserServiceImpl implements UserService {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changePhone(newPhone, userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public List<User> showAllUsers() throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findAll();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public void deleteUser (int id) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            dao.removeById(id);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

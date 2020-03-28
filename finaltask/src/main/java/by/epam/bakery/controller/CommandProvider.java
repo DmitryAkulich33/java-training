@@ -46,6 +46,8 @@ final class CommandProvider {
         repository.put(CommandName.FIND_FEEDBACK_BY_USER, new FindFeedbackByUserCommand());
         repository.put(CommandName.DELETE_FEEDBACK, new DeleteFeedbackCommand());
         repository.put(CommandName.SHOW_LAST_FEEDBACK, new ShowLastFeedbackCommand());
+        repository.put(CommandName.ADMIN_USERS, new AdminUsersCommand());
+        repository.put(CommandName.DELETE_USER, new DeleteUserCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 
