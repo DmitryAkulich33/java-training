@@ -15,6 +15,7 @@ public class BasketServiceImpl implements BasketService {
         this.daoHelperFactory = daoHelperFactory;
     }
 
+    @Override
     public double getTotal(Basket basket) throws ServiceException{
 //        if(basket == null){
 //            throw new ServiceException("Basket is null.");

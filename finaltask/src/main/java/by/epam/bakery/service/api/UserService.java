@@ -17,4 +17,6 @@ public interface UserService {
     void addUser (String login, String password, int role, String surname, String name, String patronymic, String address, String phone, String note) throws ServiceException;
     User findUserById (int userId) throws ServiceException;
     List<User> findUsersBySurname(String surname) throws ServiceException;
+    void changeNote(String newNote, int userId) throws ServiceException;
+    void changeRole(int newRole, int userId) throws ServiceException;
 }

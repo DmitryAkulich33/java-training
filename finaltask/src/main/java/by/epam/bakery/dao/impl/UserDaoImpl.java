@@ -23,6 +23,8 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String CHANGE_PHONE = "UPDATE user SET phone = ? WHERE id_user = ?";
     private static final String SAVE_USER = "INSERT INTO user (login, password, role, surname, name_user, patronymic, address, phone, note)" +
             " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String CHANGE_ROLE = "UPDATE user SET role = ? WHERE id_user = ?";
+
 
     public UserDaoImpl(Connection connection) {
         super(connection);
@@ -36,6 +38,11 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     @Override
     public List<User> findUsersBySurname(String surname) throws DaoException {
         return executeQuery(FIND_BY_SURNAME, new UserRowMapper(), surname);
+    }
+
+    @Override
+    public void changeRole(int newRole, int userId) throws DaoException {
+        executeUpdate(CHANGE_ROLE, newRole, userId);
     }
 
     @Override

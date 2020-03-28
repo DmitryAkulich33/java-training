@@ -36,5 +36,6 @@ public enum CommandName {
     DELETE_USER,
     SAVE_USER,
     FIND_USER_BY_ID,
-    FIND_USER_BY_SURNAME
+    FIND_USER_BY_SURNAME,
+    CHANGE_USER
 }

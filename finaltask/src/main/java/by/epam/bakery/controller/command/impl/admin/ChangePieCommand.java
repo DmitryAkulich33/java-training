@@ -23,6 +23,8 @@ public class ChangePieCommand implements Command {
         String name = request.getParameter(CHANGE_NAME);
         String picture = request.getParameter(CHANGE_PICTURE);
         String description = request.getParameter(CHANGE_DESCRIPTION);
+        String weight = request.getParameter(CHANGE_WEIGHT);
+        String price = request.getParameter(CHANGE_PRICE);
         int pieId = Integer.parseInt(request.getParameter(CHANGE_ID));
         if(!name.isEmpty()){
             try {
@@ -45,16 +47,18 @@ public class ChangePieCommand implements Command {
                 e.printStackTrace();
             }
         }
-        if(!request.getParameter(CHANGE_WEIGHT).isEmpty()){
+        if(!weight.isEmpty()){
             try {
-                serviceFactory.getPieService().changeWeight(Integer.parseInt(request.getParameter(CHANGE_WEIGHT)), pieId);
+                int pieWeight = Integer.parseInt(weight);
+                serviceFactory.getPieService().changeWeight(pieWeight, pieId);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
         }
-        if(!request.getParameter(CHANGE_PRICE).isEmpty()){
+        if(!price.isEmpty()){
             try {
-                serviceFactory.getPieService().changePrice(Double.parseDouble(request.getParameter(CHANGE_PRICE)), pieId);
+                double piePrice = Double.parseDouble(price);
+                serviceFactory.getPieService().changePrice(piePrice, pieId);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }

@@ -51,6 +51,7 @@ final class CommandProvider {
         repository.put(CommandName.SAVE_USER, new SaveUserCommand());
         repository.put(CommandName.FIND_USER_BY_ID, new FindUserByIdCommand());
         repository.put(CommandName.FIND_USER_BY_SURNAME, new FindUserBySurnameCommand());
+        repository.put(CommandName.CHANGE_USER, new ChangeUserCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService {
         this.daoHelperFactory = daoHelperFactory;
     }
 
+    @Override
     public User login(String login, String password) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -29,6 +30,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void changeName(String newName, int userId) throws ServiceException{
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -38,6 +40,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void changeSurname(String newSurname, int userId) throws ServiceException{
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -47,6 +50,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void changePatronymic(String newPatronymic, int userId) throws ServiceException{
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -56,6 +60,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void changeAddress(String newAddress, int userId) throws ServiceException{
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -65,6 +70,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void changePhone(String newPhone, int userId) throws ServiceException{
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -74,6 +80,27 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public void changeNote(String newNote, int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            dao.changeNote(newNote, userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void changeRole(int newRole, int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            dao.changeRole(newRole, userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public List<User> showAllUsers() throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -83,6 +110,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void deleteUser (int id) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -92,6 +120,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public void addUser (String login, String password, int role, String surname, String name, String patronymic, String address, String phone, String note) throws ServiceException{
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -101,6 +130,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public User findUserById (int userId) throws ServiceException{
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -110,6 +140,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
     public List<User> findUsersBySurname(String surname) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();

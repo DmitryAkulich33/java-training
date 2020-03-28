@@ -20,6 +20,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         this.daoHelperFactory = daoHelperFactory;
     }
 
+    @Override
     public void save(int userId, LocalDateTime feedbackDate, String review) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             FeedbackDao dao = helper.createFeedBackDao();
@@ -29,6 +30,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         }
     }
 
+    @Override
     public List<Feedback> showAllFeedBacks() throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             FeedbackDao dao = helper.createFeedBackDao();
@@ -38,6 +40,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         }
     }
 
+    @Override
     public List<Feedback> findFeedbackByUserId(int userId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             FeedbackDao dao = helper.createFeedBackDao();
@@ -47,6 +50,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         }
     }
 
+    @Override
     public void deleteFeedback (int id) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             FeedbackDao dao = helper.createFeedBackDao();
@@ -56,6 +60,7 @@ public class FeedbackServiceImpl implements FeedbackService {
         }
     }
 
+    @Override
     public List<Feedback> findNecessaryFeedbackAmount(int amount, List<Feedback> allFeedback){
         int size = allFeedback.size();
         if(size >= amount) {
