@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Phone Number</span>
+                                        <span class="input-group-text">Phone</span>
                                     </div>
                                     <input type="text" class="form-control" name="savePhone">
                                 </div>
@@ -107,7 +107,7 @@
         </li>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal4">
-                Find user by Id
+                Find user by id
             </button>
             <div class="modal fade" id="myTopModal4">
                 <div class="modal-dialog modal-dialog-centered">
@@ -137,26 +137,26 @@
         </li>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal5">
-                Find user by Surname
+                Find user by surname
             </button>
             <div class="modal fade" id="myTopModal5">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Find pie</h4>
+                            <h4 class="modal-title">Find user</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
                             <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Enter Id</span>
+                                        <span class="input-group-text">Enter surname</span>
                                     </div>
-                                    <input type="text" class="form-control" name="pieName">
+                                    <input type="text" class="form-control" name="userSurname">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" name="command" value="find_pie_by_name">
-                                    <input type="submit" value="Find pie" class="btn btn-secondary">
+                                    <input type="hidden" name="command" value="find_user_by_surname">
+                                    <input type="submit" value="Find user" class="btn btn-secondary">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
@@ -182,8 +182,9 @@
             <th>Name</th>
             <th>Patronymic</th>
             <th>Address</th>
-            <th>Phone</th>
+            <th>PhoneNumber</th>
             <th>Note</th>
+            <th>Action</th>
             <th></th>
         </tr>
         </thead>
@@ -237,37 +238,31 @@
                                     <form action="controller" method="POST">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New picture</span>
+                                                <span class="input-group-text">New role</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changePicture">
+                                            <input type="text" class="form-control" name="changeRole">
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New name</span>
+                                                <span class="input-group-text">New address</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeName">
+                                            <input type="text" class="form-control" name="changeAddress">
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New weight</span>
+                                                <span class="input-group-text">New phone</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeWeight">
+                                            <input type="text" class="form-control" name="changePhone">
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New price</span>
+                                                <span class="input-group-text">New note</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changePrice">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">New description</span>
-                                            </div>
-                                            <input type="text" class="form-control" name="changeDescription">
+                                            <input type="text" class="form-control" name="changeNote">
                                         </div>
                                         <div class="modal-footer">
                                             <input type="hidden" name="changeId" value="${ element.id }"/>
-                                            <input type="hidden" name="command" value="change_pie">
+                                            <input type="hidden" name="command" value="change_user">
                                             <input type="submit" class="btn btn-secondary" value="Change">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                 Cancel

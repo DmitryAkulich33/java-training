@@ -83,7 +83,7 @@
         </li>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal4">
-                Find pie by Id
+                Find pie by id
             </button>
             <div class="modal fade" id="myTopModal4">
                 <div class="modal-dialog modal-dialog-centered">
@@ -113,7 +113,7 @@
         </li>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal5">
-                Find pie by Name
+                Find pie by name
             </button>
             <div class="modal fade" id="myTopModal5">
                 <div class="modal-dialog modal-dialog-centered">
@@ -126,7 +126,7 @@
                             <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Enter Id</span>
+                                        <span class="input-group-text">Enter id</span>
                                     </div>
                                     <input type="text" class="form-control" name="pieName">
                                 </div>
