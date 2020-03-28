@@ -24,18 +24,18 @@
 <div class="container-fluid">
     <br>
     <br>
-    <h2>Users:</h2>
+    <h2>Order products:</h2>
     <br>
     <ul class="nav">
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal3">
-                Add new user
+                Add new product to order
             </button>
             <div class="modal fade" id="myTopModal3">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Add new user</h4>
+                            <h4 class="modal-title">Add new pie</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -95,8 +95,8 @@
                                     <input type="text" class="form-control" name="saveNote">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" name="command" value="save_user">
-                                    <input type="submit" value="Add user" class="btn btn-secondary">
+                                    <input type="hidden" name="command" value="save_order">
+                                    <input type="submit" value="Add order" class="btn btn-secondary">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
@@ -107,26 +107,26 @@
         </li>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal4">
-                Find user by id
+                Find products by user id
             </button>
             <div class="modal fade" id="myTopModal4">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Find user</h4>
+                            <h4 class="modal-title">Find products</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
                             <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Enter Id</span>
+                                        <span class="input-group-text">Enter id</span>
                                     </div>
                                     <input type="text" class="form-control" name="userId">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" name="command" value="find_user_by_id">
-                                    <input type="submit" value="Find user" class="btn btn-secondary">
+                                    <input type="hidden" name="command" value="find_order_product_by_user_id">
+                                    <input type="submit" value="Find products" class="btn btn-secondary">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
@@ -137,26 +137,26 @@
         </li>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal5">
-                Find user by surname
+                Find products by order id
             </button>
             <div class="modal fade" id="myTopModal5">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Find user</h4>
+                            <h4 class="modal-title">Find products</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
                             <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Enter surname</span>
+                                        <span class="input-group-text">Enter id</span>
                                     </div>
-                                    <input type="text" class="form-control" name="userSurname">
+                                    <input type="text" class="form-control" name="orderId">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" name="command" value="find_user_by_surname">
-                                    <input type="submit" value="Find user" class="btn btn-secondary">
+                                    <input type="hidden" name="command" value="find_order_product_by_order_id">
+                                    <input type="submit" value="Find products" class="btn btn-secondary">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
@@ -167,8 +167,8 @@
         </li>
         <li class="li_admin nav-item">
             <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_users">
-                <input type="submit" class="change-info btn btn-primary" value="Show all users">
+                <input type="hidden" name="command" value="admin_order_product">
+                <input type="submit" class="change-info btn btn-primary" value="Show all products">
             </form>
         </li>
     </ul>
@@ -177,105 +177,50 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Role</th>
-            <th>Surname</th>
-            <th>Name</th>
-            <th>Patronymic</th>
-            <th>Address</th>
-            <th>PhoneNumber</th>
-            <th>Note</th>
+            <th>Order id</th>
+            <th>Pie id</th>
+            <th>Pie name</th>
+            <th>Pie Price</th>
             <th>Action</th>
             <th></th>
         </tr>
         </thead>
-        <c:forEach var="element" items="${users}" varStatus="status">
-            <tr>
-                <td><c:out value="${ element.id }"/></td>
-                <td><c:out value="${ element.role }"/></td>
-                <td><c:out value="${ element.surname }"/></td>
-                <td><c:out value="${ element.name }"/></td>
-                <td><c:out value="${ element.patronymic }"/></td>
-                <td><c:out value="${ element.address }"/></td>
-                <td><c:out value="${ element.phone }"/></td>
-                <td><c:out value="${ element.note }"/></td>
-                <td>
-                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"
-                            data-target="#myModal${ element.id }">
-                        Delete
-                    </button>
-                    <div class="modal fade" id="myModal${ element.id }">
-                        <div class="modal-dialog modal-dialog-centered modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    Do you want to remove the user from the database?
-                                </div>
-                                <div class="modal-footer">
-                                    <form action="controller" method="POST">
-                                        <input type="hidden" name="delId" value="${ element.id }"/>
-                                        <input type="hidden" name="command" value="delete_user">
-                                        <input type="submit" class="btn btn-secondary" value="Delete">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"
-                            data-target="#mySecModal${ element.id }">
-                        Change
-                    </button>
-                    <div class="modal fade" id="mySecModal${ element.id }">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Change information</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="controller" method="POST">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">New role</span>
-                                            </div>
-                                            <input type="text" class="form-control" name="changeRole">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">New address</span>
-                                            </div>
-                                            <input type="text" class="form-control" name="changeAddress">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">New phone</span>
-                                            </div>
-                                            <input type="text" class="form-control" name="changePhone">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">New note</span>
-                                            </div>
-                                            <input type="text" class="form-control" name="changeNote">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <input type="hidden" name="changeId" value="${ element.id }"/>
-                                            <input type="hidden" name="command" value="change_user">
-                                            <input type="submit" class="btn btn-secondary" value="Change">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                Cancel
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-        </c:forEach>
+        <%--        <c:forEach var="element" items="${orders}" varStatus="status">--%>
+        <%--            <tr>--%>
+        <%--                <td><c:out value="${ element.id }"/></td>--%>
+        <%--                <td><c:out value="${ element.role }"/></td>--%>
+        <%--                <td><c:out value="${ element.surname }"/></td>--%>
+        <%--                <td><c:out value="${ element.name }"/></td>--%>
+        <%--                <td><c:out value="${ element.patronymic }"/></td>--%>
+        <%--                <td><c:out value="${ element.address }"/></td>--%>
+        <%--                <td><c:out value="${ element.phone }"/></td>--%>
+        <%--                <td><c:out value="${ element.note }"/></td>--%>
+        <%--                <td>--%>
+        <%--                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"--%>
+        <%--                            data-target="#myModal${ element.id }">--%>
+        <%--                        Delete--%>
+        <%--                    </button>--%>
+        <%--                    <div class="modal fade" id="myModal${ element.id }">--%>
+        <%--                        <div class="modal-dialog modal-dialog-centered modal-sm">--%>
+        <%--                            <div class="modal-content">--%>
+        <%--                                <div class="modal-body">--%>
+        <%--                                    Do you want to remove the order from the database?--%>
+        <%--                                </div>--%>
+        <%--                                <div class="modal-footer">--%>
+        <%--                                    <form action="controller" method="POST">--%>
+        <%--                                        <input type="hidden" name="delId" value="${ element.id }"/>--%>
+        <%--                                        <input type="hidden" name="command" value="delete_order">--%>
+        <%--                                        <input type="submit" class="btn btn-secondary" value="Delete">--%>
+        <%--                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel--%>
+        <%--                                        </button>--%>
+        <%--                                    </form>--%>
+        <%--                                </div>--%>
+        <%--                            </div>--%>
+        <%--                        </div>--%>
+        <%--                    </div>--%>
+        <%--                </td>--%>
+        <%--            </tr>--%>
+        <%--        </c:forEach>--%>
     </table>
 </div>
 

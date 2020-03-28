@@ -47,13 +47,11 @@ CREATE TABLE `order` (
 CREATE TABLE `basket` (
 	`id_basket` INTEGER NOT NULL AUTO_INCREMENT,
 	`user_id` INTEGER NOT NULL,
-	`pie_id` INTEGER NOT NULL,
+    `total` DOUBLE NOT NULL,
 
 	CONSTRAINT pk_basket PRIMARY KEY (`id_basket`),
     CONSTRAINT fk_basket_user FOREIGN KEY (`user_id`)
-	REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT fk_basket_pie FOREIGN KEY (`pie_id`)
-    REFERENCES `pie`(`id_pie`) ON DELETE CASCADE ON UPDATE CASCADE
+	REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE `feedback` (
@@ -73,9 +71,22 @@ CREATE TABLE `order_product` (
     `pie_id` INTEGER NOT NULL,
 
     CONSTRAINT pk_order_product PRIMARY KEY (`id_order_product`),
-    CONSTRAINT order_product_pie FOREIGN KEY (`pie_id`)
-    REFERENCES `pie`(`id_pie`) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT order_product_order FOREIGN KEY (`order_id`)
-    REFERENCES `order`(`id_order`) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_order_product_order FOREIGN KEY (`order_id`)
+    REFERENCES `order`(`id_order`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_order_product_pie FOREIGN KEY (`pie_id`)
+    REFERENCES `pie`(`id_pie`) ON DELETE CASCADE ON UPDATE CASCADE
+
+);
+
+CREATE TABLE `basket_product` (
+    `id_basket_product` INTEGER NOT NULL AUTO_INCREMENT,
+    `basket_id` INTEGER NOT NULL,
+    `pie_id` INTEGER NOT NULL,
+
+    CONSTRAINT pk_basket_product PRIMARY KEY (`id_basket_product`),
+    CONSTRAINT fk_basket_product_basket FOREIGN KEY (`basket_id`)
+    REFERENCES `basket`(`id_basket`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_basket_product_order FOREIGN KEY (`pie_id`)
+    REFERENCES `pie`(`id_pie`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 

@@ -52,6 +52,10 @@ final class CommandProvider {
         repository.put(CommandName.FIND_USER_BY_ID, new FindUserByIdCommand());
         repository.put(CommandName.FIND_USER_BY_SURNAME, new FindUserBySurnameCommand());
         repository.put(CommandName.CHANGE_USER, new ChangeUserCommand());
+        repository.put(CommandName.ADMIN_ORDER, new AdminOrderCommand());
+        repository.put(CommandName.ADMIN_ORDER_PRODUCT, new AdminOrderProductCommand());
+        repository.put(CommandName.ADMIN_BASKET, new AdminBasketCommand());
+        repository.put(CommandName.ADMIN_BASKET_PRODUCT, new AdminBasketProductCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

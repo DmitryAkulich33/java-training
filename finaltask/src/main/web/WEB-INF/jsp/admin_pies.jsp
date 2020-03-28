@@ -21,7 +21,7 @@
 <body>
 <jsp:include page="header.jsp"/>
 <jsp:include page="admin_menu.jsp"/>
-<div class="container">
+<div class="container-fluid">
     <br>
     <br>
     <h2>Pies:</h2>

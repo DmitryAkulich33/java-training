@@ -133,8 +133,14 @@ VALUES
     (20, 5);
 
 INSERT INTO `basket`
-    (`user_id`, `pie_id`)
+    (`user_id`, `total`)
 VALUES
-    (4, 2),
-    (4, 3),
+    (4, 48),
     (10, 2);
+
+INSERT INTO `basket_product`
+    (`basket_id`, `pie_id`)
+VALUES
+    (1, 2),
+    (1, 3),
+    (2, 2);

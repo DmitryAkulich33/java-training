@@ -21,7 +21,7 @@
 <body>
 <jsp:include page="header.jsp"/>
 <jsp:include page="admin_menu.jsp"/>
-<div class="container">
+<div class="container-fluid">
     <br>
     <br>
     <h2>Feedbacks:</h2>
@@ -93,12 +93,6 @@
                 </div>
             </div>
         </li>
-<%--        <li class="li_admin nav-item">--%>
-<%--            <form action="controller" method="POST">--%>
-<%--                <input type="hidden" name="command" value="show_ten_feedback">--%>
-<%--                <input type="submit" class="change-info btn btn-primary" value="Show last 10">--%>
-<%--            </form>--%>
-<%--        </li>--%>
     </ul>
     <br>
     <table class="table table-hover">
@@ -108,7 +102,7 @@
             <th>Surname</th>
             <th>Name</th>
             <th>UserId</th>
-            <th>Date</th>
+            <th>Posted date</th>
             <th>Review</th>
             <th>Action</th>
             <th></th>

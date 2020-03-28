@@ -19,7 +19,7 @@
     <title>Admin account</title>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <ul class="nav">
         <li class="nav-item">
             <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the homepage</a>
@@ -42,12 +42,20 @@
             <input type="submit" class="change-info btn btn-primary" value="Feedback">
         </form>
         <form action="controller" method="POST">
-            <input type="hidden" name="command" value="order_admin">
+            <input type="hidden" name="command" value="admin_order">
             <input type="submit" class="change-info btn btn-primary" value="Order">
         </form>
         <form action="controller" method="POST">
-            <input type="hidden" name="command" value="order_product_admin">
+            <input type="hidden" name="command" value="admin_order_product">
             <input type="submit" class="change-info btn btn-primary" value="OrderProduct">
+        </form>
+        <form action="controller" method="POST">
+            <input type="hidden" name="command" value="admin_basket">
+            <input type="submit" class="change-info btn btn-primary" value="Basket">
+        </form>
+        <form action="controller" method="POST">
+            <input type="hidden" name="command" value="admin_basket_product">
+            <input type="submit" class="change-info btn btn-primary" value="BasketOrder">
         </form>
     </div>
 </div>
