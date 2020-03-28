@@ -35,16 +35,34 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Add new pie</h4>
+                            <h4 class="modal-title">Add new user</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
                             <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Picture</span>
+                                        <span class="input-group-text">Login</span>
                                     </div>
-                                    <input type="text" class="form-control" name="savePicture">
+                                    <input type="text" class="form-control" name="saveLogin">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Password</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="savePassword">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Role</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="saveRole">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Surname</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="saveSurname">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -54,25 +72,31 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Weight</span>
+                                        <span class="input-group-text">Patronymic</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveWeight">
+                                    <input type="text" class="form-control" name="savePatronymic">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Price</span>
+                                        <span class="input-group-text">Address</span>
                                     </div>
-                                    <input type="text" class="form-control" name="savePrice">
+                                    <input type="text" class="form-control" name="saveAddress">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Description</span>
+                                        <span class="input-group-text">Phone Number</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveDescription">
+                                    <input type="text" class="form-control" name="savePhone">
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Note</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="saveNote">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" name="command" value="save_pie">
-                                    <input type="submit" value="Add pie" class="btn btn-secondary">
+                                    <input type="hidden" name="command" value="save_user">
+                                    <input type="submit" value="Add user" class="btn btn-secondary">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
@@ -89,7 +113,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Find pie</h4>
+                            <h4 class="modal-title">Find user</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -98,11 +122,11 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Enter Id</span>
                                     </div>
-                                    <input type="text" class="form-control" name="pieId">
+                                    <input type="text" class="form-control" name="userId">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" name="command" value="find_pie_by_id">
-                                    <input type="submit" value="Find pie" class="btn btn-secondary">
+                                    <input type="hidden" name="command" value="find_user_by_id">
+                                    <input type="submit" value="Find user" class="btn btn-secondary">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
@@ -143,8 +167,8 @@
         </li>
         <li class="li_admin nav-item">
             <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_pies">
-                <input type="submit" class="change-info btn btn-primary" value="Show all pies">
+                <input type="hidden" name="command" value="admin_users">
+                <input type="submit" class="change-info btn btn-primary" value="Show all users">
             </form>
         </li>
     </ul>

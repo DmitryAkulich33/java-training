@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface UserDao extends Dao<User> {
     User findUserByLoginAndPassword(String login, String password) throws DaoException;
-    User findUserBySurname(String surname) throws DaoException;
+    List<User> findUsersBySurname(String surname) throws DaoException;
     void changeNote(String note, int userId) throws DaoException;
     List<User> getAllClients() throws DaoException;
     void changeName(String newName, int userId) throws DaoException;

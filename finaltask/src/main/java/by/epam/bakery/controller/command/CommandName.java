@@ -33,5 +33,7 @@ public enum CommandName {
     DELETE_FEEDBACK,
     SHOW_LAST_FEEDBACK,
     ADMIN_USERS,
-    DELETE_USER
+    DELETE_USER,
+    SAVE_USER,
+    FIND_USER_BY_ID
 }

@@ -91,4 +91,31 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException(e);
         }
     }
+
+    public void addUser (String login, String password, int role, String surname, String name, String patronymic, String address, String phone, String note) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            dao.save(login, password, role, surname, name, patronymic, address, phone, note);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public User findUserById (int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findById(userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    public List<User> findUsersBySurname(String surname) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findUsersBySurname(surname);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

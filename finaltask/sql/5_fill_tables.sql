@@ -18,7 +18,7 @@ VALUES ("courier1", "courier1", 2, "Aleksievich", "Aleksey", "Alekseevich", "Apt
         "In the yard problems with parking spaces"),
        ("user6", "user6", 3, "Gagarin", "Dmitry", "Fedorovich", "Apt 12, 15 Kazinca St, Minsk", "+375 33 6050120",
         "There are enough parking spaces in the yard"),
-       ("user7", "user7", 3, "Smirnov", "Andrey", "Borisovich", "Apt 122, 45 Alibegova St, Minsk", "+375 44 5759128",
+       ("user7", "user7", 3, "Petrov", "Andrey", "Borisovich", "Apt 122, 45 Alibegova St, Minsk", "+375 44 5759128",
         "Near the house there are construction work");
 
 INSERT INTO `pie`

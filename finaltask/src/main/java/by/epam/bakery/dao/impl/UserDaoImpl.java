@@ -34,8 +34,8 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public User findUserBySurname(String surname) throws DaoException {
-        return executeForSingleResult(FIND_BY_SURNAME, new UserRowMapper(), surname);
+    public List<User> findUsersBySurname(String surname) throws DaoException {
+        return executeQuery(FIND_BY_SURNAME, new UserRowMapper(), surname);
     }
 
     @Override
