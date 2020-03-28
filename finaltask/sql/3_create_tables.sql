@@ -44,13 +44,16 @@ CREATE TABLE `order` (
 	REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE `black_list` (
-	`id_list` INTEGER NOT NULL AUTO_INCREMENT,
+CREATE TABLE `basket` (
+	`id_basket` INTEGER NOT NULL AUTO_INCREMENT,
 	`user_id` INTEGER NOT NULL,
-	
-	CONSTRAINT pk_black_list PRIMARY KEY (`id_list`),
-    CONSTRAINT fk_black_list_user FOREIGN KEY (`user_id`)
-	REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
+	`pie_id` INTEGER NOT NULL,
+
+	CONSTRAINT pk_basket PRIMARY KEY (`id_basket`),
+    CONSTRAINT fk_basket_user FOREIGN KEY (`user_id`)
+	REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_basket_pie FOREIGN KEY (`pie_id`)
+    REFERENCES `pie`(`id_pie`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE `feedback` (

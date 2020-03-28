@@ -131,3 +131,10 @@ VALUES
     (18, 9),
     (19, 2),
     (20, 5);
+
+INSERT INTO `basket`
+    (`user_id`, `pie_id`)
+VALUES
+    (4, 2),
+    (4, 3),
+    (10, 2);
