@@ -133,14 +133,20 @@ VALUES
     (20, 5);
 
 INSERT INTO `basket`
-    (`user_id`, `total`)
+    (`user_login`, `total`)
 VALUES
-    (4, 48),
-    (10, 2);
+    ("user1", 0.0),
+    ("user2", 0.0),
+    ("user3", 0.0),
+    ("user4", 0.0),
+    ("user5", 0.0),
+    ("user6", 0.0),
+    ("user7", 0.0);
 
-INSERT INTO `basket_product`
-    (`basket_id`, `pie_id`)
-VALUES
-    (1, 2),
-    (1, 3),
-    (2, 2);
+
+# INSERT INTO `basket_product`
+#     (`basket_id`, `pie_id`)
+# VALUES
+#     (1, 2),
+#     (1, 3),
+#     (2, 2);

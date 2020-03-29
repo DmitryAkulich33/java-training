@@ -65,6 +65,7 @@
                                 <td class="button_navbar_menu">
                                     <form action="controller" method="POST">
                                         <input type="hidden" name="pieId" value="${ element.id }"/>
+                                        <input type="hidden" name="piePrice" value="${ element.price }"/>
                                         <input type="hidden" name="command" value="add_pie">
                                         <input type="submit" name="button" class="in_basket" value="TO BASKET"/>
                                     </form>

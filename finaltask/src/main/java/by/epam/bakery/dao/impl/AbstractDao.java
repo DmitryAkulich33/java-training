@@ -60,7 +60,7 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
         } else if (items.size() > 1) {
             throw new DaoException("More than one record found");
         } else {
-            throw new DaoException("No records1");
+            throw new DaoException("No records");
         }
     }
 

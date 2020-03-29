@@ -6,6 +6,7 @@ import by.epam.bakery.dao.api.FeedbackDao;
 import by.epam.bakery.dao.api.PieDao;
 import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
+import by.epam.bakery.domain.Basket;
 import by.epam.bakery.domain.Feedback;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
@@ -41,5 +42,9 @@ public class Runner {
 //        System.out.println("d\"d");
 //        System.out.println(LocalDateTime.now().toString().substring(0, 19));
 //        serviceFactory.getOrderService().save(4, 76.00, null, null, StatusEnum.NOTREADY.getValue());
+//        serviceFactory.getBasketService().save(3, 22);
+        Basket basket = serviceFactory.getBasketService().findBasketByUserLogin("user7");
+        System.out.println(basket);
+//        serviceFactory.getBasketProductService().saveBasketProduct(2, 4);
     }
 }

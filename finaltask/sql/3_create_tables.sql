@@ -46,12 +46,12 @@ CREATE TABLE `order` (
 
 CREATE TABLE `basket` (
 	`id_basket` INTEGER NOT NULL AUTO_INCREMENT,
-	`user_id` INTEGER NOT NULL,
+	`user_login` VARCHAR(50) NOT NULL,
     `total` DOUBLE NOT NULL,
 
 	CONSTRAINT pk_basket PRIMARY KEY (`id_basket`),
-    CONSTRAINT fk_basket_user FOREIGN KEY (`user_id`)
-	REFERENCES `user`(`id_user`) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT fk_basket_user FOREIGN KEY (`user_login`)
+	REFERENCES `user`(`login`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE `feedback` (

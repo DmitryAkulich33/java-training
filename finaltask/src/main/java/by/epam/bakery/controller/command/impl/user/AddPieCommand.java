@@ -14,13 +14,32 @@ import javax.servlet.http.HttpSession;
 
 public class AddPieCommand implements Command {
     private static final String PIE_ID = "pieId";
+    private static final String PIE_PRICE = "piePrice";
     private static final String BASKET = "basket";
-    private static final String TOTAL = "total";
+    private static final String USER = "user";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-//        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-//        int pieId = Integer.parseInt(request.getParameter(PIE_ID));
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        int pieId = Integer.parseInt(request.getParameter(PIE_ID));
+        double piePrice = Double.parseDouble(request.getParameter(PIE_PRICE));
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute(USER);
+        Basket basket = null;
+        double total = 0.0;
+        try {
+            basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
+            total = basket.getTotal();
+            serviceFactory.getBasketService().changeTotal((total + piePrice), basket.getId());
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+
+//        try {
+//            serviceFactory.getBasketService().saveBasket(user.getId(), piePrice);
+//        } catch (ServiceException e) {
+//            e.printStackTrace();
+//        }
 //        Pie pie = null;
 //        try {
 //            pie = serviceFactory.getPieService().findPieById(pieId);
@@ -38,7 +57,6 @@ public class AddPieCommand implements Command {
 //        }
 //        session.setAttribute(TOTAL, total);
 //        session.setAttribute(BASKET, basket);
-//        return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
-        return null;
+        return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
     }
 }

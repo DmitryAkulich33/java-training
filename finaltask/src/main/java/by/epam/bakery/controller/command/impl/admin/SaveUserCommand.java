@@ -33,6 +33,7 @@ public class SaveUserCommand implements Command {
         String note = request.getParameter(SAVE_NOTE);
         try {
             serviceFactory.getUserService().addUser(login, password, role, surname, name, patronymic, address, phone, note);
+            serviceFactory.getBasketService().saveBasket(login, 0.00);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

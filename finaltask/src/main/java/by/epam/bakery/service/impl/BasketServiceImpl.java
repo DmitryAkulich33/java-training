@@ -1,12 +1,12 @@
 package by.epam.bakery.service.impl;
 
+import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
+import by.epam.bakery.dao.api.BasketDao;
+import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.Basket;
-import by.epam.bakery.domain.Pie;
 import by.epam.bakery.service.api.BasketService;
 import by.epam.bakery.service.exception.ServiceException;
-
-import java.util.List;
 
 public class BasketServiceImpl implements BasketService {
     private DaoHelperFactory daoHelperFactory;
@@ -16,16 +16,33 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public double getTotal(Basket basket) throws ServiceException{
-//        if(basket == null){
-//            throw new ServiceException("Basket is null.");
-//        }
-//        double sum = 0;
-//        if(!basket.getPies().isEmpty()) {
-//            for (Pie pie : basket.getPies()) {
-//                sum = sum + pie.getPrice();
-//            }
-//        }
-        return 0;
+    public void saveBasket(String userLogin, double total) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            BasketDao dao = helper.createBasketDao();
+            dao.save(userLogin, total);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
     }
+
+    @Override
+    public Basket findBasketByUserLogin (String userLogin) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            BasketDao dao = helper.createBasketDao();
+            return dao.getBasketByUserLogin(userLogin);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void changeTotal(double newTotal, int basketId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            BasketDao dao = helper.createBasketDao();
+            dao.changeTotal(newTotal, basketId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 }
