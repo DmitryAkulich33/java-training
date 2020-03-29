@@ -24,7 +24,7 @@ public class FindFeedbackByUserCommand implements Command {
         List<Feedback> feedbacks = null;
         try {
             feedbacks = serviceFactory.getFeedBackService().findFeedbackByUserId(userId);
-            Collections.reverse(feedbacks);
+//            Collections.reverse(feedbacks);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

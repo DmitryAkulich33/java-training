@@ -21,7 +21,7 @@ public class AdminFeedbackCommand implements Command {
         List<Feedback> feedbacks = null;
         try {
             feedbacks = serviceFactory.getFeedBackService().showAllFeedBacks();
-            Collections.reverse(feedbacks);
+//            Collections.reverse(feedbacks);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

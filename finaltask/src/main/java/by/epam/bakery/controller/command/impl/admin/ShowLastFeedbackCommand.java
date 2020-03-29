@@ -28,7 +28,7 @@ public class ShowLastFeedbackCommand implements Command {
             e.printStackTrace();
         }
         List<Feedback> sortFeedback = serviceFactory.getFeedBackService().findNecessaryFeedbackAmount(amount, allFeedback);
-        Collections.reverse(sortFeedback);
+//        Collections.reverse(sortFeedback);
         HttpSession session = request.getSession();
         session.setAttribute(FEEDBACK, sortFeedback);
         return CommandResult.forward("/WEB-INF/jsp/admin_feedback.jsp");
