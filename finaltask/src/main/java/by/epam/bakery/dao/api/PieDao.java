@@ -16,4 +16,5 @@ public interface PieDao extends Dao<Pie> {
     void changeDescription(String newDescription, int pieId) throws DaoException;
     void changeWeight(int newWeight, int pieId) throws DaoException;
     void changePrice(double newPrice, int pieId) throws DaoException;
+    List<Pie> findPieByBasketId(int basketId) throws DaoException;
 }

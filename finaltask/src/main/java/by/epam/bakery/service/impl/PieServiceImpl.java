@@ -136,4 +136,14 @@ public class PieServiceImpl implements PieService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public List<Pie> findPieByBasketId(int basketId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            PieDao dao = helper.createPieDao();
+            return dao.findPieByBasketId(basketId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

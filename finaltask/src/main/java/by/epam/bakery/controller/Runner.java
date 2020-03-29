@@ -8,6 +8,7 @@ import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.Basket;
 import by.epam.bakery.domain.Feedback;
+import by.epam.bakery.domain.Pie;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
@@ -46,5 +47,7 @@ public class Runner {
         Basket basket = serviceFactory.getBasketService().findBasketByUserLogin("user7");
         System.out.println(basket);
 //        serviceFactory.getBasketProductService().saveBasketProduct(2, 4);
+//        List<Pie> pies = pieDao.findPieByBasketId(1);
+//        System.out.println(pies);
     }
 }

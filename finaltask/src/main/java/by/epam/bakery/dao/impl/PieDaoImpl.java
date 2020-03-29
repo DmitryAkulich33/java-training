@@ -23,6 +23,7 @@ public class PieDaoImpl extends AbstractDao<Pie> implements PieDao {
     private static final String CHANGE_DESCRIPTION = "UPDATE pie SET description = ? WHERE id_pie = ?";
     private static final String CHANGE_WEIGHT = "UPDATE pie SET weight = ? WHERE id_pie = ?";
     private static final String CHANGE_PRICE = "UPDATE pie SET price = ? WHERE id_pie = ?";
+    private static final String FIND_PIE_BY_BASKET_ID ="SELECT * FROM pie INNER JOIN basket_product ON pie.id_pie=basket_product.pie_id WHERE basket_id = ? ";
 
     public PieDaoImpl(Connection connection) {
         super(connection);
@@ -86,5 +87,10 @@ public class PieDaoImpl extends AbstractDao<Pie> implements PieDao {
     @Override
     public void changePrice(double newPrice, int pieId) throws DaoException {
         executeUpdate(CHANGE_PRICE, newPrice, pieId);
+    }
+
+    @Override
+    public List<Pie> findPieByBasketId(int basketId) throws DaoException {
+        return executeQuery(FIND_PIE_BY_BASKET_ID, new PieRowMapper(), basketId);
     }
 }

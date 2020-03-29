@@ -11,17 +11,16 @@ import by.epam.bakery.service.factory.ServiceFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
-public class AddPieCommand implements Command {
-    private static final String PIE_ID = "pieId";
-    private static final String PIE_PRICE = "piePrice";
+public class ShowBasketCommand implements Command {
+    private static final String BASKET_PRODUCT = "basketProducts";
+    private static final String TOTAL = "total";
     private static final String USER = "user";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        int pieId = Integer.parseInt(request.getParameter(PIE_ID));
-        double piePrice = Double.parseDouble(request.getParameter(PIE_PRICE));
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(USER);
         Basket basket;
@@ -29,11 +28,17 @@ public class AddPieCommand implements Command {
             basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
             int basketId = basket.getId();
             double total = basket.getTotal();
-            serviceFactory.getBasketService().changeTotal((total + piePrice), basketId);
-            serviceFactory.getBasketProductService().saveBasketProduct(basketId, pieId);
+            if(total == 0) {
+                session.setAttribute(TOTAL, total);
+                return CommandResult.forward("/WEB-INF/jsp/basket.jsp");
+            } else {
+                List<Pie> basketProducts = serviceFactory.getPieService().findPieByBasketId(basketId);
+                session.setAttribute(TOTAL, total);
+                session.setAttribute(BASKET_PRODUCT, basketProducts);
+            }
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
+        return CommandResult.forward("/WEB-INF/jsp/basket.jsp");
     }
 }

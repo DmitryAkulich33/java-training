@@ -18,4 +18,5 @@ public interface PieService {
     void changeDescription(String newDescription, int pieId) throws ServiceException;
     void changeWeight(int newWeight, int pieId) throws ServiceException;
     void changePrice(double newPrice, int pieId) throws ServiceException;
+    List<Pie> findPieByBasketId(int basketId) throws ServiceException;
 }

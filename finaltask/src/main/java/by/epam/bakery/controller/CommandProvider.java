@@ -56,6 +56,7 @@ final class CommandProvider {
         repository.put(CommandName.ADMIN_ORDER_PRODUCT, new AdminOrderProductCommand());
         repository.put(CommandName.ADMIN_BASKET, new AdminBasketCommand());
         repository.put(CommandName.ADMIN_BASKET_PRODUCT, new AdminBasketProductCommand());
+        repository.put(CommandName.SHOW_BASKET, new ShowBasketCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 
