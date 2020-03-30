@@ -46,5 +46,4 @@ public class BasketDaoImpl extends AbstractDao<Basket> implements BasketDao {
     public void changeTotal(double newTotal, int basketId) throws DaoException {
         executeUpdate(CHANGE_TOTAL, newTotal, basketId);
     }
-
 }

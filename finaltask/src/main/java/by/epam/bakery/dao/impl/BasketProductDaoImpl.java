@@ -14,6 +14,7 @@ public class BasketProductDaoImpl extends AbstractDao<BasketProduct> implements 
     private static final String ID_BASKET_PRODUCT = "id_basket_product";
     private static final String SAVE_BASKET_PRODUCT = "INSERT INTO basket_product (basket_id, pie_id)" +
             " VALUES(?, ?)";
+    private static final String DELETE_BASKET_PRODUCT = "DELETE FROM basket_product WHERE basket_id = ? ";
 
     public BasketProductDaoImpl(Connection connection) {
         super(connection);
@@ -34,5 +35,8 @@ public class BasketProductDaoImpl extends AbstractDao<BasketProduct> implements 
         executeUpdate(SAVE_BASKET_PRODUCT, parameters);
     }
 
-
+    @Override
+    public void removeByBasketId(int basketId) throws DaoException {
+        executeUpdate(DELETE_BASKET_PRODUCT, basketId);
+    }
 }

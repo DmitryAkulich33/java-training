@@ -57,70 +57,49 @@
                         FEEDBACK</a>
                 </div>
             </li>
+
             <li class="li_pages">
-                <div class="button_navbar_menu">
-                    <button type="button" class="in_basket_menu h5" data-toggle="modal" data-target="#myModal">
-                        <a href="${request.contextPath}controller?command=show_basket" class="a_link"><img
-                                src="image/basket.png" class="ico">
-                            BASKET</a>
-                    </button>
-<%--                    <button type="button" class="in_basket_menu h5" data-toggle="modal" data-target="#myModal">--%>
-<%--                        <a href="#" class="a_link"><img src="image/basket.png" class="ico"> BASKET</a>--%>
-<%--                    </button>--%>
-<%--                    <div class="modal fade" id="myModal">--%>
-<%--                        <div class="modal-dialog modal-lg">--%>
-<%--                            <div class="modal-content">--%>
-<%--                                <!-- Modal Header -->--%>
-<%--                                <div class="modal-header">--%>
-<%--                                    <h4 class="modal-title">Your basket:</h4>--%>
-<%--                                    <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
-<%--                                </div>--%>
-<%--                                <!-- Modal body -->--%>
-<%--                                <div class="modal-body">--%>
-<%--                                    <table class="table table-striped">--%>
-<%--                                        <tbody>--%>
-<%--&lt;%&ndash;                                        <c:forEach var="elem" items="${basket.pies}" varStatus="status">&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                            <tr>&ndash;%&gt;--%>
-<%--                                                <td><img class="image_pie_basket"--%>
-<%--                                                         src="<c:out value="${ elem.picture }"/>"></td>--%>
-<%--                                                <td><c:out value="${ elem.name }"/></td>--%>
-<%--                                                <td><c:out value="${ elem.weight }"/> gramm</td>--%>
-<%--                                                <td><c:out value="${ elem.price }"/>0 BYN</td>--%>
-<%--&lt;%&ndash;                                            </tr>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                        </c:forEach>&ndash;%&gt;--%>
-<%--                                        <tr>--%>
-<%--                                            <td>--%>
-<%--                                                Total:--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                            </td>--%>
-<%--                                            <td>--%>
-<%--                                                <c:out value="${ total }0 BYN"/>--%>
-<%--                                            </td>--%>
-<%--                                        </tr>--%>
-<%--                                        </tbody>--%>
-<%--                                    </table>--%>
-<%--                                </div>--%>
-<%--                                <!-- Modal footer -->--%>
-<%--                                <div class="modal-footer">--%>
-<%--                                    <form action="controller" method="POST">--%>
-<%--                                        <input type="hidden" name="command" value="add_order">--%>
-<%--                                        <input type="submit" name="button" class="btn btn-secondary"--%>
-<%--                                               value="To order"/>--%>
-<%--                                    </form>--%>
-<%--                                    <form action="controller" method="POST">--%>
-<%--                                        <input type="hidden" name="command" value="clear_basket">--%>
-<%--                                        <input type="submit" name="button" class="btn btn-secondary"--%>
-<%--                                               value="Clear basket"/>--%>
-<%--                                    </form>--%>
-<%--                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-                </div>
+                <c:choose>
+                    <c:when test="${user.role == 3}">
+                        <div class="button_navbar_menu">
+                            <button type="button" class="in_basket_menu h5">
+                                <a href="${request.contextPath}controller?command=show_basket" class="a_link"><img
+                                        src="image/basket.png" class="ico">
+                                    BASKET</a>
+                            </button>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="button_navbar_menu">
+                            <button type="button" class="in_basket_menu h5" data-toggle="modal" data-target="#myModalBask">
+                                <img src="image/basket.png" class="ico"> BASKET
+                            </button>
+<%--                            <input type="submit" name="button" class="in_basket_menu h5" value="BASKET"--%>
+<%--                                   data-toggle="modal" data-target="#myModalBasket"/>--%>
+                            <div class="modal fade" id="myModalBask">
+                                <div class="modal-dialog modal-dialog-centered modal-sm">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;
+                                            </button>
+                                        </div>
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            You need to log in as a user!
+                                        </div>
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
             </li>
         </ul>
     </div>

@@ -17,7 +17,7 @@
     <script>
         <%@include file="../../js/bootstrap.js" %>
     </script>
-    <title>Personal account</title>
+    <title>My basket</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -37,7 +37,7 @@
         </li>
         <li class="li_admin nav-item">
             <form action="controller" method="POST">
-                <input type="hidden" name="command" value="add_basket_to_order">
+                <input type="hidden" name="command" value="clear_basket">
                 <input type="submit" class="change-info btn btn-primary" value="Clear basket">
             </form>
         </li>

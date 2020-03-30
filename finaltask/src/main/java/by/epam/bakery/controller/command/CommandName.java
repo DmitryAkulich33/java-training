@@ -42,5 +42,5 @@ public enum CommandName {
     ADMIN_ORDER_PRODUCT,
     ADMIN_BASKET,
     ADMIN_BASKET_PRODUCT,
-    SHOW_BASKET
+    SHOW_BASKET,
 }
