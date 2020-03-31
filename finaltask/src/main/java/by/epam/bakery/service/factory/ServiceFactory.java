@@ -12,6 +12,7 @@ public final class ServiceFactory {
     private final FeedbackService feedBackService = new FeedbackServiceImpl(new DaoHelperFactory());
     private final BasketService basketService = new BasketServiceImpl(new DaoHelperFactory());
     private final OrderService orderService = new OrderServiceImpl(new DaoHelperFactory());
+    private final OrderProductService orderProductService = new OrderProductServiceImpl(new DaoHelperFactory());
     private final BasketProductService basketProductService = new BasketProductServiceImpl(new DaoHelperFactory());
 
     private ServiceFactory() {
@@ -35,6 +36,10 @@ public final class ServiceFactory {
 
     public OrderService getOrderService() {
         return orderService;
+    }
+
+    public OrderProductService getOrderProductService() {
+        return orderProductService;
     }
 
     public BasketService getBasketService() {

@@ -12,7 +12,7 @@ public class OrderProductDaoImpl extends AbstractDao<OrderProduct> implements Or
     private static final String SAVE_ORDER_PRODUCT = "INSERT INTO `order_product` (order_id, pie_id)" +
             " VALUES(?, ?)";
 
-    OrderProductDaoImpl(Connection connection) {
+    public OrderProductDaoImpl(Connection connection) {
         super(connection);
     }
 

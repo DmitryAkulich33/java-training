@@ -44,17 +44,12 @@ public class AddOrderCommand implements Command {
                 int orderId = order.getId();
                 List<Pie> pies = serviceFactory.getPieService().findPieByBasketId(basketId);
                 for(Pie pie: pies){
-
+                    serviceFactory.getOrderProductService().save(orderId, pie.getId());
                 }
-
-//                List<Pie> basketProducts = serviceFactory.getPieService().findPieByBasketId(basketId);
-//                session.setAttribute(TOTAL, total);
-//                session.setAttribute(BASKET_PRODUCT, basketProducts);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
         }
-
         return CommandResult.redirect(request.getContextPath() + "controller?command=clear_basket");
     }
 }
