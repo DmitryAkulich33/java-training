@@ -1,4 +1,4 @@
-package by.epam.bakery.controller.command.impl.feedback;
+package by.epam.bakery.controller.command.impl.user;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;

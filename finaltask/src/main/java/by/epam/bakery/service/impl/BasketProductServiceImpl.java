@@ -33,4 +33,14 @@ public class BasketProductServiceImpl implements BasketProductService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public void deleteBasketProductByPieId(int basketId, int pieId) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            BasketProductDao dao = helper.createBasketProductDao();
+            dao.removeBasketProductByPieId(basketId, pieId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

@@ -72,7 +72,7 @@
                                 </div>
                                 <form action="controller" method="POST">
                                     <div class="modal-footer">
-                                        <input type="hidden" name="feedbackId" value="${ element.id }"/>
+                                        <input type="hidden" name="pieId" value="${ element.id }"/>
                                         <input type="hidden" name="command" value="delete_pie_from_basket">
                                         <input type="submit" class="btn btn-secondary" value="Delete">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

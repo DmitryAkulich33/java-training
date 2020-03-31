@@ -5,4 +5,5 @@ import by.epam.bakery.domain.BasketProduct;
 
 public interface BasketProductDao extends Dao<BasketProduct> {
     void removeByBasketId(int basketId) throws DaoException;
+    void removeBasketProductByPieId(int basketId, int pieId) throws DaoException;
 }

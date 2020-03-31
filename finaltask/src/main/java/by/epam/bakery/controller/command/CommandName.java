@@ -43,4 +43,5 @@ public enum CommandName {
     ADMIN_BASKET,
     ADMIN_BASKET_PRODUCT,
     SHOW_BASKET,
+    DELETE_PIE_FROM_BASKET
 }

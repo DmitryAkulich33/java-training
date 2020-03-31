@@ -1,4 +1,4 @@
-package by.epam.bakery.controller.command.impl.order;
+package by.epam.bakery.controller.command.impl.user;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
@@ -14,9 +14,6 @@ import java.util.List;
 
 public class AddOrderCommand implements Command {
     private static final String USER = "user";
-    private static final String TOTAL = "total";
-    private static final String BASKET = "basket";
-    private static final String BASKET_PRODUCT = "basketProducts";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
