@@ -31,7 +31,7 @@
     <ul class="nav">
         <li class="li_admin nav-item">
             <form action="controller" method="POST">
-                <input type="hidden" name="command" value="add_basket_to_order">
+                <input type="hidden" name="command" value="add_order">
                 <input type="submit" class="change-info btn btn-primary" value="To order">
             </form>
         </li>

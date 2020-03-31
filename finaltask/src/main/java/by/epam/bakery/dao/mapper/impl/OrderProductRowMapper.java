@@ -15,9 +15,19 @@ public class OrderProductRowMapper implements RowMapper<OrderProduct> {
         Order order = new Order();
         order.setId(resultSet.getInt("id_order"));
         order.setTotal(resultSet.getDouble("total"));
-        order.setProductionDate(LocalDateTime.parse(resultSet.getString("productionDate")));
-        order.setDeliveryDate(LocalDateTime.parse(resultSet.getString("deliveryDate")));
-        order.setStatus(StatusEnum.valueOf(resultSet.getString("status").toUpperCase()));
+        String productionDate = resultSet.getString("productionDate");
+        if(productionDate == null){
+            order.setProductionDate(null);
+        } else {
+            order.setProductionDate(LocalDateTime.parse(productionDate.replace(" ", "T")));
+        }
+        String deliveryDate = resultSet.getString("deliveryDate");
+        if(deliveryDate == null){
+            order.setDeliveryDate(null);
+        } else {
+            order.setDeliveryDate(LocalDateTime.parse(deliveryDate.replace(" ", "T")));
+        }
+        order.setStatus(StatusEnum.valueOf(resultSet.getString("status").replace(" ", "_").toUpperCase()));
         User user = new User();
         user.setId(resultSet.getInt("id_user"));
         user.setLogin(resultSet.getString("login"));

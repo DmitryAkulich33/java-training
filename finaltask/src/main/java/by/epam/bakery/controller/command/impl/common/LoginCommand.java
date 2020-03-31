@@ -20,7 +20,6 @@ public class LoginCommand implements Command {
     private static final String PASSWORD = "password";
     private static final String USER = "user";
     private static final String WRONG_LOGIN = "Incorrect login or password!";
-    private static final String BASKET = "basket";
 
 
     @Override
@@ -28,22 +27,22 @@ public class LoginCommand implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String login = request.getParameter(LOGIN);
         String password = request.getParameter(PASSWORD);
-
-        User user = null;
+        HttpSession session = request.getSession();
+        User user;
         try {
             user = serviceFactory.getUserService().login(login, password);
-        } catch (ServiceException e) {
-            System.out.println(e.getMessage());
-        }
-        HttpSession session = request.getSession();
-        if(user != null){
             session.setAttribute(USER, user);
-            Basket basket = new Basket();
-            session.setAttribute(BASKET, basket);
-        } else {
+        } catch (ServiceException e) {
             session.setAttribute(USER, null);
             session.setAttribute("message", WRONG_LOGIN);
         }
+
+//        if(user != null){
+//            session.setAttribute(USER, user);
+//        } else {
+//            session.setAttribute(USER, null);
+//            session.setAttribute("message", WRONG_LOGIN);
+//        }
         return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
     }
 }

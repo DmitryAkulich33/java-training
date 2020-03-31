@@ -6,13 +6,11 @@ import by.epam.bakery.dao.api.FeedbackDao;
 import by.epam.bakery.dao.api.PieDao;
 import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
-import by.epam.bakery.domain.Basket;
-import by.epam.bakery.domain.Feedback;
-import by.epam.bakery.domain.Pie;
-import by.epam.bakery.domain.User;
+import by.epam.bakery.domain.*;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Runner {
@@ -38,7 +36,8 @@ public class Runner {
 //        serviceFactory.getPieService().deletePie(7);
 //        Pie pie = serviceFactory.getPieService().findPieById(5);
 //        System.out.println(pie);
-//        LocalDateTime localDateTime = LocalDateTime.parse("2020-02-02T09:00:00");
+
+
 //        System.out.println(localDateTime.toString().replace("T", " "));
 //        System.out.println("d\"d");
 //        System.out.println(LocalDateTime.now().toString().substring(0, 19));
@@ -49,5 +48,8 @@ public class Runner {
 //        serviceFactory.getBasketProductService().saveBasketProduct(2, 4);
 //        List<Pie> pies = pieDao.findPieByBasketId(1);
 //        System.out.println(pies);
+//        serviceFactory.getOrderService().save(6, 99.0, null,null, StatusEnum.NOT_READY.getValue());
+//        Order order = serviceFactory.getOrderService().findLastOrderByUserId(6);
+//        System.out.println(order);
     }
 }

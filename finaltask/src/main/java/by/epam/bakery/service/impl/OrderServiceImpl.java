@@ -4,6 +4,7 @@ import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
 import by.epam.bakery.dao.api.OrderDao;
 import by.epam.bakery.dao.exception.DaoException;
+import by.epam.bakery.domain.Order;
 import by.epam.bakery.service.api.OrderService;
 import by.epam.bakery.service.exception.ServiceException;
 
@@ -17,7 +18,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void save(int userId, double total, LocalDateTime productionDate, LocalDateTime deliveryDate, String status) throws ServiceException {
+    public void save(int userId, double total, LocalDateTime productionDate, LocalDateTime deliveryDate,  String status) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
             dao.save(userId, total, productionDate, deliveryDate, status);
@@ -26,4 +27,13 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Override
+    public Order findLastOrderByUserId(int userId) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao dao = helper.createOrderDao();
+            return dao.findLastUserOrderById(userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }
