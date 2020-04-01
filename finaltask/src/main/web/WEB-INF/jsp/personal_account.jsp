@@ -219,21 +219,23 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>OrderId</th>
-            <th>PieName</th>
-            <th>PiePrice</th>
+            <th>Pie picture</th>
+            <th>Pie name</th>
+            <th>Id order</th>
+            <th>Delivery date</th>
             <th>Status</th>
-            <th>DeliveryDate</th>
         </tr>
         </thead>
         <tbody>
+        <c:forEach var="element" items="${orders}" varStatus="status">
         <tr>
-            <td>583</td>
-            <td>Greek</td>
-            <td>25.00</td>
-            <td>Ready</td>
-            <td>2020-01-31T12:30:00</td>
+            <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
+            <td><c:out value="${ element.pie.name }"/></td>
+            <td><c:out value="${ element.order.id }"/></td>
+            <td><c:out value="${ element.order.deliveryDate }"/></td>
+            <td><c:out value="${ element.order.status.toString().replace(\"_\", \" \") }"/></td>
         </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

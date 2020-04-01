@@ -3,9 +3,11 @@ package by.epam.bakery.controller;
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
 import by.epam.bakery.dao.api.FeedbackDao;
+import by.epam.bakery.dao.api.OrderProductDao;
 import by.epam.bakery.dao.api.PieDao;
 import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
+import by.epam.bakery.dao.impl.OrderProductDaoImpl;
 import by.epam.bakery.domain.*;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
@@ -51,5 +53,10 @@ public class Runner {
 //        serviceFactory.getOrderService().save(6, 99.0, null,null, StatusEnum.NOT_READY.getValue());
 //        Order order = serviceFactory.getOrderService().findLastOrderByUserId(6);
 //        System.out.println(order);
+        OrderProductDao dao = daoHelper.createOrderProductDao();
+        List<OrderProduct> lists = dao.findByUserId(4);
+        for(OrderProduct orderProduct : lists) {
+            System.out.println(orderProduct);
+        }
     }
 }
