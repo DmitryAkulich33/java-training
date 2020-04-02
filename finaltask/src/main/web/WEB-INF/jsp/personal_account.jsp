@@ -232,7 +232,7 @@
             <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
             <td><c:out value="${ element.pie.name }"/></td>
             <td><c:out value="${ element.order.id }"/></td>
-            <td><c:out value="${ element.order.deliveryDate }"/></td>
+            <td><c:out value="${ element.order.deliveryDate.toString().replace(\"T\", \" \") }"/></td>
             <td><c:out value="${ element.order.status.toString().replace(\"_\", \" \") }"/></td>
         </tr>
         </c:forEach>

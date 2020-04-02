@@ -89,7 +89,7 @@
         </li>
         <li class="li_admin nav-item">
             <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_orders">
+                <input type="hidden" name="command" value="admin_order">
                 <input type="submit" class="change-info btn btn-primary" value="Show all orders">
             </form>
         </li>
@@ -119,8 +119,8 @@
                 <td><c:out value="${ element.user.name }"/></td>
                 <td><c:out value="${ element.user.patronymic }"/></td>
                 <td><c:out value="${ element.total }"/></td>
-                <td><c:out value="${ element.productionDate }"/></td>
-                <td><c:out value="${ element.deliveryDate }"/></td>
+                <td><c:out value="${ element.productionDate.toString().replace(\"T\", \" \") }"/></td>
+                <td><c:out value="${ element.deliveryDate.toString().replace(\"T\", \" \") }"/></td>
                 <td><c:out value="${ element.status.toString().replace(\"_\", \" \") }"/></td>
                 <td>
                     <button type="button" class="change-info btn btn-primary" data-toggle="modal"
