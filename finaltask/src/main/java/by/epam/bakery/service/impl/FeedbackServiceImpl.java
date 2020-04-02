@@ -61,12 +61,12 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     @Override
-    public List<Feedback> findNecessaryFeedbackAmount(int amount, List<Feedback> allFeedback){
-        int size = allFeedback.size();
-        if(size >= amount) {
-            return new ArrayList<>(allFeedback.subList(0, amount));
-        } else {
-            return allFeedback;
+    public List<Feedback> findNecessaryFeedbackAmount(int amount) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            FeedbackDao dao = helper.createFeedBackDao();
+            return dao.getNecessaryFeedbackAmount(amount);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
         }
     }
 }

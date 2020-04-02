@@ -23,14 +23,11 @@ public class ShowLastFeedbackCommand implements Command {
         int amount = Integer.parseInt(request.getParameter(AMOUNT));
         List<Feedback> allFeedback = null;
         try {
-            allFeedback = serviceFactory.getFeedBackService().showAllFeedBacks();
+            allFeedback = serviceFactory.getFeedBackService().findNecessaryFeedbackAmount(amount);
+            request.setAttribute(FEEDBACK, allFeedback);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        List<Feedback> sortFeedback = serviceFactory.getFeedBackService().findNecessaryFeedbackAmount(amount, allFeedback);
-//        Collections.reverse(sortFeedback);
-        HttpSession session = request.getSession();
-        session.setAttribute(FEEDBACK, sortFeedback);
         return CommandResult.forward("/WEB-INF/jsp/admin_feedback.jsp");
     }
 }

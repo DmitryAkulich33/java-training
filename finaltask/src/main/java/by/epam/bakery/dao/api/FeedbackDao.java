@@ -9,4 +9,5 @@ public interface FeedbackDao extends Dao<Feedback> {
     void changeReview (String newReview, int feedbackId) throws DaoException;
     List<Feedback> findAll() throws DaoException;
     List<Feedback> getFeedbackByUserId(int userId) throws DaoException;
+    List<Feedback> getNecessaryFeedbackAmount(int amount) throws DaoException;
 }

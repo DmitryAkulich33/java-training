@@ -111,88 +111,89 @@
             <th></th>
         </tr>
         </thead>
-<%--        <c:forEach var="element" items="${orders}" varStatus="status">--%>
-<%--            <tr>--%>
-<%--                <td><c:out value="${ element.id }"/></td>--%>
-<%--                <td><c:out value="${ element.role }"/></td>--%>
-<%--                <td><c:out value="${ element.surname }"/></td>--%>
-<%--                <td><c:out value="${ element.name }"/></td>--%>
-<%--                <td><c:out value="${ element.patronymic }"/></td>--%>
-<%--                <td><c:out value="${ element.address }"/></td>--%>
-<%--                <td><c:out value="${ element.phone }"/></td>--%>
-<%--                <td><c:out value="${ element.note }"/></td>--%>
-<%--                <td>--%>
-<%--                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"--%>
-<%--                            data-target="#myModal${ element.id }">--%>
-<%--                        Delete--%>
-<%--                    </button>--%>
-<%--                    <div class="modal fade" id="myModal${ element.id }">--%>
-<%--                        <div class="modal-dialog modal-dialog-centered modal-sm">--%>
-<%--                            <div class="modal-content">--%>
-<%--                                <div class="modal-body">--%>
-<%--                                    Do you want to remove the order from the database?--%>
-<%--                                </div>--%>
-<%--                                <div class="modal-footer">--%>
-<%--                                    <form action="controller" method="POST">--%>
-<%--                                        <input type="hidden" name="delId" value="${ element.id }"/>--%>
-<%--                                        <input type="hidden" name="command" value="delete_order">--%>
-<%--                                        <input type="submit" class="btn btn-secondary" value="Delete">--%>
-<%--                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel--%>
-<%--                                        </button>--%>
-<%--                                    </form>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"--%>
-<%--                            data-target="#mySecModal${ element.id }">--%>
-<%--                        Change--%>
-<%--                    </button>--%>
-<%--                    <div class="modal fade" id="mySecModal${ element.id }">--%>
-<%--                        <div class="modal-dialog modal-dialog-centered">--%>
-<%--                            <div class="modal-content">--%>
-<%--                                <div class="modal-header">--%>
-<%--                                    <h4 class="modal-title">Change information</h4>--%>
-<%--                                    <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
-<%--                                </div>--%>
-<%--                                <div class="modal-body">--%>
-<%--                                    <form action="controller" method="POST">--%>
-<%--                                        <div class="input-group mb-3">--%>
-<%--                                            <div class="input-group-prepend">--%>
-<%--                                                <span class="input-group-text">Production date</span>--%>
-<%--                                            </div>--%>
-<%--                                            <input type="text" class="form-control" name="productionDate">--%>
-<%--                                        </div>--%>
-<%--                                        <div class="input-group mb-3">--%>
-<%--                                            <div class="input-group-prepend">--%>
-<%--                                                <span class="input-group-text">Delivery date</span>--%>
-<%--                                            </div>--%>
-<%--                                            <input type="text" class="form-control" name="deliveryDate">--%>
-<%--                                        </div>--%>
-<%--                                        <div class="input-group mb-3">--%>
-<%--                                            <div class="input-group-prepend">--%>
-<%--                                                <span class="input-group-text">Status</span>--%>
-<%--                                            </div>--%>
-<%--                                            <input type="text" class="form-control" name="changeStatus">--%>
-<%--                                        </div>--%>
-<%--                                        <div class="modal-footer">--%>
-<%--                                            <input type="hidden" name="changeId" value="${ element.id }"/>--%>
-<%--                                            <input type="hidden" name="command" value="change_user">--%>
-<%--                                            <input type="submit" class="btn btn-secondary" value="Change">--%>
-<%--                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">--%>
-<%--                                                Cancel--%>
-<%--                                            </button>--%>
-<%--                                        </div>--%>
-<%--                                    </form>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </td>--%>
-<%--            </tr>--%>
-<%--        </c:forEach>--%>
+        <c:forEach var="element" items="${orders}" varStatus="status">
+            <tr>
+                <td><c:out value="${ element.id }"/></td>
+                <td><c:out value="${ element.user.id }"/></td>
+                <td><c:out value="${ element.user.surname }"/></td>
+                <td><c:out value="${ element.user.name }"/></td>
+                <td><c:out value="${ element.user.patronymic }"/></td>
+                <td><c:out value="${ element.total }"/></td>
+                <td><c:out value="${ element.productionDate }"/></td>
+                <td><c:out value="${ element.deliveryDate }"/></td>
+                <td><c:out value="${ element.status.toString().replace(\"_\", \" \") }"/></td>
+                <td>
+                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"
+                            data-target="#myModal${ element.id }">
+                        Delete
+                    </button>
+                    <div class="modal fade" id="myModal${ element.id }">
+                        <div class="modal-dialog modal-dialog-centered modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    Do you want to remove the order from the database?
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="controller" method="POST">
+                                        <input type="hidden" name="delId" value="${ element.id }"/>
+                                        <input type="hidden" name="command" value="delete_order">
+                                        <input type="submit" class="btn btn-secondary" value="Delete">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"
+                            data-target="#mySecModal${ element.id }">
+                        Change
+                    </button>
+                    <div class="modal fade" id="mySecModal${ element.id }">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Change information</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="controller" method="POST">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Production date</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="productionDate">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Delivery date</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="deliveryDate">
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Status</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="changeStatus">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="hidden" name="changeId" value="${ element.id }"/>
+                                            <input type="hidden" name="command" value="change_user">
+                                            <input type="submit" class="btn btn-secondary" value="Change">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </c:forEach>
     </table>
 </div>
 

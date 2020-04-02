@@ -11,5 +11,5 @@ public interface FeedbackService {
     List<Feedback> showAllFeedBacks() throws ServiceException;
     List<Feedback> findFeedbackByUserId(int userId) throws ServiceException;
     void deleteFeedback (int id) throws ServiceException;
-    List<Feedback> findNecessaryFeedbackAmount(int amount, List<Feedback> allFeedback);
+    List<Feedback> findNecessaryFeedbackAmount(int amount) throws ServiceException;
 }

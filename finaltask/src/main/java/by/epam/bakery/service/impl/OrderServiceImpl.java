@@ -9,6 +9,7 @@ import by.epam.bakery.service.api.OrderService;
 import by.epam.bakery.service.exception.ServiceException;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
     private DaoHelperFactory daoHelperFactory;
@@ -32,6 +33,16 @@ public class OrderServiceImpl implements OrderService {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
             return dao.findLastUserOrderById(userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<Order> findAllOrders() throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao dao = helper.createOrderDao();
+            return dao.findAllOrders();
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

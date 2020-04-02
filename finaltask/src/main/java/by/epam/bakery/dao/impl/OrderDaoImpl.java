@@ -16,6 +16,7 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     private static final String SAVE_ORDER = "INSERT INTO `order` (user_id, total, productionDate, deliveryDate, status)" +
             " VALUES(?, ?, ?, ?, ?)";
     private static final String FIND_LAST_ORDER = "SELECT * FROM user INNER JOIN `order` ON user.id_user= ? AND `order`.user_id= ? ORDER BY id_order DESC LIMIT 1" ;
+    private static final String FIND_ALL_ORDER = "SELECT * FROM `order` INNER JOIN user ON `order`.user_id=user.id_user ORDER BY id_order DESC" ;
 
     public OrderDaoImpl(Connection connection) {
         super(connection);
@@ -55,5 +56,10 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     @Override
     public Order findLastUserOrderById(int userId) throws DaoException {
         return executeForSingleResult(FIND_LAST_ORDER, new OrderRowMapper(), userId, userId);
+    }
+
+    @Override
+    public List<Order> findAllOrders() throws DaoException {
+        return executeQuery(FIND_ALL_ORDER, new OrderRowMapper());
     }
 }

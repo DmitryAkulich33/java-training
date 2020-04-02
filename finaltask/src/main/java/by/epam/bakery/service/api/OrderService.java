@@ -5,8 +5,10 @@ import by.epam.bakery.domain.StatusEnum;
 import by.epam.bakery.service.exception.ServiceException;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface OrderService {
     void save(int userId, double total, LocalDateTime productionDate, LocalDateTime deliveryDate,  String status) throws ServiceException;
     Order findLastOrderByUserId(int userId) throws ServiceException;
+    List<Order> findAllOrders() throws ServiceException;
 }
