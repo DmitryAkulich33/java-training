@@ -8,4 +8,5 @@ import java.util.List;
 public interface OrderProductService {
     void save(int orderId, int pieId) throws ServiceException;
     List<OrderProduct> findByUserId(int userId) throws ServiceException;
+    void deleteOrderProductByOrderId(int orderId) throws ServiceException;
 }

@@ -37,4 +37,14 @@ public class OrderProductServiceImpl implements OrderProductService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public void deleteOrderProductByOrderId(int orderId) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderProductDao dao = helper.createOrderProductDao();
+            dao.deleteOrderProductByOrderId(orderId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

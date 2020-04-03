@@ -14,6 +14,7 @@ public class OrderProductDaoImpl extends AbstractDao<OrderProduct> implements Or
     private static final String SAVE_ORDER_PRODUCT = "INSERT INTO `order_product` (order_id, pie_id)" +
             " VALUES(?, ?)";
     private static final String FIND_ORDER_PRODUCT_BY_USER_ID = "SELECT * FROM order_product INNER JOIN `order` ON order_product.order_id=`order`.id_order INNER JOIN pie ON order_product.pie_id=pie.id_pie INNER JOIN user ON `order`.user_id=user.id_user WHERE user_id = ? ORDER BY id_order DESC";
+    private static final String DELETE_ORDER_PRODUCT = "SELECT * FROM order_product WHERE order_id = ?";
 
 
     public OrderProductDaoImpl(Connection connection) {
@@ -38,5 +39,10 @@ public class OrderProductDaoImpl extends AbstractDao<OrderProduct> implements Or
     @Override
     public List<OrderProduct> findByUserId(int userId) throws DaoException {
         return executeQuery(FIND_ORDER_PRODUCT_BY_USER_ID, new OrderProductRowMapper(), userId);
+    }
+
+    @Override
+    public void deleteOrderProductByOrderId(int orderId) throws DaoException {
+        executeUpdate(DELETE_ORDER_PRODUCT, orderId);
     }
 }

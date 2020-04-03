@@ -12,4 +12,5 @@ public interface OrderService {
     Order findLastOrderByUserId(int userId) throws ServiceException;
     List<Order> findAllOrders() throws ServiceException;
     List<Order> findOrderByUserId(int userId) throws ServiceException;
+    void deleteOrderById(int orderId) throws ServiceException;
 }

@@ -59,6 +59,7 @@ final class CommandProvider {
         repository.put(CommandName.SHOW_BASKET, new ShowBasketCommand());
         repository.put(CommandName.DELETE_PIE_FROM_BASKET, new DeletePieFromBasketCommand());
         repository.put(CommandName.FIND_ORDER_BY_USER_ID, new FindOrderByUserId());
+        repository.put(CommandName.DELETE_ORDER, new DeleteOrderCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 
