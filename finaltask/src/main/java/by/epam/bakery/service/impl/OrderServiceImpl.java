@@ -68,4 +68,14 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Override
+    public List<Order> findNecessaryOrderAmount(int amount) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao dao = helper.createOrderDao();
+            return dao.findNecessaryOrderAmount(amount);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 }

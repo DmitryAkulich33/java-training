@@ -13,4 +13,5 @@ public interface OrderDao extends Dao<Order> {
     void changeStatus (int orderId) throws DaoException;
     Order findLastUserOrderById(int userId) throws DaoException;
     List<Order> findAllOrders() throws DaoException;
+    List<Order> findNecessaryOrderAmount(int amount) throws DaoException;
 }

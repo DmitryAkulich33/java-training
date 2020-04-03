@@ -267,3 +267,10 @@
 .admin_padding {
     padding-top: 300px;
 }
+.a_link_in_button {
+    color: #FFFFFF
+}
+.a_link_in_button:hover, .a_link_in_button:focus {
+    text-decoration: none;
+    color: #FFFFFF
+}

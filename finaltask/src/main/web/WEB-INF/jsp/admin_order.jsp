@@ -77,7 +77,7 @@
                                     <input type="text" class="form-control" name="amount">
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" name="command" value="show_last_orders">
+                                    <input type="hidden" name="command" value="show_last_order">
                                     <input type="submit" class="btn btn-secondary" value="Find orders">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
