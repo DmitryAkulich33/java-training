@@ -14,4 +14,7 @@ public interface OrderService {
     List<Order> findOrderByUserId(int userId) throws ServiceException;
     void deleteOrderById(int orderId) throws ServiceException;
     List<Order> findNecessaryOrderAmount(int amount) throws ServiceException;
+    void changeProductionDate(LocalDateTime newDate, int orderId) throws ServiceException;
+    void changeDeliveryDate(LocalDateTime newDate, int orderId) throws ServiceException;
+    void changeStatus(String newStatus, int orderId) throws ServiceException;
 }

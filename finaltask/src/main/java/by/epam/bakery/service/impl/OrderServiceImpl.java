@@ -5,6 +5,7 @@ import by.epam.bakery.dao.DaoHelperFactory;
 import by.epam.bakery.dao.api.OrderDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.Order;
+import by.epam.bakery.domain.StatusEnum;
 import by.epam.bakery.service.api.OrderService;
 import by.epam.bakery.service.exception.ServiceException;
 
@@ -73,6 +74,36 @@ public class OrderServiceImpl implements OrderService {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
             return dao.findNecessaryOrderAmount(amount);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void changeProductionDate(LocalDateTime newDate, int orderId) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao dao = helper.createOrderDao();
+            dao.changeProductionDate(newDate, orderId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void changeDeliveryDate(LocalDateTime newDate, int orderId) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao dao = helper.createOrderDao();
+            dao.changeDeliveryDate(newDate, orderId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void changeStatus(String newStatus, int orderId) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao dao = helper.createOrderDao();
+            dao.changeStatus(newStatus, orderId);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

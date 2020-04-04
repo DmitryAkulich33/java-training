@@ -164,23 +164,31 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Production date</span>
                                             </div>
-                                            <input type="text" class="form-control" name="productionDate">
+                                            <input type="datetime-local" class="form-control" name="productionDate">
+<%--                                            <input type="text" class="form-control" name="productionDate">--%>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Delivery date</span>
                                             </div>
-                                            <input type="text" class="form-control" name="deliveryDate">
+                                            <input type="datetime-local" class="form-control" name="deliveryDate">
+<%--                                            <input type="text" class="form-control" name="deliveryDate">--%>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Status</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeStatus">
+                                            <select name="changeStatus">
+                                                <option value="not ready">not ready</option>
+                                                <option value="ready">ready</option>
+                                                <option value="delivered">delivered</option>
+                                                <option value="not delivered">not delivered</option>
+                                            </select>
+<%--                                            <input type="text" class="form-control" name="changeStatus">--%>
                                         </div>
                                         <div class="modal-footer">
                                             <input type="hidden" name="changeId" value="${ element.id }"/>
-                                            <input type="hidden" name="command" value="change_user">
+                                            <input type="hidden" name="command" value="change_order">
                                             <input type="submit" class="btn btn-secondary" value="Change">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                 Cancel

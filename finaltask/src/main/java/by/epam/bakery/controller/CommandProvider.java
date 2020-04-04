@@ -61,6 +61,7 @@ final class CommandProvider {
         repository.put(CommandName.FIND_ORDER_BY_USER_ID, new FindOrderByUserId());
         repository.put(CommandName.DELETE_ORDER, new DeleteOrderCommand());
         repository.put(CommandName.SHOW_LAST_ORDER, new ShowLastOrderCommand());
+        repository.put(CommandName.CHANGE_ORDER, new ChangeOrderCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

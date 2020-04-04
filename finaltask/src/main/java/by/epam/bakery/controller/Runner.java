@@ -53,10 +53,12 @@ public class Runner {
 //        serviceFactory.getOrderService().save(6, 99.0, null,null, StatusEnum.NOT_READY.getValue());
 //        Order order = serviceFactory.getOrderService().findLastOrderByUserId(6);
 //        System.out.println(order);
-        OrderProductDao dao = daoHelper.createOrderProductDao();
-        List<OrderProduct> lists = dao.findByUserId(4);
-        for(OrderProduct orderProduct : lists) {
-            System.out.println(orderProduct);
-        }
+//        OrderProductDao dao = daoHelper.createOrderProductDao();
+//        List<OrderProduct> lists = dao.findByUserId(4);
+//        for(OrderProduct orderProduct : lists) {
+//            System.out.println(orderProduct);
+//        }
+//        serviceFactory.getOrderService().changeProductionDate(LocalDateTime.parse("2020-04-02T23:55:00"), 3);
+//        serviceFactory.getOrderService().changeStatus("not ready", 3);
     }
 }

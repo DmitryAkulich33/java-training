@@ -47,5 +47,6 @@ public enum CommandName {
     FIND_ORDER_BY_USER_ID,
     DELETE_ORDER,
     DELETE_ORDER_PRODUCT,
-    SHOW_LAST_ORDER
+    SHOW_LAST_ORDER,
+    CHANGE_ORDER
 }

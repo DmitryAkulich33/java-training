@@ -7,6 +7,7 @@ import by.epam.bakery.domain.Order;
 import by.epam.bakery.domain.StatusEnum;
 
 import java.sql.Connection;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,9 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     private static final String FIND_ALL_ORDER = "SELECT * FROM `order` INNER JOIN user ON `order`.user_id=user.id_user ORDER BY id_order DESC" ;
     private static final String FIND_LATEST_ORDER = "SELECT * FROM `order` INNER JOIN user ON `order`.user_id=user.id_user ORDER BY id_order DESC LIMIT ?" ;
     private static final String FIND_ORDER_BY_USER_ID = "SELECT * FROM `order` INNER JOIN user ON `order`.user_id=user.id_user WHERE id_user = ? ORDER BY id_order DESC" ;
+    private static final String CHANGE_PRODUCTION_DATE = "UPDATE `order` SET productionDate = ? WHERE id_order = ?";
+    private static final String CHANGE_DELIVERY_DATE = "UPDATE `order` SET deliveryDate = ? WHERE id_order = ?";
+    private static final String CHANGE_STATUS = "UPDATE `order` SET status = ? WHERE id_order = ?";
 
     public OrderDaoImpl(Connection connection) {
         super(connection);
@@ -68,5 +72,20 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     @Override
     public List<Order> findNecessaryOrderAmount(int amount) throws DaoException {
         return executeQuery(FIND_LATEST_ORDER, new OrderRowMapper(), amount);
+    }
+
+    @Override
+    public void changeProductionDate(LocalDateTime newDate, int orderId) throws DaoException {
+        executeUpdate(CHANGE_PRODUCTION_DATE, newDate, orderId);
+    }
+
+    @Override
+    public void changeDeliveryDate(LocalDateTime newDate, int orderId) throws DaoException {
+        executeUpdate(CHANGE_DELIVERY_DATE, newDate, orderId);
+    }
+
+    @Override
+    public void changeStatus(String newStatus, int orderId) throws DaoException {
+        executeUpdate(CHANGE_STATUS, newStatus, orderId);
     }
 }
