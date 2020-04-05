@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface OrderProductDao extends Dao<OrderProduct> {
     List<OrderProduct> findByUserId(int userId) throws DaoException;
-    void deleteOrderProductByOrderId(int orderId) throws DaoException;
     List<OrderProduct> findOrderProducts() throws DaoException;
     List<OrderProduct> findByOrderId(int orderId) throws DaoException;
+    OrderProduct findOrderProductById(int orderProductId) throws DaoException;
 }

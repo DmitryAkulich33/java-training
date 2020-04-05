@@ -127,7 +127,7 @@
                                         <div class="modal-footer">
                                             <form action="controller" method="POST">
                                                 <input type="hidden" name="delId" value="${ element.id }"/>
-                                                <input type="hidden" name="command" value="delete_order">
+                                                <input type="hidden" name="command" value="delete_order_product">
                                                 <input type="submit" class="btn btn-secondary" value="Delete">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
                                                 </button>

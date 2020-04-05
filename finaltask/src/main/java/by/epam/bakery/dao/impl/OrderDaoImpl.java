@@ -23,6 +23,7 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     private static final String CHANGE_PRODUCTION_DATE = "UPDATE `order` SET productionDate = ? WHERE id_order = ?";
     private static final String CHANGE_DELIVERY_DATE = "UPDATE `order` SET deliveryDate = ? WHERE id_order = ?";
     private static final String CHANGE_STATUS = "UPDATE `order` SET status = ? WHERE id_order = ?";
+    private static final String CHANGE_TOTAL = "UPDATE `order` SET total = ? WHERE id_order = ?";
 
     public OrderDaoImpl(Connection connection) {
         super(connection);
@@ -37,11 +38,6 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     @Override
     public List<Order> findByStatus(StatusEnum statusEnum) throws DaoException {
         return null;
-    }
-
-    @Override
-    public void changeStatus(int orderId) throws DaoException {
-
     }
 
     @Override
@@ -87,5 +83,10 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     @Override
     public void changeStatus(String newStatus, int orderId) throws DaoException {
         executeUpdate(CHANGE_STATUS, newStatus, orderId);
+    }
+
+    @Override
+    public void changeTotal(double newTotal, int orderId) throws DaoException {
+        executeUpdate(CHANGE_TOTAL, newTotal, orderId);
     }
 }

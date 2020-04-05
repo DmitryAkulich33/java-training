@@ -109,4 +109,14 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Override
+    public void changeTotal(double newTotal, int orderId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao dao = helper.createOrderDao();
+            dao.changeTotal(newTotal, orderId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 }

@@ -39,10 +39,10 @@ public class OrderProductServiceImpl implements OrderProductService {
     }
 
     @Override
-    public void deleteOrderProductByOrderId(int orderId) throws ServiceException {
+    public void deleteOrderProductById(int orderProductId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderProductDao dao = helper.createOrderProductDao();
-            dao.deleteOrderProductByOrderId(orderId);
+            dao.removeById(orderProductId);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -67,4 +67,16 @@ public class OrderProductServiceImpl implements OrderProductService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public OrderProduct findOrderProductById (int orderProductId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderProductDao dao = helper.createOrderProductDao();
+            return dao.findOrderProductById(orderProductId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+
 }

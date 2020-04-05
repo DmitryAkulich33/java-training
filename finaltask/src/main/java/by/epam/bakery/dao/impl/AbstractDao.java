@@ -90,7 +90,6 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
         String idName = getIdName();
         RowMapper<T> mapper = (RowMapper<T>) RowMapper.create(table);
         String query = FIND_ALL + table + WHERE + idName + " =? ";
-//        return executeForSingleResult(FIND_ALL + table + WHERE + idName, mapper, id);
         return executeForSingleResult(query, mapper, id);
     }
 

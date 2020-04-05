@@ -21,11 +21,6 @@ public class DeleteOrderCommand implements Command {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        try {
-            serviceFactory.getOrderProductService().deleteOrderProductByOrderId(deleteOrderId);
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order");
     }
 }
