@@ -10,15 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-public class AdminOrderProductCommand implements Command {
+public class FindOrderProductByOrderIdCommand implements Command {
     private static final String ORDER_PRODUCTS = "orderProducts";
+    private static final String ORDER_ID = "orderId";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         List<OrderProduct> orderProducts;
+        int orderId = Integer.parseInt(request.getParameter(ORDER_ID));
         try {
-            orderProducts = serviceFactory.getOrderProductService().findOrderProducts();
+            orderProducts = serviceFactory.getOrderProductService().findByOrderId(orderId);
             request.setAttribute(ORDER_PRODUCTS, orderProducts);
         } catch (ServiceException e) {
             e.printStackTrace();

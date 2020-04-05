@@ -47,4 +47,24 @@ public class OrderProductServiceImpl implements OrderProductService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public List<OrderProduct> findOrderProducts() throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderProductDao dao = helper.createOrderProductDao();
+            return dao.findOrderProducts();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<OrderProduct> findByOrderId(int orderId) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderProductDao dao = helper.createOrderProductDao();
+            return dao.findByOrderId(orderId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

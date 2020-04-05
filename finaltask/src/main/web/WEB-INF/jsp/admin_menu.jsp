@@ -50,12 +50,8 @@
             <input type="submit" class="change-info btn btn-primary" value="OrderProduct">
         </form>
         <form action="controller" method="POST">
-            <input type="hidden" name="command" value="admin_basket">
-            <input type="submit" class="change-info btn btn-primary" value="Basket">
-        </form>
-        <form action="controller" method="POST">
-            <input type="hidden" name="command" value="admin_basket_product">
-            <input type="submit" class="change-info btn btn-primary" value="BasketOrder">
+            <input type="hidden" name="command" value="admin_add_new_order">
+            <input type="submit" class="change-info btn btn-primary" value="Add new Order">
         </form>
     </div>
 </div>

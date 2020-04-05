@@ -2,27 +2,31 @@ package by.epam.bakery.controller.command.impl.admin;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.OrderProduct;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
-public class AdminOrderProductCommand implements Command {
-    private static final String ORDER_PRODUCTS = "orderProducts";
+public class DeleteOrderProductCommand implements Command {
+    private static final String DELETE_ORDER_ID = "delId";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+
+
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        List<OrderProduct> orderProducts;
+        int deleteOrderId = Integer.parseInt(request.getParameter(DELETE_ORDER_ID));
         try {
-            orderProducts = serviceFactory.getOrderProductService().findOrderProducts();
-            request.setAttribute(ORDER_PRODUCTS, orderProducts);
+            serviceFactory.getOrderService().deleteOrderById(deleteOrderId);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        return CommandResult.forward("/WEB-INF/jsp/admin_order_product.jsp");
+        try {
+            serviceFactory.getOrderProductService().deleteOrderProductByOrderId(deleteOrderId);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order");
     }
 }
