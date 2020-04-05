@@ -23,8 +23,35 @@
 <jsp:include page="header.jsp"/>
 <jsp:include page="login.jsp"/>
 <jsp:include page="menu.jsp"/>
-<div class="container-fluid mt-3">
-    CONTACTS
+<div class="container mt-3">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                <h><strong>OUR CONTACTS</strong></h>
+                <br>
+                <p>Telephones</p>
+                <ul>
+                    <li>
+                        +375 44 564 61 30
+                    </li>
+                    <li>
+                        +375 29 564 61 30
+                    </li>
+                </ul>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h><strong>OUR ADDRESS</strong></h>
+                <br>
+                <p>TASTYPIE.COM</p>
+                <p>27 Lubimova St., Minsk</p>
+                <br>
+            </th>
+        </tr>
+    </table>
+    <h><strong>OUR LOCATION HERE</strong></h>
+    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A39841349ba1022f696ab7d290cc2cfa5a46eaa08a7ab547c8d1bda449778d739&amp;width=800&amp;height=500&amp;lang=ru_RU&amp;scroll=true"></script>
 </div>
 <div class="container-fluid pt-3">
     <div class="footer">
