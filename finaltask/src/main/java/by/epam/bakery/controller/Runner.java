@@ -60,8 +60,8 @@ public class Runner {
 //        }
 //        serviceFactory.getOrderService().changeProductionDate(LocalDateTime.parse("2020-04-02T23:55:00"), 3);
 //        serviceFactory.getOrderService().changeStatus("not ready", 3);
-        OrderProduct orderProduct = serviceFactory.getOrderProductService().findOrderProductById(32);
-        System.out.println(orderProduct.getOrder().getTotal());
+//        OrderProduct orderProduct = serviceFactory.getOrderProductService().findOrderProductById(32);
+//        System.out.println(orderProduct.getOrder().getTotal());
 
     }
 }

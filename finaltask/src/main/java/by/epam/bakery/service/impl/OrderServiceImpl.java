@@ -119,4 +119,14 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Override
+    public List<Order> findOrderByStatus(String status) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao dao = helper.createOrderDao();
+            return dao.findByStatus(status);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 }

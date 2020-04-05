@@ -18,4 +18,5 @@ public interface OrderService {
     void changeDeliveryDate(LocalDateTime newDate, int orderId) throws ServiceException;
     void changeStatus(String newStatus, int orderId) throws ServiceException;
     void changeTotal(double newTotal, int orderId) throws ServiceException;
+    List<Order> findOrderByStatus(String status) throws ServiceException;
 }

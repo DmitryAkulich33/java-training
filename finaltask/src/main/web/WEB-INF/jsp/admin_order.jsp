@@ -88,6 +88,41 @@
             </div>
         </li>
         <li class="li_admin nav-item">
+            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModalStat">
+                Show order with status
+            </button>
+            <div class="modal fade" id="myModalStat">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Choose orders with necessary status</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="controller" method="POST">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Amount</span>
+                                    </div>
+                                    <select name="status">
+                                        <option value="not ready">not ready</option>
+                                        <option value="ready">ready</option>
+                                        <option value="delivered">delivered</option>
+                                        <option value="not delivered">not delivered</option>
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="command" value="choose_order_status">
+                                    <input type="submit" class="btn btn-secondary" value="Find orders">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="li_admin nav-item">
             <form action="controller" method="POST">
                 <input type="hidden" name="command" value="admin_order">
                 <input type="submit" class="change-info btn btn-primary" value="Show all orders">
@@ -165,14 +200,12 @@
                                                 <span class="input-group-text">Production date</span>
                                             </div>
                                             <input type="datetime-local" class="form-control" name="productionDate">
-<%--                                            <input type="text" class="form-control" name="productionDate">--%>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Delivery date</span>
                                             </div>
                                             <input type="datetime-local" class="form-control" name="deliveryDate">
-<%--                                            <input type="text" class="form-control" name="deliveryDate">--%>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -184,7 +217,6 @@
                                                 <option value="delivered">delivered</option>
                                                 <option value="not delivered">not delivered</option>
                                             </select>
-<%--                                            <input type="text" class="form-control" name="changeStatus">--%>
                                         </div>
                                         <div class="modal-footer">
                                             <input type="hidden" name="changeId" value="${ element.id }"/>
