@@ -3,8 +3,6 @@
 <%@ taglib prefix="rdct" uri="/WEB-INF/tld/RedirectTag.tld" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>
-<%--<jsp:useBean id="basket" class="by.epam.bakery.domain.Basket" scope="application"/>--%>
-<%--<jsp:useBean id="user" class="by.epam.bakery.domain.User" scope="application"/>--%>
 <!doctype html>
 <html>
 <head>

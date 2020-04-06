@@ -4,6 +4,7 @@ import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandName;
 import by.epam.bakery.controller.command.impl.admin.*;
 import by.epam.bakery.controller.command.impl.common.*;
+import by.epam.bakery.controller.command.impl.courier.CourierAccountCommand;
 import by.epam.bakery.controller.command.impl.user.CreatorFeedbackCommand;
 import by.epam.bakery.controller.command.impl.user.ShowFeedbackCommand;
 import by.epam.bakery.controller.command.impl.user.AddOrderCommand;
@@ -66,6 +67,7 @@ final class CommandProvider {
         repository.put(CommandName.FIND_ORDER_PRODUCT_BY_ORDER_ID, new FindOrderProductByOrderIdCommand());
         repository.put(CommandName.DELETE_ORDER_PRODUCT, new DeleteOrderProductCommand());
         repository.put(CommandName.CHOOSE_ORDER_STATUS, new ChooseOrderStatusCommand());
+        repository.put(CommandName.COURIER_ACCOUNT, new CourierAccountCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

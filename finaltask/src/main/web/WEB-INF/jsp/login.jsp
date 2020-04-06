@@ -32,6 +32,20 @@
                 </div>
                 <br/>
             </c:when>
+            <c:when test="${user.role == 2}">
+                <div class="welcome">
+                    <p><em>Welcome, <c:out value="${ user.surname }"/> <c:out value="${ user.name }"/> <c:out value="${ user.patronymic }"/></em></p>
+                    <ul class="nav">
+                        <li class="li_admin">
+                            <a class= "link_acc nav_link" href="${request.contextPath}controller?command=courier_account">Courier account</a>
+                        </li>
+                        <li class="li_admin">
+                            <a class= "link_acc nav_link" href="${request.contextPath}controller?command=log_out">Exit</a>
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+            </c:when>
             <c:when test="${user.role == 3}">
                 <div class="welcome">
                     <p><em>Welcome, <c:out value="${ user.surname }"/> <c:out value="${ user.name }"/> <c:out value="${ user.patronymic }"/></em></p>
