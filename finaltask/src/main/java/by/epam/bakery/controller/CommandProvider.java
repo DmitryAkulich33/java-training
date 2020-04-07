@@ -74,6 +74,8 @@ final class CommandProvider {
         repository.put(CommandName.COURIER_ORDER, new CourierOrderCommand());
         repository.put(CommandName.COURIER_CHOOSE_ORDER_STATUS, new CourierChooseOrderStatusCommand());
         repository.put(CommandName.CHANGE_ORDER_STATUS, new ChangeOrderStatusCommand());
+        repository.put(CommandName.REGISTRATION, new RegistrationCommand());
+        repository.put(CommandName.REGISTRATION_USER, new RegistrationUserCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

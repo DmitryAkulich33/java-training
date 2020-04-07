@@ -72,6 +72,7 @@
                         <p><c:out value="${ message }"/></p>
                     </div>
                 </form>
+                <a class= "link_acc nav_link pl-1" href="${request.contextPath}controller?command=registration">Registration!</a>
                 <br>
             </c:otherwise>
         </c:choose>
