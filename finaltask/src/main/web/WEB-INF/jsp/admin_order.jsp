@@ -107,8 +107,8 @@
                                     <select name="status">
                                         <option value="not ready">not ready</option>
                                         <option value="ready">ready</option>
-                                        <option value="delivered">delivered</option>
-                                        <option value="not delivered">not delivered</option>
+<%--                                        <option value="delivered">delivered</option>--%>
+<%--                                        <option value="not delivered">not delivered</option>--%>
                                     </select>
                                 </div>
                                 <div class="modal-footer">

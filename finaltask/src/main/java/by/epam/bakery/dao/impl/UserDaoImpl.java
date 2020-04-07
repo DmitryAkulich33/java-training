@@ -24,6 +24,9 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String SAVE_USER = "INSERT INTO user (login, password, role, surname, name_user, patronymic, address, phone, note)" +
             " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String CHANGE_ROLE = "UPDATE user SET role = ? WHERE id_user = ?";
+    private static final String FIND_CLIENT_BY_ID ="SELECT * FROM user WHERE role = 3 AND id_user = ?";
+    private static final String FIND_CLIENT_BY_SURNAME ="SELECT * FROM user WHERE role = 3 AND surname = ?";
+    private static final String FIND_BY_ROLE ="SELECT * FROM user WHERE role = ?";
 
 
     public UserDaoImpl(Connection connection) {
@@ -80,19 +83,24 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
         return executeQuery(FIND_ALL_CLIENTS, new UserRowMapper());
     }
 
-//    @Override
-//    public Optional<User> findById(int id) throws DaoException {
-//        return executeForSingleResult(FIND_BY_ID, new UserRowMapper(), id);
-//    }
-
-//    @Override
-//    public void removeById(int id) throws DaoException {
-//        executeUpdate(REMOVE_USER_BY_ID, id);
-//    }
-
     @Override
     public void save(Object... parameters) throws DaoException {
         executeUpdate(SAVE_USER, parameters);
+    }
+
+    @Override
+    public User findClientById(int userId) throws DaoException {
+        return executeForSingleResult(FIND_CLIENT_BY_ID, new UserRowMapper(), userId);
+    }
+
+    @Override
+    public List<User> findClientBySurname(String surname) throws DaoException {
+        return executeQuery(FIND_CLIENT_BY_SURNAME, new UserRowMapper(), surname);
+    }
+
+    @Override
+    public List<User> findUserByRole(int role) throws DaoException {
+        return executeQuery(FIND_BY_ROLE, new UserRowMapper(), role);
     }
 
     @Override

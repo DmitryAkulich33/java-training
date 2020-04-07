@@ -1,4 +1,4 @@
-package by.epam.bakery.controller.command.impl.admin;
+package by.epam.bakery.controller.command.impl.courier;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
@@ -8,24 +8,21 @@ import by.epam.bakery.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class AdminUsersCommand implements Command {
-    private static final String USERS = "users";
+public class CourierClientsCommand implements Command {
+    private static final String CLIENTS = "clients";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        List<User> users = null;
+        List<User> clients = null;
         try {
-            users = serviceFactory.getUserService().showAllUsers();
+            clients = serviceFactory.getUserService().findAllClients();
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-//        HttpSession session = request.getSession();
-//        session.setAttribute(USERS, users);
-        request.setAttribute(USERS, users);
-        return CommandResult.forward("/WEB-INF/jsp/admin_users.jsp");
+        request.setAttribute(CLIENTS, clients);
+        return CommandResult.forward("/WEB-INF/jsp/courier_clients.jsp");
     }
 }

@@ -30,7 +30,7 @@
     </ul>
     <div class="btn-group">
         <form action="controller" method="POST">
-            <input type="hidden" name="command" value="courier_users">
+            <input type="hidden" name="command" value="courier_clients">
             <input type="submit" class="change-info btn btn-primary" value="Change user note">
         </form>
         <form action="controller" method="POST">

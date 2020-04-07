@@ -4,7 +4,7 @@ import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandName;
 import by.epam.bakery.controller.command.impl.admin.*;
 import by.epam.bakery.controller.command.impl.common.*;
-import by.epam.bakery.controller.command.impl.courier.CourierAccountCommand;
+import by.epam.bakery.controller.command.impl.courier.*;
 import by.epam.bakery.controller.command.impl.user.CreatorFeedbackCommand;
 import by.epam.bakery.controller.command.impl.user.ShowFeedbackCommand;
 import by.epam.bakery.controller.command.impl.user.AddOrderCommand;
@@ -68,6 +68,11 @@ final class CommandProvider {
         repository.put(CommandName.DELETE_ORDER_PRODUCT, new DeleteOrderProductCommand());
         repository.put(CommandName.CHOOSE_ORDER_STATUS, new ChooseOrderStatusCommand());
         repository.put(CommandName.COURIER_ACCOUNT, new CourierAccountCommand());
+        repository.put(CommandName.COURIER_CLIENTS, new CourierClientsCommand());
+        repository.put(CommandName.COURIER_FIND_CLIENT_BY_ID, new CourierFindClientByIdCommand());
+        repository.put(CommandName.COURIER_FIND_CLIENT_BY_SURNAME, new CourierFindClientBySurnameCommand());
+        repository.put(CommandName.CHANGE_NOTE, new ChangeNoteCommand());
+        repository.put(CommandName.FIND_USER_BY_ROLE, new FindUserByRoleCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

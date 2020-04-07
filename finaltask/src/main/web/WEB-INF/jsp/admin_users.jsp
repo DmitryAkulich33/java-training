@@ -166,6 +166,36 @@
             </div>
         </li>
         <li class="li_admin nav-item">
+            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal6">
+                Find user by role
+            </button>
+            <div class="modal fade" id="myTopModal6">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Find user</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="controller" method="POST">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Enter role</span>
+                                    </div>
+                                    <input type="text" class="form-control" name="userRole">
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" name="command" value="find_user_by_role">
+                                    <input type="submit" value="Find user" class="btn btn-secondary">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="li_admin nav-item">
             <form action="controller" method="POST">
                 <input type="hidden" name="command" value="admin_users">
                 <input type="submit" class="change-info btn btn-primary" value="Show all users">
@@ -278,7 +308,6 @@
         </c:forEach>
     </table>
 </div>
-
 <div class="container-fluid pt-3">
     <div class="footer">
         <jsp:include page="footer.jsp"/>

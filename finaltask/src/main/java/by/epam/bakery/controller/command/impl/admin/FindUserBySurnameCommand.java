@@ -26,8 +26,9 @@ public class FindUserBySurnameCommand implements Command {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        HttpSession session = request.getSession();
-        session.setAttribute(USERS, users);
+//        HttpSession session = request.getSession();
+//        session.setAttribute(USERS, users);
+        request.setAttribute(USERS, users);
         return CommandResult.forward("/WEB-INF/jsp/admin_users.jsp");
     }
 }

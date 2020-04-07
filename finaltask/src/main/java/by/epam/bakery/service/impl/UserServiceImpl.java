@@ -149,4 +149,44 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public List<User> findAllClients() throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.getAllClients();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<User> findClientBySurname(String surname) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findClientBySurname(surname);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public User findClientById (int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findClientById(userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<User> findUserByRole(int role) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findUserByRole(role);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }
