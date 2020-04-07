@@ -55,8 +55,6 @@ final class CommandProvider {
         repository.put(CommandName.CHANGE_USER, new ChangeUserCommand());
         repository.put(CommandName.ADMIN_ORDER, new AdminOrderCommand());
         repository.put(CommandName.ADMIN_ORDER_PRODUCT, new AdminOrderProductCommand());
-//        repository.put(CommandName.ADMIN_BASKET, new AdminBasketCommand());
-//        repository.put(CommandName.ADMIN_BASKET_PRODUCT, new AdminBasketProductCommand());
         repository.put(CommandName.SHOW_BASKET, new ShowBasketCommand());
         repository.put(CommandName.DELETE_PIE_FROM_BASKET, new DeletePieFromBasketCommand());
         repository.put(CommandName.FIND_ORDER_BY_USER_ID, new FindOrderByUserId());
@@ -73,6 +71,9 @@ final class CommandProvider {
         repository.put(CommandName.COURIER_FIND_CLIENT_BY_SURNAME, new CourierFindClientBySurnameCommand());
         repository.put(CommandName.CHANGE_NOTE, new ChangeNoteCommand());
         repository.put(CommandName.FIND_USER_BY_ROLE, new FindUserByRoleCommand());
+        repository.put(CommandName.COURIER_ORDER, new CourierOrderCommand());
+        repository.put(CommandName.COURIER_CHOOSE_ORDER_STATUS, new CourierChooseOrderStatusCommand());
+        repository.put(CommandName.CHANGE_ORDER_STATUS, new ChangeOrderStatusCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 
