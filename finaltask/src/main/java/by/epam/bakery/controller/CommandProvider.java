@@ -79,6 +79,8 @@ final class CommandProvider {
         repository.put(CommandName.ADMIN_ADD_NEW_ORDER, new AdminAddNewOrderCommand());
         repository.put(CommandName.ADMIN_ADD_PIE_TO_ORDER, new AdminAddPieToOrderCommand());
         repository.put(CommandName.ADMIN_ADD_NEW_USER_FOR_ORDER, new AdminAddNewUserForOrder());
+        repository.put(CommandName.ADMIN_DELETE_PIE_FROM_ORDER, new AdminDeletePieFromOrderCommand());
+        repository.put(CommandName.ADMIN_PRODUCT_TO_ORDER, new AdminProductToOrder());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

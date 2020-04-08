@@ -59,8 +59,8 @@
                             </div>
                             <form action="controller" method="POST">
                                 <div class="modal-footer">
-                                    <input type="hidden" name="pieId" value="${ element.id }"/>
-                                    <input type="hidden" name="command" value="admin_delete_pie_from_basket">
+                                    <input type="hidden" name="pieIdForDelete" value="${ element.id }"/>
+                                    <input type="hidden" name="command" value="admin_delete_pie_from_order">
                                     <input type="submit" class="btn btn-secondary" value="Delete">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                 </div>
@@ -82,8 +82,8 @@
             </td>
             <td>
                 <form action="controller" method="POST">
-                    <input type="hidden" name="command" value="admin_to_order">
-                    <input type="submit" class="change-info btn btn-primary" value="To order">
+                    <input type="hidden" name="command" value="admin_product_to_order">
+                    <input type="submit" class="change-info btn btn-primary" value="TO ORDER">
                 </form>
             </td>
         </tr>
