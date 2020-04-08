@@ -42,7 +42,7 @@
             <li class="li_pie">
                 <table class="table_pie">
                     <tr>
-                        <td class="product_width" rowspan="5"><img class="image_pie rounded"
+                        <td class="product_width" rowspan="6"><img class="image_pie rounded"
                                                                    src="<c:out value="${ element.picture }"/>">
                         </td>
                         <td class="product_name"><c:out value="${ element.name }"/></td>
@@ -55,6 +55,11 @@
                     <tr>
                         <td class="product_price">
                             <mark><c:out value="${ element.price }"/>0 BYN</mark>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="product_amount">
+                            <input type="number" min="1" max="99" value="1" name="amount" class="input_center">
                         </td>
                     </tr>
                     <tr>
