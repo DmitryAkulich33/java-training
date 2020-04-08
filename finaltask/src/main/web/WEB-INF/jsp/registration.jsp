@@ -41,7 +41,7 @@
                     Enter your password
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="savePassword">
+                    <input type="password" class="form-control" name="savePassword">
                 </td>
             </tr>
             <tr>

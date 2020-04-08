@@ -68,12 +68,12 @@
                     <input type="password" name="password" id="password-field">
                     <input type="hidden" name="command" value="login">
                     <input type="submit" value="Submit" class="button_enter">
+                    <a class= "link_acc nav_link pl-1" href="${request.contextPath}controller?command=registration">Registration!</a>
                     <div class="wrong_login">
                         <p><c:out value="${ message }"/></p>
                     </div>
                 </form>
-                <a class= "link_acc nav_link pl-1" href="${request.contextPath}controller?command=registration">Registration!</a>
-                <br>
+<%--                <a class= "link_acc nav_link pl-1" href="${request.contextPath}controller?command=registration">Registration!</a>--%>
             </c:otherwise>
         </c:choose>
     </div>

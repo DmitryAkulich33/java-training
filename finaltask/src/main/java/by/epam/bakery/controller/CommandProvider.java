@@ -76,6 +76,9 @@ final class CommandProvider {
         repository.put(CommandName.CHANGE_ORDER_STATUS, new ChangeOrderStatusCommand());
         repository.put(CommandName.REGISTRATION, new RegistrationCommand());
         repository.put(CommandName.REGISTRATION_USER, new RegistrationUserCommand());
+        repository.put(CommandName.ADMIN_ADD_NEW_ORDER, new AdminAddNewOrderCommand());
+        repository.put(CommandName.ADMIN_ADD_PIE_TO_ORDER, new AdminAddPieToOrderCommand());
+        repository.put(CommandName.ADMIN_ADD_NEW_USER_FOR_ORDER, new AdminAddNewUserForOrder());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

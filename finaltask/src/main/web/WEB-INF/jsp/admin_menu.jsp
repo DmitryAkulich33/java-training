@@ -22,7 +22,8 @@
 <div class="container-fluid">
     <ul class="nav">
         <li class="nav-item">
-            <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the homepage</a>
+            <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the
+                homepage</a>
         </li>
         <li class="nav-item">
             <a class="link_acc nav-link" href="${request.contextPath}controller?command=log_out">Exit</a>
@@ -49,10 +50,34 @@
             <input type="hidden" name="command" value="admin_order_product">
             <input type="submit" class="change-info btn btn-primary" value="OrderProduct">
         </form>
-        <form action="controller" method="POST">
-            <input type="hidden" name="command" value="admin_add_new_order">
-            <input type="submit" class="change-info btn btn-primary" value="Add new Order">
-        </form>
+        <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal4">
+            Add new Order
+        </button>
+        <div class="modal fade" id="myTopModal4">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Enter userId</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="controller" method="POST">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Enter Id</span>
+                                </div>
+                                <input type="text" class="form-control" name="userForOrderId">
+                            </div>
+                            <div class="modal-footer">
+                                <input type="hidden" name="command" value="admin_add_new_user_for_order">
+                                <input type="submit" value="Add order" class="btn btn-secondary">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>
