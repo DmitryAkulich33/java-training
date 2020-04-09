@@ -27,15 +27,16 @@
 <div class="container-fluid pt-3">
     <br>
     <div>
-        <button type="button" class="dropdown_sort btn btn-primary" data-toggle="dropdown">
-            Sort by
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_increase_price">price
-                increase</a>
-            <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_reduction_price">price
-                reduction</a>
-        </div>
+
+    </div>
+    <button type="button" class="dropdown_sort btn btn-primary" data-toggle="dropdown">
+        Sort by
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_increase_price">price
+            increase</a>
+        <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_reduction_price">price
+            reduction</a>
     </div>
     <ul class="ul_pie">
         <c:forEach var="element" items="${pies}" varStatus="status">
@@ -106,6 +107,59 @@
                 </table>
             </li>
         </c:forEach>
+    </ul>
+<%--    <ul class="pagination justify-content-center" style="margin:20px 0">--%>
+<%--        <li class="page-item"><a class="pagination_color page-link" href="#">The first</a></li>--%>
+<%--        <li class="page-item"><a class="pagination_color page-link" href="#"><<</a></li>--%>
+<%--        <li class="page-item"><a class="pagination_color page-link" href="#">1</a></li>--%>
+<%--        <li class="page-item"><a class="pagination_color page-link" href="#">2</a></li>--%>
+<%--        <li class="page-item"><a class="pagination_color page-link" href="#">3</a></li>--%>
+<%--        <li class="page-item"><a class="pagination_color page-link" href="#">>></a></li>--%>
+<%--        <li class="page-item"><a class="pagination_color page-link" href="#">The last</a></li>--%>
+<%--    </ul>--%>
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        <li class="page-item">
+            <form action="controller" method="POST">
+                <input type="hidden" name="command" value="admin_pies">
+                <input type="submit" class="change-info btn btn-primary" value="The first">
+            </form>
+        </li>
+        <li class="page-item">
+            <form action="controller" method="POST">
+                <input type="hidden" name="command" value="admin_pies">
+                <input type="submit" class="change-info btn btn-primary" value="<<">
+            </form>
+        </li>
+        <li class="page-item">
+            <form action="controller" method="POST">
+                <input type="hidden" name="command" value="admin_pies">
+                <input type="submit" class="change-info btn btn-primary" value="1">
+            </form>
+        </li>
+        <li class="page-item">
+            <form action="controller" method="POST">
+                <input type="hidden" name="command" value="admin_pies">
+                <input type="submit" class="change-info btn btn-primary" value="2">
+            </form>
+        </li>
+        <li class="page-item">
+            <form action="controller" method="POST">
+                <input type="hidden" name="command" value="admin_pies">
+                <input type="submit" class="change-info btn btn-primary" value="3">
+            </form>
+        </li>
+        <li class="page-item">
+            <form action="controller" method="POST">
+                <input type="hidden" name="command" value="admin_pies">
+                <input type="submit" class="change-info btn btn-primary" value=">>">
+            </form>
+        </li>
+        <li class="page-item">
+            <form action="controller" method="POST">
+                <input type="hidden" name="command" value="admin_pies">
+                <input type="submit" class="change-info btn btn-primary" value="The last">
+            </form>
+        </li>
     </ul>
     <div class="footer">
         <jsp:include page="footer.jsp"/>
