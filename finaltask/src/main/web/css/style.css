@@ -289,3 +289,7 @@
 .pagination_color {
     color: #000;
 }
+.pagination_number {
+    padding-top: 6px;
+    /*vertical-align: middle;*/
+}

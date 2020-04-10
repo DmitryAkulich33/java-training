@@ -108,59 +108,46 @@
             </li>
         </c:forEach>
     </ul>
-<%--    <ul class="pagination justify-content-center" style="margin:20px 0">--%>
-<%--        <li class="page-item"><a class="pagination_color page-link" href="#">The first</a></li>--%>
-<%--        <li class="page-item"><a class="pagination_color page-link" href="#"><<</a></li>--%>
-<%--        <li class="page-item"><a class="pagination_color page-link" href="#">1</a></li>--%>
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        <li class="page-item"><a class="pagination_color page-link" href="#">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="#"><<</a></li>
+        <li class="pagination_number">
+            <span class="pagination_number"><mark>&nbspPage 2 from 8&nbsp</mark></span>
+        </li>
 <%--        <li class="page-item"><a class="pagination_color page-link" href="#">2</a></li>--%>
 <%--        <li class="page-item"><a class="pagination_color page-link" href="#">3</a></li>--%>
-<%--        <li class="page-item"><a class="pagination_color page-link" href="#">>></a></li>--%>
-<%--        <li class="page-item"><a class="pagination_color page-link" href="#">The last</a></li>--%>
-<%--    </ul>--%>
-    <ul class="pagination justify-content-center" style="margin:20px 0">
-        <li class="page-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_pies">
-                <input type="submit" class="change-info btn btn-primary" value="The first">
-            </form>
-        </li>
-        <li class="page-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_pies">
-                <input type="submit" class="change-info btn btn-primary" value="<<">
-            </form>
-        </li>
-        <li class="page-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_pies">
-                <input type="submit" class="change-info btn btn-primary" value="1">
-            </form>
-        </li>
-        <li class="page-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_pies">
-                <input type="submit" class="change-info btn btn-primary" value="2">
-            </form>
-        </li>
-        <li class="page-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_pies">
-                <input type="submit" class="change-info btn btn-primary" value="3">
-            </form>
-        </li>
-        <li class="page-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_pies">
-                <input type="submit" class="change-info btn btn-primary" value=">>">
-            </form>
-        </li>
-        <li class="page-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_pies">
-                <input type="submit" class="change-info btn btn-primary" value="The last">
-            </form>
-        </li>
+        <li class="page-item"><a class="pagination_color page-link" href="#">>></a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="#">The last</a></li>
     </ul>
+<%--    <ul class="pagination justify-content-center" style="margin:20px 0">--%>
+<%--        <li class="page-item">--%>
+<%--            <form action="controller" method="POST">--%>
+<%--                <input type="hidden" name="command" value="admin_pies">--%>
+<%--                <input type="submit" class="change-info btn btn-primary" value="The first">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li class="page-item">--%>
+<%--            <form action="controller" method="POST">--%>
+<%--                <input type="hidden" name="command" value="admin_pies">--%>
+<%--                <input type="submit" class="change-info btn btn-primary" value="<<">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li class="page-item">--%>
+<%--            <span class="pagination_number">&nbspPage 2 from 8&nbsp</span>--%>
+<%--        </li>--%>
+<%--        <li class="page-item">--%>
+<%--            <form action="controller" method="POST">--%>
+<%--                <input type="hidden" name="command" value="admin_pies">--%>
+<%--                <input type="submit" class="change-info btn btn-primary" value=">>">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li class="page-item">--%>
+<%--            <form action="controller" method="POST">--%>
+<%--                <input type="hidden" name="command" value="admin_pies">--%>
+<%--                <input type="submit" class="change-info btn btn-primary" value="The last">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--    </ul>--%>
     <div class="footer">
         <jsp:include page="footer.jsp"/>
     </div>
