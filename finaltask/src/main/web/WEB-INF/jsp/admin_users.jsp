@@ -307,6 +307,15 @@
             </tr>
         </c:forEach>
     </table>
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        <li class="page-item"><a class="pagination_color page-link" href="#">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="#"><<</a></li>
+        <li class="pagination_number">
+            <span class="pagination_number"><mark>&nbspPage 2 from 8&nbsp</mark></span>
+        </li>
+        <li class="page-item"><a class="pagination_color page-link" href="#">>></a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="#">The last</a></li>
+    </ul>
 </div>
 <div class="container-fluid pt-3">
     <div class="footer">
