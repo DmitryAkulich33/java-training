@@ -52,10 +52,10 @@
             <input type="hidden" name="command" value="admin_order_product">
             <input type="submit" class="change-info btn btn-primary" value="OrderProduct">
         </form>
-        <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal4">
+        <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModalNewOrder">
             Add new Order
         </button>
-        <div class="modal fade" id="myTopModal4">
+        <div class="modal fade" id="#myTopModalNewOrder">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
