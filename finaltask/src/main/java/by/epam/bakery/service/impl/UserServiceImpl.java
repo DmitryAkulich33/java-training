@@ -189,4 +189,29 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException(e);
         }
     }
+
+    private int findUserAmount () throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findAmount();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public int findUserPageAmount (int pageAmount) throws ServiceException{
+        int amountAllUser = findUserAmount();
+        return (int) Math.ceil((double) amountAllUser/pageAmount);
+    }
+
+    @Override
+    public List<User> findLimitUser(int start, int amount) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findLimit(start, amount);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

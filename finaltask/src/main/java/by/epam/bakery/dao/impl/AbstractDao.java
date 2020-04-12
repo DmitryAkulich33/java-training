@@ -18,6 +18,9 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
     private static final String FIND_ALL = "SELECT * FROM ";
     private static final String REMOVE_BY_ID = "DELETE FROM ";
     private static final String WHERE = " WHERE ";
+    private static final String FIND_COUNT = "SELECT COUNT(*) AS amount FROM ";
+    private static final String AMOUNT = "amount";
+    private static final String LIMIT = " LIMIT ? , ?";
 
     AbstractDao(Connection connection) {
         this.connection = connection;
@@ -34,6 +37,15 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
             throw new DaoException(ex.getMessage());
         }
         return entities;
+    }
+
+    int executeQuery(String query, String column) throws DaoException {
+        try (PreparedStatement statement = createStatement(query); ResultSet resultSet = statement.executeQuery()) {
+            resultSet.next();
+            return resultSet.getInt(column);
+        } catch (SQLException ex) {
+            throw new DaoException(ex.getMessage());
+        }
     }
 
     void executeUpdate(String query, Object... params) throws DaoException {
@@ -64,6 +76,7 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
         }
     }
 
+
     @Override
     public List<T> findAll() throws DaoException {
         String table = getTableName();
@@ -91,6 +104,21 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
         RowMapper<T> mapper = (RowMapper<T>) RowMapper.create(table);
         String query = FIND_ALL + table + WHERE + idName + " =? ";
         return executeForSingleResult(query, mapper, id);
+    }
+
+    @Override
+    public int findAmount () throws DaoException{
+        String table = getTableName();
+        String query = FIND_COUNT + table;
+        return executeQuery(query, AMOUNT);
+    }
+
+    @Override
+    public List<T> findLimit(int start, int amount) throws DaoException {
+        String table = getTableName();
+        RowMapper<T> mapper = (RowMapper<T>) RowMapper.create(table);
+
+        return executeQuery(FIND_ALL + table + LIMIT, mapper, start, amount);
     }
 
     protected abstract String getTableName();

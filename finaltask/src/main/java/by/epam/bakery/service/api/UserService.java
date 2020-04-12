@@ -23,4 +23,6 @@ public interface UserService {
     List<User> findClientBySurname(String surname) throws ServiceException;
     User findClientById (int userId) throws ServiceException;
     List<User> findUserByRole(int role) throws ServiceException;
+    int findUserPageAmount (int pageAmount) throws ServiceException;
+    List<User> findLimitUser(int start, int amount) throws ServiceException;
 }

@@ -309,11 +309,12 @@
     </table>
     <ul class="pagination justify-content-center" style="margin:20px 0">
         <li class="page-item"><a class="pagination_color page-link" href="#">The first</a></li>
-        <li class="page-item"><a class="pagination_color page-link" href="#"><<</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_users_decrease_page&page=${page}&count=${count}"><<</a></li>
         <li class="pagination_number">
-            <span class="pagination_number"><mark>&nbspPage 2 from 8&nbsp</mark></span>
+            <span class="pagination_number"><mark>&nbspPage <c:out value="${ page }"/> from <c:out value="${ count }"/>&nbsp</mark></span>
         </li>
-        <li class="page-item"><a class="pagination_color page-link" href="#">>></a></li>
+        <li class="page-item">
+            <a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_users_increase_page&page=${page}&count=${count}">>></a></li>
         <li class="page-item"><a class="pagination_color page-link" href="#">The last</a></li>
     </ul>
 </div>

@@ -13,19 +13,29 @@ import java.util.List;
 
 public class AdminUsersCommand implements Command {
     private static final String USERS = "users";
+    private static final String PAGE = "page";
+    private static final String COUNT = "count";
+    private static final int AMOUNT = 3;
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        List<User> users = null;
+        int page = Integer.parseInt(request.getParameter(PAGE));
+        List<User> users;
         try {
-            users = serviceFactory.getUserService().showAllUsers();
+            users = serviceFactory.getUserService().findLimitUser((page - 1) * AMOUNT, AMOUNT);
+            request.setAttribute(USERS, users);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-//        HttpSession session = request.getSession();
-//        session.setAttribute(USERS, users);
-        request.setAttribute(USERS, users);
+        int count;
+        try {
+            count = serviceFactory.getUserService().findUserPageAmount(AMOUNT);
+            request.setAttribute(COUNT, count);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+        request.setAttribute(PAGE, page);
         return CommandResult.forward("/WEB-INF/jsp/admin_users.jsp");
     }
 }

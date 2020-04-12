@@ -32,10 +32,12 @@
     <div class="btn-group">
         <form action="controller" method="POST">
             <input type="hidden" name="command" value="admin_pies">
+            <input type="hidden" name="piePage" value="1">
             <input type="submit" class="change-info btn btn-primary" value="Pie">
         </form>
         <form action="controller" method="POST">
             <input type="hidden" name="command" value="admin_users">
+            <input type="hidden" name="page" value="1">
             <input type="submit" class="change-info btn btn-primary" value="User">
         </form>
         <form action="controller" method="POST">

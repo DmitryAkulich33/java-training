@@ -14,4 +14,8 @@ public interface Dao<T extends Entity> {
     void save(Object... parameters) throws DaoException;
 
     void removeById(int id) throws DaoException;
+
+    int findAmount() throws DaoException;
+
+    List<T> findLimit(int start, int amount) throws DaoException;
 }
