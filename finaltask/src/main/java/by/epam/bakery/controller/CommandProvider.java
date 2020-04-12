@@ -50,7 +50,7 @@ final class CommandProvider {
         repository.put(CommandName.ADMIN_USERS, new AdminUsersCommand());
         repository.put(CommandName.DELETE_USER, new DeleteUserCommand());
         repository.put(CommandName.SAVE_USER, new SaveUserCommand());
-        repository.put(CommandName.FIND_USER_BY_ID, new FindUserByIdCommand());
+//        repository.put(CommandName.FIND_USER_BY_ID, new FindUserByIdCommand());
         repository.put(CommandName.FIND_USER_BY_SURNAME, new FindUserBySurnameCommand());
         repository.put(CommandName.CHANGE_USER, new ChangeUserCommand());
         repository.put(CommandName.ADMIN_ORDER, new AdminOrderCommand());

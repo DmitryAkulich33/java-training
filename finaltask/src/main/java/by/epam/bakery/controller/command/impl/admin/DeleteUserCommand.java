@@ -20,6 +20,6 @@ public class DeleteUserCommand implements Command {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_users");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_users&page=1");
     }
 }

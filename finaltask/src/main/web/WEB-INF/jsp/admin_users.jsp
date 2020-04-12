@@ -105,36 +105,36 @@
                 </div>
             </div>
         </li>
-        <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal4">
-                Find user by id
-            </button>
-            <div class="modal fade" id="myTopModal4">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Find user</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="controller" method="POST">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Enter Id</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="userId">
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="hidden" name="command" value="find_user_by_id">
-                                    <input type="submit" value="Find user" class="btn btn-secondary">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
+<%--        <li class="li_admin nav-item">--%>
+<%--            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal4">--%>
+<%--                Find user by id--%>
+<%--            </button>--%>
+<%--            <div class="modal fade" id="myTopModal4">--%>
+<%--                <div class="modal-dialog modal-dialog-centered">--%>
+<%--                    <div class="modal-content">--%>
+<%--                        <div class="modal-header">--%>
+<%--                            <h4 class="modal-title">Find user</h4>--%>
+<%--                            <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+<%--                        </div>--%>
+<%--                        <div class="modal-body">--%>
+<%--                            <form action="controller" method="POST">--%>
+<%--                                <div class="input-group mb-3">--%>
+<%--                                    <div class="input-group-prepend">--%>
+<%--                                        <span class="input-group-text">Enter Id</span>--%>
+<%--                                    </div>--%>
+<%--                                    <input type="text" class="form-control" name="userId">--%>
+<%--                                </div>--%>
+<%--                                <div class="modal-footer">--%>
+<%--                                    <input type="hidden" name="command" value="find_user_by_id">--%>
+<%--                                    <input type="submit" value="Find user" class="btn btn-secondary">--%>
+<%--                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
+<%--                                </div>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </li>--%>
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal5">
                 Find user by surname
@@ -194,12 +194,6 @@
                     </div>
                 </div>
             </div>
-        </li>
-        <li class="li_admin nav-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_users">
-                <input type="submit" class="change-info btn btn-primary" value="Show all users">
-            </form>
         </li>
     </ul>
     <br>
@@ -308,14 +302,14 @@
         </c:forEach>
     </table>
     <ul class="pagination justify-content-center" style="margin:20px 0">
-        <li class="page-item"><a class="pagination_color page-link" href="#">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=${ paginationCommand }&page=1">The first</a></li>
         <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_users_decrease_page&page=${page}&count=${count}"><<</a></li>
         <li class="pagination_number">
             <span class="pagination_number"><mark>&nbspPage <c:out value="${ page }"/> from <c:out value="${ count }"/>&nbsp</mark></span>
         </li>
         <li class="page-item">
             <a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_users_increase_page&page=${page}&count=${count}">>></a></li>
-        <li class="page-item"><a class="pagination_color page-link" href="#">The last</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=${ paginationCommand }&page=${count}">The last</a></li>
     </ul>
 </div>
 <div class="container-fluid pt-3">
