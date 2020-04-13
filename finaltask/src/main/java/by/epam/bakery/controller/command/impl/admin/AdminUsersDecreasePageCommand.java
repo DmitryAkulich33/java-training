@@ -16,7 +16,7 @@ public class AdminUsersDecreasePageCommand implements Command {
     private static final String PAGE = "page";
     private static final String COUNT = "count";
     private static final int AMOUNT = 5;
-    private static final String PAGINATION_COMMAND = "paginationCommand";
+//    private static final String PAGINATION_COMMAND = "paginationCommand";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -26,8 +26,8 @@ public class AdminUsersDecreasePageCommand implements Command {
         int count = Integer.parseInt(request.getParameter(COUNT));
         List<User> users;
         HttpSession session = request.getSession();
-        String command = (String) session.getAttribute(PAGINATION_COMMAND);
-        if(command.equals("admin_users")) {
+//        String command = (String) session.getAttribute(PAGINATION_COMMAND);
+//        if(command.equals("admin_users")) {
             if (decreasePage >= 1) {
                 try {
                     users = serviceFactory.getUserService().findLimitUser((decreasePage - 1) * AMOUNT, AMOUNT);
@@ -47,8 +47,8 @@ public class AdminUsersDecreasePageCommand implements Command {
             }
             request.setAttribute(COUNT, count);
             return CommandResult.forward("/WEB-INF/jsp/admin_users.jsp");
-        } else {
-            return CommandResult.forward("/WEB-INF/jsp/admin_users.jsp");
-        }
+//        } else {
+//            return CommandResult.forward("/WEB-INF/jsp/admin_users.jsp");
+//        }
     }
 }
