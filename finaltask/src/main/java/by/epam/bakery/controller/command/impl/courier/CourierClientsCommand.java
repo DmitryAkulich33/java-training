@@ -12,17 +12,28 @@ import java.util.List;
 
 public class CourierClientsCommand implements Command {
     private static final String CLIENTS = "clients";
+    private static final String PAGE = "page";
+    private static final String COUNT = "count";
+    private static final int AMOUNT = 5;
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        List<User> clients = null;
+        int page = Integer.parseInt(request.getParameter(PAGE));
+        List<User> clients;
         try {
-            clients = serviceFactory.getUserService().findAllClients();
+            clients = serviceFactory.getUserService().findLimitClients((page - 1) * AMOUNT, AMOUNT);
+            request.setAttribute(CLIENTS, clients);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        request.setAttribute(CLIENTS, clients);
+        try {
+            int count = serviceFactory.getUserService().findClientPageAmount(AMOUNT);
+            request.setAttribute(COUNT, count);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+        request.setAttribute(PAGE, page);
         return CommandResult.forward("/WEB-INF/jsp/courier_clients.jsp");
     }
 }

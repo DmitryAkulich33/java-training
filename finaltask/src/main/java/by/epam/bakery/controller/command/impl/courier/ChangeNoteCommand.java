@@ -24,6 +24,6 @@ public class ChangeNoteCommand implements Command {
                 e.printStackTrace();
             }
         }
-        return CommandResult.redirect(request.getContextPath() + "controller?command=courier_clients");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=courier_clients&page=1");
     }
 }

@@ -14,7 +14,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String ID_USER = "id_user";
     private static final String FIND_BY_LOGIN_AND_PASSWORD ="SELECT * FROM user WHERE login = ? AND password = ?";
     private static final String FIND_BY_SURNAME ="SELECT * FROM user WHERE surname = ?";
-    private static final String FIND_ALL_CLIENTS ="SELECT * FROM user WHERE role = 3";
+    private static final String FIND_LIMIT_CLIENTS ="SELECT * FROM user WHERE role = 3 LIMIT ?, ?";
     private static final String CHANGE_NOTE = "UPDATE user SET note = ? WHERE id_user = ?";
     private static final String CHANGE_NAME = "UPDATE user SET name_user = ? WHERE id_user = ?";
     private static final String CHANGE_SURNAME = "UPDATE user SET surname = ? WHERE id_user = ?";
@@ -27,6 +27,8 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String FIND_CLIENT_BY_ID ="SELECT * FROM user WHERE role = 3 AND id_user = ?";
     private static final String FIND_CLIENT_BY_SURNAME ="SELECT * FROM user WHERE role = 3 AND surname = ?";
     private static final String FIND_BY_ROLE ="SELECT * FROM user WHERE role = ?";
+    private static final String FIND_CLIENTS_COUNT = "SELECT COUNT(*) AS amount FROM user WHERE role = 3";
+    private static final String AMOUNT_CLIENTS = "amount";
 
 
     public UserDaoImpl(Connection connection) {
@@ -79,9 +81,15 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public List<User> getAllClients() throws DaoException {
-        return executeQuery(FIND_ALL_CLIENTS, new UserRowMapper());
+    public List<User> getLimitClients(int start, int amount) throws DaoException {
+        return executeQuery(FIND_LIMIT_CLIENTS, new UserRowMapper(), start, amount);
     }
+
+    @Override
+    public int findClientsAmount () throws DaoException{
+        return executeQuery(FIND_CLIENTS_COUNT, AMOUNT_CLIENTS);
+    }
+
 
     @Override
     public void save(Object... parameters) throws DaoException {

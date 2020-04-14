@@ -19,10 +19,11 @@ public interface UserService {
     List<User> findUsersBySurname(String surname) throws ServiceException;
     void changeNote(String newNote, int userId) throws ServiceException;
     void changeRole(int newRole, int userId) throws ServiceException;
-    List<User> findAllClients() throws ServiceException;
+    List<User> findLimitClients(int start, int amount) throws ServiceException;
     List<User> findClientBySurname(String surname) throws ServiceException;
     User findClientById (int userId) throws ServiceException;
     List<User> findUserByRole(int role) throws ServiceException;
     int findUserPageAmount (int pageAmount) throws ServiceException;
     List<User> findLimitUser(int start, int amount) throws ServiceException;
+    int findClientPageAmount (int pageAmount) throws ServiceException;
 }

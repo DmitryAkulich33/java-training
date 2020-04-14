@@ -24,9 +24,7 @@ public class FeedbackDaoImpl extends AbstractDao<Feedback> implements FeedbackDa
 
     @Override
     public List<Feedback> findLimitFeedback(int start, int amount) throws DaoException {
-        String table = getTableName();
-        RowMapper<Feedback> mapper = (RowMapper<Feedback>) RowMapper.create(table);
-        return executeQuery(FIND_LIMIT_FEEDBACK, mapper, start, amount);
+        return executeQuery(FIND_LIMIT_FEEDBACK, new FeedBackRowMapper(), start, amount);
     }
 
 

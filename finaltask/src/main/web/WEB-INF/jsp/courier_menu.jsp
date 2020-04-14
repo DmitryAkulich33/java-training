@@ -31,10 +31,12 @@
     <div class="btn-group">
         <form action="controller" method="POST">
             <input type="hidden" name="command" value="courier_clients">
+            <input type="hidden" name="page" value="1">
             <input type="submit" class="change-info btn btn-primary" value="Change user note">
         </form>
         <form action="controller" method="POST">
             <input type="hidden" name="command" value="courier_order">
+            <input type="hidden" name="page" value="1">
             <input type="submit" class="change-info btn btn-primary" value="Change order status">
         </form>
     </div>

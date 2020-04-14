@@ -87,6 +87,8 @@ final class CommandProvider {
         repository.put(CommandName.ADMIN_FEEDBACK_DECREASE_PAGE, new AdminFeedbackDecreasePageCommand());
         repository.put(CommandName.SHOW_FEEDBACK_DECREASE_PAGE, new ShowFeedbackDecreasePageCommand());
         repository.put(CommandName.SHOW_FEEDBACK_INCREASE_PAGE, new ShowFeedbackIncreasePageCommand());
+        repository.put(CommandName.COURIER_CLIENTS_INCREASE_PAGE, new CourierClientsIncreasePageCommand());
+        repository.put(CommandName.COURIER_CLIENTS_DECREASE_PAGE, new CourierClientsDecreasePageCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

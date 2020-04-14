@@ -151,16 +151,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAllClients() throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            UserDao dao = helper.createUserDao();
-            return dao.getAllClients();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
     public List<User> findClientBySurname(String surname) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -213,5 +203,30 @@ public class UserServiceImpl implements UserService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public List<User> findLimitClients(int start, int amount) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.getLimitClients(start, amount);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    private int findClientAmount () throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findClientsAmount();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public int findClientPageAmount (int pageAmount) throws ServiceException{
+        int amountAllClients = findClientAmount();
+        return (int) Math.ceil((double) amountAllClients/pageAmount);
     }
 }
