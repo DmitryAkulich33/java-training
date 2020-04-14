@@ -25,7 +25,7 @@ public class AdminUsersIncreasePageCommand implements Command {
         int increasePage = currentPage + 1;
         int count = Integer.parseInt(request.getParameter(COUNT));
         List<User> users;
-        HttpSession session = request.getSession();
+//        HttpSession session = request.getSession();
 //        String command = (String) session.getAttribute(PAGINATION_COMMAND);
 //        if(command.equals("admin_users")) {
             if (increasePage <= count) {

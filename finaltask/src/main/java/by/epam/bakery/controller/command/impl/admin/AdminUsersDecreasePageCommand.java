@@ -25,7 +25,7 @@ public class AdminUsersDecreasePageCommand implements Command {
         int decreasePage = currentPage - 1;
         int count = Integer.parseInt(request.getParameter(COUNT));
         List<User> users;
-        HttpSession session = request.getSession();
+//        HttpSession session = request.getSession();
 //        String command = (String) session.getAttribute(PAGINATION_COMMAND);
 //        if(command.equals("admin_users")) {
             if (decreasePage >= 1) {

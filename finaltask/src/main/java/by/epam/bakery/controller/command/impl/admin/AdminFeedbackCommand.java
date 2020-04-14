@@ -14,18 +14,30 @@ import java.util.List;
 
 public class AdminFeedbackCommand implements Command {
     private static final String FEEDBACK = "feedback";
+    private static final String PAGE = "page";
+    private static final String COUNT = "count";
+    private static final int AMOUNT = 10;
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
+        int page = Integer.parseInt(request.getParameter(PAGE));
         List<Feedback> feedbacks = null;
+
         try {
-            feedbacks = serviceFactory.getFeedBackService().showAllFeedBacks();
+            feedbacks = serviceFactory.getFeedBackService().findLimitFeedback((page - 1) * AMOUNT, AMOUNT);
+            request.setAttribute(FEEDBACK, feedbacks);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        HttpSession session = request.getSession();
-        session.setAttribute(FEEDBACK, feedbacks);
+        try {
+            int count = serviceFactory.getFeedBackService().findFeedbackPageAmount(AMOUNT);
+            request.setAttribute(COUNT, count);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+        request.setAttribute(PAGE, page);
         return CommandResult.forward("/WEB-INF/jsp/admin_feedback.jsp");
+
     }
 }

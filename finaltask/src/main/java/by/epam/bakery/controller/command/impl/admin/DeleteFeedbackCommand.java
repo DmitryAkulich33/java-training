@@ -20,6 +20,6 @@ public class DeleteFeedbackCommand implements Command {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_feedback");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_feedback&page=1");
     }
 }

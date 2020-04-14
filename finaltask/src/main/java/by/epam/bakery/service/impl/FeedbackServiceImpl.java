@@ -69,4 +69,29 @@ public class FeedbackServiceImpl implements FeedbackService {
             throw new ServiceException(e);
         }
     }
+
+    private int findFeedbackAmount () throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            FeedbackDao dao = helper.createFeedBackDao();
+            return dao.findAmount();
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public int findFeedbackPageAmount (int pageAmount) throws ServiceException{
+        int amountAllFeedbacks = findFeedbackAmount();
+        return (int) Math.ceil((double) amountAllFeedbacks/pageAmount);
+    }
+
+    @Override
+    public List<Feedback> findLimitFeedback(int start, int amount) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            FeedbackDao dao = helper.createFeedBackDao();
+            return dao.findLimitFeedback(start, amount);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
 }

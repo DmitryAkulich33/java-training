@@ -23,77 +23,75 @@
 <jsp:include page="admin_menu.jsp"/>
 <div class="container-fluid">
     <br>
-    <br>
     <h2>Feedbacks:</h2>
-    <br>
-    <ul class="nav">
-        <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal4">
-                Find feedbacks by user Id
-            </button>
-            <div class="modal fade" id="myModal4">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Find feedback</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="controller" method="POST">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Enter user Id</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="userId">
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="hidden" name="command" value="find_feedback_by_user">
-                                    <input type="submit" class="btn btn-secondary" value="Find feedbacks">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="li_admin nav-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="admin_feedback">
-                <input type="submit" class="change-info btn btn-primary" value="Show all feedbacks">
-            </form>
-        </li>
-        <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModalLast">
-                Show the latest feedbacks
-            </button>
-            <div class="modal fade" id="myModalLast">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Enter amount of the latest feedbacks</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="controller" method="POST">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Amount</span>
-                                    </div>
-                                    <input type="text" class="form-control" name="amount">
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="hidden" name="command" value="show_last_feedback">
-                                    <input type="submit" class="btn btn-secondary" value="Find feedbacks">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
+<%--    <ul class="nav">--%>
+<%--        <li class="li_admin nav-item">--%>
+<%--            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal4">--%>
+<%--                Find feedbacks by user Id--%>
+<%--            </button>--%>
+<%--            <div class="modal fade" id="myModal4">--%>
+<%--                <div class="modal-dialog modal-dialog-centered">--%>
+<%--                    <div class="modal-content">--%>
+<%--                        <div class="modal-header">--%>
+<%--                            <h4 class="modal-title">Find feedback</h4>--%>
+<%--                            <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+<%--                        </div>--%>
+<%--                        <div class="modal-body">--%>
+<%--                            <form action="controller" method="POST">--%>
+<%--                                <div class="input-group mb-3">--%>
+<%--                                    <div class="input-group-prepend">--%>
+<%--                                        <span class="input-group-text">Enter user Id</span>--%>
+<%--                                    </div>--%>
+<%--                                    <input type="text" class="form-control" name="userId">--%>
+<%--                                </div>--%>
+<%--                                <div class="modal-footer">--%>
+<%--                                    <input type="hidden" name="command" value="find_feedback_by_user">--%>
+<%--                                    <input type="submit" class="btn btn-secondary" value="Find feedbacks">--%>
+<%--                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
+<%--                                </div>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </li>--%>
+<%--        <li class="li_admin nav-item">--%>
+<%--            <form action="controller" method="POST">--%>
+<%--                <input type="hidden" name="command" value="admin_feedback">--%>
+<%--                <input type="submit" class="change-info btn btn-primary" value="Show all feedbacks">--%>
+<%--            </form>--%>
+<%--        </li>--%>
+<%--        <li class="li_admin nav-item">--%>
+<%--            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModalLast">--%>
+<%--                Show the latest feedbacks--%>
+<%--            </button>--%>
+<%--            <div class="modal fade" id="myModalLast">--%>
+<%--                <div class="modal-dialog modal-dialog-centered">--%>
+<%--                    <div class="modal-content">--%>
+<%--                        <div class="modal-header">--%>
+<%--                            <h4 class="modal-title">Enter amount of the latest feedbacks</h4>--%>
+<%--                            <button type="button" class="close" data-dismiss="modal">&times;</button>--%>
+<%--                        </div>--%>
+<%--                        <div class="modal-body">--%>
+<%--                            <form action="controller" method="POST">--%>
+<%--                                <div class="input-group mb-3">--%>
+<%--                                    <div class="input-group-prepend">--%>
+<%--                                        <span class="input-group-text">Amount</span>--%>
+<%--                                    </div>--%>
+<%--                                    <input type="text" class="form-control" name="amount">--%>
+<%--                                </div>--%>
+<%--                                <div class="modal-footer">--%>
+<%--                                    <input type="hidden" name="command" value="show_last_feedback">--%>
+<%--                                    <input type="submit" class="btn btn-secondary" value="Find feedbacks">--%>
+<%--                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>--%>
+<%--                                </div>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </li>--%>
+<%--    </ul>--%>
     <br>
     <table class="table table-hover">
         <thead>
@@ -143,6 +141,16 @@
         </c:forEach>
         </tbody>
     </table>
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_feedback&page=1">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_feedback_decrease_page&page=${page}&count=${count}"><<</a></li>
+        <li class="pagination_number">
+            <span class="pagination_number"><mark>&nbspPage <c:out value="${ page }"/> from <c:out value="${ count }"/>&nbsp</mark></span>
+        </li>
+        <li class="page-item">
+            <a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_feedback_increase_page&page=${page}&count=${count}">>></a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_feedback&page=${count}">The last</a></li>
+    </ul>
 </div>
 <div class="container-fluid pt-3">
     <div class="footer">

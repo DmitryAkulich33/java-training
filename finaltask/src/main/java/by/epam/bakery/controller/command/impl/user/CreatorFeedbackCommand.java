@@ -17,8 +17,12 @@ import java.util.List;
 public class CreatorFeedbackCommand implements Command {
     private static final String USER = "user";
     private static final String REVIEW = "review";
+    private static final String NO_LOGIN_MESSAGE = "You need to log in as a user!";
+    private static final String NO_LOGIN = "noLogin";
     private static final String FEEDBACK = "feedback";
-    private static final String NO_LOGIN = "You need to log in as a user!";
+    private static final String PAGE = "page";
+    private static final String COUNT = "count";
+    private static final int AMOUNT = 10;
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -32,19 +36,23 @@ public class CreatorFeedbackCommand implements Command {
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
-            List<Feedback> feedbacks = null;
-            try {
-                feedbacks = serviceFactory.getFeedBackService().showAllFeedBacks();
-//                Collections.reverse(feedbacks);
-            } catch (ServiceException e) {
-                e.printStackTrace();
-            }
-            session.setAttribute("noLogin", "");
-            session.setAttribute(FEEDBACK, feedbacks);
-            return CommandResult.forward("/WEB-INF/jsp/feedback.jsp");
         } else {
-            session.setAttribute("noLogin", NO_LOGIN);
-            return CommandResult.forward("/WEB-INF/jsp/feedback.jsp");
+            request.setAttribute(NO_LOGIN, NO_LOGIN_MESSAGE);
         }
+        List<Feedback> feedbacks;
+        try {
+            feedbacks = serviceFactory.getFeedBackService().findLimitFeedback(0, AMOUNT);
+            request.setAttribute(FEEDBACK, feedbacks);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+        try {
+            int count = serviceFactory.getFeedBackService().findFeedbackPageAmount(AMOUNT);
+            request.setAttribute(COUNT, count);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+        request.setAttribute(PAGE, 1);
+        return CommandResult.forward("/WEB-INF/jsp/feedback.jsp");
     }
 }

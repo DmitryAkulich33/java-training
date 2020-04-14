@@ -6,7 +6,7 @@ import by.epam.bakery.controller.command.impl.admin.*;
 import by.epam.bakery.controller.command.impl.common.*;
 import by.epam.bakery.controller.command.impl.courier.*;
 import by.epam.bakery.controller.command.impl.user.CreatorFeedbackCommand;
-import by.epam.bakery.controller.command.impl.user.ShowFeedbackCommand;
+import by.epam.bakery.controller.command.impl.common.ShowFeedbackCommand;
 import by.epam.bakery.controller.command.impl.user.AddOrderCommand;
 import by.epam.bakery.controller.command.impl.user.*;
 
@@ -44,9 +44,9 @@ final class CommandProvider {
         repository.put(CommandName.DELETE_PIE, new DeletePieCommand());
         repository.put(CommandName.SAVE_PIE, new SavePieCommand());
         repository.put(CommandName.CHANGE_PIE, new ChangePieCommand());
-        repository.put(CommandName.FIND_FEEDBACK_BY_USER, new FindFeedbackByUserCommand());
+//        repository.put(CommandName.FIND_FEEDBACK_BY_USER, new FindFeedbackByUserCommand());
         repository.put(CommandName.DELETE_FEEDBACK, new DeleteFeedbackCommand());
-        repository.put(CommandName.SHOW_LAST_FEEDBACK, new ShowLastFeedbackCommand());
+//        repository.put(CommandName.SHOW_LAST_FEEDBACK, new ShowLastFeedbackCommand());
         repository.put(CommandName.ADMIN_USERS, new AdminUsersCommand());
         repository.put(CommandName.DELETE_USER, new DeleteUserCommand());
         repository.put(CommandName.SAVE_USER, new SaveUserCommand());
@@ -83,6 +83,10 @@ final class CommandProvider {
         repository.put(CommandName.ADMIN_PRODUCT_TO_ORDER, new AdminProductToOrder());
         repository.put(CommandName.ADMIN_USERS_INCREASE_PAGE, new AdminUsersIncreasePageCommand());
         repository.put(CommandName.ADMIN_USERS_DECREASE_PAGE, new AdminUsersDecreasePageCommand());
+        repository.put(CommandName.ADMIN_FEEDBACK_INCREASE_PAGE, new AdminFeedbackIncreasePageCommand());
+        repository.put(CommandName.ADMIN_FEEDBACK_DECREASE_PAGE, new AdminFeedbackDecreasePageCommand());
+        repository.put(CommandName.SHOW_FEEDBACK_DECREASE_PAGE, new ShowFeedbackDecreasePageCommand());
+        repository.put(CommandName.SHOW_FEEDBACK_INCREASE_PAGE, new ShowFeedbackIncreasePageCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

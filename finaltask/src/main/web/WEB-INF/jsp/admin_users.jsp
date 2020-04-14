@@ -23,7 +23,6 @@
 <jsp:include page="admin_menu.jsp"/>
 <div class="container-fluid">
     <br>
-    <br>
     <h2>Users:</h2>
     <br>
     <ul class="nav">

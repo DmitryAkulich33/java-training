@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="user" class="by.epam.bakery.domain.User" scope="application"/>
 <!doctype html>
 <html>
 <head>
@@ -24,9 +23,6 @@
 <jsp:include page="login.jsp"/>
 <jsp:include page="menu.jsp"/>
 <div class="container-fluid mt-3">
-    <div class="wrong_login">
-        <c:out value="${ noLogin }"/>
-    </div>
     <form action="controller" method="POST">
         <div>
             <p>Your feedback:</p>
@@ -34,6 +30,9 @@
                 <textarea class="form-control" name="review" rows="3"></textarea>
             </div>
             <input type="hidden" name="command" value="add_feedback">
+            <div class="wrong_login">
+                <c:out value="${ noLogin }"/>
+            </div>
             <input type="submit" value="Send feedback" class="btn btn-outline-secondary">
         </div>
     </form>
@@ -47,6 +46,16 @@
             </div>
         </div>
     </c:forEach>
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=show_feedback&page=1">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=show_feedback_decrease_page&page=${page}&count=${count}"><<</a></li>
+        <li class="pagination_number">
+            <span class="pagination_number"><mark>&nbspPage <c:out value="${ page }"/> from <c:out value="${ count }"/>&nbsp</mark></span>
+        </li>
+        <li class="page-item">
+            <a class="pagination_color page-link" href="${request.contextPath}controller?command=show_feedback_increase_page&page=${page}&count=${count}">>></a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=show_feedback&page=${count}">The last</a></li>
+    </ul>
 </div>
 <div class="container-fluid pt-3">
     <div class="footer">

@@ -52,6 +52,6 @@ public class ChangeUserCommand implements Command {
                 e.printStackTrace();
             }
         }
-        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_users");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_users&page=1");
     }
 }

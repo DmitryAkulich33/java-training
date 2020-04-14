@@ -31,9 +31,8 @@ public class AdminUsersCommand implements Command {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        int count;
         try {
-            count = serviceFactory.getUserService().findUserPageAmount(AMOUNT);
+            int count = serviceFactory.getUserService().findUserPageAmount(AMOUNT);
             request.setAttribute(COUNT, count);
         } catch (ServiceException e) {
             e.printStackTrace();

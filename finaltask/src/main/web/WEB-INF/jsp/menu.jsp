@@ -52,7 +52,7 @@
             </li>
             <li class="li_pages">
                 <div class="button_navbar_menu">
-                    <a href="${request.contextPath}controller?command=show_feedback" class="a_link"><img
+                    <a href="${request.contextPath}controller?command=show_feedback&page=1" class="a_link"><img
                             src="image/pen.png" class="ico">
                         FEEDBACK</a>
                 </div>
