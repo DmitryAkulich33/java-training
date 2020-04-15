@@ -25,6 +25,8 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     private static final String CHANGE_STATUS = "UPDATE `order` SET status = ? WHERE id_order = ?";
     private static final String CHANGE_TOTAL = "UPDATE `order` SET total = ? WHERE id_order = ?";
     private static final String FIND_ORDER_BY_STATUS = "SELECT * FROM `order` INNER JOIN user ON `order`.user_id=user.id_user WHERE status = ? ORDER BY id_order DESC" ;
+    private static final String FIND_ORDERS_COUNT_BY_USER_ID = "SELECT COUNT(*) AS amount FROM `order` WHERE user_id = ?";
+    private static final String AMOUNT_ORDERS_BY_USER_ID = "amount";
 
     public OrderDaoImpl(Connection connection) {
         super(connection);
@@ -89,5 +91,10 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     @Override
     public List<Order> findByStatus(String status) throws DaoException {
         return executeQuery(FIND_ORDER_BY_STATUS, new OrderRowMapper(), status);
+    }
+
+    @Override
+    public int findAmountOrdersByUserId (int userId) throws DaoException{
+        return executeQuery(FIND_ORDERS_COUNT_BY_USER_ID, AMOUNT_ORDERS_BY_USER_ID, userId);
     }
 }

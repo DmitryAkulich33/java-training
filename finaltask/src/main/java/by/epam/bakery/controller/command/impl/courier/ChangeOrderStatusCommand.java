@@ -25,6 +25,6 @@ public class ChangeOrderStatusCommand implements Command {
                 e.printStackTrace();
             }
         }
-        return CommandResult.redirect(request.getContextPath() + "controller?command=courier_order");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=courier_order&page=1");
     }
 }

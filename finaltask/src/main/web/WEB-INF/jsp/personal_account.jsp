@@ -211,31 +211,75 @@
         </tr>
         </tbody>
     </table>
+</div>
+<div class="container-fluid">
     <br>
     <h2>Order history:</h2>
     <br>
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Pie picture</th>
-            <th>Pie name</th>
-            <th>Id order</th>
-            <th>Delivery date</th>
+            <th>Id</th>
             <th>Status</th>
+            <th>production date</th>
+            <th>delivery date</th>
+            <th>total</th>
         </tr>
         </thead>
-        <tbody>
-        <c:forEach var="element" items="${orders}" varStatus="status">
-        <tr>
-            <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
-            <td><c:out value="${ element.pie.name }"/></td>
-            <td><c:out value="${ element.order.id }"/></td>
-            <td><c:out value="${ element.order.deliveryDate.toString().replace(\"T\", \" \") }"/></td>
-            <td><c:out value="${ element.order.status.toString().replace(\"_\", \" \") }"/></td>
-        </tr>
+        <c:set var="index" scope="session" value="0"/>
+        <c:forEach var="element" items="${orderProducts}" varStatus="status">
+            <c:choose>
+                <c:when test="${index != element.order.id }">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <thead>
+                    <tr>
+                        <th><c:out value="${ element.order.id }"/></th>
+                        <th><mark><c:out value="${ element.order.status.toString().replace(\"_\", \" \") }"/></mark></th>
+                        <th><mark><c:out value="${ element.order.productionDate.toString().replace(\"T\", \" \") }"/></mark></th>
+                        <th><mark><c:out value="${ element.order.deliveryDate.toString().replace(\"T\", \" \") }"/></mark></th>
+                        <th><c:out value="${ element.order.total }"/>0 BYN</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
+                        <td><c:out value="${ element.pie.name }"/></td>
+                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                        <td>x 1</td>
+                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                    </tr>
+                    <c:set var="index" scope="session" value="${ element.order.id }"/>
+                </c:when>
+                <c:otherwise>
+                    <tr>
+                        <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
+                        <td><c:out value="${ element.pie.name }"/></td>
+                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                        <td>x 1</td>
+                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                    </tr>
+                </c:otherwise>
+            </c:choose>
         </c:forEach>
-        </tbody>
     </table>
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=personal_account&page=1">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=personal_account_decrease_page&page=${page}&count=${count}"><<</a></li>
+        <li class="pagination_number">
+            <span class="pagination_number"><mark>&nbspPage <c:out value="${ page }"/> from <c:out value="${ count }"/>&nbsp</mark></span>
+        </li>
+        <li class="page-item">
+            <a class="pagination_color page-link" href="${request.contextPath}controller?command=personal_account_increase_page&page=${page}&count=${count}">>></a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=personal_account&page=${count}">The last</a></li>
+    </ul>
 </div>
 <div class="container-fluid pt-3">
     <div class="footer">

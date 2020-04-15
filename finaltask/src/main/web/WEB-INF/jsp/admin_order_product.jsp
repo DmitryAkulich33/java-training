@@ -153,7 +153,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
+                        <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
                         <td><c:out value="${ element.pie.name }"/></td>
                         <td><c:out value="${ element.pie.price }"/>0 BYN</td>
                         <td>x 1</td>

@@ -72,7 +72,7 @@ final class CommandProvider {
         repository.put(CommandName.CHANGE_NOTE, new ChangeNoteCommand());
 //        repository.put(CommandName.FIND_USER_BY_ROLE, new FindUserByRoleCommand());
         repository.put(CommandName.COURIER_ORDER, new CourierOrderCommand());
-        repository.put(CommandName.COURIER_CHOOSE_ORDER_STATUS, new CourierChooseOrderStatusCommand());
+//        repository.put(CommandName.COURIER_CHOOSE_ORDER_STATUS, new CourierChooseOrderStatusCommand());
         repository.put(CommandName.CHANGE_ORDER_STATUS, new ChangeOrderStatusCommand());
         repository.put(CommandName.REGISTRATION, new RegistrationCommand());
         repository.put(CommandName.REGISTRATION_USER, new RegistrationUserCommand());
@@ -91,6 +91,10 @@ final class CommandProvider {
         repository.put(CommandName.COURIER_CLIENTS_DECREASE_PAGE, new CourierClientsDecreasePageCommand());
         repository.put(CommandName.ADMIN_ORDER_PRODUCT_INCREASE_PAGE, new AdminOrderProductIncreasePageCommand());
         repository.put(CommandName.ADMIN_ORDER_PRODUCT_DECREASE_PAGE, new AdminOrderProductDecreasePageCommand());
+        repository.put(CommandName.COURIER_ORDER_INCREASE_PAGE, new CourierOrderIncreasePageCommand());
+        repository.put(CommandName.COURIER_ORDER_DECREASE_PAGE, new CourierOrderDecreaseCommand());
+        repository.put(CommandName.PERSONAL_ACCOUNT_INCREASE_PAGE, new PersonalAccountIncreasePageCommand());
+        repository.put(CommandName.PERSONAL_ACCOUNT_DECREASE_PAGE, new PersonalAccountDecreasePageCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

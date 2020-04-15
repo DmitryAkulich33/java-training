@@ -88,4 +88,14 @@ public class OrderProductServiceImpl implements OrderProductService {
         }
     }
 
+    @Override
+    public List<OrderProduct> findLimitOrderProductByUserId(int userId, int start, int amount) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderProductDao dao = helper.createOrderProductDao();
+            return dao.findLimitOrderProductByUserId(userId, start, amount);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 }

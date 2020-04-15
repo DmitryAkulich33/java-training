@@ -39,8 +39,8 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
         return entities;
     }
 
-    int executeQuery(String query, String column) throws DaoException {
-        try (PreparedStatement statement = createStatement(query); ResultSet resultSet = statement.executeQuery()) {
+    int executeQuery(String query, String column, Object... params) throws DaoException {
+        try (PreparedStatement statement = createStatement(query, params); ResultSet resultSet = statement.executeQuery()) {
             resultSet.next();
             return resultSet.getInt(column);
         } catch (SQLException ex) {

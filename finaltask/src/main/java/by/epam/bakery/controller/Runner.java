@@ -68,7 +68,7 @@ public class Runner {
 //            System.out.println(userTest);
 //        }
 //        System.out.println(serviceFactory.getUserService().findClientPageAmount(5));
-        List<OrderProduct> listss = serviceFactory.getOrderProductService().findLimitOrderProduct(0, 5);
+        List<OrderProduct> listss = serviceFactory.getOrderProductService().findLimitOrderProductByUserId(4, 0, 10);
         for (OrderProduct orderProduct : listss) {
             System.out.println(orderProduct);
         }

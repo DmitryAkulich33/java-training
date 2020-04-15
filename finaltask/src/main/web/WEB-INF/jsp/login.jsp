@@ -51,7 +51,7 @@
                     <p><em>Welcome, <c:out value="${ user.surname }"/> <c:out value="${ user.name }"/> <c:out value="${ user.patronymic }"/></em></p>
                     <ul class="nav">
                         <li class="li_admin">
-                            <a class= "link_acc nav_link pl-1" href="${request.contextPath}controller?command=personal_account">Personal account</a>
+                            <a class= "link_acc nav_link pl-1" href="${request.contextPath}controller?command=personal_account&page=1">Personal account</a>
                         </li>
                         <li class="li_admin">
                             <a class= "link_acc nav_link pl-1" href="${request.contextPath}controller?command=log_out">Exit</a>

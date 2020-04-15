@@ -144,4 +144,20 @@ public class OrderServiceImpl implements OrderService {
         return (int) Math.ceil((double) amountAllOrders/pageAmount);
     }
 
+    private int findAmountOrderByUserId (int userId) throws ServiceException{
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            OrderDao dao = helper.createOrderDao();
+            return dao.findAmountOrdersByUserId(userId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public int findOrderByUserIdPageAmount (int pageAmount, int userId) throws ServiceException{
+        int amountAllOrders = findAmountOrderByUserId(userId);
+        return (int) Math.ceil((double) amountAllOrders/pageAmount);
+    }
+
+
 }

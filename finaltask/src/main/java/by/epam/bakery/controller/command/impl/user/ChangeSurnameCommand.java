@@ -28,6 +28,6 @@ public class ChangeSurnameCommand implements Command {
         }
         user.setSurname(newSurname);
         session.setAttribute(USER, user);
-        return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account&page=1");
     }
 }

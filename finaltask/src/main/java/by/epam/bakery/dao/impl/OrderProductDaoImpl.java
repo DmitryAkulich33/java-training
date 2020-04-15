@@ -24,6 +24,11 @@ public class OrderProductDaoImpl extends AbstractDao<OrderProduct> implements Or
             "INNER JOIN pie ON order_product.pie_id=pie.id_pie " +
             "INNER JOIN user ON `orderLimit`.user_id=user.id_user " +
             "ORDER BY id_order_product DESC";
+    private static final String FIND_LIMIT_ORDER_PRODUCT_BY_USER_ID = "SELECT * FROM order_product " +
+            "INNER JOIN (SELECT * FROM `order` WHERE user_id= ? ORDER BY id_order DESC LIMIT ? , ?) AS `orderLimit` ON order_product.order_id=`orderLimit`.id_order " +
+            "INNER JOIN pie ON order_product.pie_id=pie.id_pie " +
+            "INNER JOIN user ON `orderLimit`.user_id=user.id_user " +
+            "ORDER BY id_order_product DESC";
 
     public OrderProductDaoImpl(Connection connection) {
         super(connection);
@@ -67,5 +72,10 @@ public class OrderProductDaoImpl extends AbstractDao<OrderProduct> implements Or
     @Override
     public List<OrderProduct> findLimitOrderProduct(int start, int amount) throws DaoException {
         return executeQuery(FIND_LIMIT_ORDER_PRODUCT, new OrderProductRowMapper(), start, amount);
+    }
+
+    @Override
+    public List<OrderProduct> findLimitOrderProductByUserId(int userId, int start, int amount) throws DaoException {
+        return executeQuery(FIND_LIMIT_ORDER_PRODUCT_BY_USER_ID, new OrderProductRowMapper(), userId, start, amount);
     }
 }

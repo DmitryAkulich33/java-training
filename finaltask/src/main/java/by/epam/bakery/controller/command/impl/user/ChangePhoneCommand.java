@@ -28,6 +28,6 @@ public class ChangePhoneCommand implements Command {
         }
         user.setPhone(newPhone);
         session.setAttribute(USER, user);
-        return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account&page=1");
     }
 }

@@ -20,123 +20,135 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<jsp:include page="admin_menu.jsp"/>
+<jsp:include page="courier_menu.jsp"/>
 <div class="container-fluid">
     <br>
-    <br>
     <h2>Orders:</h2>
-    <br>
-    <ul class="nav">
-        <li class="li_admin nav-item">
-            <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModalStat">
-                Show order with status
-            </button>
-            <div class="modal fade" id="myModalStat">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Choose orders with necessary status</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="controller" method="POST">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Status</span>
-                                    </div>
-                                    <select name="status">
-                                        <option value="not ready">not ready</option>
-                                        <option value="ready">ready</option>
-                                        <option value="delivered">delivered</option>
-                                        <option value="not delivered">not delivered</option>
-                                    </select>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="hidden" name="command" value="courier_choose_order_status">
-                                    <input type="submit" class="btn btn-secondary" value="Find orders">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="li_admin nav-item">
-            <form action="controller" method="POST">
-                <input type="hidden" name="command" value="courier_order">
-                <input type="submit" class="change-info btn btn-primary" value="Show all orders">
-            </form>
-        </li>
-    </ul>
     <br>
     <table class="table table-hover">
         <thead>
         <tr>
             <th>Id</th>
-            <th>User id</th>
-            <th>User surname</th>
-            <th>User name</th>
-            <th>User patronymic</th>
-            <th>Total</th>
-            <th>Production date</th>
-            <th>Delivery date</th>
-            <th>Order status</th>
-            <th>Action</th>
+            <th>Status</th>
+            <th>id user</th>
+            <th>Surname</th>
+            <th>name</th>
+            <th>patronymic</th>
+            <th>production date</th>
+            <th>delivery date</th>
+            <th>total</th>
+            <th>action</th>
             <th></th>
         </tr>
         </thead>
-        <c:forEach var="element" items="${orders}" varStatus="status">
-            <tr>
-                <td><c:out value="${ element.id }"/></td>
-                <td><c:out value="${ element.user.id }"/></td>
-                <td><c:out value="${ element.user.surname }"/></td>
-                <td><c:out value="${ element.user.name }"/></td>
-                <td><c:out value="${ element.user.patronymic }"/></td>
-                <td><c:out value="${ element.total }"/></td>
-                <td><c:out value="${ element.productionDate.toString().replace(\"T\", \" \") }"/></td>
-                <td><c:out value="${ element.deliveryDate.toString().replace(\"T\", \" \") }"/></td>
-                <td><c:out value="${ element.status.toString().replace(\"_\", \" \") }"/></td>
-                <td>
-                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"
-                            data-target="#mySecModal${ element.id }">
-                        Change status
-                    </button>
-                    <div class="modal fade" id="mySecModal${ element.id }">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Change status</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="controller" method="POST">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Status</span>
-                                            </div>
-                                            <select name="changeStatus">
-                                                <option value="delivered">delivered</option>
-                                                <option value="not delivered">not delivered</option>
-                                            </select>
+        <c:set var="index" scope="session" value="0"/>
+        <c:forEach var="element" items="${orderProducts}" varStatus="status">
+            <c:choose>
+                <c:when test="${index != element.order.id }">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <thead>
+                    <tr>
+                        <th><c:out value="${ element.order.id }"/></th>
+                        <th><mark><c:out value="${ element.order.status.toString().replace(\"_\", \" \") }"/></mark></th>
+                        <th><c:out value="${ element.order.user.id }"/></th>
+                        <th><c:out value="${ element.order.user.surname }"/></th>
+                        <th><c:out value="${ element.order.user.name }"/></th>
+                        <th><c:out value="${ element.order.user.patronymic }"/></th>
+                        <th><mark><c:out value="${ element.order.productionDate.toString().replace(\"T\", \" \") }"/></mark></th>
+                        <th><mark><c:out value="${ element.order.deliveryDate.toString().replace(\"T\", \" \") }"/></mark></th>
+                        <th><c:out value="${ element.order.total }"/>0 BYN</th>
+                        <th>
+                            <button type="button" class="change-info btn btn-primary" data-toggle="modal"
+                                    data-target="#mySecModal${ element.order.id }">
+                                Change status
+                            </button>
+                            <div class="modal fade" id="mySecModal${ element.order.id }">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Change status</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         </div>
-                                        <div class="modal-footer">
-                                            <input type="hidden" name="changeId" value="${ element.id }"/>
-                                            <input type="hidden" name="command" value="change_order_status">
-                                            <input type="submit" class="btn btn-secondary" value="Change">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                Cancel
-                                            </button>
+                                        <div class="modal-body">
+                                            <form action="controller" method="POST">
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text">Status</span>
+                                                    </div>
+                                                    <select name="changeStatus">
+                                                        <option value="delivered">delivered</option>
+                                                        <option value="not delivered">not delivered</option>
+                                                    </select>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="hidden" name="changeId" value="${ element.order.id }"/>
+                                                    <input type="hidden" name="command" value="change_order_status">
+                                                    <input type="submit" class="btn btn-secondary" value="Change">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                        Cancel
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
+                        <td><c:out value="${ element.pie.name }"/></td>
+                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                        <td>x 1</td>
+                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                    </tr>
+                    <c:set var="index" scope="session" value="${ element.order.id }"/>
+                </c:when>
+                <c:otherwise>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
+                        <td><c:out value="${ element.pie.name }"/></td>
+                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                        <td>x 1</td>
+                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                    </tr>
+                </c:otherwise>
+            </c:choose>
         </c:forEach>
     </table>
+    <ul class="pagination justify-content-center" style="margin:20px 0">
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_order&page=1">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_order_decrease_page&page=${page}&count=${count}"><<</a></li>
+        <li class="pagination_number">
+            <span class="pagination_number"><mark>&nbspPage <c:out value="${ page }"/> from <c:out value="${ count }"/>&nbsp</mark></span>
+        </li>
+        <li class="page-item">
+            <a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_order_increase_page&page=${page}&count=${count}">>></a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_order&page=${count}">The last</a></li>
+    </ul>
 </div>
 <div class="container-fluid pt-3">
     <div class="footer">

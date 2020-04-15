@@ -28,6 +28,6 @@ public class ChangeAddressCommand implements Command {
         }
         user.setAddress(newAddress);
         session.setAttribute(USER, user);
-        return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account&page=1");
     }
 }
