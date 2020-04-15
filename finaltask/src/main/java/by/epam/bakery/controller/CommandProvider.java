@@ -53,22 +53,22 @@ final class CommandProvider {
 //        repository.put(CommandName.FIND_USER_BY_ID, new FindUserByIdCommand());
 //        repository.put(CommandName.FIND_USER_BY_SURNAME, new FindUserBySurnameCommand());
         repository.put(CommandName.CHANGE_USER, new ChangeUserCommand());
-        repository.put(CommandName.ADMIN_ORDER, new AdminOrderCommand());
+//        repository.put(CommandName.ADMIN_ORDER, new AdminOrderCommand());
         repository.put(CommandName.ADMIN_ORDER_PRODUCT, new AdminOrderProductCommand());
         repository.put(CommandName.SHOW_BASKET, new ShowBasketCommand());
         repository.put(CommandName.DELETE_PIE_FROM_BASKET, new DeletePieFromBasketCommand());
-        repository.put(CommandName.FIND_ORDER_BY_USER_ID, new FindOrderByUserId());
+//        repository.put(CommandName.FIND_ORDER_BY_USER_ID, new FindOrderByUserId());
         repository.put(CommandName.DELETE_ORDER, new DeleteOrderCommand());
-        repository.put(CommandName.SHOW_LAST_ORDER, new ShowLastOrderCommand());
+//        repository.put(CommandName.SHOW_LAST_ORDER, new ShowLastOrderCommand());
         repository.put(CommandName.CHANGE_ORDER, new ChangeOrderCommand());
-        repository.put(CommandName.FIND_ORDER_PRODUCT_BY_USER_ID, new FindOrderProductByUserIdCommand());
-        repository.put(CommandName.FIND_ORDER_PRODUCT_BY_ORDER_ID, new FindOrderProductByOrderIdCommand());
+//        repository.put(CommandName.FIND_ORDER_PRODUCT_BY_USER_ID, new FindOrderProductByUserIdCommand());
+//        repository.put(CommandName.FIND_ORDER_PRODUCT_BY_ORDER_ID, new FindOrderProductByOrderIdCommand());
         repository.put(CommandName.DELETE_ORDER_PRODUCT, new DeleteOrderProductCommand());
-        repository.put(CommandName.CHOOSE_ORDER_STATUS, new ChooseOrderStatusCommand());
+//        repository.put(CommandName.CHOOSE_ORDER_STATUS, new ChooseOrderStatusCommand());
         repository.put(CommandName.COURIER_ACCOUNT, new CourierAccountCommand());
         repository.put(CommandName.COURIER_CLIENTS, new CourierClientsCommand());
-        repository.put(CommandName.COURIER_FIND_CLIENT_BY_ID, new CourierFindClientByIdCommand());
-        repository.put(CommandName.COURIER_FIND_CLIENT_BY_SURNAME, new CourierFindClientBySurnameCommand());
+//        repository.put(CommandName.COURIER_FIND_CLIENT_BY_ID, new CourierFindClientByIdCommand());
+//        repository.put(CommandName.COURIER_FIND_CLIENT_BY_SURNAME, new CourierFindClientBySurnameCommand());
         repository.put(CommandName.CHANGE_NOTE, new ChangeNoteCommand());
 //        repository.put(CommandName.FIND_USER_BY_ROLE, new FindUserByRoleCommand());
         repository.put(CommandName.COURIER_ORDER, new CourierOrderCommand());
@@ -89,6 +89,8 @@ final class CommandProvider {
         repository.put(CommandName.SHOW_FEEDBACK_INCREASE_PAGE, new ShowFeedbackIncreasePageCommand());
         repository.put(CommandName.COURIER_CLIENTS_INCREASE_PAGE, new CourierClientsIncreasePageCommand());
         repository.put(CommandName.COURIER_CLIENTS_DECREASE_PAGE, new CourierClientsDecreasePageCommand());
+        repository.put(CommandName.ADMIN_ORDER_PRODUCT_INCREASE_PAGE, new AdminOrderProductIncreasePageCommand());
+        repository.put(CommandName.ADMIN_ORDER_PRODUCT_DECREASE_PAGE, new AdminOrderProductDecreasePageCommand());
         repository.put(CommandName.WRONG_COMMAND, new WrongCommand());
     }
 

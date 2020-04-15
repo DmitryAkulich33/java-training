@@ -45,6 +45,6 @@ public class ChangeOrderCommand implements Command {
                 e.printStackTrace();
             }
         }
-        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order_product&page=1");
     }
 }

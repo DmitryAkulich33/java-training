@@ -10,4 +10,5 @@ public interface OrderProductDao extends Dao<OrderProduct> {
     List<OrderProduct> findOrderProducts() throws DaoException;
     List<OrderProduct> findByOrderId(int orderId) throws DaoException;
     OrderProduct findOrderProductById(int orderProductId) throws DaoException;
+    List<OrderProduct> findLimitOrderProduct(int start, int amount) throws DaoException;
 }

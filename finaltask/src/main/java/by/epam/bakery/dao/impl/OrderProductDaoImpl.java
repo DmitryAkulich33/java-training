@@ -2,7 +2,9 @@ package by.epam.bakery.dao.impl;
 
 import by.epam.bakery.dao.api.OrderProductDao;
 import by.epam.bakery.dao.exception.DaoException;
+import by.epam.bakery.dao.mapper.impl.FeedBackRowMapper;
 import by.epam.bakery.dao.mapper.impl.OrderProductRowMapper;
+import by.epam.bakery.domain.Feedback;
 import by.epam.bakery.domain.OrderProduct;
 
 import java.sql.Connection;
@@ -17,6 +19,11 @@ public class OrderProductDaoImpl extends AbstractDao<OrderProduct> implements Or
     private static final String FIND_ALL_ORDER_PRODUCT = "SELECT * FROM order_product INNER JOIN `order` ON order_product.order_id=`order`.id_order INNER JOIN pie ON order_product.pie_id=pie.id_pie INNER JOIN user ON `order`.user_id=user.id_user ORDER BY id_order_product DESC" ;
     private static final String FIND_ORDER_PRODUCT_BY_ORDER_ID = "SELECT * FROM order_product INNER JOIN `order` ON order_product.order_id=`order`.id_order INNER JOIN pie ON order_product.pie_id=pie.id_pie INNER JOIN user ON `order`.user_id=user.id_user WHERE order_id = ? ORDER BY id_order_product DESC";
     private static final String FIND_ORDER_PRODUCT_BY_ORDER_PRODUCT_ID = "SELECT * FROM order_product INNER JOIN `order` ON order_product.order_id=`order`.id_order INNER JOIN pie ON order_product.pie_id=pie.id_pie INNER JOIN user ON `order`.user_id=user.id_user WHERE id_order_product = ?";
+    private static final String FIND_LIMIT_ORDER_PRODUCT = "SELECT * FROM order_product " +
+            "INNER JOIN (SELECT * FROM `order` ORDER BY id_order DESC LIMIT ? , ?) AS `orderLimit` ON order_product.order_id=`orderLimit`.id_order " +
+            "INNER JOIN pie ON order_product.pie_id=pie.id_pie " +
+            "INNER JOIN user ON `orderLimit`.user_id=user.id_user " +
+            "ORDER BY id_order_product DESC";
 
     public OrderProductDaoImpl(Connection connection) {
         super(connection);
@@ -55,5 +62,10 @@ public class OrderProductDaoImpl extends AbstractDao<OrderProduct> implements Or
     @Override
     public OrderProduct findOrderProductById(int orderProductId) throws DaoException {
         return executeForSingleResult(FIND_ORDER_PRODUCT_BY_ORDER_PRODUCT_ID, new OrderProductRowMapper(), orderProductId);
+    }
+
+    @Override
+    public List<OrderProduct> findLimitOrderProduct(int start, int amount) throws DaoException {
+        return executeQuery(FIND_LIMIT_ORDER_PRODUCT, new OrderProductRowMapper(), start, amount);
     }
 }

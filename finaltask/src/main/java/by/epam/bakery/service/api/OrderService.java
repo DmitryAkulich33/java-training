@@ -19,4 +19,5 @@ public interface OrderService {
     void changeStatus(String newStatus, int orderId) throws ServiceException;
     void changeTotal(double newTotal, int orderId) throws ServiceException;
     List<Order> findOrderByStatus(String status) throws ServiceException;
+    int findOrderPageAmount (int pageAmount) throws ServiceException;
 }

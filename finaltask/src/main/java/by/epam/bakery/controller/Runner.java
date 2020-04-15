@@ -17,6 +17,7 @@ import java.util.List;
 
 public class Runner {
     private static DaoHelperFactory daoHelperFactory = new DaoHelperFactory();
+
     public static void main(String[] args) throws DaoException, ServiceException {
         DaoHelper daoHelper = daoHelperFactory.create();
         UserDao userDao = daoHelper.createUserDao();
@@ -62,10 +63,14 @@ public class Runner {
 //        serviceFactory.getOrderService().changeStatus("not ready", 3);
 //        OrderProduct orderProduct = serviceFactory.getOrderProductService().findOrderProductById(32);
 //        System.out.println(orderProduct.getOrder().getTotal());
-        List<User> users = serviceFactory.getUserService().findLimitClients(0, 3);
-        for(User userTest : users) {
-            System.out.println(userTest);
+//        List<User> users = serviceFactory.getUserService().findLimitClients(0, 3);
+//        for(User userTest : users) {
+//            System.out.println(userTest);
+//        }
+//        System.out.println(serviceFactory.getUserService().findClientPageAmount(5));
+        List<OrderProduct> listss = serviceFactory.getOrderProductService().findLimitOrderProduct(0, 5);
+        for (OrderProduct orderProduct : listss) {
+            System.out.println(orderProduct);
         }
-        System.out.println(serviceFactory.getUserService().findClientPageAmount(5));
     }
 }

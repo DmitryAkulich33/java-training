@@ -29,6 +29,6 @@ public class DeleteOrderProductCommand implements Command {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order_product");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order_product&page=1");
     }
 }
