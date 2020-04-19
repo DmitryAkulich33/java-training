@@ -19,10 +19,10 @@ public class OrderProductServiceImpl implements OrderProductService {
     }
 
     @Override
-    public void save(int orderId, int pieId) throws ServiceException {
+    public void save(int orderId, int pieId, int amount, double cost) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderProductDao dao = helper.createOrderProductDao();
-            dao.save(orderId, pieId);
+            dao.save(orderId, pieId, amount, cost);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

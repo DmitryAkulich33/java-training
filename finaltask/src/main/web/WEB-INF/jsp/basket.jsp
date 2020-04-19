@@ -32,6 +32,7 @@
         <li class="li_admin nav-item">
             <form action="controller" method="POST">
                 <input type="hidden" name="command" value="add_order">
+                <input type="hidden" name="total" value="${ total }">
                 <input type="submit" class="change-info btn btn-primary" value="To order">
             </form>
         </li>
@@ -50,16 +51,20 @@
             <th>Name</th>
             <th>Weight</th>
             <th>Price</th>
+            <th>Amount</th>
+            <th>Cost</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="element" items="${basketProducts}" varStatus="status">
             <tr>
-                <td><img class="image_pie_basket" src="<c:out value="${ element.picture }"/>"></td>
-                <td><c:out value="${ element.name }"/></td>
-                <td><c:out value="${ element.weight }"/> gramm</td>
-                <td><c:out value="${ element.price }"/>0 BYN</td>
+                <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
+                <td><c:out value="${ element.pie.name }"/></td>
+                <td><c:out value="${ element.pie.weight }"/> gramm</td>
+                <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                <td><c:out value="x${ element.amount }"/></td>
+                <td><c:out value="${ element.cost }"/>0 BYN</td>
                 <td>
                     <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModalFeed${ element.id }">
                         Delete
@@ -72,7 +77,10 @@
                                 </div>
                                 <form action="controller" method="POST">
                                     <div class="modal-footer">
-                                        <input type="hidden" name="pieId" value="${ element.id }"/>
+                                        <input type="hidden" name="basketProductId" value="${ element.id }"/>
+                                        <input type="hidden" name="productCost" value="${ element.cost }"/>
+                                        <input type="hidden" name="basketId" value="${ element.basket.id }"/>
+                                        <input type="hidden" name="basketTotal" value="${ element.basket.total }"/>
                                         <input type="hidden" name="command" value="delete_pie_from_basket">
                                         <input type="submit" class="btn btn-secondary" value="Delete">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -87,6 +95,10 @@
         <tr>
             <td>
                 Total:
+            </td>
+            <td>
+            </td>
+            <td>
             </td>
             <td>
             </td>

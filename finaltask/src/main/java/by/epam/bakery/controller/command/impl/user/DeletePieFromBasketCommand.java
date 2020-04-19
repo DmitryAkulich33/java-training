@@ -13,31 +13,26 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class DeletePieFromBasketCommand implements Command {
-    private static final String PIE_ID = "pieId";
-    private static final String USER = "user";
+    private static final String BASKET_PRODUCT_ID = "basketProductId";
+    private static final String BASKET_PRODUCT_COST = "productCost";
+    private static final String BASKET_ID = "basketId";
+    private static final String BASKET_TOTAL = "basketTotal";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        HttpSession session = request.getSession();
-        int pieId = Integer.parseInt(request.getParameter(PIE_ID));
-        Pie pie = null;
+        int basketProductId = Integer.parseInt(request.getParameter(BASKET_PRODUCT_ID));
+        int basketId = Integer.parseInt(request.getParameter(BASKET_ID));
+        double productCost = Double.parseDouble(request.getParameter(BASKET_PRODUCT_COST));
+        double basketTotal = Double.parseDouble(request.getParameter(BASKET_TOTAL));
+
         try {
-            pie = serviceFactory.getPieService().findPieById(pieId);
+            serviceFactory.getBasketProductService().deleteBasketProductById(basketProductId);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        User user = (User) session.getAttribute(USER);
-        int userId = user.getId();
-        Basket basket;
-        double total = 0.0;
-        int basketId = 0;
         try {
-            basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
-            basketId = basket.getId();
-            total = basket.getTotal();
-            serviceFactory.getBasketService().changeTotal(total - pie.getPrice(), basketId);
-            serviceFactory.getBasketProductService().deleteBasketProductByPieId(basketId, pieId);
+            serviceFactory.getBasketService().changeTotal(basketTotal - productCost, basketId);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

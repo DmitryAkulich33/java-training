@@ -253,8 +253,8 @@
                         <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
                         <td><c:out value="${ element.pie.name }"/></td>
                         <td><c:out value="${ element.pie.price }"/>0 BYN</td>
-                        <td>x 1</td>
-                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                        <td>x<c:out value="${ element.amount }"/></td>
+                        <td><c:out value="${ element.cost }"/>0 BYN</td>
                     </tr>
                     <c:set var="index" scope="session" value="${ element.order.id }"/>
                 </c:when>
@@ -263,8 +263,8 @@
                         <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
                         <td><c:out value="${ element.pie.name }"/></td>
                         <td><c:out value="${ element.pie.price }"/>0 BYN</td>
-                        <td>x 1</td>
-                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                        <td>x<c:out value="${ element.amount }"/></td>
+                        <td><c:out value="${ element.cost }"/>0 BYN</td>
                     </tr>
                 </c:otherwise>
             </c:choose>

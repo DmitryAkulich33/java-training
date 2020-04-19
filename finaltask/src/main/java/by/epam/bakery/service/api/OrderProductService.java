@@ -6,7 +6,7 @@ import by.epam.bakery.service.exception.ServiceException;
 import java.util.List;
 
 public interface OrderProductService {
-    void save(int orderId, int pieId) throws ServiceException;
+    void save(int orderId, int pieId, int amount, double cost) throws ServiceException;
     List<OrderProduct> findByUserId(int userId) throws ServiceException;
     List<OrderProduct> findOrderProducts() throws ServiceException;
     List<OrderProduct> findByOrderId(int orderId) throws ServiceException;

@@ -3,6 +3,7 @@ package by.epam.bakery.controller.command.impl.user;
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.domain.Basket;
+import by.epam.bakery.domain.BasketProduct;
 import by.epam.bakery.domain.Pie;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
@@ -28,14 +29,9 @@ public class ShowBasketCommand implements Command {
             basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
             int basketId = basket.getId();
             double total = basket.getTotal();
-            if(total == 0) {
-                session.setAttribute(TOTAL, total);
-                return CommandResult.forward("/WEB-INF/jsp/basket.jsp");
-            } else {
-                List<Pie> basketProducts = serviceFactory.getPieService().findPieByBasketId(basketId);
-                session.setAttribute(TOTAL, total);
-                session.setAttribute(BASKET_PRODUCT, basketProducts);
-            }
+            List<BasketProduct> basketProducts = serviceFactory.getBasketProductService().findProductByBasketId(basketId);
+            session.setAttribute(TOTAL, total);
+            session.setAttribute(BASKET_PRODUCT, basketProducts);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

@@ -21,11 +21,12 @@
 <body>
 <jsp:include page="header.jsp"/>
 <div class="container">
-    <a class="link_acc nav-link" href="${request.contextPath}controller?admin_account">Return to the homepage</a>
+    <a class="link_acc nav-link" href="${request.contextPath}controller?command=admin_account">Return</a>
     <table class="table table-striped">
         <tbody>
         <tr>
-            <td>User id is <c:out value="${ userForOrder.id }"/>, <c:out value="${ userForOrder.surname }"/> <c:out value="${ userForOrder.name }"/> <c:out value="${ userForOrder.patronymic }"/></td>
+            <td>User id is <c:out value="${ userForOrder.id }"/>, <c:out value="${ userForOrder.surname }"/> <c:out
+                    value="${ userForOrder.name }"/> <c:out value="${ userForOrder.patronymic }"/></td>
         </tr>
         </tbody>
     </table>
@@ -39,39 +40,52 @@
             <th>Pie id</th>
             <th>Pie name</th>
             <th>Pie price</th>
+            <th>Amount</th>
+            <th>Cost</th>
             <th>Action</th>
         </tr>
         </thead>
         <c:forEach var="element" items="${basketProducts}" varStatus="status">
-        <tr>
-            <td><c:out value="${ element.id }"/></td>
-            <td><c:out value="${ element.name }"/></td>
-            <td><c:out value="${ element.price }"/></td>
-            <td>
-                <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModalAdd${ element.id }">
-                    Delete
-                </button>
-                <div class="modal fade" id="myModalAdd${ element.id }">
-                    <div class="modal-dialog modal-dialog-centered modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                Do you want to remove the pie from the basket?
-                            </div>
-                            <form action="controller" method="POST">
-                                <div class="modal-footer">
-                                    <input type="hidden" name="pieIdForDelete" value="${ element.id }"/>
-                                    <input type="hidden" name="command" value="admin_delete_pie_from_order">
-                                    <input type="submit" class="btn btn-secondary" value="Delete">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <tr>
+                <td><c:out value="${ element.pie.id }"/></td>
+                <td><c:out value="${ element.pie.name }"/></td>
+                <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                <td>x<c:out value="${ element.amount }"/></td>
+                <td><c:out value="${ element.cost }"/>0 BYN</td>
+                <td>
+                    <button type="button" class="change-info btn btn-primary" data-toggle="modal"
+                            data-target="#myModalAdd${ element.id }">
+                        Delete
+                    </button>
+                    <div class="modal fade" id="myModalAdd${ element.id }">
+                        <div class="modal-dialog modal-dialog-centered modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    Do you want to remove the pie from the basket?
                                 </div>
-                            </form>
+                                <form action="controller" method="POST">
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="basketProductId" value="${ element.id }"/>
+                                        <input type="hidden" name="productCost" value="${ element.cost }"/>
+                                        <input type="hidden" name="basketId" value="${ element.basket.id }"/>
+                                        <input type="hidden" name="basketTotal" value="${ element.basket.total }"/>
+                                        <input type="hidden" name="command" value="admin_delete_pie_from_order">
+                                        <input type="submit" class="btn btn-secondary" value="Delete">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </td>
-        </tr>
+                </td>
+            </tr>
         </c:forEach>
         <tr>
+            <td>
+            </td>
+            <td>
+            </td>
             <td>
             </td>
             <td>
@@ -83,6 +97,7 @@
             <td>
                 <form action="controller" method="POST">
                     <input type="hidden" name="command" value="admin_product_to_order">
+                    <input type="hidden" name="total" value="${ total }">
                     <input type="submit" class="change-info btn btn-primary" value="TO ORDER">
                 </form>
             </td>
@@ -104,6 +119,7 @@
             <th>Weight</th>
             <th>Price</th>
             <th>Description</th>
+            <th>Amount</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -115,14 +131,18 @@
                 <td><c:out value="${ element.weight }"/></td>
                 <td><c:out value="${ element.price }"/></td>
                 <td><c:out value="${ element.description }"/></td>
-                <td>
-                    <form action="controller" method="POST">
+                <form action="controller" method="POST">
+                    <td class="product_amount">
+                        <input type="number" min="1" max="99" value="1" name="pieAmount"
+                               class="input_center">
+                    </td>
+                    <td>
                         <input type="hidden" name="pieId" value="${ element.id }">
                         <input type="hidden" name="piePrice" value="${ element.price }">
                         <input type="hidden" name="command" value="admin_add_pie_to_order">
-                        <input type="submit" class="change-info btn btn-primary" value="Add to order">
-                    </form>
-                </td>
+                        <input type="submit" class="change-info btn btn-primary" value="Add to basket">
+                    </td>
+                </form>
             </tr>
         </c:forEach>
     </table>

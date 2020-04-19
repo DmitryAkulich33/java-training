@@ -16,6 +16,7 @@ public class ClearBasketCommand implements Command {
     private static final String USER = "user";
     private static final String BASKET_PRODUCT = "basketProducts";
 
+
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();

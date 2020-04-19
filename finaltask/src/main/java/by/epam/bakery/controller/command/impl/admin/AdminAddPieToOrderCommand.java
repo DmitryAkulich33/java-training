@@ -15,6 +15,7 @@ public class AdminAddPieToOrderCommand implements Command {
     private static final String PIE_ID = "pieId";
     private static final String PIE_PRICE = "piePrice";
     private static final String USER_FOR_ORDER = "userForOrder";
+    private static final String PIE_AMOUNT = "pieAmount";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -23,13 +24,15 @@ public class AdminAddPieToOrderCommand implements Command {
         User user = (User) session.getAttribute(USER_FOR_ORDER);
         int pieId = Integer.parseInt(request.getParameter(PIE_ID));
         double piePrice = Double.parseDouble(request.getParameter(PIE_PRICE));
+        int amount = Integer.parseInt(request.getParameter(PIE_AMOUNT));
+        double cost = amount * piePrice;
         Basket basket;
         try {
             basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
             double total = basket.getTotal();
             int basketId = basket.getId();
-            serviceFactory.getBasketService().changeTotal((total + piePrice), basketId);
-            serviceFactory.getBasketProductService().saveBasketProduct(basketId, pieId);
+            serviceFactory.getBasketService().changeTotal((total + cost), basketId);
+            serviceFactory.getBasketProductService().saveBasketProduct(basketId, pieId, amount, cost);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

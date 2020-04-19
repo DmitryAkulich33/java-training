@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 public class AddPieCommand implements Command {
     private static final String PIE_ID = "pieId";
     private static final String PIE_PRICE = "piePrice";
+    private static final String PIE_AMOUNT = "pieAmount";
     private static final String USER = "user";
 
     @Override
@@ -22,6 +23,8 @@ public class AddPieCommand implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         int pieId = Integer.parseInt(request.getParameter(PIE_ID));
         double piePrice = Double.parseDouble(request.getParameter(PIE_PRICE));
+        int amount = Integer.parseInt(request.getParameter(PIE_AMOUNT));
+        double cost = amount * piePrice;
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(USER);
         Basket basket;
@@ -29,8 +32,8 @@ public class AddPieCommand implements Command {
             basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
             int basketId = basket.getId();
             double total = basket.getTotal();
-            serviceFactory.getBasketService().changeTotal((total + piePrice), basketId);
-            serviceFactory.getBasketProductService().saveBasketProduct(basketId, pieId);
+            serviceFactory.getBasketService().changeTotal((total + cost), basketId);
+            serviceFactory.getBasketProductService().saveBasketProduct(basketId, pieId, amount, cost);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

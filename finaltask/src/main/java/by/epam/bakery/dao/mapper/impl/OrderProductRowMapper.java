@@ -49,6 +49,8 @@ public class OrderProductRowMapper implements RowMapper<OrderProduct> {
         pie.setDescription(resultSet.getString("description"));
         pie.setPicture(resultSet.getString("picture"));
         orderProduct.setPie(pie);
+        orderProduct.setAmount(resultSet.getInt("order_amount"));
+        orderProduct.setCost(resultSet.getDouble("order_cost"));
 
         return orderProduct;
     }

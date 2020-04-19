@@ -69,6 +69,8 @@ CREATE TABLE `order_product` (
     `id_order_product` INTEGER NOT NULL AUTO_INCREMENT,
     `order_id` INTEGER NOT NULL,
     `pie_id` INTEGER NOT NULL,
+    `order_amount` INTEGER NOT NULL,
+    `order_cost` DOUBLE NOT NULL,
 
     CONSTRAINT pk_order_product PRIMARY KEY (`id_order_product`),
     CONSTRAINT fk_order_product_order FOREIGN KEY (`order_id`)
@@ -82,6 +84,8 @@ CREATE TABLE `basket_product` (
     `id_basket_product` INTEGER NOT NULL AUTO_INCREMENT,
     `basket_id` INTEGER NOT NULL,
     `pie_id` INTEGER NOT NULL,
+    `basket_amount` INTEGER NOT NULL,
+    `basket_cost` DOUBLE NOT NULL,
 
     CONSTRAINT pk_basket_product PRIMARY KEY (`id_basket_product`),
     CONSTRAINT fk_basket_product_basket FOREIGN KEY (`basket_id`)

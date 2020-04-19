@@ -4,8 +4,11 @@ import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
 import by.epam.bakery.dao.api.BasketProductDao;
 import by.epam.bakery.dao.exception.DaoException;
+import by.epam.bakery.domain.BasketProduct;
 import by.epam.bakery.service.api.BasketProductService;
 import by.epam.bakery.service.exception.ServiceException;
+
+import java.util.List;
 
 public class BasketProductServiceImpl implements BasketProductService {
     private DaoHelperFactory daoHelperFactory;
@@ -15,10 +18,10 @@ public class BasketProductServiceImpl implements BasketProductService {
     }
 
     @Override
-    public void saveBasketProduct(int basketId, int pieId) throws ServiceException {
+    public void saveBasketProduct(int basketId, int pieId, int amount, double cost) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             BasketProductDao dao = helper.createBasketProductDao();
-            dao.save(basketId, pieId);
+            dao.save(basketId, pieId, amount, cost);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -35,10 +38,20 @@ public class BasketProductServiceImpl implements BasketProductService {
     }
 
     @Override
-    public void deleteBasketProductByPieId(int basketId, int pieId) throws ServiceException {
+    public void deleteBasketProductById(int basketProductId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             BasketProductDao dao = helper.createBasketProductDao();
-            dao.removeBasketProductByPieId(basketId, pieId);
+            dao.removeById(basketProductId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<BasketProduct> findProductByBasketId(int basketId) throws ServiceException {
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            BasketProductDao dao = helper.createBasketProductDao();
+            return dao.findByBasketId(basketId);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

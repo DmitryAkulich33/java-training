@@ -38,6 +38,8 @@ public class BasketProductRowMapper implements RowMapper<BasketProduct> {
         user.setNote(resultSet.getString("note"));
         basket.setUser(user);
         basketProduct.setBasket(basket);
+        basketProduct.setAmount(resultSet.getInt("basket_amount"));
+        basketProduct.setCost(resultSet.getDouble("basket_cost"));
 
         return basketProduct;
     }

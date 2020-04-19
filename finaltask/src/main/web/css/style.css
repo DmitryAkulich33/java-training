@@ -97,6 +97,7 @@
     text-align: left;
     font-weight: 700;
     font-size: 18px;
+
 }
 .ul_pages {
     display: inline-block;
@@ -292,4 +293,12 @@
 .pagination_number {
     padding-top: 6px;
     /*vertical-align: middle;*/
+}
+.a_link_telephone, .a_link_telephone:hover, .a_link_telephone:focus {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.a_link_telephone:hover, .a_link_telephone:focus {
+    color: #C0C0C0;
+    text-decoration: none;
 }

@@ -58,24 +58,33 @@
                             <mark><c:out value="${ element.price }"/>0 BYN</mark>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="product_amount">
-                            <input type="number" min="1" max="99" value="1" name="amount" class="input_center">
-                        </td>
-                    </tr>
-                    <tr>
-                        <c:choose>
-                            <c:when test="${user.role == 3}">
-                                <td class="button_navbar_menu">
-                                    <form action="controller" method="POST">
+                    <c:choose>
+                        <c:when test="${user.role == 3}">
+                            <form action="controller" method="POST">
+                                <tr>
+                                    <td class="product_amount">
+                                        <input type="number" min="1" max="99" value="1" name="pieAmount"
+                                               class="input_center">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="button_navbar_menu">
                                         <input type="hidden" name="pieId" value="${ element.id }"/>
                                         <input type="hidden" name="piePrice" value="${ element.price }"/>
                                         <input type="hidden" name="command" value="add_pie">
                                         <input type="submit" name="button" class="in_basket" value="TO BASKET"/>
-                                    </form>
+                                    </td>
+                                </tr>
+                            </form>
+                        </c:when>
+                        <c:otherwise>
+                            <tr>
+                                <td class="product_amount">
+                                    <input type="number" min="1" max="99" value="1" name="${ element.id }amount"
+                                           class="input_center">
                                 </td>
-                            </c:when>
-                            <c:otherwise>
+                            </tr>
+                            <tr>
                                 <td class="button_navbar_menu">
                                     <input type="submit" name="button" class="in_basket" value="TO BASKET"
                                            data-toggle="modal" data-target="#myModalBasket"/>
@@ -101,9 +110,9 @@
                                         </div>
                                     </div>
                                 </td>
-                            </c:otherwise>
-                        </c:choose>
-                    </tr>
+                            </tr>
+                        </c:otherwise>
+                    </c:choose>
                 </table>
             </li>
         </c:forEach>

@@ -156,8 +156,8 @@
                         <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
                         <td><c:out value="${ element.pie.name }"/></td>
                         <td><c:out value="${ element.pie.price }"/>0 BYN</td>
-                        <td>x 1</td>
-                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                        <td>x<c:out value="${ element.amount }"/></td>
+                        <td><c:out value="${ element.cost }"/>0 BYN</td>
                         <td>
                             <button type="button" class="change-info btn btn-primary" data-toggle="modal"
                                     data-target="#myModalProdDel${ element.id }">
@@ -195,8 +195,8 @@
                         <td><img class="image_pie_basket" src="<c:out value="${ element.pie.picture }"/>"></td>
                         <td><c:out value="${ element.pie.name }"/></td>
                         <td><c:out value="${ element.pie.price }"/>0 BYN</td>
-                        <td>x 1</td>
-                        <td><c:out value="${ element.pie.price }"/>0 BYN</td>
+                        <td>x<c:out value="${ element.amount }"/></td>
+                        <td><c:out value="${ element.cost }"/>0 BYN</td>
                         <td>
                             <button type="button" class="change-info btn btn-primary" data-toggle="modal"
                                     data-target="#myModalProdDel${ element.id }">
