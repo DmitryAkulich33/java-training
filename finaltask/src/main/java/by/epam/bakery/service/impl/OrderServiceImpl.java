@@ -40,40 +40,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> findAllOrders() throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            OrderDao dao = helper.createOrderDao();
-            return dao.findAllOrders();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
-    public List<Order> findOrderByUserId(int userId) throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            OrderDao dao = helper.createOrderDao();
-            return dao.findByUserId(userId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
     public void deleteOrderById(int orderId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
             dao.removeById(orderId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
-    public List<Order> findNecessaryOrderAmount(int amount) throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            OrderDao dao = helper.createOrderDao();
-            return dao.findNecessaryOrderAmount(amount);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -119,16 +89,6 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-    @Override
-    public List<Order> findOrderByStatus(String status) throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            OrderDao dao = helper.createOrderDao();
-            return dao.findByStatus(status);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
     private int findOrderAmount () throws ServiceException{
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
@@ -158,6 +118,4 @@ public class OrderServiceImpl implements OrderService {
         int amountAllOrders = findAmountOrderByUserId(userId);
         return (int) Math.ceil((double) amountAllOrders/pageAmount);
     }
-
-
 }

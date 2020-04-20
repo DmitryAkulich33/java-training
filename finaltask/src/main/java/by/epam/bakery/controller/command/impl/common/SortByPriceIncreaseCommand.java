@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SorterByPriceIncreaseCommand implements Command {
+public class SortByPriceIncreaseCommand implements Command {
     private static final String SORT_STATUS = "sortStatus";
     private static final String PRICE_INCREASE = "increasePrice";
 

@@ -256,7 +256,6 @@
         </c:forEach>
     </table>
 </div>
-
 <div class="container-fluid pt-3">
     <div class="footer">
         <jsp:include page="footer.jsp"/>

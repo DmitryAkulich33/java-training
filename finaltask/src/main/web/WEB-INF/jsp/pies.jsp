@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="rdct" uri="/WEB-INF/tld/RedirectTag.tld" %>
+<%--<%@ taglib prefix="rdct" uri="/WEB-INF/tld/RedirectTag.tld" %>--%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>
+<%--<jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>--%>
 <!doctype html>
 <html>
 <head>
@@ -26,9 +26,6 @@
 <jsp:include page="menu.jsp"/>
 <div class="container-fluid pt-3">
     <br>
-    <div>
-
-    </div>
     <button type="button" class="dropdown_sort btn btn-primary" data-toggle="dropdown">
         Sort by
     </button>

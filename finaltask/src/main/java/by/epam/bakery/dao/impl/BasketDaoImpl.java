@@ -17,7 +17,6 @@ public class BasketDaoImpl extends AbstractDao<Basket> implements BasketDao {
     private static final String CHANGE_TOTAL = "UPDATE basket SET total = ? WHERE id_basket = ?";
 
 
-
     public BasketDaoImpl(Connection connection) {
         super(connection);
     }

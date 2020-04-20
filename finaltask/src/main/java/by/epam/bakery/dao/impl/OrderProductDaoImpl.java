@@ -15,9 +15,6 @@ public class OrderProductDaoImpl extends AbstractDao<OrderProduct> implements Or
     private static final String ID_ORDER_PRODUCT = "id_order_product";
     private static final String SAVE_ORDER_PRODUCT = "INSERT INTO `order_product` (order_id, pie_id, order_amount, order_cost)" +
             " VALUES(?, ?, ?, ?)";
-    private static final String FIND_ORDER_PRODUCT_BY_USER_ID = "SELECT * FROM order_product INNER JOIN `order` ON order_product.order_id=`order`.id_order INNER JOIN pie ON order_product.pie_id=pie.id_pie INNER JOIN user ON `order`.user_id=user.id_user WHERE user_id = ? ORDER BY id_order DESC";
-    private static final String FIND_ALL_ORDER_PRODUCT = "SELECT * FROM order_product INNER JOIN `order` ON order_product.order_id=`order`.id_order INNER JOIN pie ON order_product.pie_id=pie.id_pie INNER JOIN user ON `order`.user_id=user.id_user ORDER BY id_order_product DESC" ;
-    private static final String FIND_ORDER_PRODUCT_BY_ORDER_ID = "SELECT * FROM order_product INNER JOIN `order` ON order_product.order_id=`order`.id_order INNER JOIN pie ON order_product.pie_id=pie.id_pie INNER JOIN user ON `order`.user_id=user.id_user WHERE order_id = ? ORDER BY id_order_product DESC";
     private static final String FIND_ORDER_PRODUCT_BY_ORDER_PRODUCT_ID = "SELECT * FROM order_product INNER JOIN `order` ON order_product.order_id=`order`.id_order INNER JOIN pie ON order_product.pie_id=pie.id_pie INNER JOIN user ON `order`.user_id=user.id_user WHERE id_order_product = ?";
     private static final String FIND_LIMIT_ORDER_PRODUCT = "SELECT * FROM order_product " +
             "INNER JOIN (SELECT * FROM `order` ORDER BY id_order DESC LIMIT ? , ?) AS `orderLimit` ON order_product.order_id=`orderLimit`.id_order " +
@@ -47,21 +44,6 @@ public class OrderProductDaoImpl extends AbstractDao<OrderProduct> implements Or
     @Override
     public void save(Object... parameters) throws DaoException {
         executeUpdate(SAVE_ORDER_PRODUCT, parameters);
-    }
-
-    @Override
-    public List<OrderProduct> findByUserId(int userId) throws DaoException {
-        return executeQuery(FIND_ORDER_PRODUCT_BY_USER_ID, new OrderProductRowMapper(), userId);
-    }
-
-    @Override
-    public List<OrderProduct> findOrderProducts() throws DaoException {
-        return executeQuery(FIND_ALL_ORDER_PRODUCT, new OrderProductRowMapper());
-    }
-
-    @Override
-    public List<OrderProduct> findByOrderId(int orderId) throws DaoException {
-        return executeQuery(FIND_ORDER_PRODUCT_BY_ORDER_ID, new OrderProductRowMapper(), orderId);
     }
 
     @Override

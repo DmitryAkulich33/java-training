@@ -1,9 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="rdct" uri="/WEB-INF/tld/RedirectTag.tld" %>
+<%--<%@ taglib prefix="rdct" uri="/WEB-INF/tld/RedirectTag.tld" %>--%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>
-<%--<jsp:useBean id="basket" class="by.epam.bakery.domain.Basket" scope="application"/>--%>
+<%--<jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>--%>
 <!doctype html>
 <html>
 <head>
@@ -74,21 +73,16 @@
                             <button type="button" class="in_basket_menu h5" data-toggle="modal" data-target="#myModalBask">
                                 <img src="image/basket.png" class="ico"> BASKET
                             </button>
-<%--                            <input type="submit" name="button" class="in_basket_menu h5" value="BASKET"--%>
-<%--                                   data-toggle="modal" data-target="#myModalBasket"/>--%>
                             <div class="modal fade" id="myModalBask">
                                 <div class="modal-dialog modal-dialog-centered modal-sm">
                                     <div class="modal-content">
-                                        <!-- Modal Header -->
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;
                                             </button>
                                         </div>
-                                        <!-- Modal body -->
                                         <div class="modal-body">
                                             You need to log in as a user!
                                         </div>
-                                        <!-- Modal footer -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close

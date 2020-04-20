@@ -45,10 +45,6 @@
             <input type="hidden" name="page" value="1">
             <input type="submit" class="change-info btn btn-primary" value="Feedback">
         </form>
-<%--        <form action="controller" method="POST">--%>
-<%--            <input type="hidden" name="command" value="admin_order">--%>
-<%--            <input type="submit" class="change-info btn btn-primary" value="Order">--%>
-<%--        </form>--%>
         <form action="controller" method="POST">
             <input type="hidden" name="command" value="admin_order_product">
             <input type="hidden" name="page" value="1">

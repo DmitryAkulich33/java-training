@@ -31,40 +31,10 @@ public class FeedbackServiceImpl implements FeedbackService {
     }
 
     @Override
-    public List<Feedback> showAllFeedBacks() throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            FeedbackDao dao = helper.createFeedBackDao();
-            return dao.findAll();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
-    public List<Feedback> findFeedbackByUserId(int userId) throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            FeedbackDao dao = helper.createFeedBackDao();
-            return dao.getFeedbackByUserId(userId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
     public void deleteFeedback (int id) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             FeedbackDao dao = helper.createFeedBackDao();
             dao.removeById(id);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
-    public List<Feedback> findNecessaryFeedbackAmount(int amount) throws ServiceException{
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            FeedbackDao dao = helper.createFeedBackDao();
-            return dao.getNecessaryFeedbackAmount(amount);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

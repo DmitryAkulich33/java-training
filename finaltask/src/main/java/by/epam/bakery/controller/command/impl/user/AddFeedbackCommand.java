@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
-public class CreatorFeedbackCommand implements Command {
+public class AddFeedbackCommand implements Command {
     private static final String USER = "user";
     private static final String REVIEW = "review";
     private static final String NO_LOGIN_MESSAGE = "You need to log in as a user!";

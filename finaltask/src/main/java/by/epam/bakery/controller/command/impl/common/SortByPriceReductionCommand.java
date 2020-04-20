@@ -1,8 +1,8 @@
-package by.epam.bakery.controller.command.impl.admin;
+package by.epam.bakery.controller.command.impl.common;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.User;
+import by.epam.bakery.domain.Pie;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
 
@@ -12,23 +12,22 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindUserByIdCommand implements Command {
-    private static final String USER_ID = "userId";
-    private static final String USERS = "users";
+public class SortByPriceReductionCommand implements Command {
+    private static final String SORT_STATUS = "sortStatus";
+    private static final String PRICE_REDUCE = "reducePrice";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        int userId = Integer.parseInt(request.getParameter(USER_ID));
-        List<User> users = new ArrayList<>();
-        User user = null;
+        List<Pie> pies = new ArrayList<>();
+        HttpSession session = request.getSession();
         try {
-            user = serviceFactory.getUserService().findUserById(userId);
-            users.add(user);
+            pies = serviceFactory.getPieService().sortByPriceReduce();
         } catch (ServiceException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-        request.setAttribute(USERS, users);
-        return CommandResult.forward("/WEB-INF/jsp/admin_users.jsp");
+        session.setAttribute(SORT_STATUS, PRICE_REDUCE);
+        request.setAttribute("pies", pies);
+        return CommandResult.forward("/WEB-INF/jsp/pies.jsp");
     }
 }

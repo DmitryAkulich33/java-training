@@ -13,7 +13,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String USER_TABLE = "user";
     private static final String ID_USER = "id_user";
     private static final String FIND_BY_LOGIN_AND_PASSWORD ="SELECT * FROM user WHERE login = ? AND password = ?";
-    private static final String FIND_BY_SURNAME ="SELECT * FROM user WHERE surname = ?";
     private static final String FIND_LIMIT_CLIENTS ="SELECT * FROM user WHERE role = 3 LIMIT ?, ?";
     private static final String CHANGE_NOTE = "UPDATE user SET note = ? WHERE id_user = ?";
     private static final String CHANGE_NAME = "UPDATE user SET name_user = ? WHERE id_user = ?";
@@ -25,8 +24,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
             " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String CHANGE_ROLE = "UPDATE user SET role = ? WHERE id_user = ?";
     private static final String FIND_CLIENT_BY_ID ="SELECT * FROM user WHERE role = 3 AND id_user = ?";
-    private static final String FIND_CLIENT_BY_SURNAME ="SELECT * FROM user WHERE role = 3 AND surname = ?";
-    private static final String FIND_BY_ROLE ="SELECT * FROM user WHERE role = ?";
     private static final String FIND_CLIENTS_COUNT = "SELECT COUNT(*) AS amount FROM user WHERE role = 3";
     private static final String AMOUNT_CLIENTS = "amount";
 
@@ -38,11 +35,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     @Override
     public User findUserByLoginAndPassword(String login, String password) throws DaoException {
         return executeForSingleResult(FIND_BY_LOGIN_AND_PASSWORD, new UserRowMapper(), login, password);
-    }
-
-    @Override
-    public List<User> findUsersBySurname(String surname) throws DaoException {
-        return executeQuery(FIND_BY_SURNAME, new UserRowMapper(), surname);
     }
 
     @Override
@@ -99,16 +91,6 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     @Override
     public User findClientById(int userId) throws DaoException {
         return executeForSingleResult(FIND_CLIENT_BY_ID, new UserRowMapper(), userId);
-    }
-
-    @Override
-    public List<User> findClientBySurname(String surname) throws DaoException {
-        return executeQuery(FIND_CLIENT_BY_SURNAME, new UserRowMapper(), surname);
-    }
-
-    @Override
-    public List<User> findUserByRole(int role) throws DaoException {
-        return executeQuery(FIND_BY_ROLE, new UserRowMapper(), role);
     }
 
     @Override

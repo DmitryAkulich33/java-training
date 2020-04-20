@@ -20,7 +20,6 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-
 <div class="container">
     <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the
         homepage</a>

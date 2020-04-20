@@ -84,11 +84,6 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
         return executeQuery(FIND_ALL + table, mapper);
     }
 
-//    @Override
-//    public void save(String query, Object... parameters) throws DaoException {
-//        executeUpdate(query, parameters);
-//    }
-
     @Override
     public void removeById(int id) throws DaoException {
         String table = getTableName();

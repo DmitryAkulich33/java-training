@@ -101,16 +101,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> showAllUsers() throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            UserDao dao = helper.createUserDao();
-            return dao.findAll();
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
     public void deleteUser (int id) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
@@ -131,50 +121,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById (int userId) throws ServiceException{
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            UserDao dao = helper.createUserDao();
-            return dao.findById(userId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
-    public List<User> findUsersBySurname(String surname) throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            UserDao dao = helper.createUserDao();
-            return dao.findUsersBySurname(surname);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
-    public List<User> findClientBySurname(String surname) throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            UserDao dao = helper.createUserDao();
-            return dao.findClientBySurname(surname);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
     public User findClientById (int userId) throws ServiceException{
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             return dao.findClientById(userId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
-    public List<User> findUserByRole(int role) throws ServiceException {
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            UserDao dao = helper.createUserDao();
-            return dao.findUserByRole(role);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
