@@ -20,9 +20,9 @@
     <title>My basket</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
-<jsp:include page="login.jsp"/>
-<jsp:include page="menu.jsp"/>
+<jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/login.jsp"/>
+<jsp:include page="../common/menu.jsp"/>
 <div class="container-fluid mt-3">
     <br>
     <br>
@@ -113,7 +113,7 @@
 </div>
 <div class="container-fluid pt-3">
     <div class="footer">
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="../common/footer.jsp"/>
     </div>
 </div>
 </body>

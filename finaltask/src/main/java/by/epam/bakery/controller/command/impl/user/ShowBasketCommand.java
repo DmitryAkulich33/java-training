@@ -35,6 +35,6 @@ public class ShowBasketCommand implements Command {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        return CommandResult.forward("/WEB-INF/jsp/common/basket.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/user/basket.jsp");
     }
 }

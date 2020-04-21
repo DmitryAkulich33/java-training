@@ -60,8 +60,7 @@
                             <form action="controller" method="POST">
                                 <tr>
                                     <td class="product_amount">
-                                        <input type="number" min="1" max="99" value="1" name="pieAmount"
-                                               class="input_center">
+                                        <input type="number" min="1" max="99" value="1" name="pieAmount" class="input_center">
                                     </td>
                                 </tr>
                                 <tr>
@@ -110,6 +109,21 @@
                             </tr>
                         </c:otherwise>
                     </c:choose>
+                    <tr>
+                        <c:choose>
+                            <c:when test="${addedPieId == element.id}">
+                                <td colspan="2">
+                                    <div class="wrong_message"><c:out value="${ wrongAmount }"/></div>
+                                    <div class="right_message"><c:out value="${ rightAmount }"/></div>
+                                </td>
+                            </c:when>
+                            <c:otherwise>
+                                <td colspan="2">
+                                    &nbsp;
+                                </td>
+                            </c:otherwise>
+                        </c:choose>
+                    </tr>
                 </table>
             </li>
         </c:forEach>

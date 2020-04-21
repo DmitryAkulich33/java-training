@@ -27,7 +27,7 @@ public class SortByPriceReductionCommand implements Command {
             System.out.println(e.getMessage());
         }
         session.setAttribute(SORT_STATUS, PRICE_REDUCE);
-        request.setAttribute("pies", pies);
+        session.setAttribute("pies", pies);
         return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
     }
 }

@@ -9,6 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public class WrongCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        return null;
+        return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
     }
 }

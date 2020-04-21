@@ -56,16 +56,19 @@
                         FEEDBACK</a>
                 </div>
             </li>
-
             <li class="li_pages">
                 <c:choose>
                     <c:when test="${user.role == 3}">
                         <div class="button_navbar_menu">
-                            <button type="button" class="in_basket_menu h5">
-                                <a href="${request.contextPath}controller?command=show_basket" class="a_link"><img
+
+                                <a href="${request.contextPath}controller?command=show_basket" class="a_link">
+                                    <button type="button" class="in_basket_menu h5">
+                                    <img
                                         src="image/basket.png" class="ico">
-                                    BASKET</a>
-                            </button>
+                                    BASKET
+                                    </button>
+                                </a>
+
                         </div>
                     </c:when>
                     <c:otherwise>

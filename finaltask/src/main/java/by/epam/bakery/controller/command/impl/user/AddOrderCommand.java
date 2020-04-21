@@ -26,7 +26,7 @@ public class AddOrderCommand implements Command {
         User user = (User) session.getAttribute(USER);
         int userId = user.getId();
         if (basketTotal == 0) {
-            return CommandResult.forward("/WEB-INF/jsp/basket.jsp");
+            return CommandResult.forward("/WEB-INF/jsp/user/basket.jsp");
         } else {
             try {
                 serviceFactory.getOrderService().save(userId, basketTotal, null, null, StatusEnum.NOT_READY.getValue());

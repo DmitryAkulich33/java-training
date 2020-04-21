@@ -302,3 +302,13 @@
     color: #C0C0C0;
     text-decoration: none;
 }
+.wrong_message {
+    font: 16px/1 Malina,sans-serif;
+    font-weight: 600;
+    color: #FF0000;
+}
+.right_message {
+    font: 16px/1 Malina,sans-serif;
+    font-weight: 600;
+    color: #00FF00;
+}
