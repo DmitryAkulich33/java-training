@@ -1,6 +1,6 @@
-package by.epam.bakery.tag;
+package by.epam.bakery.controller.tag;
 
-import by.epam.bakery.tag.exception.TagException;
+import by.epam.bakery.controller.tag.exception.TagException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

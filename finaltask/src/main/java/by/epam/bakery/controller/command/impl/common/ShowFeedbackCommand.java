@@ -36,6 +36,6 @@ public class ShowFeedbackCommand implements Command {
             e.printStackTrace();
         }
         request.setAttribute(PAGE, page);
-        return CommandResult.forward("/WEB-INF/jsp/feedback.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/common/feedback.jsp");
     }
 }

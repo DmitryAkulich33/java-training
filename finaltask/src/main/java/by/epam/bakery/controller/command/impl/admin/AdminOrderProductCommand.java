@@ -16,7 +16,6 @@ public class AdminOrderProductCommand implements Command {
     private static final String COUNT = "count";
     private static final int AMOUNT = 5;
 
-
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -35,6 +34,6 @@ public class AdminOrderProductCommand implements Command {
             e.printStackTrace();
         }
         request.setAttribute(PAGE, page);
-        return CommandResult.forward("/WEB-INF/jsp/admin_order_product.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/admin/admin_order_product.jsp");
     }
 }

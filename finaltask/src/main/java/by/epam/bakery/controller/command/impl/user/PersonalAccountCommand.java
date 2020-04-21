@@ -40,6 +40,6 @@ public class PersonalAccountCommand implements Command {
             e.printStackTrace();
         }
         request.setAttribute(PAGE, page);
-        return CommandResult.forward("/WEB-INF/jsp/personal_account.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
     }
 }

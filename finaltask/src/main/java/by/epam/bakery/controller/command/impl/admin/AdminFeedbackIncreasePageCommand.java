@@ -17,7 +17,6 @@ public class AdminFeedbackIncreasePageCommand implements Command {
     private static final String COUNT = "count";
     private static final int AMOUNT = 10;
 
-
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -43,6 +42,6 @@ public class AdminFeedbackIncreasePageCommand implements Command {
             request.setAttribute(PAGE, currentPage);
         }
         request.setAttribute(COUNT, count);
-        return CommandResult.forward("/WEB-INF/jsp/admin_feedback.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/admin/admin_feedback.jsp");
     }
 }

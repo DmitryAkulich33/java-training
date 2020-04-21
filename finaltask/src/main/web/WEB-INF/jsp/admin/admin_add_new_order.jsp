@@ -7,19 +7,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style>
-        <%@include file="../../css/style.css" %>
-        <%@include file="../../css/bootstrap.min.css" %>
+        <%@include file="../../../css/style.css" %>
+        <%@include file="../../../css/bootstrap.min.css" %>
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script>
-        <%@include file="../../js/bootstrap.js" %>
+        <%@include file="../../../js/bootstrap.js" %>
     </script>
     <title>Add new order</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="../common/header.jsp"/>
 <div class="container">
     <a class="link_acc nav-link" href="${request.contextPath}controller?command=admin_account">Return</a>
     <table class="table table-striped">
@@ -149,7 +149,7 @@
 </div>
 <div class="container-fluid pt-3">
     <div class="footer">
-        <jsp:include page="footer.jsp"/>
+        <jsp:include page="../common/footer.jsp"/>
     </div>
 </div>
 </body>

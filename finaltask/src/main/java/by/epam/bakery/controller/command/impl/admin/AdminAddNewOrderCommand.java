@@ -46,6 +46,6 @@ public class AdminAddNewOrderCommand implements Command {
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        return CommandResult.forward("/WEB-INF/jsp/admin_add_new_order.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/admin/admin_add_new_order.jsp");
     }
 }

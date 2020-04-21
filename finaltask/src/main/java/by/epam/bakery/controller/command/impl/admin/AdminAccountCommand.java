@@ -9,6 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminAccountCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        return CommandResult.forward("/WEB-INF/jsp/admin_account.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/admin/admin_account.jsp");
     }
 }

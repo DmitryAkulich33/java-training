@@ -41,6 +41,6 @@ public class AdminOrderProductIncreasePageCommand implements Command {
             request.setAttribute(PAGE, currentPage);
         }
         request.setAttribute(COUNT, count);
-        return CommandResult.forward("/WEB-INF/jsp/admin_order_product.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/admin/admin_order_product.jsp");
     }
 }

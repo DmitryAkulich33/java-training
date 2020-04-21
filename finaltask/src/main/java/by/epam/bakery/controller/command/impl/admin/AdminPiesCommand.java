@@ -25,6 +25,6 @@ public class AdminPiesCommand implements Command {
         }
         HttpSession session = request.getSession();
         session.setAttribute(PIES, pies);
-        return CommandResult.forward("/WEB-INF/jsp/admin_pies.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/admin/admin_pies.jsp");
     }
 }

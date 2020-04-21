@@ -9,6 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public class ShowContactsCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        return CommandResult.forward("/WEB-INF/jsp/contacts.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/common/contacts.jsp");
     }
 }

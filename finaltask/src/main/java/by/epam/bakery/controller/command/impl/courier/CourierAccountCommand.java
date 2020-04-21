@@ -9,6 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public class CourierAccountCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        return CommandResult.forward("/WEB-INF/jsp/courier_account.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/courier/courier_account.jsp");
     }
 }

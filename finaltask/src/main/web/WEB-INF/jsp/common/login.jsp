@@ -6,11 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style>
-        <%@include file="../../css/bootstrap.min.css" %>
-        <%@include file="../../css/style.css" %>
+        <%@include file="../../../css/bootstrap.min.css" %>
+        <%@include file="../../../css/style.css" %>
     </style>
     <script>
-        <%@include file="../../js/bootstrap.js" %>
+        <%@include file="../../../js/bootstrap.js" %>
     </script>
     <title>Bakery</title>
 </head>

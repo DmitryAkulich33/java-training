@@ -53,6 +53,6 @@ public class AddFeedbackCommand implements Command {
             e.printStackTrace();
         }
         request.setAttribute(PAGE, 1);
-        return CommandResult.forward("/WEB-INF/jsp/feedback.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/common/feedback.jsp");
     }
 }

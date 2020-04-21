@@ -36,13 +36,6 @@ public class LoginCommand implements Command {
             session.setAttribute(USER, null);
             session.setAttribute("message", WRONG_LOGIN);
         }
-
-//        if(user != null){
-//            session.setAttribute(USER, user);
-//        } else {
-//            session.setAttribute(USER, null);
-//            session.setAttribute("message", WRONG_LOGIN);
-//        }
         return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
     }
 }

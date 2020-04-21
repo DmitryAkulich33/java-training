@@ -25,6 +25,6 @@ public class LogoutCommand implements Command {
             System.out.println(e.getMessage());
         }
         request.setAttribute("pies", pies);
-        return CommandResult.forward("/WEB-INF/jsp/pies.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
     }
 }

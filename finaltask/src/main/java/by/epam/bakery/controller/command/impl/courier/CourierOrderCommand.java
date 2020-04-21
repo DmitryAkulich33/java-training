@@ -35,6 +35,6 @@ public class CourierOrderCommand implements Command {
             e.printStackTrace();
         }
         request.setAttribute(PAGE, page);
-        return CommandResult.forward("/WEB-INF/jsp/courier_order.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/courier/courier_order.jsp");
     }
 }

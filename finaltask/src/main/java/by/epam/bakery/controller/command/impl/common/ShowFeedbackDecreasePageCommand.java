@@ -41,6 +41,6 @@ public class ShowFeedbackDecreasePageCommand implements Command {
             request.setAttribute(PAGE, currentPage);
         }
         request.setAttribute(COUNT, count);
-        return CommandResult.forward("/WEB-INF/jsp/feedback.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/common/feedback.jsp");
     }
 }

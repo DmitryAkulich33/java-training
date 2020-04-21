@@ -10,7 +10,7 @@
 
     <tag>
         <name>redirect</name>
-        <tag-class>by.epam.bakery.tag.RedirectTag</tag-class>
+        <tag-class>by.epam.bakery.controller.tag.RedirectTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>page</name>

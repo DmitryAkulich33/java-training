@@ -7,7 +7,9 @@ import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.Pie;
 import by.epam.bakery.service.api.PieService;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.factory.ServiceFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PieServiceImpl implements PieService {
@@ -28,7 +30,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public List<Pie> sortByPriceIncrease() throws ServiceException{
+    public List<Pie> sortByPriceIncrease() throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             return dao.sortByIncreasePrice();
@@ -38,7 +40,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public List<Pie> sortByPriceReduce() throws ServiceException{
+    public List<Pie> sortByPriceReduce() throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             return dao.sortByReducePrice();
@@ -48,7 +50,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public Pie findPieById (int pieId) throws ServiceException{
+    public Pie findPieById(int pieId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             return dao.findById(pieId);
@@ -58,7 +60,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public Pie findPieByName (String name) throws ServiceException{
+    public Pie findPieByName(String name) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             return dao.findByName(name);
@@ -68,7 +70,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void deletePie (int id) throws ServiceException {
+    public void deletePie(int id) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.removeById(id);
@@ -78,7 +80,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void addPie (String name, int weight, double price, String description, String picture) throws ServiceException{
+    public void addPie(String name, int weight, double price, String description, String picture) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.save(name, weight, price, description, picture);
@@ -88,7 +90,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changeName(String newName, int pieId) throws ServiceException{
+    public void changeName(String newName, int pieId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changeName(newName, pieId);
@@ -98,7 +100,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changePicture(String newPicture, int pieId) throws ServiceException{
+    public void changePicture(String newPicture, int pieId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changePicture(newPicture, pieId);
@@ -108,7 +110,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changeDescription(String newDescription, int pieId) throws ServiceException{
+    public void changeDescription(String newDescription, int pieId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changeDescription(newDescription, pieId);
@@ -118,7 +120,7 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changeWeight(int newWeight, int pieId) throws ServiceException{
+    public void changeWeight(int newWeight, int pieId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changeWeight(newWeight, pieId);
@@ -128,12 +130,27 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changePrice(double newPrice, int pieId) throws ServiceException{
+    public void changePrice(double newPrice, int pieId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changePrice(newPrice, pieId);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public List<Pie> getSortPieList(String value, String increase, String reduce) throws ServiceException {
+        List<Pie> pies = new ArrayList<>();
+        if (value != null) {
+            if (value.equals(increase)) {
+                pies = sortByPriceIncrease();
+            } else if (value.equals(reduce)) {
+                pies = sortByPriceReduce();
+            }
+        } else {
+            pies = showAllPies();
+        }
+        return pies;
     }
 }

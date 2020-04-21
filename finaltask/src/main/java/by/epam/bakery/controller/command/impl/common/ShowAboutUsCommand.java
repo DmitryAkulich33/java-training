@@ -9,6 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public class ShowAboutUsCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        return CommandResult.forward("/WEB-INF/jsp/about_us.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/common/about_us.jsp");
     }
 }

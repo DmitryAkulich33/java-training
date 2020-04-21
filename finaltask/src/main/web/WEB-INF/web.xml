@@ -30,7 +30,7 @@
     </servlet-mapping>
     <filter>
         <filter-name>EncodingFilter</filter-name>
-        <filter-class>by.epam.bakery.filter.EncodingFilter</filter-class>
+        <filter-class>by.epam.bakery.controller.filter.EncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
@@ -42,11 +42,4 @@
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
-
-<!--    <session-config>-->
-<!--        <session-timeout>30</session-timeout>-->
-<!--    </session-config>-->
-<!--    <welcome-file-list>-->
-<!--        <welcome-file>index.jsp</welcome-file>-->
-<!--    </welcome-file-list>-->
 </web-app>

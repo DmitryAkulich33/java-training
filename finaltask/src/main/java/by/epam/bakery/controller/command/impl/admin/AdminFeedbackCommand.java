@@ -37,7 +37,7 @@ public class AdminFeedbackCommand implements Command {
             e.printStackTrace();
         }
         request.setAttribute(PAGE, page);
-        return CommandResult.forward("/WEB-INF/jsp/admin_feedback.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/admin/admin_feedback.jsp");
 
     }
 }

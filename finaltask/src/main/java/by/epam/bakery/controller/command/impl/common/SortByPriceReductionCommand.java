@@ -28,6 +28,6 @@ public class SortByPriceReductionCommand implements Command {
         }
         session.setAttribute(SORT_STATUS, PRICE_REDUCE);
         request.setAttribute("pies", pies);
-        return CommandResult.forward("/WEB-INF/jsp/pies.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
     }
 }

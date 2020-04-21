@@ -15,15 +15,12 @@ public class AdminUsersCommand implements Command {
     private static final String USERS = "users";
     private static final String PAGE = "page";
     private static final String COUNT = "count";
-//    private static final String PAGINATION_COMMAND = "paginationCommand";
-//    private static final String COMMAND = "admin_users";
     private static final int AMOUNT = 5;
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         int page = Integer.parseInt(request.getParameter(PAGE));
-//        HttpSession session = request.getSession();
         List<User> users;
         try {
             users = serviceFactory.getUserService().findLimitUser((page - 1) * AMOUNT, AMOUNT);
@@ -38,7 +35,6 @@ public class AdminUsersCommand implements Command {
             e.printStackTrace();
         }
         request.setAttribute(PAGE, page);
-//        session.setAttribute(PAGINATION_COMMAND, COMMAND);
-        return CommandResult.forward("/WEB-INF/jsp/admin_users.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/admin/admin_users.jsp");
     }
 }

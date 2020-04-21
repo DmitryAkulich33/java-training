@@ -1,4 +1,4 @@
-package by.epam.bakery.tag.exception;
+package by.epam.bakery.controller.tag.exception;
 
 public class TagException extends RuntimeException {
     public TagException() {

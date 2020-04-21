@@ -21,29 +21,35 @@ public class ShowMainPageCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        ServiceFactory serviceFactory = ServiceFactory.getInstance();
         HttpSession session = request.getSession();
         String value = (String) session.getAttribute(SORT_STATUS);
-        List<Pie> pies = getList(value);
+        List<Pie> pies = null;
+        try {
+            pies = serviceFactory.getPieService().getSortPieList(value, PRICE_INCREASE, PRICE_REDUCE);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
         request.setAttribute(PIES, pies);
-        return CommandResult.forward("/WEB-INF/jsp/pies.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
     }
 
-    public List<Pie> getList (String value){
-        List<Pie> pies = new ArrayList<>();
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        try {
-            if (value != null) {
-                if (value.equals(PRICE_INCREASE)) {
-                    pies = serviceFactory.getPieService().sortByPriceIncrease();
-                } else if (value.equals(PRICE_REDUCE)) {
-                    pies =serviceFactory.getPieService().sortByPriceReduce();
-                }
-            } else {
-                pies = serviceFactory.getPieService().showAllPies();
-            }
-        } catch (ServiceException e) {
-            System.out.println(e.getMessage());
-        }
-        return pies;
-    }
+//    public List<Pie> getList (String value){
+//        List<Pie> pies = new ArrayList<>();
+//        ServiceFactory serviceFactory = ServiceFactory.getInstance();
+//        try {
+//            if (value != null) {
+//                if (value.equals(PRICE_INCREASE)) {
+//                    pies = serviceFactory.getPieService().sortByPriceIncrease();
+//                } else if (value.equals(PRICE_REDUCE)) {
+//                    pies =serviceFactory.getPieService().sortByPriceReduce();
+//                }
+//            } else {
+//                pies = serviceFactory.getPieService().showAllPies();
+//            }
+//        } catch (ServiceException e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return pies;
+//    }
 }

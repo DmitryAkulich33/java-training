@@ -9,6 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 public class RegistrationCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        return CommandResult.forward("/WEB-INF/jsp/registration.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/user/registration.jsp");
     }
 }

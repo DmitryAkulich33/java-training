@@ -41,6 +41,6 @@ public class CourierClientsDecreasePageCommand implements Command {
             request.setAttribute(PAGE, currentPage);
         }
         request.setAttribute(COUNT, count);
-        return CommandResult.forward("/WEB-INF/jsp/courier_clients.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/courier/courier_clients.jsp");
     }
 }

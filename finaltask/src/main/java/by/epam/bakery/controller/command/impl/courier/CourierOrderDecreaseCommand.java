@@ -41,6 +41,6 @@ public class CourierOrderDecreaseCommand implements Command {
             request.setAttribute(PAGE, currentPage);
         }
         request.setAttribute(COUNT, count);
-        return CommandResult.forward("/WEB-INF/jsp/courier_order.jsp");
+        return CommandResult.forward("/WEB-INF/jsp/courier/courier_order.jsp");
     }
 }
