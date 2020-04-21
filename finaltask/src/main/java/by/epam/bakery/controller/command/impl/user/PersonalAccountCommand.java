@@ -14,7 +14,7 @@ import java.util.List;
 
 public class PersonalAccountCommand implements Command {
     private static final String USER = "user";
-    private static final String ORDER_PRODUCTS = "orderProducts";
+    private static final String USER_ORDER_PRODUCTS = "userOrderProducts";
     private static final String PAGE = "page";
     private static final String COUNT = "count";
     private static final int AMOUNT = 5;
@@ -29,7 +29,7 @@ public class PersonalAccountCommand implements Command {
         List<OrderProduct> orderProducts;
         try {
             orderProducts = serviceFactory.getOrderProductService().findLimitOrderProductByUserId(userId, (page - 1) * AMOUNT, AMOUNT);
-            request.setAttribute(ORDER_PRODUCTS, orderProducts);
+            session.setAttribute(USER_ORDER_PRODUCTS, orderProducts);
         } catch (ServiceException e) {
             e.printStackTrace();
         }

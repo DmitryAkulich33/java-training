@@ -25,13 +25,13 @@ public class ShowMainPageCommand implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         HttpSession session = request.getSession();
         String value = (String) session.getAttribute(SORT_STATUS);
-        List<Pie> pies = null;
+        List<Pie> pies;
         try {
             pies = serviceFactory.getPieService().getSortPieList(value, PRICE_INCREASE, PRICE_REDUCE);
+            session.setAttribute(PIES, pies);
         } catch (ServiceException e) {
             e.printStackTrace();
         }
-        session.setAttribute(PIES, pies);
         return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
     }
 }

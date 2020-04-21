@@ -26,7 +26,7 @@ public class AddPieCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        ValidatorFactory validatorFactory = new ValidatorFactory();
+        ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String amount = request.getParameter(PIE_AMOUNT);
         int pieId = Integer.parseInt(request.getParameter(PIE_ID));

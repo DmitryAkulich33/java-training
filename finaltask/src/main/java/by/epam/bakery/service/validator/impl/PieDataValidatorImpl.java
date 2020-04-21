@@ -16,8 +16,8 @@ public class PieDataValidatorImpl implements PieDataValidator {
         if (amount.equals("")) {
             return false;
         }
-        Pattern pattern = Pattern.compile(REGEX_FOR_PIE_AMOUNT);
-        Matcher matcher = pattern.matcher(amount);
+        pattern = Pattern.compile(REGEX_FOR_PIE_AMOUNT);
+        matcher = pattern.matcher(amount);
         return matcher.matches();
     }
 

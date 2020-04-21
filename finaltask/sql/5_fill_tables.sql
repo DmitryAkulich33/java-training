@@ -3,22 +3,22 @@
 INSERT INTO `user`
 (`login`, `password`, `role`, `surname`, `name_user`, `patronymic`, `address`, `phone`, `note`)
 VALUES ("courier1", "courier1", 2, "Aleksievich", "Aleksey", "Alekseevich", "Apt 110, 31 Lubimova St, Minsk",
-        "+375 29 1656130", "courier"),
+        "8-029-165-61-30", "courier"),
        ("courier2", "courier2", 2, "Mamonov", "Denis", "Andreevich", "Apt 11, 33 Lubimova St, Minsk",
-        "+375 29 5736130", "courier"),
-       ("user1", "user1", 3, "Ivanov", "Ivan", "Ivanovich", "Apt 18, 44 Rafieva St, Minsk", "+375 29 7434546",
+        "8-029-573-61-30", "courier"),
+       ("user1", "user1", 3, "Ivanov", "Ivan", "Ivanovich", "Apt 18, 44 Rafieva St, Minsk", "8-029-743-45-46",
         "In the yard problems with parking spaces"),
-       ("user2", "user2", 3, "Petrov", "Petr", "Petrovich", "Apt 45, 17 Kazinca St, Minsk", "+375 44 5737640",
+       ("user2", "user2", 3, "Petrov", "Petr", "Petrovich", "Apt 45, 17 Kazinca St, Minsk", "8-044-573-76-40",
         "There are enough parking spaces in the yard"),
-       ("user3", "user3", 3, "Sidorov", "Sidr", "Sidorovich", "Apt 95, 27 Lubimova St, Minsk", "+375 44 5982331",
+       ("user3", "user3", 3, "Sidorov", "Sidr", "Sidorovich", "Apt 95, 27 Lubimova St, Minsk", "8-044-598-23-31",
         "Near the house there are construction work"),
-       ("user4", "user4", 3, "Andreev", "Andrey", "Andreevich", "Apt 54, 24 Alibegova St, Minsk", "+375 29 9653132",
+       ("user4", "user4", 3, "Andreev", "Andrey", "Andreevich", "Apt 54, 24 Alibegova St, Minsk", "8-029-965-31-32",
         "There are enough parking spaces in the yard"),
-       ("user5", "user5", 3, "Sergeev", "Sergey", "Sergeevich", "Apt 15, 5 Asanalieva St, Minsk", "+375 29 5056150",
+       ("user5", "user5", 3, "Sergeev", "Sergey", "Sergeevich", "Apt 15, 5 Asanalieva St, Minsk", "8-029-505-61-50",
         "In the yard problems with parking spaces"),
-       ("user6", "user6", 3, "Gagarin", "Dmitry", "Fedorovich", "Apt 12, 15 Kazinca St, Minsk", "+375 33 6050120",
+       ("user6", "user6", 3, "Gagarin", "Dmitry", "Fedorovich", "Apt 12, 15 Kazinca St, Minsk", "8-033-605-01-20",
         "There are enough parking spaces in the yard"),
-       ("user7", "user7", 3, "Petrov", "Andrey", "Borisovich", "Apt 122, 45 Alibegova St, Minsk", "+375 44 5759128",
+       ("user7", "user7", 3, "Petrov", "Andrey", "Borisovich", "Apt 122, 45 Alibegova St, Minsk", "8-044-575-91-28",
         "Near the house there are construction work");
 
 INSERT INTO `pie`

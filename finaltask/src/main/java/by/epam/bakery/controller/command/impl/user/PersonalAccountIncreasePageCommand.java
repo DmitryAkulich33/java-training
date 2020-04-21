@@ -14,7 +14,7 @@ import java.util.List;
 
 public class PersonalAccountIncreasePageCommand implements Command {
     private static final String USER = "user";
-    private static final String ORDER_PRODUCTS = "orderProducts";
+    private static final String USER_ORDER_PRODUCTS = "userOrderProducts";
     private static final String PAGE = "page";
     private static final String COUNT = "count";
     private static final int AMOUNT = 5;
@@ -33,7 +33,7 @@ public class PersonalAccountIncreasePageCommand implements Command {
         if (increasePage <= count) {
             try {
                 orderProducts = serviceFactory.getOrderProductService().findLimitOrderProductByUserId(userId, (increasePage - 1) * AMOUNT, AMOUNT);
-                request.setAttribute(ORDER_PRODUCTS, orderProducts);
+                session.setAttribute(USER_ORDER_PRODUCTS, orderProducts);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
@@ -41,7 +41,7 @@ public class PersonalAccountIncreasePageCommand implements Command {
         } else {
             try {
                 orderProducts = serviceFactory.getOrderProductService().findLimitOrderProductByUserId(userId, (currentPage - 1) * AMOUNT, AMOUNT);
-                request.setAttribute(ORDER_PRODUCTS, orderProducts);
+                session.setAttribute(USER_ORDER_PRODUCTS, orderProducts);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }
