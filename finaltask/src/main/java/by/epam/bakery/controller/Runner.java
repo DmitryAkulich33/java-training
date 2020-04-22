@@ -25,9 +25,9 @@ public class Runner {
         FeedbackDao feedBackDao = daoHelper.createFeedBackDao();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
 
-        userDao.changeName("Ivan", 3);
-        User user = userDao.findUserByLoginAndPassword("user1", "user1");
-        System.out.println(user);
+//        userDao.changeName("Ivan", 3);
+//        User user = userDao.findUserByLoginAndPassword("user10", "user10");
+//        System.out.println(user);
 //        serviceFactory.getFeedBackService().save(4, LocalDateTime.now(), "It was delicious, too!");
         System.out.println();
 //        List<Feedback> feedbacks = serviceFactory.getFeedBackService().showAllFeedBacks();
@@ -68,9 +68,15 @@ public class Runner {
 //            System.out.println(userTest);
 //        }
 //        System.out.println(serviceFactory.getUserService().findClientPageAmount(5));
-        List<BasketProduct> listss = serviceFactory.getBasketProductService().findProductByBasketId(1);
-        for (BasketProduct orderProduct : listss) {
-            System.out.println(orderProduct);
+//        List<BasketProduct> listss = serviceFactory.getBasketProductService().findProductByBasketId(1);
+//        for (BasketProduct orderProduct : listss) {
+//            System.out.println(orderProduct);
+//        }
+        try {
+            User user = serviceFactory.getUserService().login("user10", "user10");
+            System.out.println(user);
+        } catch (ServiceException e){
+            System.out.println(e.getCause().getMessage());
         }
     }
 }

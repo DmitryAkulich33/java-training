@@ -13,18 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogoutCommand implements Command {
+    private static final String USER = "user";
+
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        session.invalidate();
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        List<Pie> pies = new ArrayList<>();
-        try {
-            pies = serviceFactory.getPieService().showAllPies();
-        } catch (ServiceException e) {
-            System.out.println(e.getMessage());
-        }
-        request.setAttribute("pies", pies);
+        session.removeAttribute(USER);
         return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
     }
 }

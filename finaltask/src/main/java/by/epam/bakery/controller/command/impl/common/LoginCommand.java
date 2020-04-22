@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import by.epam.bakery.service.validator.factory.ValidatorFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,22 +21,35 @@ public class LoginCommand implements Command {
     private static final String PASSWORD = "password";
     private static final String USER = "user";
     private static final String WRONG_LOGIN = "Incorrect login or password!";
+    private static final String WRONG_DATA = "The entered data is not correct!";
+    private static final String MESSAGE = "message";
+    private static final String NO_RECORDS = "No records";
 
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String login = request.getParameter(LOGIN);
         String password = request.getParameter(PASSWORD);
+        if(!validatorFactory.getUserDataValidator().isLoginValid(login) ||
+                !validatorFactory.getUserDataValidator().isPasswordValid(password)){
+            request.setAttribute(MESSAGE, WRONG_DATA);
+            return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
+        }
         HttpSession session = request.getSession();
         User user;
         try {
             user = serviceFactory.getUserService().login(login, password);
             session.setAttribute(USER, user);
         } catch (ServiceException e) {
-            session.setAttribute(USER, null);
-            session.setAttribute("message", WRONG_LOGIN);
+            if(e.getCause().getMessage().equals(NO_RECORDS)){
+//                session.setAttribute(USER, null);
+                request.setAttribute(MESSAGE, WRONG_LOGIN);
+            } else {
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
+            }
         }
-        return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
+        return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
     }
 }

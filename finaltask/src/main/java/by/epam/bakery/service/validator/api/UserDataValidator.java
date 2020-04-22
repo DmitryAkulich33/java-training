@@ -6,4 +6,6 @@ public interface UserDataValidator {
     boolean isPatronymicValid(String patronymic);
     boolean isAddressValid(String address);
     boolean isPhoneValid(String phone);
+    boolean isLoginValid(String login);
+    boolean isPasswordValid(String password);
 }
