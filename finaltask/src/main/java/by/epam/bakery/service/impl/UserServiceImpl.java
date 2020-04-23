@@ -9,19 +9,26 @@ import by.epam.bakery.domain.Pie;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.api.UserService;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.exception.ValidatorException;
+import by.epam.bakery.service.validator.impl.UserDataValidatorImpl;
 
+import javax.validation.ValidationException;
 import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
     private DaoHelperFactory daoHelperFactory;
+    private UserDataValidatorImpl userDataValidator = new UserDataValidatorImpl();
 
     public UserServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
 
     @Override
-    public User login(String login, String password) throws ServiceException {
+    public User login(String login, String password) throws ServiceException, ValidatorException {
+        if(!userDataValidator.isLoginValid(login) || !userDataValidator.isPasswordValid(password)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             return dao.findUserByLoginAndPassword(login, password);
@@ -31,7 +38,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeName(String newName, int userId) throws ServiceException{
+    public void changeName(String newName, int userId) throws ServiceException, ValidatorException {
+        if(!userDataValidator.isNameValid(newName)){
+            throw new ValidatorException("The name is wrong");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changeName(newName, userId);
@@ -41,7 +51,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeSurname(String newSurname, int userId) throws ServiceException{
+    public void changeSurname(String newSurname, int userId) throws ServiceException, ValidatorException {
+        if(!userDataValidator.isSurnameValid(newSurname)){
+            throw new ValidatorException("The surname is wrong");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changeSurname(newSurname, userId);
@@ -51,7 +64,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changePatronymic(String newPatronymic, int userId) throws ServiceException{
+    public void changePatronymic(String newPatronymic, int userId) throws ServiceException, ValidatorException {
+        if(!userDataValidator.isPatronymicValid(newPatronymic)){
+            throw new ValidatorException("The patronymic is wrong");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changePatronymic(newPatronymic, userId);
@@ -61,7 +77,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeAddress(String newAddress, int userId) throws ServiceException{
+    public void changeAddress(String newAddress, int userId) throws ServiceException, ValidatorException {
+        if(!userDataValidator.isAddressValid(newAddress)){
+            throw new ValidatorException("The address is wrong");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changeAddress(newAddress, userId);
@@ -71,7 +90,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changePhone(String newPhone, int userId) throws ServiceException{
+    public void changePhone(String newPhone, int userId) throws ServiceException, ValidatorException {
+        if(!userDataValidator.isPhoneValid(newPhone)){
+            throw new ValidatorException("The phone is wrong");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changePhone(newPhone, userId);

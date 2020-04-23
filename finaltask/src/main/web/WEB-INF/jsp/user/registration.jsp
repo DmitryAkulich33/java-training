@@ -34,6 +34,10 @@
                 <td>
                     <input type="text" class="form-control" name="saveLogin">
                 </td>
+                <td>
+                    <div class="wrong_message"><c:out value="${ wrongLogin }"/></div>
+                    <div class="right_message"><c:out value="${ rightLogin }"/></div>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -41,6 +45,10 @@
                 </td>
                 <td>
                     <input type="password" class="form-control" name="savePassword">
+                </td>
+                <td>
+                    <div class="wrong_message"><c:out value="${ wrongPassword }"/></div>
+                    <div class="right_message"><c:out value="${ rightPassword }"/></div>
                 </td>
             </tr>
             <tr>
@@ -50,6 +58,10 @@
                 <td>
                     <input type="text" class="form-control" name="saveSurname">
                 </td>
+                <td>
+                    <div class="wrong_message"><c:out value="${ wrongSurname }"/></div>
+                    <div class="right_message"><c:out value="${ rightSurname }"/></div>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -57,6 +69,10 @@
                 </td>
                 <td>
                     <input type="text" class="form-control" name="saveName">
+                </td>
+                <td>
+                    <div class="wrong_message"><c:out value="${ wrongName }"/></div>
+                    <div class="right_message"><c:out value="${ rightName }"/></div>
                 </td>
             </tr>
             <tr>
@@ -66,6 +82,10 @@
                 <td>
                     <input type="text" class="form-control" name="savePatronymic">
                 </td>
+                <td>
+                    <div class="wrong_message"><c:out value="${ wrongPatronymic }"/></div>
+                    <div class="right_message"><c:out value="${ rightPatronymic }"/></div>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -73,6 +93,10 @@
                 </td>
                 <td>
                     <input type="text" class="form-control" name="saveAddress">
+                </td>
+                <td>
+                    <div class="wrong_message"><c:out value="${ wrongAddress }"/></div>
+                    <div class="right_message"><c:out value="${ rightAddress }"/></div>
                 </td>
             </tr>
             <tr>
@@ -82,6 +106,10 @@
                 <td>
                     <input type="text" class="form-control" name="savePhone">
                 </td>
+                <td>
+                    <div class="wrong_message"><c:out value="${ wrongPhone }"/></div>
+                    <div class="right_message"><c:out value="${ rightPhone }"/></div>
+                </td>
             </tr>
             <tr>
                 <td>
@@ -90,10 +118,13 @@
                 <td>
                     <input type="text" class="form-control" name="saveNote">
                 </td>
+                <td>
+                    <div class="wrong_message"><c:out value="${ wrongNote }"/></div>
+                    <div class="right_message"><c:out value="${ rightNote }"/></div>
+                </td>
             </tr>
             <tr>
                 <td>
-
                 </td>
                 <td>
                     <div class="modal-footer">

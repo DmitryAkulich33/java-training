@@ -2,16 +2,17 @@ package by.epam.bakery.service.api;
 
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.exception.ValidatorException;
 
 import java.util.List;
 
 public interface UserService {
-    User login(String login, String password) throws ServiceException;
-    void changeName(String newName, int userId) throws ServiceException;
-    void changeSurname(String newSurname, int userId) throws ServiceException;
-    void changePatronymic(String newPatronymic, int userId) throws ServiceException;
-    void changeAddress(String newAddress, int userId) throws ServiceException;
-    void changePhone(String newPhone, int userId) throws ServiceException;
+    User login(String login, String password) throws ServiceException, ValidatorException;
+    void changeName(String newName, int userId) throws ServiceException, ValidatorException;
+    void changeSurname(String newSurname, int userId) throws ServiceException, ValidatorException;
+    void changePatronymic(String newPatronymic, int userId) throws ServiceException, ValidatorException;
+    void changeAddress(String newAddress, int userId) throws ServiceException, ValidatorException;
+    void changePhone(String newPhone, int userId) throws ServiceException, ValidatorException;
     void deleteUser (int id) throws ServiceException;
     void addUser (String login, String password, int role, String surname, String name, String patronymic, String address, String phone, String note) throws ServiceException;
     void changeNote(String newNote, int userId) throws ServiceException;

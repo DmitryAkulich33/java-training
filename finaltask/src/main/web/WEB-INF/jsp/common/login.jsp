@@ -63,9 +63,9 @@
             <c:otherwise>
                 <form action="controller" method="POST">
                     <label for="login-field">Login</label>
-                    <input type="text" name="login" id="login-field" placeholder="Login(5-12 symbols)" pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
+                    <input type="text" name="login" id="login-field" placeholder="5-12 symbols" pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
                     <label for="password-field">Password</label>
-                    <input type="password" name="password" id="password-field" placeholder="Password(5-12 symbols)" pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
+                    <input type="password" name="password" id="password-field" placeholder="5-12 symbols" pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
                     <input type="hidden" name="command" value="login">
                     <input type="submit" value="Submit" class="button_enter">
                     <a class= "link_acc nav_link pl-1" href="${request.contextPath}controller?command=registration">Registration!</a>

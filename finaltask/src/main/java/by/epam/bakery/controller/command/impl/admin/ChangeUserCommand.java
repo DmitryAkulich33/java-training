@@ -3,6 +3,7 @@ package by.epam.bakery.controller.command.impl.admin;
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,12 +29,16 @@ public class ChangeUserCommand implements Command {
                 serviceFactory.getUserService().changeAddress(address, userId);
             } catch (ServiceException e) {
                 e.printStackTrace();
+            } catch (ValidatorException e) {
+                e.printStackTrace();
             }
         }
         if(!phone.isEmpty()){
             try {
                 serviceFactory.getUserService().changePhone(phone, userId);
             } catch (ServiceException e) {
+                e.printStackTrace();
+            } catch (ValidatorException e) {
                 e.printStackTrace();
             }
         }

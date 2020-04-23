@@ -4,6 +4,7 @@ import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.domain.Basket;
 import by.epam.bakery.domain.User;
+import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
 import by.epam.bakery.service.exception.ServiceException;
 
@@ -28,23 +29,19 @@ public class LoginCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        ValidatorFactory validatorFactory = ValidatorFactory.getInstance();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String login = request.getParameter(LOGIN);
         String password = request.getParameter(PASSWORD);
-        if(!validatorFactory.getUserDataValidator().isLoginValid(login) ||
-                !validatorFactory.getUserDataValidator().isPasswordValid(password)){
-            request.setAttribute(MESSAGE, WRONG_DATA);
-            return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
-        }
         HttpSession session = request.getSession();
         User user;
         try {
             user = serviceFactory.getUserService().login(login, password);
             session.setAttribute(USER, user);
+        } catch (ValidatorException ex){
+            request.setAttribute(MESSAGE, WRONG_DATA);
+            return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
         } catch (ServiceException e) {
             if(e.getCause().getMessage().equals(NO_RECORDS)){
-//                session.setAttribute(USER, null);
                 request.setAttribute(MESSAGE, WRONG_LOGIN);
             } else {
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");

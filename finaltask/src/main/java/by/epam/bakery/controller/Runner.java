@@ -72,11 +72,5 @@ public class Runner {
 //        for (BasketProduct orderProduct : listss) {
 //            System.out.println(orderProduct);
 //        }
-        try {
-            User user = serviceFactory.getUserService().login("user10", "user10");
-            System.out.println(user);
-        } catch (ServiceException e){
-            System.out.println(e.getCause().getMessage());
-        }
     }
 }
