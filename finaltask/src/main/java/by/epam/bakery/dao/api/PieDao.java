@@ -13,6 +13,6 @@ public interface PieDao extends Dao<Pie> {
     void changeName(String newName, int pieId) throws DaoException;
     void changePicture(String newPicture, int pieId) throws DaoException;
     void changeDescription(String newDescription, int pieId) throws DaoException;
-    void changeWeight(int newWeight, int pieId) throws DaoException;
-    void changePrice(double newPrice, int pieId) throws DaoException;
+    void changeWeight(String newWeight, int pieId) throws DaoException;
+    void changePrice(String newPrice, int pieId) throws DaoException;
 }

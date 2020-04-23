@@ -7,21 +7,25 @@ import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.Feedback;
 import by.epam.bakery.service.api.FeedbackService;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.exception.ValidatorException;
+import by.epam.bakery.service.validator.FeedbackDataValidator;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class FeedbackServiceImpl implements FeedbackService {
     private DaoHelperFactory daoHelperFactory;
+    private FeedbackDataValidator feedbackDataValidator = new FeedbackDataValidator();
 
     public FeedbackServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
 
     @Override
-    public void save(int userId, LocalDateTime feedbackDate, String review) throws ServiceException {
+    public void save(int userId, LocalDateTime feedbackDate, String review) throws ServiceException, ValidatorException {
+        if(!feedbackDataValidator.isFeedbackValid(review)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             FeedbackDao dao = helper.createFeedBackDao();
             dao.save(userId, feedbackDate, review);

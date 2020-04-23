@@ -23,8 +23,10 @@
 <jsp:include page="admin_menu.jsp"/>
 <div class="container-fluid">
     <br>
-    <br>
     <h2>Pies:</h2>
+    <br>
+    <div class="wrong_message"><c:out value="${ wrong }"/></div>
+    <div class="right_message"><c:out value="${ right }"/></div>
     <br>
     <ul class="nav">
         <li class="li_admin nav-item">
@@ -42,33 +44,33 @@
                             <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Picture</span>
+                                        <span class="input-group-text">Picture path(max 250 symbols)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="savePicture">
+                                    <input type="text" class="form-control" name="savePicture" placeholder="Path" pattern="^.{0,255}$" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Name</span>
+                                        <span class="input-group-text">Name (5-20 symbols)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveName">
+                                    <input type="text" class="form-control" name="saveName"  placeholder="Name" pattern="^[A-Z][a-z]{4,20}$" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Weight</span>
+                                        <span class="input-group-text">Weight (grams)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveWeight">
+                                    <input type="text" class="form-control" name="saveWeight" placeholder="100-3000" pattern="^((3000)|([1-9][0-9][0-9])|[1-2][0-9][0-9][0-9])$" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Price</span>
+                                        <span class="input-group-text">Price (RUB)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="savePrice">
+                                    <input type="text" class="form-control" name="savePrice" placeholder="3.00 - 199.00" pattern="^(([3-9]\.[0-9][0-9])|([1-9][0-9]\.[0-9][0-9])|([1-9][0-9][0-9]\.[0-9][0-9]))$" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Description</span>
+                                        <span class="input-group-text">Description (max 1900 symbols)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveDescription">
+                                    <input type="text" class="form-control" name="saveDescription" placeholder="Description" pattern=".{0,1900}$" required>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" name="command" value="save_pie">
@@ -210,33 +212,33 @@
                                     <form action="controller" method="POST">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New picture</span>
+                                                <span class="input-group-text">New picture (max 250 symbols)</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changePicture">
+                                            <input type="text" class="form-control" name="changePicture" placeholder="Path" pattern="^.{0,255}$" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New name</span>
+                                                <span class="input-group-text">New name (4-20 symbols)</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeName">
+                                            <input type="text" class="form-control" name="changeName" placeholder="Name" pattern="^[A-Z][a-z]{4,20}$" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New weight</span>
+                                                <span class="input-group-text">New weight (grams)</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeWeight">
+                                            <input type="text" class="form-control" name="changeWeight" placeholder="100-3000" pattern="^((3000)|([1-9][0-9][0-9])|[1-2][0-9][0-9][0-9])$" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New price</span>
+                                                <span class="input-group-text">New price (RUB)</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changePrice">
+                                            <input type="text" class="form-control" name="changePrice" placeholder="3.00 - 199.00" pattern="^(([3-9]\.[0-9][0-9])|([1-9][0-9]\.[0-9][0-9])|([1-9][0-9][0-9]\.[0-9][0-9]))$" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New description</span>
+                                                <span class="input-group-text">New description (max 1900 symbols)</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeDescription">
+                                            <input type="text" class="form-control" name="changeDescription" placeholder="Description" pattern=".{0,1900}$" required>
                                         </div>
                                         <div class="modal-footer">
                                             <input type="hidden" name="changeId" value="${ element.id }"/>

@@ -16,26 +16,55 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Personal account</title>
+    <title>Feedback</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <jsp:include page="login.jsp"/>
 <jsp:include page="menu.jsp"/>
 <div class="container-fluid mt-3">
-    <form action="controller" method="POST">
-        <div>
-            <p>Your feedback:</p>
+    <p>Your feedback:</p>
+    <br>
+    <div class="wrong_message">
+        <p><c:out value="${ message }"/></p>
+    </div>
+    <c:choose>
+        <c:when test="${user.role == 3}">
+            <form action="controller" method="POST">
+                <div class="input-group mb-3">
+                    <textarea class="form-control" name="review" rows="3" placeholder="max 2000 symbols" required></textarea>
+                </div>
+                <input type="hidden" name="command" value="add_feedback">
+                <input type="submit" value="Send feedback" class="btn btn-outline-secondary">
+            </form>
+        </c:when>
+        <c:otherwise>
             <div class="input-group mb-3">
-                <textarea class="form-control" name="review" rows="3"></textarea>
+                <textarea class="form-control" name="review" rows="3" placeholder="max 2000 symbols" required></textarea>
             </div>
-            <input type="hidden" name="command" value="add_feedback">
-            <div class="wrong_login">
-                <c:out value="${ noLogin }"/>
+            <input type="submit" value="Send feedback" class="btn btn-outline-secondary" data-toggle="modal"
+                   data-target="#AddNewFeedback">
+            <div class="modal fade" id="AddNewFeedback">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            You need to log in as a user!
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <input type="submit" value="Send feedback" class="btn btn-outline-secondary">
-        </div>
-    </form>
+        </c:otherwise>
+    </c:choose>
+    <br>
     <c:forEach var="element" items="${feedback}" varStatus="status">
         <br>
         <div class="feedback media border p-3">
@@ -47,14 +76,21 @@
         </div>
     </c:forEach>
     <ul class="pagination justify-content-center" style="margin:20px 0">
-        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=show_feedback&page=1">The first</a></li>
-        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=show_feedback_decrease_page&page=${page}&count=${count}"><<</a></li>
+        <li class="page-item"><a class="pagination_color page-link"
+                                 href="${request.contextPath}controller?command=show_feedback&page=1">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link"
+                                 href="${request.contextPath}controller?command=show_feedback_decrease_page&page=${page}&count=${count}"><<</a>
+        </li>
         <li class="pagination_number">
             <span class="pagination_number"><mark>&nbspPage <c:out value="${ page }"/> from <c:out value="${ count }"/>&nbsp</mark></span>
         </li>
         <li class="page-item">
-            <a class="pagination_color page-link" href="${request.contextPath}controller?command=show_feedback_increase_page&page=${page}&count=${count}">>></a></li>
-        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=show_feedback&page=${count}">The last</a></li>
+            <a class="pagination_color page-link"
+               href="${request.contextPath}controller?command=show_feedback_increase_page&page=${page}&count=${count}">>></a>
+        </li>
+        <li class="page-item"><a class="pagination_color page-link"
+                                 href="${request.contextPath}controller?command=show_feedback&page=${count}">The
+            last</a></li>
     </ul>
 </div>
 <div class="container-fluid pt-3">

@@ -73,12 +73,12 @@ public class PieDaoImpl extends AbstractDao<Pie> implements PieDao {
     }
 
     @Override
-    public void changeWeight(int newWeight, int pieId) throws DaoException {
+    public void changeWeight(String newWeight, int pieId) throws DaoException {
         executeUpdate(CHANGE_WEIGHT, newWeight, pieId);
     }
 
     @Override
-    public void changePrice(double newPrice, int pieId) throws DaoException {
+    public void changePrice(String newPrice, int pieId) throws DaoException {
         executeUpdate(CHANGE_PRICE, newPrice, pieId);
     }
 }

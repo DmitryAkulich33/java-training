@@ -7,13 +7,15 @@ import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.Pie;
 import by.epam.bakery.service.api.PieService;
 import by.epam.bakery.service.exception.ServiceException;
-import by.epam.bakery.service.factory.ServiceFactory;
+import by.epam.bakery.service.exception.ValidatorException;
+import by.epam.bakery.service.validator.PieDataValidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PieServiceImpl implements PieService {
     private DaoHelperFactory daoHelperFactory;
+    private PieDataValidator pieDataValidator = new PieDataValidator();
 
     public PieServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
@@ -80,7 +82,12 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void addPie(String name, int weight, double price, String description, String picture) throws ServiceException {
+    public void addPie(String name, String weight, String price, String description, String picture) throws ServiceException, ValidatorException {
+        if (!pieDataValidator.isNameValid(name) || !pieDataValidator.isWeightValid(weight) ||
+                !pieDataValidator.isPriceValid(price) || !pieDataValidator.isDescriptionValid(description) ||
+                !pieDataValidator.isPictureValid(picture)) {
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.save(name, weight, price, description, picture);
@@ -90,7 +97,10 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changeName(String newName, int pieId) throws ServiceException {
+    public void changeName(String newName, int pieId) throws ServiceException, ValidatorException {
+        if(!pieDataValidator.isNameValid(newName)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changeName(newName, pieId);
@@ -100,7 +110,10 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changePicture(String newPicture, int pieId) throws ServiceException {
+    public void changePicture(String newPicture, int pieId) throws ServiceException, ValidatorException {
+        if(!pieDataValidator.isPictureValid(newPicture)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changePicture(newPicture, pieId);
@@ -110,7 +123,10 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changeDescription(String newDescription, int pieId) throws ServiceException {
+    public void changeDescription(String newDescription, int pieId) throws ServiceException, ValidatorException {
+        if(!pieDataValidator.isDescriptionValid(newDescription)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changeDescription(newDescription, pieId);
@@ -120,7 +136,10 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changeWeight(int newWeight, int pieId) throws ServiceException {
+    public void changeWeight(String newWeight, int pieId) throws ServiceException, ValidatorException {
+        if(!pieDataValidator.isWeightValid(newWeight)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changeWeight(newWeight, pieId);
@@ -130,7 +149,10 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public void changePrice(double newPrice, int pieId) throws ServiceException {
+    public void changePrice(String newPrice, int pieId) throws ServiceException, ValidatorException {
+        if(!pieDataValidator.isPriceValid(newPrice)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             dao.changePrice(newPrice, pieId);

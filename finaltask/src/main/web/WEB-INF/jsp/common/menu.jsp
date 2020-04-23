@@ -60,20 +60,18 @@
                 <c:choose>
                     <c:when test="${user.role == 3}">
                         <div class="button_navbar_menu">
-
-                                <a href="${request.contextPath}controller?command=show_basket" class="a_link">
-                                    <button type="button" class="in_basket_menu h5">
-                                    <img
-                                        src="image/basket.png" class="ico">
+                            <a href="${request.contextPath}controller?command=show_basket" class="a_link">
+                                <button type="button" class="in_basket_menu h5">
+                                    <img src="image/basket.png" class="ico">
                                     BASKET
-                                    </button>
-                                </a>
-
+                                </button>
+                            </a>
                         </div>
                     </c:when>
                     <c:otherwise>
                         <div class="button_navbar_menu">
-                            <button type="button" class="in_basket_menu h5" data-toggle="modal" data-target="#myModalBask">
+                            <button type="button" class="in_basket_menu h5" data-toggle="modal"
+                                    data-target="#myModalBask">
                                 <img src="image/basket.png" class="ico"> BASKET
                             </button>
                             <div class="modal fade" id="myModalBask">

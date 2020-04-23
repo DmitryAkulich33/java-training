@@ -7,11 +7,11 @@ public class UserDataValidator {
     private static final String REGEX_SURNAME = "(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)";
     private static final String REGEX_NAME = "(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)";
     private static final String REGEX_PATRONYMIC = "(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)";
-    private static final String REGEX_ADDRESS = "(^.{5,70}$)";
-    private static final String REGEX_NOTE = "(^.{0,250}$)";
-    private static final String REGEX_PHONE = "(^[8]-(033|029|044|017)-[1-9][0-9]{2}-[0-9]{2}-[0-9]{2}$)";
-    private static final String REGEX_LOGIN = "(^[a-zA-Z0-9_-]{5,12}$)";
-    private static final String REGEX_PASSWORD = "(^[a-zA-Z0-9_-]{5,12}$)";
+    private static final String REGEX_ADDRESS = "^.{5,70}$";
+    private static final String REGEX_NOTE = "^.{0,250}$";
+    private static final String REGEX_PHONE = "^[8]-(033|029|044|017)-[1-9][0-9]{2}-[0-9]{2}-[0-9]{2}$";
+    private static final String REGEX_LOGIN = "^[a-zA-Z0-9_-]{5,12}$";
+    private static final String REGEX_PASSWORD = "^[a-zA-Z0-9_-]{5,12}$";
 
     private Pattern pattern;
     private Matcher matcher;

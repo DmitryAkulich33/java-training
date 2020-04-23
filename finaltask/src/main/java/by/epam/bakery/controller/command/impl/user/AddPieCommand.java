@@ -24,37 +24,6 @@ public class AddPieCommand implements Command {
     private static final String RIGHT_AMOUNT_MESSAGE = "Product added to basket";
     private static final String ADDED_PIE_ID = "addedPieId";
 
-//    @Override
-//    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-//
-//        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-//        String pieAmount = request.getParameter(PIE_AMOUNT);
-//        int pieId = Integer.parseInt(request.getParameter(PIE_ID));
-//        request.setAttribute(ADDED_PIE_ID, pieId);
-//
-//        if(!validatorFactory.getPieDataValidator().isPieAmountValid(amount)){
-//            request.setAttribute(WRONG_AMOUNT, WRONG_AMOUNT_MESSAGE);
-//            return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
-//        }
-//
-//
-//        double piePrice = Double.parseDouble(request.getParameter(PIE_PRICE));
-//        double cost = pieAmount * piePrice;
-//        HttpSession session = request.getSession();
-//        User user = (User) session.getAttribute(USER);
-//        Basket basket;
-//        try {
-//            basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
-//            int basketId = basket.getId();
-//            double total = basket.getTotal();
-//            serviceFactory.getBasketService().changeTotal((total + cost), basketId);
-//            serviceFactory.getBasketProductService().saveBasketProduct(basketId, pieId, pieAmount, cost);
-//        } catch (ServiceException e) {
-//            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-//        }
-//        request.setAttribute(RIGHT_AMOUNT, RIGHT_AMOUNT_MESSAGE);
-//        return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
-//    }
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();

@@ -48,7 +48,7 @@
                         <td class="product_description"><c:out value="${ element.description }"/></td>
                     </tr>
                     <tr>
-                        <td class="product_weight"><c:out value="${ element.weight }"/> gramm</td>
+                        <td class="product_weight"><c:out value="${ element.weight }"/> grams</td>
                     </tr>
                     <tr>
                         <td class="product_price">

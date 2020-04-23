@@ -22,7 +22,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `pie` (
 	`id_pie` INTEGER NOT NULL AUTO_INCREMENT,
-	`name_pie` VARCHAR(60) NOT NULL,
+	`name_pie` VARCHAR(30) NOT NULL,
 	`weight` INTEGER NOT NULL,
 	`price` DOUBLE NOT NULL,
 	`description` VARCHAR(2000) NOT NULL,
