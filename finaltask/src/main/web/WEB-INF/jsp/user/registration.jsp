@@ -25,14 +25,18 @@
         homepage</a>
     <br>
     <form action="controller" method="POST">
+        <div class="wrong_message">
+            <p><c:out value="${ message }"/></p>
+        </div>
         <table class="table table-striped">
             <tbody>
             <tr>
                 <td>
-                    Enter your login</span>
+                    Enter your login (English)</span>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveLogin">
+                    <input type="text" class="form-control" name="saveLogin" placeholder="5-12 symbols"
+                           pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
                 </td>
                 <td>
                     <div class="wrong_message"><c:out value="${ wrongLogin }"/></div>
@@ -41,10 +45,11 @@
             </tr>
             <tr>
                 <td>
-                    Enter your password
+                    Enter your password (English)
                 </td>
                 <td>
-                    <input type="password" class="form-control" name="savePassword">
+                    <input type="password" class="form-control" name="savePassword" placeholder="5-12 symbols"
+                           pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
                 </td>
                 <td>
                     <div class="wrong_message"><c:out value="${ wrongPassword }"/></div>
@@ -56,7 +61,9 @@
                     Enter your surname
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveSurname">
+                    <input type="text" class="form-control" name="saveSurname" placeholder="max 70 symbols"
+                           pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)"
+                           required>
                 </td>
                 <td>
                     <div class="wrong_message"><c:out value="${ wrongSurname }"/></div>
@@ -68,7 +75,9 @@
                     Enter your name
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveName">
+                    <input type="text" class="form-control" name="saveName" placeholder="max 70 symbols"
+                           pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)"
+                           required>
                 </td>
                 <td>
                     <div class="wrong_message"><c:out value="${ wrongName }"/></div>
@@ -80,7 +89,9 @@
                     Enter your patronymic
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="savePatronymic">
+                    <input type="text" class="form-control" name="savePatronymic" placeholder="max 70 symbols"
+                           pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)"
+                           required>
                 </td>
                 <td>
                     <div class="wrong_message"><c:out value="${ wrongPatronymic }"/></div>
@@ -92,7 +103,8 @@
                     Enter your address
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveAddress">
+                    <input type="text" class="form-control" name="saveAddress" placeholder="5-70 symbols"
+                           pattern="(^.{5,70}$)" required>
                 </td>
                 <td>
                     <div class="wrong_message"><c:out value="${ wrongAddress }"/></div>
@@ -104,7 +116,8 @@
                     Enter your phone
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="savePhone">
+                    <input type="text" class="form-control" name="savePhone" placeholder="8-044-1234567"
+                           pattern="(^[8]-(033|029|044|017)-[1-9][0-9]{2}-[0-9]{2}-[0-9]{2}$)" required>
                 </td>
                 <td>
                     <div class="wrong_message"><c:out value="${ wrongPhone }"/></div>
@@ -116,7 +129,8 @@
                     Enter note
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveNote">
+                    <input type="text" class="form-control" name="saveNote" placeholder="max 250 symbols"
+                           pattern="(^.{0,250}$)" required>
                 </td>
                 <td>
                     <div class="wrong_message"><c:out value="${ wrongNote }"/></div>

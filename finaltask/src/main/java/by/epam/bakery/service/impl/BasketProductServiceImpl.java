@@ -8,14 +8,13 @@ import by.epam.bakery.domain.BasketProduct;
 import by.epam.bakery.service.api.BasketProductService;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.exception.ValidatorException;
-import by.epam.bakery.service.validator.api.PieDataValidator;
-import by.epam.bakery.service.validator.impl.PieDataValidatorImpl;
+import by.epam.bakery.service.validator.PieDataValidator;
 
 import java.util.List;
 
 public class BasketProductServiceImpl implements BasketProductService {
     private DaoHelperFactory daoHelperFactory;
-    private PieDataValidator pieDataValidator = new PieDataValidatorImpl();
+    private PieDataValidator pieDataValidator = new PieDataValidator();
 
     public BasketProductServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;

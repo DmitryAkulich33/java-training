@@ -180,7 +180,7 @@
                                 <form action="controller" method="POST">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">New address (max 70 symbols)</span>
+                                            <span class="input-group-text">New address (5-70 symbols)</span>
                                         </div>
                                         <input type="text" class="form-control" name="newAddress" placeholder="Address"
                                                pattern="(^.{5,70}$)" required>

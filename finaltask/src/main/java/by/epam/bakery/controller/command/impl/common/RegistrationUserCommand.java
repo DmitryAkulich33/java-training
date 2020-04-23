@@ -2,7 +2,9 @@ package by.epam.bakery.controller.command.impl.common;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
+import by.epam.bakery.service.exception.LoginIsNotFreeException;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,12 +14,16 @@ public class RegistrationUserCommand implements Command {
     private static final String SAVE_LOGIN = "saveLogin";
     private static final String SAVE_PASSWORD = "savePassword";
     private static final int USER_ROLE = 3;
+    private static final double TOTAL = 0.00;
     private static final String SAVE_SURNAME = "saveSurname";
     private static final String SAVE_NAME = "saveName";
     private static final String SAVE_PATRONYMIC = "savePatronymic";
     private static final String SAVE_ADDRESS = "saveAddress";
     private static final String SAVE_PHONE = "savePhone";
     private static final String SAVE_NOTE = "saveNote";
+    private static final String MESSAGE = "message";
+    private static final String WRONG_LOGIN = " - this login is not free!";
+    private static final String WRONG_DATA = "The entered data is not correct!";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -32,9 +38,15 @@ public class RegistrationUserCommand implements Command {
         String note = request.getParameter(SAVE_NOTE);
         try {
             serviceFactory.getUserService().addUser(login, password, USER_ROLE, surname, name, patronymic, address, phone, note);
-            serviceFactory.getBasketService().saveBasket(login, 0.00);
+            serviceFactory.getBasketService().saveBasket(login, TOTAL);
+        } catch (ValidatorException ex){
+            request.setAttribute(MESSAGE, WRONG_DATA);
+            return CommandResult.forward("/WEB-INF/jsp/user/registration.jsp");
+        } catch (LoginIsNotFreeException exc){
+            request.setAttribute(MESSAGE, login + WRONG_LOGIN);
+            return CommandResult.forward("/WEB-INF/jsp/user/registration.jsp");
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
     }

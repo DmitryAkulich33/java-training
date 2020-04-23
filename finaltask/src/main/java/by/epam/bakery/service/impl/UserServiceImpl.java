@@ -2,23 +2,21 @@ package by.epam.bakery.service.impl;
 
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
-import by.epam.bakery.dao.api.PieDao;
 import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
-import by.epam.bakery.domain.Pie;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.api.UserService;
+import by.epam.bakery.service.exception.LoginIsNotFreeException;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.exception.ValidatorException;
-import by.epam.bakery.service.validator.impl.UserDataValidatorImpl;
+import by.epam.bakery.service.validator.UserDataValidator;
 
-import javax.validation.ValidationException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class UserServiceImpl implements UserService {
     private DaoHelperFactory daoHelperFactory;
-    private UserDataValidatorImpl userDataValidator = new UserDataValidatorImpl();
+    private UserDataValidator userDataValidator = new UserDataValidator();
 
     public UserServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
@@ -26,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String login, String password) throws ServiceException, ValidatorException {
-        if(!userDataValidator.isLoginValid(login) || !userDataValidator.isPasswordValid(password)){
+        if (!userDataValidator.isLoginValid(login) || !userDataValidator.isPasswordValid(password)) {
             throw new ValidatorException("The entered data is not correct!");
         }
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -37,9 +35,19 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    public List<User> checkLogin(String login) throws ServiceException {
+        List<User> users = new ArrayList<>();
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findUserByLogin(login);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
     @Override
     public void changeName(String newName, int userId) throws ServiceException, ValidatorException {
-        if(!userDataValidator.isNameValid(newName)){
+        if (!userDataValidator.isNameValid(newName)) {
             throw new ValidatorException("The name is wrong");
         }
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -52,7 +60,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void changeSurname(String newSurname, int userId) throws ServiceException, ValidatorException {
-        if(!userDataValidator.isSurnameValid(newSurname)){
+        if (!userDataValidator.isSurnameValid(newSurname)) {
             throw new ValidatorException("The surname is wrong");
         }
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -65,7 +73,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void changePatronymic(String newPatronymic, int userId) throws ServiceException, ValidatorException {
-        if(!userDataValidator.isPatronymicValid(newPatronymic)){
+        if (!userDataValidator.isPatronymicValid(newPatronymic)) {
             throw new ValidatorException("The patronymic is wrong");
         }
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -78,7 +86,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void changeAddress(String newAddress, int userId) throws ServiceException, ValidatorException {
-        if(!userDataValidator.isAddressValid(newAddress)){
+        if (!userDataValidator.isAddressValid(newAddress)) {
             throw new ValidatorException("The address is wrong");
         }
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -91,7 +99,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void changePhone(String newPhone, int userId) throws ServiceException, ValidatorException {
-        if(!userDataValidator.isPhoneValid(newPhone)){
+        if (!userDataValidator.isPhoneValid(newPhone)) {
             throw new ValidatorException("The phone is wrong");
         }
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -103,7 +111,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeNote(String newNote, int userId) throws ServiceException{
+    public void changeNote(String newNote, int userId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changeNote(newNote, userId);
@@ -113,7 +121,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeRole(int newRole, int userId) throws ServiceException{
+    public void changeRole(int newRole, int userId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changeRole(newRole, userId);
@@ -123,7 +131,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser (int id) throws ServiceException {
+    public void deleteUser(int id) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.removeById(id);
@@ -133,7 +141,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser (String login, String password, int role, String surname, String name, String patronymic, String address, String phone, String note) throws ServiceException{
+    public void addUser(String login, String password, int role, String surname, String name, String patronymic, String address, String phone, String note) throws ServiceException, ValidatorException, LoginIsNotFreeException {
+        if (!userDataValidator.isLoginValid(login) || !userDataValidator.isPasswordValid(password) ||
+                !userDataValidator.isSurnameValid(surname) || !userDataValidator.isNameValid(name) ||
+                !userDataValidator.isPatronymicValid(patronymic) || !userDataValidator.isAddressValid(address) ||
+                !userDataValidator.isPhoneValid(phone) || !userDataValidator.isNoteValid(note)) {
+            throw new ValidatorException("The note is wrong");
+        }
+        if(!checkLogin(login).isEmpty()){
+            throw new LoginIsNotFreeException("Login is not free");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.save(login, password, role, surname, name, patronymic, address, phone, note);
@@ -143,7 +160,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findClientById (int userId) throws ServiceException{
+    public User findClientById(int userId) throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             return dao.findClientById(userId);
@@ -152,7 +169,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private int findUserAmount () throws ServiceException{
+    private int findUserAmount() throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             return dao.findAmount();
@@ -162,9 +179,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int findUserPageAmount (int pageAmount) throws ServiceException{
+    public int findUserPageAmount(int pageAmount) throws ServiceException {
         int amountAllUser = findUserAmount();
-        return (int) Math.ceil((double) amountAllUser/pageAmount);
+        return (int) Math.ceil((double) amountAllUser / pageAmount);
     }
 
     @Override
@@ -187,7 +204,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private int findClientAmount () throws ServiceException{
+    private int findClientAmount() throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             return dao.findClientsAmount();
@@ -197,8 +214,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int findClientPageAmount (int pageAmount) throws ServiceException{
+    public int findClientPageAmount(int pageAmount) throws ServiceException {
         int amountAllClients = findClientAmount();
-        return (int) Math.ceil((double) amountAllClients/pageAmount);
+        return (int) Math.ceil((double) amountAllClients / pageAmount);
     }
 }

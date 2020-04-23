@@ -9,8 +9,11 @@ import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.dao.impl.OrderProductDaoImpl;
 import by.epam.bakery.domain.*;
+import by.epam.bakery.service.exception.LoginIsNotFreeException;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
+import by.epam.bakery.service.impl.UserServiceImpl;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -72,5 +75,13 @@ public class Runner {
 //        for (BasketProduct orderProduct : listss) {
 //            System.out.println(orderProduct);
 //        }
+        try {
+            serviceFactory.getUserService().addUser("user1", "user11", 3, "Sdasd", "Ssdada",
+                    "Sddasd", "dsaaddddd", "8-044-564-61-30", "dadaaaddadsadad");
+        } catch (ValidatorException e) {
+            System.out.println("validator");
+        } catch (LoginIsNotFreeException e) {
+            System.out.println("Login is not free");
+        }
     }
 }

@@ -25,6 +25,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String CHANGE_ROLE = "UPDATE user SET role = ? WHERE id_user = ?";
     private static final String FIND_CLIENT_BY_ID ="SELECT * FROM user WHERE role = 3 AND id_user = ?";
     private static final String FIND_CLIENTS_COUNT = "SELECT COUNT(*) AS amount FROM user WHERE role = 3";
+    private static final String FIND_USER_BY_LOGIN = "SELECT * FROM user WHERE login = ?";
     private static final String AMOUNT_CLIENTS = "amount";
 
 
@@ -35,6 +36,11 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     @Override
     public User findUserByLoginAndPassword(String login, String password) throws DaoException {
         return executeForSingleResult(FIND_BY_LOGIN_AND_PASSWORD, new UserRowMapper(), login, password);
+    }
+
+    @Override
+    public List<User> findUserByLogin(String login) throws DaoException {
+        return executeQuery(FIND_USER_BY_LOGIN, new UserRowMapper(), login);
     }
 
     @Override

@@ -18,4 +18,5 @@ public interface UserDao extends Dao<User> {
     void changeRole(int newRole, int userId) throws DaoException;
     User findClientById(int userId) throws DaoException;
     int findClientsAmount () throws DaoException;
+    List<User> findUserByLogin(String login) throws DaoException;
 }

@@ -2,7 +2,9 @@ package by.epam.bakery.controller.command.impl.admin;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
+import by.epam.bakery.service.exception.LoginIsNotFreeException;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +34,13 @@ public class SaveUserCommand implements Command {
         String phone = request.getParameter(SAVE_PHONE);
         String note = request.getParameter(SAVE_NOTE);
         try {
-            serviceFactory.getUserService().addUser(login, password, role, surname, name, patronymic, address, phone, note);
+            try {
+                serviceFactory.getUserService().addUser(login, password, role, surname, name, patronymic, address, phone, note);
+            } catch (ValidatorException e) {
+                e.printStackTrace();
+            } catch (LoginIsNotFreeException e) {
+                e.printStackTrace();
+            }
             serviceFactory.getBasketService().saveBasket(login, 0.00);
         } catch (ServiceException e) {
             e.printStackTrace();

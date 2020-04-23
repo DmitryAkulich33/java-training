@@ -1,17 +1,14 @@
-package by.epam.bakery.service.validator.impl;
-
-import by.epam.bakery.service.validator.api.PieDataValidator;
+package by.epam.bakery.service.validator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PieDataValidatorImpl implements PieDataValidator {
+public class PieDataValidator {
     private static final String REGEX_FOR_PIE_AMOUNT = "^[1-9]{1,2}$";
 
     private Pattern pattern;
     private Matcher matcher;
 
-    @Override
     public boolean isPieAmountValid(String amount) {
         if (amount.equals("")) {
             return false;
@@ -20,7 +17,4 @@ public class PieDataValidatorImpl implements PieDataValidator {
         matcher = pattern.matcher(amount);
         return matcher.matches();
     }
-
-
-
 }
