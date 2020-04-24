@@ -22,6 +22,7 @@
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="admin_menu.jsp"/>
 <div class="container-fluid pt-3">
+    <div class="wrong_message"><c:out value="${ wrong }"/></div>
     <div class="admin_padding footer">
         <jsp:include page="../common/footer.jsp"/>
     </div>

@@ -95,7 +95,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public User findClientById(int userId) throws DaoException {
+    public User findClientById(String userId) throws DaoException {
         return executeForSingleResult(FIND_CLIENT_BY_ID, new UserRowMapper(), userId);
     }
 

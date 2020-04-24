@@ -64,9 +64,9 @@
                         <form action="controller" method="POST">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Enter Id</span>
+                                    <span class="input-group-text">Enter Id (max 9 symbols)</span>
                                 </div>
-                                <input type="text" class="form-control" name="userForOrderId">
+                                <input type="text" class="form-control" name="userForOrderId" placeholder="123456789" pattern="^([1-9][0-9]{0,8})$" required>
                             </div>
                             <div class="modal-footer">
                                 <input type="hidden" name="command" value="admin_add_new_user_for_order">

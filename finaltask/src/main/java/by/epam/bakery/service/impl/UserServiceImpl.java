@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> checkLogin(String login) throws ServiceException {
-        List<User> users = new ArrayList<>();
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             return dao.findUserByLogin(login);
@@ -160,7 +159,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findClientById(int userId) throws ServiceException {
+    public User findClientById(String userId) throws ServiceException, ValidatorException {
+        if(!userDataValidator.isIdValid(userId)){
+            throw new ValidatorException("The id is wrong");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             return dao.findClientById(userId);

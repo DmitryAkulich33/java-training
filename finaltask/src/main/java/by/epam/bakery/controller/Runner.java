@@ -27,7 +27,6 @@ public class Runner {
         PieDao pieDao = daoHelper.createPieDao();
         FeedbackDao feedBackDao = daoHelper.createFeedBackDao();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-
 //        userDao.changeName("Ivan", 3);
 //        User user = userDao.findUserByLoginAndPassword("user10", "user10");
 //        System.out.println(user);

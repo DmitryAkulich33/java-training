@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Name (5-20 symbols)</span>
+                                        <span class="input-group-text">Name (4-20 symbols)</span>
                                     </div>
                                     <input type="text" class="form-control" name="saveName"  placeholder="Name" pattern="^[A-Z][a-z]{4,20}$" required>
                                 </div>
@@ -98,9 +98,9 @@
                             <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Enter Id</span>
+                                        <span class="input-group-text">Enter Id (max 9 symbols)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="pieId">
+                                    <input type="text" class="form-control" name="pieId" placeholder="123456789" pattern="^([1-9][0-9]{0,8})$" required>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" name="command" value="find_pie_by_id">
@@ -128,9 +128,9 @@
                             <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Enter name</span>
+                                        <span class="input-group-text">Enter name (4-20 symbols)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="pieName">
+                                    <input type="text" class="form-control" name="pieName" placeholder="Name" pattern="^[A-Z][a-z]{4,20}$" required>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" name="command" value="find_pie_by_name">

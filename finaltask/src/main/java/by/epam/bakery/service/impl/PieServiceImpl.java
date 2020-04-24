@@ -52,7 +52,10 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public Pie findPieById(int pieId) throws ServiceException {
+    public Pie findPieById(String pieId) throws ServiceException, ValidatorException {
+        if(!pieDataValidator.isIdValid(pieId)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             return dao.findById(pieId);
@@ -62,7 +65,10 @@ public class PieServiceImpl implements PieService {
     }
 
     @Override
-    public Pie findPieByName(String name) throws ServiceException {
+    public Pie findPieByName(String name) throws ServiceException, ValidatorException {
+        if(!pieDataValidator.isNameValid(name)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             PieDao dao = helper.createPieDao();
             return dao.findByName(name);

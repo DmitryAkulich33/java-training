@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class PieDataValidator {
     private static final String REGEX_AMOUNT = "^[1-9]{1,2}$";
+    private static final String REGEX_ID = "^([1-9][0-9]{0,8})$";
     private static final String REGEX_WEIGHT = "^((3000)|([1-9][0-9][0-9])|[1-2][0-9][0-9][0-9])$";
     private static final String REGEX_PICTURE = "^.{0,255}$";
     private static final String REGEX_DESCRIPTION = "^.{0,1900}$";
@@ -65,6 +66,15 @@ public class PieDataValidator {
         }
         pattern = Pattern.compile(REGEX_NAME);
         matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+
+    public boolean isIdValid(String id) {
+        if (id.equals("")) {
+            return false;
+        }
+        pattern = Pattern.compile(REGEX_ID);
+        matcher = pattern.matcher(id);
         return matcher.matches();
     }
 }

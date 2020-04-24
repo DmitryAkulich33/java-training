@@ -10,8 +10,8 @@ public interface PieService {
     List<Pie> showAllPies() throws ServiceException;
     List<Pie> sortByPriceIncrease() throws ServiceException;
     List<Pie> sortByPriceReduce() throws ServiceException;
-    Pie findPieById (int pieId) throws ServiceException;
-    Pie findPieByName (String name) throws ServiceException;
+    Pie findPieById (String pieId) throws ServiceException, ValidatorException;
+    Pie findPieByName (String name) throws ServiceException, ValidatorException;
     void deletePie (int id) throws ServiceException;
     void addPie(String name, String weight, String price, String description, String picture) throws ServiceException, ValidatorException;
     void changeName(String newName, int pieId) throws ServiceException, ValidatorException;

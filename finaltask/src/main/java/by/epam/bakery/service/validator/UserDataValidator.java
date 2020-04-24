@@ -12,6 +12,7 @@ public class UserDataValidator {
     private static final String REGEX_PHONE = "^[8]-(033|029|044|017)-[1-9][0-9]{2}-[0-9]{2}-[0-9]{2}$";
     private static final String REGEX_LOGIN = "^[a-zA-Z0-9_-]{5,12}$";
     private static final String REGEX_PASSWORD = "^[a-zA-Z0-9_-]{5,12}$";
+    private static final String REGEX_ID = "^([1-9][0-9]{0,8})$";
 
     private Pattern pattern;
     private Matcher matcher;
@@ -85,6 +86,15 @@ public class UserDataValidator {
         }
         pattern = Pattern.compile(REGEX_NOTE);
         matcher = pattern.matcher(note);
+        return matcher.matches();
+    }
+
+    public boolean isIdValid(String id) {
+        if (id.equals("")) {
+            return false;
+        }
+        pattern = Pattern.compile(REGEX_ID);
+        matcher = pattern.matcher(id);
         return matcher.matches();
     }
 }

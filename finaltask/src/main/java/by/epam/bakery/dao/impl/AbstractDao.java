@@ -93,7 +93,7 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
     }
 
     @Override
-    public T findById(int id) throws DaoException {
+    public T findById(String id) throws DaoException {
         String table = getTableName();
         String idName = getIdName();
         RowMapper<T> mapper = (RowMapper<T>) RowMapper.create(table);

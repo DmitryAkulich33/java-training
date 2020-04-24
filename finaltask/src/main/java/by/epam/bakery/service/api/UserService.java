@@ -19,7 +19,7 @@ public interface UserService {
     void changeNote(String newNote, int userId) throws ServiceException;
     void changeRole(int newRole, int userId) throws ServiceException;
     List<User> findLimitClients(int start, int amount) throws ServiceException;
-    User findClientById (int userId) throws ServiceException;
+    User findClientById(String userId) throws ServiceException, ValidatorException;
     int findUserPageAmount (int pageAmount) throws ServiceException;
     List<User> findLimitUser(int start, int amount) throws ServiceException;
     int findClientPageAmount (int pageAmount) throws ServiceException;
