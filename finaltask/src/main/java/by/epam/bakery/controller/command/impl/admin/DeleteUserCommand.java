@@ -18,7 +18,7 @@ public class DeleteUserCommand implements Command {
         try {
             serviceFactory.getUserService().deleteUser(userId);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_users&page=1");
     }

@@ -22,7 +22,7 @@ public class ChangeOrderStatusCommand implements Command {
             try {
                 serviceFactory.getOrderService().changeStatus(newStatus, orderId);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=courier_order&page=1");

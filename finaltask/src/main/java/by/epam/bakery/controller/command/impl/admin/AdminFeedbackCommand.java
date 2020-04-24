@@ -28,16 +28,15 @@ public class AdminFeedbackCommand implements Command {
             feedbacks = serviceFactory.getFeedBackService().findLimitFeedback((page - 1) * AMOUNT, AMOUNT);
             request.setAttribute(FEEDBACK, feedbacks);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         try {
             int count = serviceFactory.getFeedBackService().findFeedbackPageAmount(AMOUNT);
             request.setAttribute(COUNT, count);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         request.setAttribute(PAGE, page);
         return CommandResult.forward("/WEB-INF/jsp/admin/admin_feedback.jsp");
-
     }
 }

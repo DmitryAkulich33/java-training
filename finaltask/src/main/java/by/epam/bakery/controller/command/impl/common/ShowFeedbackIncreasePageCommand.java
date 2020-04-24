@@ -28,7 +28,7 @@ public class ShowFeedbackIncreasePageCommand implements Command {
                 feedbacks = serviceFactory.getFeedBackService().findLimitFeedback((increasePage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(FEEDBACK, feedbacks);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, increasePage);
         } else {
@@ -36,7 +36,7 @@ public class ShowFeedbackIncreasePageCommand implements Command {
                 feedbacks = serviceFactory.getFeedBackService().findLimitFeedback((currentPage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(FEEDBACK, feedbacks);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, currentPage);
         }

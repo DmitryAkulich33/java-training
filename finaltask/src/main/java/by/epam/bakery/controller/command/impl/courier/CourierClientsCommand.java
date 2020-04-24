@@ -25,13 +25,13 @@ public class CourierClientsCommand implements Command {
             clients = serviceFactory.getUserService().findLimitClients((page - 1) * AMOUNT, AMOUNT);
             request.setAttribute(CLIENTS, clients);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         try {
             int count = serviceFactory.getUserService().findClientPageAmount(AMOUNT);
             request.setAttribute(COUNT, count);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         request.setAttribute(PAGE, page);
         return CommandResult.forward("/WEB-INF/jsp/courier/courier_clients.jsp");

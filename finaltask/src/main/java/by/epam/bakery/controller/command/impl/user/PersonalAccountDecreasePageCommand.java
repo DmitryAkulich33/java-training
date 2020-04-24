@@ -35,7 +35,7 @@ public class PersonalAccountDecreasePageCommand implements Command {
                 orderProducts = serviceFactory.getOrderProductService().findLimitOrderProductByUserId(userId, (decreasePage - 1) * AMOUNT, AMOUNT);
                 session.setAttribute(USER_ORDER_PRODUCTS, orderProducts);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, decreasePage);
         } else {
@@ -43,7 +43,7 @@ public class PersonalAccountDecreasePageCommand implements Command {
                 orderProducts = serviceFactory.getOrderProductService().findLimitOrderProductByUserId(userId, (currentPage - 1) * AMOUNT, AMOUNT);
                 session.setAttribute(USER_ORDER_PRODUCTS, orderProducts);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, currentPage);
         }

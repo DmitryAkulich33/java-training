@@ -24,7 +24,7 @@ public class SortByPriceIncreaseCommand implements Command {
         try {
             pies = serviceFactory.getPieService().sortByPriceIncrease();
         } catch (ServiceException e) {
-            System.out.println(e.getMessage());
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         session.setAttribute(SORT_STATUS, PRICE_INCREASE);
         session.setAttribute("pies", pies);

@@ -24,7 +24,6 @@ public class SavePieCommand implements Command {
     private static final String RIGHT = "right";
     private static final String WRONG_MESSAGE = "The entered data is not correct!";
     private static final String RIGHT_MESSAGE = "The pie was added successfully!";
-    private static final String PIES = "pies";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -37,19 +36,12 @@ public class SavePieCommand implements Command {
         String price = request.getParameter(SAVE_PRICE);
         try {
             serviceFactory.getPieService().addPie(name, weight, price, description, picture);
-            request.setAttribute(RIGHT, RIGHT_MESSAGE);
+            session.setAttribute(RIGHT, RIGHT_MESSAGE);
         } catch (ValidatorException ex){
-            request.setAttribute(WRONG, WRONG_MESSAGE);
+            session.setAttribute(WRONG, WRONG_MESSAGE);
         } catch (ServiceException e) {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
-        List<Pie> pies;
-        try {
-            pies = serviceFactory.getPieService().showAllPies();
-            session.setAttribute(PIES, pies);
-        } catch (ServiceException e) {
-            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-        }
-        return CommandResult.forward("/WEB-INF/jsp/admin/admin_pies.jsp");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_pies");
     }
 }

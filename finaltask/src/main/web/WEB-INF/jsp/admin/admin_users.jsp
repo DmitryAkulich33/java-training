@@ -25,6 +25,9 @@
     <br>
     <h2>Users:</h2>
     <br>
+    <div class="wrong_message"><c:out value="${ wrong }"/></div>
+    <div class="right_message"><c:out value="${ right }"/></div>
+    <br>
     <ul class="nav">
         <li class="li_admin nav-item">
             <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myTopModal3">
@@ -41,59 +44,73 @@
                             <form action="controller" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Login</span>
+                                        <span class="input-group-text">Login (English)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveLogin">
+                                    <input type="text" class="form-control" name="saveLogin" placeholder="5-12 symbols"
+                                           pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Password</span>
+                                        <span class="input-group-text">Password (English)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="savePassword">
+                                    <input type="text" class="form-control" name="savePassword" placeholder="5-12 symbols"
+                                           pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">Role</span>
+                                        <span class="input-group-text">Role (1 or 2 or 3)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveRole">
+                                    <input type="text" class="form-control" name="saveRole" placeholder="1,2,3"
+                                    pattern="^(1|2|3)$" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Surname</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveSurname">
+                                    <input type="text" class="form-control" name="saveSurname" placeholder="max 70 symbols"
+                                           pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)"
+                                           required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Name</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveName">
+                                    <input type="text" class="form-control" name="saveName" placeholder="max 70 symbols"
+                                           pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)"
+                                           required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Patronymic</span>
                                     </div>
-                                    <input type="text" class="form-control" name="savePatronymic">
+                                    <input type="text" class="form-control" name="savePatronymic" placeholder="max 70 symbols"
+                                           pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)"
+                                           required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Address</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveAddress">
+                                    <input type="text" class="form-control" name="saveAddress" placeholder="5-70 symbols"
+                                           pattern="(^.{5,70}$)" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Phone</span>
                                     </div>
-                                    <input type="text" class="form-control" name="savePhone">
+                                    <input type="text" class="form-control" name="savePhone" placeholder="8-044-1234567"
+                                           pattern="(^[8]-(033|029|044|017)-[1-9][0-9]{2}-[0-9]{2}-[0-9]{2}$)" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Note</span>
                                     </div>
-                                    <input type="text" class="form-control" name="saveNote">
+                                    <input type="text" class="form-control" name="saveNote" placeholder="max 250 symbols"
+                                           pattern="(^.{0,250}$)" required>
                                 </div>
                                 <div class="modal-footer">
+                                    <input type="hidden" name="page" value="${ page }">
+                                    <input type="hidden" name="count" value="${ count }">
                                     <input type="hidden" name="command" value="save_user">
                                     <input type="submit" value="Add user" class="btn btn-secondary">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

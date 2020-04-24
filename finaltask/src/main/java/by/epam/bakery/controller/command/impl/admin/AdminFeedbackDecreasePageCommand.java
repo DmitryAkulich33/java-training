@@ -29,7 +29,7 @@ public class AdminFeedbackDecreasePageCommand implements Command {
                 feedbacks = serviceFactory.getFeedBackService().findLimitFeedback((decreasePage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(FEEDBACK, feedbacks);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, decreasePage);
         } else {
@@ -37,7 +37,7 @@ public class AdminFeedbackDecreasePageCommand implements Command {
                 feedbacks = serviceFactory.getFeedBackService().findLimitFeedback((currentPage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(FEEDBACK, feedbacks);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, currentPage);
         }

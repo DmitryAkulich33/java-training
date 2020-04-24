@@ -28,7 +28,7 @@ public class AdminOrderProductIncreasePageCommand implements Command {
                 orderProducts = serviceFactory.getOrderProductService().findLimitOrderProduct((increasePage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(ORDER_PRODUCTS, orderProducts);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, increasePage);
         } else {
@@ -36,7 +36,7 @@ public class AdminOrderProductIncreasePageCommand implements Command {
                 orderProducts= serviceFactory.getOrderProductService().findLimitOrderProduct((currentPage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(ORDER_PRODUCTS, orderProducts);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, currentPage);
         }

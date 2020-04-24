@@ -30,7 +30,7 @@ public class ShowMainPageCommand implements Command {
             pies = serviceFactory.getPieService().getSortPieList(value, PRICE_INCREASE, PRICE_REDUCE);
             session.setAttribute(PIES, pies);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
     }

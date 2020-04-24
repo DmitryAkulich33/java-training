@@ -28,7 +28,7 @@ public class CourierClientsIncreasePageCommand implements Command {
                 clients = serviceFactory.getUserService().findLimitClients((increasePage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(CLIENTS, clients);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, increasePage);
         } else {
@@ -36,7 +36,7 @@ public class CourierClientsIncreasePageCommand implements Command {
                 clients = serviceFactory.getUserService().findLimitClients((currentPage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(CLIENTS, clients);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, currentPage);
         }

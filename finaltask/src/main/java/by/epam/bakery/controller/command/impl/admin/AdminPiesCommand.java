@@ -17,14 +17,13 @@ public class AdminPiesCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        List<Pie> pies = null;
+        List<Pie> pies;
         try {
             pies = serviceFactory.getPieService().showAllPies();
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
-        HttpSession session = request.getSession();
-        session.setAttribute(PIES, pies);
+        request.setAttribute(PIES, pies);
         return CommandResult.forward("/WEB-INF/jsp/admin/admin_pies.jsp");
     }
 }

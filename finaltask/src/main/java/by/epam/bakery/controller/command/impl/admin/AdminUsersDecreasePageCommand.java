@@ -29,7 +29,7 @@ public class AdminUsersDecreasePageCommand implements Command {
                     users = serviceFactory.getUserService().findLimitUser((decreasePage - 1) * AMOUNT, AMOUNT);
                     request.setAttribute(USERS, users);
                 } catch (ServiceException e) {
-                    e.printStackTrace();
+                    return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
                 }
                 request.setAttribute(PAGE, decreasePage);
             } else {
@@ -37,7 +37,7 @@ public class AdminUsersDecreasePageCommand implements Command {
                     users = serviceFactory.getUserService().findLimitUser((currentPage - 1) * AMOUNT, AMOUNT);
                     request.setAttribute(USERS, users);
                 } catch (ServiceException e) {
-                    e.printStackTrace();
+                    return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
                 }
                 request.setAttribute(PAGE, currentPage);
             }

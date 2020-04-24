@@ -43,13 +43,13 @@ public class AddFeedbackCommand implements Command {
             feedbacks = serviceFactory.getFeedBackService().findLimitFeedback(0, AMOUNT);
             request.setAttribute(FEEDBACK, feedbacks);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         try {
             int count = serviceFactory.getFeedBackService().findFeedbackPageAmount(AMOUNT);
             request.setAttribute(COUNT, count);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         request.setAttribute(PAGE, 1);
         return CommandResult.forward("/WEB-INF/jsp/common/feedback.jsp");

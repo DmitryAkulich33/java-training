@@ -140,14 +140,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(String login, String password, int role, String surname, String name, String patronymic, String address, String phone, String note) throws ServiceException, ValidatorException, LoginIsNotFreeException {
+    public void addUser(String login, String password, String role, String surname, String name, String patronymic, String address, String phone, String note) throws ServiceException, ValidatorException, LoginIsNotFreeException {
         if (!userDataValidator.isLoginValid(login) || !userDataValidator.isPasswordValid(password) ||
                 !userDataValidator.isSurnameValid(surname) || !userDataValidator.isNameValid(name) ||
                 !userDataValidator.isPatronymicValid(patronymic) || !userDataValidator.isAddressValid(address) ||
-                !userDataValidator.isPhoneValid(phone) || !userDataValidator.isNoteValid(note)) {
-            throw new ValidatorException("The note is wrong");
+                !userDataValidator.isPhoneValid(phone) || !userDataValidator.isNoteValid(note) ||
+                !userDataValidator.isRoleValid(role)) {
+            throw new ValidatorException("The entered data is not correct!");
         }
-        if(!checkLogin(login).isEmpty()){
+        if (!checkLogin(login).isEmpty()) {
             throw new LoginIsNotFreeException("Login is not free");
         }
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -160,7 +161,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findClientById(String userId) throws ServiceException, ValidatorException {
-        if(!userDataValidator.isIdValid(userId)){
+        if (!userDataValidator.isIdValid(userId)) {
             throw new ValidatorException("The id is wrong");
         }
         try (DaoHelper helper = daoHelperFactory.create()) {

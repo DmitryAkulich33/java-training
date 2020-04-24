@@ -28,7 +28,7 @@ public class CourierClientsDecreasePageCommand implements Command {
                 clients = serviceFactory.getUserService().findLimitClients((decreasePage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(CLIENTS, clients);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, decreasePage);
         } else {
@@ -36,7 +36,7 @@ public class CourierClientsDecreasePageCommand implements Command {
                 clients = serviceFactory.getUserService().findLimitClients((currentPage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(CLIENTS, clients);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, currentPage);
         }

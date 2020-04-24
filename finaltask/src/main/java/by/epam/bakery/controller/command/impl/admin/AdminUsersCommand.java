@@ -26,13 +26,13 @@ public class AdminUsersCommand implements Command {
             users = serviceFactory.getUserService().findLimitUser((page - 1) * AMOUNT, AMOUNT);
             request.setAttribute(USERS, users);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         try {
             int count = serviceFactory.getUserService().findUserPageAmount(AMOUNT);
             request.setAttribute(COUNT, count);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         request.setAttribute(PAGE, page);
         return CommandResult.forward("/WEB-INF/jsp/admin/admin_users.jsp");

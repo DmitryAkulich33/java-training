@@ -27,7 +27,7 @@ public class ChangeOrderCommand implements Command {
                 LocalDateTime localDateTime = LocalDateTime.parse(newProductionDate);
                 serviceFactory.getOrderService().changeProductionDate(localDateTime, orderId );
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
         if(!newDeliveryDate.isEmpty()){
@@ -35,14 +35,14 @@ public class ChangeOrderCommand implements Command {
                 LocalDateTime localDateTime = LocalDateTime.parse(newDeliveryDate);
                 serviceFactory.getOrderService().changeDeliveryDate(localDateTime, orderId );
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
         if(!newStatus.isEmpty()){
             try {
                 serviceFactory.getOrderService().changeStatus(newStatus, orderId);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order_product&page=1");

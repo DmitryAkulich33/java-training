@@ -18,7 +18,7 @@ public class DeleteFeedbackCommand implements Command {
         try {
             serviceFactory.getFeedBackService().deleteFeedback(feedbackId);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_feedback&page=1");
     }

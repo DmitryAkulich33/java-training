@@ -37,7 +37,7 @@ public class AddOrderCommand implements Command {
                     serviceFactory.getOrderProductService().save(orderId, basketProduct.getPie().getId(), basketProduct.getAmount(), basketProduct.getCost());
                 }
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=clear_basket");

@@ -27,7 +27,7 @@ public class DeleteOrderProductCommand implements Command {
              }
              serviceFactory.getOrderProductService().deleteOrderProductById(orderProductId);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order_product&page=1");
     }

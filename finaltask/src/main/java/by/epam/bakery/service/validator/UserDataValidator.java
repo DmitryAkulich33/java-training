@@ -13,6 +13,7 @@ public class UserDataValidator {
     private static final String REGEX_LOGIN = "^[a-zA-Z0-9_-]{5,12}$";
     private static final String REGEX_PASSWORD = "^[a-zA-Z0-9_-]{5,12}$";
     private static final String REGEX_ID = "^([1-9][0-9]{0,8})$";
+    private static final String REGEX_ROLE = "^(1|2|3)$";
 
     private Pattern pattern;
     private Matcher matcher;
@@ -95,6 +96,15 @@ public class UserDataValidator {
         }
         pattern = Pattern.compile(REGEX_ID);
         matcher = pattern.matcher(id);
+        return matcher.matches();
+    }
+
+    public boolean isRoleValid(String role) {
+        if (role.equals("")) {
+            return false;
+        }
+        pattern = Pattern.compile(REGEX_ROLE);
+        matcher = pattern.matcher(role);
         return matcher.matches();
     }
 }

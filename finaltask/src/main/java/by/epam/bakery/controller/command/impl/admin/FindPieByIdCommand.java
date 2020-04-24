@@ -23,6 +23,7 @@ public class FindPieByIdCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String pieId = request.getParameter(PIE_ID);
         List<Pie> pies = new ArrayList<>();
@@ -31,18 +32,17 @@ public class FindPieByIdCommand implements Command {
             pie = serviceFactory.getPieService().findPieById(pieId);
             pies.add(pie);
         } catch (ValidatorException ex){
-            request.setAttribute(WRONG, WRONG_MESSAGE);
-            return CommandResult.forward("/WEB-INF/jsp/admin/admin_pies.jsp");
+            session.setAttribute(WRONG, WRONG_MESSAGE);
+            return CommandResult.redirect(request.getContextPath() + "controller?command=admin_pies");
         } catch (ServiceException e) {
             if(e.getCause().getMessage().equals(NO_RECORDS)){
-                request.setAttribute(WRONG, WRONG_ID);
-                return CommandResult.forward("/WEB-INF/jsp/admin/admin_pies.jsp");
+                session.setAttribute(WRONG, WRONG_ID);
+                return CommandResult.redirect(request.getContextPath() + "controller?command=admin_pies");
             } else {
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
-        HttpSession session = request.getSession();
-        session.setAttribute(PIES, pies);
+        request.setAttribute(PIES, pies);
         return CommandResult.forward("/WEB-INF/jsp/admin/admin_pies.jsp");
     }
 }

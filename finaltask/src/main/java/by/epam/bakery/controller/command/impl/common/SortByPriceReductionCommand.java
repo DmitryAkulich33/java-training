@@ -19,12 +19,12 @@ public class SortByPriceReductionCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        List<Pie> pies = new ArrayList<>();
+        List<Pie> pies;
         HttpSession session = request.getSession();
         try {
             pies = serviceFactory.getPieService().sortByPriceReduce();
         } catch (ServiceException e) {
-            System.out.println(e.getMessage());
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         session.setAttribute(SORT_STATUS, PRICE_REDUCE);
         session.setAttribute("pies", pies);

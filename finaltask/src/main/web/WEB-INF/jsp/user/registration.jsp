@@ -26,7 +26,7 @@
     <br>
     <form action="controller" method="POST">
         <div class="wrong_message">
-            <p><c:out value="${ message }"/></p>
+            <p><c:out value="${ wrong }"/></p>
         </div>
         <table class="table table-striped">
             <tbody>

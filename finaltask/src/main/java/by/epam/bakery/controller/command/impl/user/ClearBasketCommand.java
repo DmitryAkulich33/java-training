@@ -30,7 +30,7 @@ public class ClearBasketCommand implements Command {
             serviceFactory.getBasketProductService().deleteBasketProductByBasketId(basketId);
             session.removeAttribute(BASKET_PRODUCT);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=show_basket");
     }

@@ -32,7 +32,7 @@ public class AdminAddNewOrderCommand implements Command {
             pies = serviceFactory.getPieService().showAllPies();
             request.setAttribute(PIES, pies);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         Basket basket;
 
@@ -44,7 +44,7 @@ public class AdminAddNewOrderCommand implements Command {
             session.setAttribute(BASKET_PRODUCT, basketProducts);
             request.setAttribute(TOTAL, total);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.forward("/WEB-INF/jsp/admin/admin_add_new_order.jsp");
     }

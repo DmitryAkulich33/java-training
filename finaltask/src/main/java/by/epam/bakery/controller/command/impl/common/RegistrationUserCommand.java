@@ -9,11 +9,12 @@ import by.epam.bakery.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class RegistrationUserCommand implements Command {
     private static final String SAVE_LOGIN = "saveLogin";
     private static final String SAVE_PASSWORD = "savePassword";
-    private static final int USER_ROLE = 3;
+    private static final String USER_ROLE = "3";
     private static final double TOTAL = 0.00;
     private static final String SAVE_SURNAME = "saveSurname";
     private static final String SAVE_NAME = "saveName";
@@ -21,12 +22,13 @@ public class RegistrationUserCommand implements Command {
     private static final String SAVE_ADDRESS = "saveAddress";
     private static final String SAVE_PHONE = "savePhone";
     private static final String SAVE_NOTE = "saveNote";
-    private static final String MESSAGE = "message";
+    private static final String WRONG = "wrong";
     private static final String WRONG_LOGIN = " - this login is not free!";
     private static final String WRONG_DATA = "The entered data is not correct!";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String login = request.getParameter(SAVE_LOGIN);
         String password = request.getParameter(SAVE_PASSWORD);
@@ -40,10 +42,10 @@ public class RegistrationUserCommand implements Command {
             serviceFactory.getUserService().addUser(login, password, USER_ROLE, surname, name, patronymic, address, phone, note);
             serviceFactory.getBasketService().saveBasket(login, TOTAL);
         } catch (ValidatorException ex){
-            request.setAttribute(MESSAGE, WRONG_DATA);
+            session.setAttribute(WRONG, WRONG_DATA);
             return CommandResult.forward("/WEB-INF/jsp/user/registration.jsp");
         } catch (LoginIsNotFreeException exc){
-            request.setAttribute(MESSAGE, login + WRONG_LOGIN);
+            session.setAttribute(WRONG, login + WRONG_LOGIN);
             return CommandResult.forward("/WEB-INF/jsp/user/registration.jsp");
         } catch (ServiceException e) {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");

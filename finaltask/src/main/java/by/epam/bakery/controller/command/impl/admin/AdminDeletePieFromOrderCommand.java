@@ -29,12 +29,12 @@ public class AdminDeletePieFromOrderCommand implements Command {
         try {
             serviceFactory.getBasketProductService().deleteBasketProductById(basketProductId);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         try {
             serviceFactory.getBasketService().changeTotal(basketTotal - productCost, basketId);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_add_new_order");
     }

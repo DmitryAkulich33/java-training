@@ -21,7 +21,7 @@ public class ChangeNoteCommand implements Command {
             try {
                 serviceFactory.getUserService().changeNote(note, userId);
             } catch (ServiceException e) {
-                e.printStackTrace();
+                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=courier_clients&page=1");

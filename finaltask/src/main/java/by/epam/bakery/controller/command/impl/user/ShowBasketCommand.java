@@ -33,7 +33,7 @@ public class ShowBasketCommand implements Command {
             session.setAttribute(TOTAL, total);
             session.setAttribute(BASKET_PRODUCT, basketProducts);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.forward("/WEB-INF/jsp/user/basket.jsp");
     }

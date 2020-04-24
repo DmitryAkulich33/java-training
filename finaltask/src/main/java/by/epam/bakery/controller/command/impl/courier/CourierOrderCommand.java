@@ -26,13 +26,13 @@ public class CourierOrderCommand implements Command {
             orderProducts = serviceFactory.getOrderProductService().findLimitOrderProduct((page - 1) * AMOUNT, AMOUNT);
             request.setAttribute(ORDER_PRODUCTS, orderProducts);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         try {
             int count = serviceFactory.getOrderService().findOrderPageAmount(AMOUNT);
             request.setAttribute(COUNT, count);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         request.setAttribute(PAGE, page);
         return CommandResult.forward("/WEB-INF/jsp/courier/courier_order.jsp");

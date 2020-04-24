@@ -31,13 +31,13 @@ public class PersonalAccountCommand implements Command {
             orderProducts = serviceFactory.getOrderProductService().findLimitOrderProductByUserId(userId, (page - 1) * AMOUNT, AMOUNT);
             session.setAttribute(USER_ORDER_PRODUCTS, orderProducts);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         try {
             int count = serviceFactory.getOrderService().findOrderByUserIdPageAmount(AMOUNT, userId);
             request.setAttribute(COUNT, count);
         } catch (ServiceException e) {
-            e.printStackTrace();
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         request.setAttribute(PAGE, page);
         return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
