@@ -25,6 +25,9 @@
     <br>
     <h2>Orders:</h2>
     <br>
+    <div class="wrong_message"><c:out value="${ wrong }"/></div>
+    <div class="right_message"><c:out value="${ right }"/></div>
+    <br>
     <table class="table table-hover">
         <thead>
         <tr>

@@ -26,7 +26,6 @@ public class ChangeNoteCommand implements Command {
         int userId = Integer.parseInt(request.getParameter(CHANGE_ID));
         if(!note.isEmpty()){
             try {
-
                 serviceFactory.getUserService().changeNote(note, userId);
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
             } catch (ValidatorException ex){

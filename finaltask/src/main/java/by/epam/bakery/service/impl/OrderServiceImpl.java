@@ -8,12 +8,15 @@ import by.epam.bakery.domain.Order;
 import by.epam.bakery.domain.StatusEnum;
 import by.epam.bakery.service.api.OrderService;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.exception.ValidatorException;
+import by.epam.bakery.service.validator.OrderDataValidator;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class OrderServiceImpl implements OrderService {
     private DaoHelperFactory daoHelperFactory;
+    private OrderDataValidator orderDataValidator = new OrderDataValidator();
 
     public OrderServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
@@ -70,7 +73,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void changeStatus(String newStatus, int orderId) throws ServiceException {
+    public void changeStatus(String newStatus, int orderId) throws ServiceException, ValidatorException {
+        if(!orderDataValidator.isStatusValid(newStatus)) {
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
             dao.changeStatus(newStatus, orderId);

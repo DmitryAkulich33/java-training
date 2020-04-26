@@ -3,6 +3,7 @@ package by.epam.bakery.controller.command.impl.admin;
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.service.exception.ServiceException;
+import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +44,8 @@ public class ChangeOrderCommand implements Command {
                 serviceFactory.getOrderService().changeStatus(newStatus, orderId);
             } catch (ServiceException e) {
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
+            } catch (ValidatorException e) {
+                e.printStackTrace();
             }
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order_product&page=1");
