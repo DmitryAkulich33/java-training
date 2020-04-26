@@ -9,7 +9,6 @@ import by.epam.bakery.service.factory.ServiceFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.time.LocalDateTime;
 
 public class ChangeOrderCommand implements Command {
     private static final String CHANGE_PRODUCTION_DATE = "productionDate";
@@ -51,38 +50,4 @@ public class ChangeOrderCommand implements Command {
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order_product&page=1");
     }
-//    @Override
-//    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-//        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-//        String newProductionDate = request.getParameter(CHANGE_PRODUCTION_DATE);
-//        String newDeliveryDate = request.getParameter(CHANGE_DELIVERY_DATE);
-//        String newStatus = request.getParameter(CHANGE_STATUS);
-//        int orderId = Integer.parseInt(request.getParameter(ID_ORDER));
-//        if(!newProductionDate.isEmpty()){
-//            try {
-//                LocalDateTime localDateTime = LocalDateTime.parse(newProductionDate);
-//                serviceFactory.getOrderService().changeProductionDate(localDateTime, orderId );
-//            } catch (ServiceException e) {
-//                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-//            }
-//        }
-//        if(!newDeliveryDate.isEmpty()){
-//            try {
-//                LocalDateTime localDateTime = LocalDateTime.parse(newDeliveryDate);
-//                serviceFactory.getOrderService().changeDeliveryDate(localDateTime, orderId );
-//            } catch (ServiceException e) {
-//                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-//            }
-//        }
-//        if(!newStatus.isEmpty()){
-//            try {
-//                serviceFactory.getOrderService().changeStatus(newStatus, orderId);
-//            } catch (ServiceException e) {
-//                return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-//            } catch (ValidatorException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_order_product&page=1");
-//    }
 }
