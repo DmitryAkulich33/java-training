@@ -15,7 +15,7 @@ public interface UserDao extends Dao<User> {
     void changePatronymic(String newPatronymic, int userId) throws DaoException;
     void changeAddress(String newAddress, int userId) throws DaoException;
     void changePhone(String newPhone, int userId) throws DaoException;
-    void changeRole(int newRole, int userId) throws DaoException;
+    void changeRole(String newRole, int userId) throws DaoException;
     User findClientById(String userId) throws DaoException;
     int findClientsAmount () throws DaoException;
     List<User> findUserByLogin(String login) throws DaoException;

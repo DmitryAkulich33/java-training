@@ -110,7 +110,6 @@
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" name="page" value="${ page }">
-                                    <input type="hidden" name="count" value="${ count }">
                                     <input type="hidden" name="command" value="save_user">
                                     <input type="submit" value="Add user" class="btn btn-secondary">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -188,27 +187,31 @@
                                     <form action="controller" method="POST">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New role</span>
+                                                <span class="input-group-text">New role (1 or 2 or 3)</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeRole">
+                                            <input type="text" class="form-control" name="changeRole" placeholder="1,2,3"
+                                                   pattern="^(1|2|3)$">
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New address</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeAddress">
+                                            <input type="text" class="form-control" name="changeAddress" placeholder="5-70 symbols"
+                                                   pattern="(^.{5,70}$)">
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New phone</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changePhone">
+                                            <input type="text" class="form-control" name="changePhone" placeholder="8-044-1234567"
+                                                   pattern="(^[8]-(033|029|044|017)-[1-9][0-9]{2}-[0-9]{2}-[0-9]{2}$)">
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New note</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeNote">
+                                            <input type="text" class="form-control" name="changeNote" placeholder="max 250 symbols"
+                                                   pattern="(^.{0,250}$)">
                                         </div>
                                         <div class="modal-footer">
                                             <input type="hidden" name="changeId" value="${ element.id }"/>

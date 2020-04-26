@@ -110,7 +110,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeNote(String newNote, int userId) throws ServiceException {
+    public void changeNote(String newNote, int userId) throws ServiceException, ValidatorException {
+        if (!userDataValidator.isNoteValid(newNote)) {
+            throw new ValidatorException("The note is wrong");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changeNote(newNote, userId);
@@ -120,7 +123,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeRole(int newRole, int userId) throws ServiceException {
+    public void changeRole(String newRole, int userId) throws ServiceException, ValidatorException {
+        if (!userDataValidator.isRoleValid(newRole)) {
+            throw new ValidatorException("The role is wrong");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             dao.changeRole(newRole, userId);

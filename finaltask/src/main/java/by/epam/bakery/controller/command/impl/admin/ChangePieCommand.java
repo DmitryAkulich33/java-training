@@ -36,24 +36,24 @@ public class ChangePieCommand implements Command {
         String price = request.getParameter(CHANGE_PRICE);
         int pieId = Integer.parseInt(request.getParameter(CHANGE_ID));
         try{
-            if(!name.isEmpty()){
-                serviceFactory.getPieService().changeName(name, pieId);
-                session.setAttribute(RIGHT, RIGHT_MESSAGE);
-            }
-            if(!picture.isEmpty()){
-                serviceFactory.getPieService().changePicture(picture, pieId);
-                session.setAttribute(RIGHT, RIGHT_MESSAGE);
-            }
-            if(!description.isEmpty()){
-                serviceFactory.getPieService().changeDescription(description, pieId);
-                session.setAttribute(RIGHT, RIGHT_MESSAGE);
-            }
-            if(!weight.isEmpty()) {
-                serviceFactory.getPieService().changeWeight(weight, pieId);
-                session.setAttribute(RIGHT, RIGHT_MESSAGE);
-            }
-            if(!price.isEmpty()) {
-                serviceFactory.getPieService().changePrice(price, pieId);
+            if(name.isEmpty() & picture.isEmpty() & description.isEmpty() & weight.isEmpty() & price.isEmpty()){
+                session.setAttribute(WRONG, WRONG_MESSAGE);
+            } else {
+                if(!name.isEmpty()){
+                    serviceFactory.getPieService().changeName(name, pieId);
+                }
+                if(!picture.isEmpty()){
+                    serviceFactory.getPieService().changePicture(picture, pieId);
+                }
+                if(!description.isEmpty()){
+                    serviceFactory.getPieService().changeDescription(description, pieId);
+                }
+                if(!weight.isEmpty()) {
+                    serviceFactory.getPieService().changeWeight(weight, pieId);
+                }
+                if(!price.isEmpty()) {
+                    serviceFactory.getPieService().changePrice(price, pieId);
+                }
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
             }
         } catch (ValidatorException ex){
@@ -63,45 +63,4 @@ public class ChangePieCommand implements Command {
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_pies");
     }
-//    @Override
-//    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-//        HttpSession session = request.getSession();
-//        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-//        String name = request.getParameter(CHANGE_NAME);
-//        String picture = request.getParameter(CHANGE_PICTURE);
-//        String description = request.getParameter(CHANGE_DESCRIPTION);
-//        String weight = request.getParameter(CHANGE_WEIGHT);
-//        String price = request.getParameter(CHANGE_PRICE);
-//        int pieId = Integer.parseInt(request.getParameter(CHANGE_ID));
-//        try{
-//            if(!name.isEmpty()){
-//                serviceFactory.getPieService().changeName(name, pieId);
-//            }
-//            if(!picture.isEmpty()){
-//                serviceFactory.getPieService().changePicture(picture, pieId);
-//            }
-//            if(!description.isEmpty()){
-//                serviceFactory.getPieService().changeDescription(description, pieId);
-//            }
-//            if(!weight.isEmpty()) {
-//                serviceFactory.getPieService().changeWeight(weight, pieId);
-//            }
-//            if(!price.isEmpty()) {
-//                serviceFactory.getPieService().changePrice(price, pieId);
-//            }
-//            request.setAttribute(RIGHT, RIGHT_MESSAGE);
-//        } catch (ValidatorException ex){
-//            request.setAttribute(WRONG, WRONG_MESSAGE);
-//        } catch (ServiceException e){
-//            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-//        }
-//        List<Pie> pies;
-//        try {
-//            pies = serviceFactory.getPieService().showAllPies();
-//            session.setAttribute(PIES, pies);
-//        } catch (ServiceException e) {
-//            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-//        }
-//        return CommandResult.forward("/WEB-INF/jsp/admin/admin_pies.jsp");
-//    }
 }

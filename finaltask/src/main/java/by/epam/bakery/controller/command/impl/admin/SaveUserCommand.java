@@ -10,6 +10,7 @@ import by.epam.bakery.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class SaveUserCommand implements Command {
@@ -27,13 +28,10 @@ public class SaveUserCommand implements Command {
     private static final String WRONG_LOGIN = " - this login is not free!";
     private static final String WRONG_DATA = "The entered data is not correct!";
     private static final String RIGHT_MESSAGE = "User was added successfully!";
-    private static final String USERS = "users";
-    private static final String PAGE = "page";
-    private static final String COUNT = "count";
-    private static final int AMOUNT = 5;
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String login = request.getParameter(SAVE_LOGIN);
         String password = request.getParameter(SAVE_PASSWORD);
@@ -48,30 +46,15 @@ public class SaveUserCommand implements Command {
             try {
                 serviceFactory.getUserService().addUser(login, password, role, surname, name, patronymic, address, phone, note);
                 serviceFactory.getBasketService().saveBasket(login, 0.00);
-                request.setAttribute(RIGHT, RIGHT_MESSAGE);
+                session.setAttribute(RIGHT, RIGHT_MESSAGE);
             } catch (ValidatorException ex){
-                request.setAttribute(WRONG, WRONG_DATA);
+                session.setAttribute(WRONG, WRONG_DATA);
             } catch (LoginIsNotFreeException exc){
-                request.setAttribute(WRONG, login + WRONG_LOGIN);
+                session.setAttribute(WRONG, login + WRONG_LOGIN);
             }
         } catch (ServiceException e) {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
-        int page = Integer.parseInt(request.getParameter(PAGE));
-        List<User> users;
-        try {
-            users = serviceFactory.getUserService().findLimitUser((page - 1) * AMOUNT, AMOUNT);
-            request.setAttribute(USERS, users);
-        } catch (ServiceException e) {
-            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-        }
-        try {
-            int count = serviceFactory.getUserService().findUserPageAmount(AMOUNT);
-            request.setAttribute(COUNT, count);
-        } catch (ServiceException e) {
-            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-        }
-        request.setAttribute(PAGE, page);
-        return CommandResult.forward("/WEB-INF/jsp/admin/admin_users.jsp");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=admin_users&page=1");
     }
 }

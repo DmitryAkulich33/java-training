@@ -44,7 +44,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public void changeRole(int newRole, int userId) throws DaoException {
+    public void changeRole(String newRole, int userId) throws DaoException {
         executeUpdate(CHANGE_ROLE, newRole, userId);
     }
 

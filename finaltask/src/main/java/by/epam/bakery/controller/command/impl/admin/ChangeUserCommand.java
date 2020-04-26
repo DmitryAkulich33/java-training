@@ -8,6 +8,7 @@ import by.epam.bakery.service.factory.ServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ChangeUserCommand implements Command {
     private static final String CHANGE_ROLE = "changeRole";
@@ -15,47 +16,43 @@ public class ChangeUserCommand implements Command {
     private static final String CHANGE_PHONE = "changePhone";
     private static final String CHANGE_NOTE = "changeNote";
     private static final String CHANGE_ID = "changeId";
+    private static final String WRONG = "wrong";
+    private static final String RIGHT = "right";
+    private static final String WRONG_MESSAGE = "The entered data is not correct!";
+    private static final String RIGHT_MESSAGE = "User was changed successfully!";
+
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String address = request.getParameter(CHANGE_ADDRESS);
         String phone = request.getParameter(CHANGE_PHONE);
         String note = request.getParameter(CHANGE_NOTE);
         String role = request.getParameter(CHANGE_ROLE);
         int userId = Integer.parseInt(request.getParameter(CHANGE_ID));
-        if(!address.isEmpty()){
-            try {
-                serviceFactory.getUserService().changeAddress(address, userId);
-            } catch (ServiceException e) {
-                e.printStackTrace();
-            } catch (ValidatorException e) {
-                e.printStackTrace();
+        try{
+            if(role.isEmpty() & note.isEmpty() & phone.isEmpty() & address.isEmpty()){
+                session.setAttribute(WRONG, WRONG_MESSAGE);
+            } else {
+                if(!address.isEmpty()){
+                    serviceFactory.getUserService().changeAddress(address, userId);
+                }
+                if(!phone.isEmpty()){
+                    serviceFactory.getUserService().changePhone(phone, userId);
+                }
+                if(!note.isEmpty()){
+                    serviceFactory.getUserService().changeNote(note, userId);
+                }
+                if(!role.isEmpty()){
+                    serviceFactory.getUserService().changeRole(role, userId);
+                }
+                session.setAttribute(RIGHT, RIGHT_MESSAGE);
             }
-        }
-        if(!phone.isEmpty()){
-            try {
-                serviceFactory.getUserService().changePhone(phone, userId);
-            } catch (ServiceException e) {
-                e.printStackTrace();
-            } catch (ValidatorException e) {
-                e.printStackTrace();
-            }
-        }
-        if(!note.isEmpty()){
-            try {
-                serviceFactory.getUserService().changeNote(note, userId);
-            } catch (ServiceException e) {
-                e.printStackTrace();
-            }
-        }
-        if(!role.isEmpty()){
-            try {
-                int userRole = Integer.parseInt(role);
-                serviceFactory.getUserService().changeRole(userRole, userId);
-            } catch (ServiceException e) {
-                e.printStackTrace();
-            }
+        } catch (ValidatorException ex){
+            session.setAttribute(WRONG, WRONG_MESSAGE);
+        } catch (ServiceException e){
+            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_users&page=1");
     }
