@@ -18,18 +18,16 @@ public class AddPieCommand implements Command {
     private static final String PIE_PRICE = "piePrice";
     private static final String PIE_AMOUNT = "pieAmount";
     private static final String USER = "user";
-    private static final String RIGHT_AMOUNT = "rightAmount";
-    private static final String WRONG_AMOUNT = "wrongAmount";
+    private static final String RIGHT = "right";
+    private static final String WRONG = "wrong";
     private static final String WRONG_AMOUNT_MESSAGE = "The number of pies is wrong";
     private static final String RIGHT_AMOUNT_MESSAGE = "Product added to basket";
-    private static final String ADDED_PIE_ID = "addedPieId";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String amount = request.getParameter(PIE_AMOUNT);
         int pieId = Integer.parseInt(request.getParameter(PIE_ID));
-        request.setAttribute(ADDED_PIE_ID, pieId);
         double piePrice = Double.parseDouble(request.getParameter(PIE_PRICE));
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(USER);
@@ -42,13 +40,12 @@ public class AddPieCommand implements Command {
             double cost = pieAmount * piePrice;
             double total = basket.getTotal();
             serviceFactory.getBasketService().changeTotal((total + cost), basketId);
+            session.setAttribute(RIGHT, RIGHT_AMOUNT_MESSAGE);
         } catch (ValidatorException e) {
-            request.setAttribute(WRONG_AMOUNT, WRONG_AMOUNT_MESSAGE);
-            return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
+            session.setAttribute(WRONG, WRONG_AMOUNT_MESSAGE);
         } catch (ServiceException e) {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
-        request.setAttribute(RIGHT_AMOUNT, RIGHT_AMOUNT_MESSAGE);
-        return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
     }
 }

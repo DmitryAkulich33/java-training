@@ -110,6 +110,9 @@
     <div>
         Our pies:
     </div>
+    <br>
+    <div class="wrong_message"><c:out value="${ wrong }"/></div>
+    <div class="right_message"><c:out value="${ right }"/></div>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -133,7 +136,7 @@
                 <td><c:out value="${ element.description }"/></td>
                 <form action="controller" method="POST">
                     <td class="product_amount">
-                        <input type="number" min="1" max="99" value="1" name="pieAmount"
+                        <input type="text" name="pieAmount"
                                class="input_center">
                     </td>
                     <td>

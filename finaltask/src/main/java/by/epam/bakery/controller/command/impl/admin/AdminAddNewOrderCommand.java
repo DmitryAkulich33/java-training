@@ -35,7 +35,6 @@ public class AdminAddNewOrderCommand implements Command {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         Basket basket;
-
         try {
             basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
             int basketId = basket.getId();

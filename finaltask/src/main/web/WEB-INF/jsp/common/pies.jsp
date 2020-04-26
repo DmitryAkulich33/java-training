@@ -24,7 +24,12 @@
 <jsp:include page="header.jsp"/>
 <jsp:include page="login.jsp"/>
 <jsp:include page="menu.jsp"/>
+
 <div class="container-fluid pt-3">
+    <c:if test="${user.role == 3}">
+        <div class="wrong_message"><c:out value="${ wrong }"/></div>
+        <div class="right_message"><c:out value="${ right }"/></div>
+    </c:if>
     <br>
     <button type="button" class="dropdown_sort btn btn-primary" data-toggle="dropdown">
         Sort by
@@ -109,21 +114,6 @@
                             </tr>
                         </c:otherwise>
                     </c:choose>
-                    <tr>
-                        <c:choose>
-                            <c:when test="${addedPieId == element.id}">
-                                <td colspan="2">
-                                    <div class="wrong_message"><c:out value="${ wrongAmount }"/></div>
-                                    <div class="right_message"><c:out value="${ rightAmount }"/></div>
-                                </td>
-                            </c:when>
-                            <c:otherwise>
-                                <td colspan="2">
-                                    &nbsp;
-                                </td>
-                            </c:otherwise>
-                        </c:choose>
-                    </tr>
                 </table>
             </li>
         </c:forEach>

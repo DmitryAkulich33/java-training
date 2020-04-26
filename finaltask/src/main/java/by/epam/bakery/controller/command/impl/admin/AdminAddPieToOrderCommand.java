@@ -17,8 +17,8 @@ public class AdminAddPieToOrderCommand implements Command {
     private static final String PIE_PRICE = "piePrice";
     private static final String USER_FOR_ORDER = "userForOrder";
     private static final String PIE_AMOUNT = "pieAmount";
-    private static final String RIGHT_AMOUNT = "rightAmount";
-    private static final String WRONG_AMOUNT = "wrongAmount";
+    private static final String RIGHT = "right";
+    private static final String WRONG = "wrong";
     private static final String WRONG_AMOUNT_MESSAGE = "The number of pies is wrong";
     private static final String RIGHT_AMOUNT_MESSAGE = "Product added to basket";
 
@@ -39,14 +39,13 @@ public class AdminAddPieToOrderCommand implements Command {
             double cost = pieAmount * piePrice;
             double total = basket.getTotal();
             serviceFactory.getBasketService().changeTotal((total + cost), basketId);
+            session.setAttribute(RIGHT, RIGHT_AMOUNT_MESSAGE);
         } catch (ValidatorException ex){
-            request.setAttribute(WRONG_AMOUNT, WRONG_AMOUNT_MESSAGE);
-            return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
+            session.setAttribute(WRONG, WRONG_AMOUNT_MESSAGE);
         }
         catch (ServiceException e) {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
-        request.setAttribute(RIGHT_AMOUNT, RIGHT_AMOUNT_MESSAGE);
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_add_new_order");
     }
 }
