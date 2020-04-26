@@ -25,6 +25,8 @@
     <br>
     <h2>Users:</h2>
     <br>
+    <div class="wrong_message"><c:out value="${ wrong }"/></div>
+    <div class="right_message"><c:out value="${ right }"/></div>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -68,7 +70,8 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New note</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeNote">
+                                            <input type="text" class="form-control" name="changeNote" placeholder="max 250 symbols"
+                                                   pattern="(^.{0,250}$)" required>
                                         </div>
                                         <div class="modal-footer">
                                             <input type="hidden" name="changeId" value="${ element.id }"/>
