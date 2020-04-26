@@ -53,20 +53,34 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void changeProductionDate(LocalDateTime newDate, int orderId) throws ServiceException {
+    public void changeProductionDate(String newDate, int orderId) throws ServiceException, ValidatorException {
+        if(!orderDataValidator.isDateValid(newDate)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
+        LocalDateTime newLocalDateTime = LocalDateTime.parse(newDate);
+        if(!orderDataValidator.isDateAfter(newLocalDateTime)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
-            dao.changeProductionDate(newDate, orderId);
+            dao.changeProductionDate(newLocalDateTime, orderId);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
 
     @Override
-    public void changeDeliveryDate(LocalDateTime newDate, int orderId) throws ServiceException {
+    public void changeDeliveryDate(String newDate, int orderId) throws ServiceException, ValidatorException {
+        if(!orderDataValidator.isDateValid(newDate)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
+        LocalDateTime newLocalDateTime = LocalDateTime.parse(newDate);
+        if(!orderDataValidator.isDateAfter(newLocalDateTime)){
+            throw new ValidatorException("The entered data is not correct!");
+        }
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
-            dao.changeDeliveryDate(newDate, orderId);
+            dao.changeDeliveryDate(newLocalDateTime, orderId);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

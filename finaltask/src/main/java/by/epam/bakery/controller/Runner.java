@@ -61,8 +61,7 @@ public class Runner {
 //        for(OrderProduct orderProduct : lists) {
 //            System.out.println(orderProduct);
 //        }
-//        serviceFactory.getOrderService().changeProductionDate(LocalDateTime.parse("2020-04-02T23:55:00"), 3);
-//        serviceFactory.getOrderService().changeStatus("not ready", 3);
+
 //        OrderProduct orderProduct = serviceFactory.getOrderProductService().findOrderProductById(32);
 //        System.out.println(orderProduct.getOrder().getTotal());
 //        List<User> users = serviceFactory.getUserService().findLimitClients(0, 3);
@@ -79,6 +78,14 @@ public class Runner {
 //            serviceFactory.getPieService().addPie("Derevenski", "weight", "23.15", "dadadadadaddadadda", "dadada");
 //        } catch (ValidatorException e) {
 //            System.out.println("validator");
+//        }
+//        LocalDateTime localDateTime = LocalDateTime.parse("2021-04-02T23:55:00");
+//        LocalDateTime now = LocalDateTime.now();
+//        System.out.println(localDateTime.isAfter(now));
+//        try {
+//            serviceFactory.getOrderService().changeProductionDate("2020-05-02T23:55", 3);
+//        } catch (ValidatorException e) {
+//            System.out.println(e.getMessage());
 //        }
     }
 }
