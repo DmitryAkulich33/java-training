@@ -14,19 +14,15 @@ import javax.servlet.http.HttpSession;
 public class ChangeAddressCommand implements Command {
     private static final String USER = "user";
     private static final String NEW_ADDRESS = "newAddress";
-    private static final String RIGHT_ADDRESS = "rightAddress";
-    private static final String WRONG_ADDRESS = "wrongAddress";
+    private static final String RIGHT = "right";
+    private static final String WRONG = "wrong";
     private static final String WRONG_ADDRESS_MESSAGE = "The new address is wrong";
     private static final String RIGHT_ADDRESS_MESSAGE = "The address changed";
     private static final String PAGE = "page";
-    private static final String COUNT = "count";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         String page = request.getParameter(PAGE);
-        String count = request.getParameter(COUNT);
-        request.setAttribute(PAGE, page);
-        request.setAttribute(COUNT, count);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String newAddress = request.getParameter(NEW_ADDRESS);
         HttpSession session = request.getSession();
@@ -34,15 +30,14 @@ public class ChangeAddressCommand implements Command {
         int userId = user.getId();
         try {
             serviceFactory.getUserService().changeAddress(newAddress, userId);
+            user.setAddress(newAddress);
+            session.setAttribute(USER, user);
+            session.setAttribute(RIGHT, RIGHT_ADDRESS_MESSAGE);
         } catch (ValidatorException ex){
-            request.setAttribute(WRONG_ADDRESS, WRONG_ADDRESS_MESSAGE);
-            return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
+            session.setAttribute(WRONG, WRONG_ADDRESS_MESSAGE);
         } catch (ServiceException e) {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
-        user.setAddress(newAddress);
-        session.setAttribute(USER, user);
-        request.setAttribute(RIGHT_ADDRESS, RIGHT_ADDRESS_MESSAGE);
-        return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account&page=" + page);
     }
 }

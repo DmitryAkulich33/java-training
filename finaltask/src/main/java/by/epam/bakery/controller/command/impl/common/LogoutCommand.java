@@ -13,13 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogoutCommand implements Command {
-//    private static final String USER = "user";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         session.invalidate();
-//        session.removeAttribute(USER);
         return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
     }
 }

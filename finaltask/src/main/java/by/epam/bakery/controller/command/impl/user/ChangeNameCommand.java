@@ -14,19 +14,15 @@ import javax.servlet.http.HttpSession;
 public class ChangeNameCommand implements Command {
     private static final String USER = "user";
     private static final String NEW_NAME = "newName";
-    private static final String RIGHT_NAME = "rightName";
-    private static final String WRONG_NAME = "wrongName";
+    private static final String RIGHT = "right";
+    private static final String WRONG = "wrong";
     private static final String WRONG_NAME_MESSAGE = "The new name is wrong";
     private static final String RIGHT_NAME_MESSAGE = "The name changed";
     private static final String PAGE = "page";
-    private static final String COUNT = "count";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         String page = request.getParameter(PAGE);
-        String count = request.getParameter(COUNT);
-        request.setAttribute(PAGE, page);
-        request.setAttribute(COUNT, count);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String newName = request.getParameter(NEW_NAME);
         HttpSession session = request.getSession();
@@ -34,41 +30,14 @@ public class ChangeNameCommand implements Command {
         int userId = user.getId();
         try {
             serviceFactory.getUserService().changeName(newName, userId);
+            user.setName(newName);
+            session.setAttribute(USER, user);
+            session.setAttribute(RIGHT, RIGHT_NAME_MESSAGE);
         } catch (ValidatorException ex){
-            request.setAttribute(WRONG_NAME, WRONG_NAME_MESSAGE);
-            return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
-        }
-        catch (ServiceException e) {
+            session.setAttribute(WRONG, WRONG_NAME_MESSAGE);
+        } catch (ServiceException e) {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
-        user.setName(newName);
-        session.setAttribute(USER, user);
-        request.setAttribute(RIGHT_NAME, RIGHT_NAME_MESSAGE);
-        return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account&page=" + page);
     }
-//    @Override
-//    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-//        String page = request.getParameter(PAGE);
-//        String count = request.getParameter(COUNT);
-//        request.setAttribute(PAGE, page);
-//        request.setAttribute(COUNT, count);
-//        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-//        String newName = request.getParameter(NEW_NAME);
-//        HttpSession session = request.getSession();
-//        User user = (User) session.getAttribute(USER);
-//        int userId = user.getId();
-//        try {
-//            serviceFactory.getUserService().changeName(newName, userId);
-//        } catch (ValidatorException ex){
-//            request.setAttribute(WRONG_NAME, WRONG_NAME_MESSAGE);
-//            return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
-//        }
-//        catch (ServiceException e) {
-//            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-//        }
-//        user.setName(newName);
-//        session.setAttribute(USER, user);
-//        request.setAttribute(RIGHT_NAME, RIGHT_NAME_MESSAGE);
-//        return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
-//    }
 }

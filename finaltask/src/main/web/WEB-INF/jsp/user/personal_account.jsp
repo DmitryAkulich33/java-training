@@ -33,6 +33,9 @@
     <br>
     <h2>Personal Information:</h2>
     <br>
+    <div class="wrong_message"><c:out value="${ wrong }"/></div>
+    <div class="right_message"><c:out value="${ right }"/></div>
+    <br>
     <table class="table table-striped">
         <tbody>
         <tr>
@@ -62,7 +65,6 @@
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_surname">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="hidden" name="count" value="${ count }">
                                         <input type="submit" value="Change" class="btn btn-secondary">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
                                         </button>
@@ -72,10 +74,6 @@
                         </div>
                     </div>
                 </div>
-            </td>
-            <td>
-                <div class="wrong_message"><c:out value="${ wrongSurname }"/></div>
-                <div class="right_message"><c:out value="${ rightSurname }"/></div>
             </td>
         </tr>
         <tr>
@@ -104,7 +102,6 @@
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_name">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="hidden" name="count" value="${ count }">
                                         <input type="submit" value="Change" class="btn btn-secondary">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
                                         </button>
@@ -114,10 +111,6 @@
                         </div>
                     </div>
                 </div>
-            </td>
-            <td>
-                <div class="wrong_message"><c:out value="${ wrongName }"/></div>
-                <div class="right_message"><c:out value="${ rightName }"/></div>
             </td>
         </tr>
         <tr>
@@ -146,7 +139,6 @@
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_patronymic">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="hidden" name="count" value="${ count }">
                                         <input type="submit" value="Change" class="btn btn-secondary">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
                                         </button>
@@ -156,10 +148,6 @@
                         </div>
                     </div>
                 </div>
-            </td>
-            <td>
-                <div class="wrong_message"><c:out value="${ wrongPatronymic }"/></div>
-                <div class="right_message"><c:out value="${ rightPatronymic }"/></div>
             </td>
         </tr>
         <tr>
@@ -188,7 +176,6 @@
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_address">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="hidden" name="count" value="${ count }">
                                         <input type="submit" value="Change" class="btn btn-secondary">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
                                         </button>
@@ -198,10 +185,6 @@
                         </div>
                     </div>
                 </div>
-            </td>
-            <td>
-                <div class="wrong_message"><c:out value="${ wrongAddress }"/></div>
-                <div class="right_message"><c:out value="${ rightAddress }"/></div>
             </td>
         </tr>
         <tr>
@@ -230,7 +213,6 @@
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_phone">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="hidden" name="count" value="${ count }">
                                         <input type="submit" value="Change" class="btn btn-secondary">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
                                         </button>
@@ -240,10 +222,6 @@
                         </div>
                     </div>
                 </div>
-            </td>
-            <td>
-                <div class="wrong_message"><c:out value="${ wrongPhone }"/></div>
-                <div class="right_message"><c:out value="${ rightPhone }"/></div>
             </td>
         </tr>
         </tbody>

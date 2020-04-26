@@ -19,6 +19,7 @@ public class PersonalAccountCommand implements Command {
     private static final String COUNT = "count";
     private static final int AMOUNT = 5;
 
+
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -29,7 +30,7 @@ public class PersonalAccountCommand implements Command {
         List<OrderProduct> orderProducts;
         try {
             orderProducts = serviceFactory.getOrderProductService().findLimitOrderProductByUserId(userId, (page - 1) * AMOUNT, AMOUNT);
-            session.setAttribute(USER_ORDER_PRODUCTS, orderProducts);
+            request.setAttribute(USER_ORDER_PRODUCTS, orderProducts);
         } catch (ServiceException e) {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }

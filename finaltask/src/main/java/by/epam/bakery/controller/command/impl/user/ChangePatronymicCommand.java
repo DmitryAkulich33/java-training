@@ -14,19 +14,15 @@ import javax.servlet.http.HttpSession;
 public class ChangePatronymicCommand implements Command {
     private static final String USER = "user";
     private static final String NEW_PATRONYMIC = "newPatronymic";
-    private static final String RIGHT_PATRONYMIC = "rightPatronymic";
-    private static final String WRONG_PATRONYMIC = "wrongPatronymic";
+    private static final String RIGHT = "right";
+    private static final String WRONG = "wrong";
     private static final String WRONG_PATRONYMIC_MESSAGE = "The new patronymic is wrong";
     private static final String RIGHT_PATRONYMIC_MESSAGE = "The patronymic changed";
     private static final String PAGE = "page";
-    private static final String COUNT = "count";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         String page = request.getParameter(PAGE);
-        String count = request.getParameter(COUNT);
-        request.setAttribute(PAGE, page);
-        request.setAttribute(COUNT, count);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String newPatronymic = request.getParameter(NEW_PATRONYMIC);
         HttpSession session = request.getSession();
@@ -34,16 +30,15 @@ public class ChangePatronymicCommand implements Command {
         int userId = user.getId();
         try {
             serviceFactory.getUserService().changePatronymic(newPatronymic, userId);
+            user.setPatronymic(newPatronymic);
+            session.setAttribute(USER, user);
+            session.setAttribute(RIGHT, RIGHT_PATRONYMIC_MESSAGE);
         } catch (ValidatorException ex){
-            request.setAttribute(WRONG_PATRONYMIC, WRONG_PATRONYMIC_MESSAGE);
-            return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
+            session.setAttribute(WRONG, WRONG_PATRONYMIC_MESSAGE);
         } catch (ServiceException e) {
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
-        user.setPatronymic(newPatronymic);
-        session.setAttribute(USER, user);
-        request.setAttribute(RIGHT_PATRONYMIC, RIGHT_PATRONYMIC_MESSAGE);
-        return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=personal_account&page=" + page);
     }
 }
 
