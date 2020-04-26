@@ -23,8 +23,10 @@ public class RegistrationUserCommand implements Command {
     private static final String SAVE_PHONE = "savePhone";
     private static final String SAVE_NOTE = "saveNote";
     private static final String WRONG = "wrong";
+    private static final String RIGHT = "right";
     private static final String WRONG_LOGIN = " - this login is not free!";
     private static final String WRONG_DATA = "The entered data is not correct!";
+    private static final String RIGHT_MESSAGE = "Registration completed successfully!";
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
@@ -41,6 +43,7 @@ public class RegistrationUserCommand implements Command {
         try {
             serviceFactory.getUserService().addUser(login, password, USER_ROLE, surname, name, patronymic, address, phone, note);
             serviceFactory.getBasketService().saveBasket(login, TOTAL);
+            session.setAttribute(RIGHT, RIGHT_MESSAGE);
         } catch (ValidatorException ex){
             session.setAttribute(WRONG, WRONG_DATA);
             return CommandResult.forward("/WEB-INF/jsp/user/registration.jsp");

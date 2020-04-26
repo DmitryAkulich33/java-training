@@ -2,7 +2,6 @@ package by.epam.bakery.controller.command.impl.common;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.Basket;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
@@ -22,7 +21,7 @@ public class LoginCommand implements Command {
     private static final String USER = "user";
     private static final String WRONG_LOGIN = "Incorrect login or password!";
     private static final String WRONG_DATA = "The entered data is not correct!";
-    private static final String MESSAGE = "message";
+    private static final String WRONG = "wrong";
     private static final String NO_RECORDS = "No records";
 
 
@@ -37,15 +36,14 @@ public class LoginCommand implements Command {
             user = serviceFactory.getUserService().login(login, password);
             session.setAttribute(USER, user);
         } catch (ValidatorException ex){
-            request.setAttribute(MESSAGE, WRONG_DATA);
-            return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
+            session.setAttribute(WRONG, WRONG_DATA);
         } catch (ServiceException e) {
             if(e.getCause().getMessage().equals(NO_RECORDS)){
-                request.setAttribute(MESSAGE, WRONG_LOGIN);
+                session.setAttribute(WRONG, WRONG_LOGIN);
             } else {
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
-        return CommandResult.forward("/WEB-INF/jsp/common/pies.jsp");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=show_main_page");
     }
 }

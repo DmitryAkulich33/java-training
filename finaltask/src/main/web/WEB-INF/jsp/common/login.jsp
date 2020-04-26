@@ -69,9 +69,8 @@
                     <input type="hidden" name="command" value="login">
                     <input type="submit" value="Submit" class="button_enter">
                     <a class= "link_acc nav_link pl-1" href="${request.contextPath}controller?command=registration">Registration!</a>
-                    <div class="wrong_login">
-                        <p><c:out value="${ message }"/></p>
-                    </div>
+                    <div class="wrong_message"><c:out value="${ wrong }"/></div>
+                    <div class="right_message"><c:out value="${ right }"/></div>
                 </form>
             </c:otherwise>
         </c:choose>

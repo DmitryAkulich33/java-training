@@ -10,7 +10,7 @@ public class PieDataValidator {
     private static final String REGEX_PICTURE = "^.{0,255}$";
     private static final String REGEX_DESCRIPTION = "^.{0,1900}$";
     private static final String REGEX_NAME = "^[A-Z][a-z]{3,20}$";
-    private static final String REGEX_PRICE = "^(([3-9]\\.[0-9][0-9])|([1-9][0-9]\\.[0-9][0-9])|(1[0-9][0-9]\\.[0-9][0-9]))$";
+    private static final String REGEX_PRICE = "^(([3-9]\\.00)|([1-9][0-9]\\.00)|(1[0-9][0-9]\\.00))$";
 
     private Pattern pattern;
     private Matcher matcher;

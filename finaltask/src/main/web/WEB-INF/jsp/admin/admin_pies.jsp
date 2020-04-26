@@ -64,7 +64,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Price (RUB)</span>
                                     </div>
-                                    <input type="text" class="form-control" name="savePrice" placeholder="3.00 - 199.00" pattern="^(([3-9]\.[0-9][0-9])|([1-9][0-9]\.[0-9][0-9])|(1[0-9][0-9]\.[0-9][0-9]))$" required>
+                                    <input type="text" class="form-control" name="savePrice" placeholder="3.00 - 199.00" pattern="^(([3-9]\.00)|([1-9][0-9]\.00)|(1[0-9][0-9]\.00))$" required>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -170,7 +170,7 @@
                 <td><img class="image_pie_basket" src="<c:out value="${ element.picture }"/>"></td>
                 <td><c:out value="${ element.name }"/></td>
                 <td><c:out value="${ element.weight }"/></td>
-                <td><c:out value="${ element.price }"/></td>
+                <td><c:out value="${ element.price }"/>0</td>
                 <td><c:out value="${ element.description }"/></td>
                 <td>
                     <button type="button" class="change-info btn btn-primary" data-toggle="modal"
@@ -232,7 +232,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">New price (RUB)</span>
                                             </div>
-                                            <input type="text" class="form-control" name="changePrice" placeholder="3.00 - 199.00" pattern="^(([3-9]\.[0-9][0-9])|([1-9][0-9]\.[0-9][0-9])|(1[0-9][0-9]\.[0-9][0-9]))$">
+                                            <input type="text" class="form-control" name="changePrice" placeholder="3.00 - 199.00" pattern="^(([3-9]\.00)|([1-9][0-9]\.00)|(1[0-9][0-9]\.00))$">
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
