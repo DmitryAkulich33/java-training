@@ -25,9 +25,8 @@
 <div class="container-fluid mt-3">
     <p>Your feedback:</p>
     <br>
-    <div class="wrong_message">
-        <p><c:out value="${ message }"/></p>
-    </div>
+    <div class="wrong_message"><c:out value="${ wrong }"/></div>
+    <div class="right_message"><c:out value="${ right }"/></div>
     <c:choose>
         <c:when test="${user.role == 3}">
             <form action="controller" method="POST">

@@ -136,7 +136,7 @@
                 <td><c:out value="${ element.description }"/></td>
                 <form action="controller" method="POST">
                     <td class="product_amount">
-                        <input type="text" name="pieAmount"
+                        <input type="number" min="1" max="99" value="1" name="pieAmount"
                                class="input_center">
                     </td>
                     <td>

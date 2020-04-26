@@ -18,6 +18,7 @@ public class ShowFeedbackCommand implements Command {
     private static final String COUNT = "count";
     private static final int AMOUNT = 10;
 
+
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
