@@ -23,4 +23,5 @@ public interface UserService {
     int findUserPageAmount (int pageAmount) throws ServiceException;
     List<User> findLimitUser(int start, int amount) throws ServiceException;
     int findClientPageAmount (int pageAmount) throws ServiceException;
+    int findClientAmount() throws ServiceException;
 }

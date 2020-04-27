@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="st" uri="/WEB-INF/tld/StatisticTag.tld" %>
 <!doctype html>
 <html>
 <head>
@@ -23,6 +24,13 @@
 <jsp:include page="admin_menu.jsp"/>
 <div class="container-fluid pt-3">
     <div class="wrong_message"><c:out value="${ wrong }"/></div>
+    <st:statistic/>
+<%--    <br>--%>
+<%--    <p>Number of registered users: <strong>15!</strong></p>--%>
+<%--    <br>--%>
+<%--    <p>Number of delivered orders: <strong>108!</strong></p>--%>
+<%--    <br>--%>
+<%--    <p>The total amount of orders is: <strong>25 670.00 RUB!</strong></p>--%>
     <div class="admin_padding footer">
         <jsp:include page="../common/footer.jsp"/>
     </div>

@@ -213,7 +213,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private int findClientAmount() throws ServiceException {
+    @Override
+    public int findClientAmount() throws ServiceException {
         try (DaoHelper helper = daoHelperFactory.create()) {
             UserDao dao = helper.createUserDao();
             return dao.findClientsAmount();

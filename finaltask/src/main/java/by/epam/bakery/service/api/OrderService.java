@@ -18,4 +18,6 @@ public interface OrderService {
     void changeTotal(double newTotal, int orderId) throws ServiceException;
     int findOrderPageAmount (int pageAmount) throws ServiceException;
     int findOrderByUserIdPageAmount (int pageAmount, int userId) throws ServiceException;
+    int findOrdersAmount() throws ServiceException;
+    int findOrdersCost() throws ServiceException;
 }

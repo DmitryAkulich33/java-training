@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<%@ taglib prefix="rdct" uri="/WEB-INF/tld/RedirectTag.tld" %>--%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>--%>
 <!doctype html>
 <html>
 <head>

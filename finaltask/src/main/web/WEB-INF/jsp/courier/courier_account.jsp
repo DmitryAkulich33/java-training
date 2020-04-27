@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="st" uri="/WEB-INF/tld/StatisticTag.tld" %>
 <!doctype html>
 <html>
 <head>
@@ -22,6 +23,8 @@
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="courier_menu.jsp"/>
 <div class="container-fluid pt-3">
+    <br>
+    <st:statistic/>
     <div class="admin_padding footer">
         <jsp:include page="../common/footer.jsp"/>
     </div>

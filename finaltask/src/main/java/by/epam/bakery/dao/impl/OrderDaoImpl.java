@@ -23,6 +23,10 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     private static final String CHANGE_TOTAL = "UPDATE `order` SET total = ? WHERE id_order = ?";
     private static final String FIND_ORDERS_COUNT_BY_USER_ID = "SELECT COUNT(*) AS amount FROM `order` WHERE user_id = ?";
     private static final String AMOUNT_ORDERS_BY_USER_ID = "amount";
+    private static final String FIND_ORDERS_AMOUNT = "SELECT COUNT(*) FROM `order`";
+    private static final String FIND_ORDERS_COST = "SELECT SUM(total) FROM `order`";
+    private static final String COUNT = "COUNT(*)";
+    private static final String SUM = "SUM(total)";
 
     public OrderDaoImpl(Connection connection) {
         super(connection);
@@ -71,5 +75,15 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     @Override
     public int findAmountOrdersByUserId (int userId) throws DaoException{
         return executeQuery(FIND_ORDERS_COUNT_BY_USER_ID, AMOUNT_ORDERS_BY_USER_ID, userId);
+    }
+
+    @Override
+    public int findOrdersAmount () throws DaoException{
+        return executeQuery(FIND_ORDERS_AMOUNT, COUNT);
+    }
+
+    @Override
+    public int findOrdersCost () throws DaoException{
+        return executeQuery(FIND_ORDERS_COST, SUM);
     }
 }
