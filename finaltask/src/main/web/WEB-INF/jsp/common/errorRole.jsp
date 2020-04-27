@@ -23,8 +23,7 @@
 <div class="container mt-3">
     <br>
     <p>Sorry!</p>
-    <p>Technical problems.</p>
-    <p>Please try again later.</p>
+    <p>You don't have rights for this operation!</p>
     <br>
     <ul class="nav">
         <li class="nav-item">

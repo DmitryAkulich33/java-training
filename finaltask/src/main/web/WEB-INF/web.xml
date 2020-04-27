@@ -32,6 +32,14 @@
         <session-timeout>30</session-timeout>
     </session-config>
     <filter>
+        <filter-name>RoleFilter</filter-name>
+        <filter-class>by.epam.bakery.controller.filter.RoleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>RoleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
         <filter-name>EncodingFilter</filter-name>
         <filter-class>by.epam.bakery.controller.filter.EncodingFilter</filter-class>
         <init-param>
@@ -53,4 +61,16 @@
         <filter-name>MessageFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/common/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/jsp/common/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/common/error.jsp</location>
+    </error-page>
 </web-app>
