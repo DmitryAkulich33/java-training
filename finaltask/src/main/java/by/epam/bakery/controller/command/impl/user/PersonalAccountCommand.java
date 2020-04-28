@@ -6,6 +6,8 @@ import by.epam.bakery.domain.OrderProduct;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +20,12 @@ public class PersonalAccountCommand implements Command {
     private static final String PAGE = "page";
     private static final String COUNT = "count";
     private static final int AMOUNT = 5;
-
+    private static Logger log = LogManager.getLogger(PersonalAccountCommand.class.getName());
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        log.info("User is logged in to the courier profile.");
+        log.debug("Loading orders started.");
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(USER);
@@ -32,15 +36,18 @@ public class PersonalAccountCommand implements Command {
             orderProducts = serviceFactory.getOrderProductService().findLimitOrderProductByUserId(userId, (page - 1) * AMOUNT, AMOUNT);
             request.setAttribute(USER_ORDER_PRODUCTS, orderProducts);
         } catch (ServiceException e) {
+            log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         try {
             int count = serviceFactory.getOrderService().findOrderByUserIdPageAmount(AMOUNT, userId);
             request.setAttribute(COUNT, count);
         } catch (ServiceException e) {
+            log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         request.setAttribute(PAGE, page);
+        log.debug("Loading orders finished.");
         return CommandResult.forward("/WEB-INF/jsp/user/personal_account.jsp");
     }
 }

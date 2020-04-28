@@ -7,6 +7,8 @@ import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,9 +24,11 @@ public class AddFeedbackCommand implements Command {
     private static final String RIGHT = "right";
     private static final String WRONG_FEEDBACK = "The entered data is not correct!";
     private static final String RIGHT_FEEDBACK = "Your feedback has been successfully added.";
+    private static Logger log = LogManager.getLogger(AddFeedbackCommand.class.getName());
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        log.debug("Adding feedback started.");
         String value = request.getParameter(REVIEW);
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         HttpSession session = request.getSession();
@@ -32,11 +36,14 @@ public class AddFeedbackCommand implements Command {
         try {
             serviceFactory.getFeedBackService().save(user.getId(), LocalDateTime.now(), value);
             session.setAttribute(RIGHT, RIGHT_FEEDBACK);
-        }  catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
+            log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_FEEDBACK);
         } catch (ServiceException e) {
+            log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
+        log.debug("Adding feedback finished.");
         return CommandResult.redirect(request.getContextPath() + "controller?command=show_feedback&page=1");
     }
 }

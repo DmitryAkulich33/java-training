@@ -1,19 +1,20 @@
 package by.epam.bakery.controller.tag;
 
-import by.epam.bakery.controller.tag.exception.TagException;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
 public class StatisticTag extends TagSupport {
+    private static Logger log = LogManager.getLogger(StatisticTag.class.getName());
 
     @Override
     public int doStartTag() {
-        HttpServletRequest request = (HttpServletRequest) pageContext.getRequest();
+        log.debug("Loading statistic data started");
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String amountUser;
         String amountOrders;
@@ -39,9 +40,11 @@ public class StatisticTag extends TagSupport {
         JspWriter out = pageContext.getOut();
         try {
             out.write(amountUser + amountOrders + ordersCost);
+            log.info("Statistic data recorded successfully");
         } catch (IOException e) {
-            throw new TagException(e);
+            log.error(this.getClass() + ":" + e.getMessage());
         }
+        log.debug("Loading statistic data finished");
         return SKIP_BODY;
     }
 }

@@ -2,6 +2,8 @@ package by.epam.bakery.dao.connection;
 
 
 import by.epam.bakery.dao.exception.ConnectionException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.util.ArrayDeque;
@@ -12,6 +14,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ConnectionPool {
+    private static Logger log = LogManager.getLogger(ConnectionPool.class.getName());
     private static final String THREAD_ERROR= "Thread operation error, cause ";
     private static final int POOL_SIZE = 10;
     private Semaphore semaphore = new Semaphore(POOL_SIZE);
@@ -58,6 +61,7 @@ public class ConnectionPool {
             connection = availableConnections.poll();
             connectionInUse.add(connection);
         } catch (InterruptedException e) {
+            log.error("Getting connection error");
             throw new ConnectionException(THREAD_ERROR, e);
         } finally {
             connectionLock.unlock();

@@ -4,6 +4,8 @@ import by.epam.bakery.dao.api.Dao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.dao.mapper.RowMapper;
 import by.epam.bakery.domain.Entity;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

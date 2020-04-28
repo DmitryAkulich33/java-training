@@ -14,7 +14,6 @@ import java.io.IOException;
 @MultipartConfig
 public class Controller extends HttpServlet {
     private static final String COMMAND = "command";
-    private static final String ERROR_PARAMETER = "&error=";
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,11 +44,5 @@ public class Controller extends HttpServlet {
             }
         }
     }
-
-//    private String createRedirectExceprion(Throwable exception){
-//        String error = exception.getMessage();
-//        String url = RedirectUrlCreator.create(CommandName.SHOW_ERROR_PAGE) + ERROR_PARAMETER + error;
-//        return url;
-//    }
 }
 

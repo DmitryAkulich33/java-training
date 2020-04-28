@@ -5,6 +5,8 @@ import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.domain.Feedback;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +18,11 @@ public class AdminFeedbackIncreasePageCommand implements Command {
     private static final String PAGE = "page";
     private static final String COUNT = "count";
     private static final int AMOUNT = 10;
+    private static Logger log = LogManager.getLogger(AdminFeedbackIncreasePageCommand.class.getName());
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        log.debug("Page number increase for feedbacks started.");
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         int currentPage = Integer.parseInt(request.getParameter(PAGE));
         int increasePage = currentPage + 1;
@@ -29,6 +33,7 @@ public class AdminFeedbackIncreasePageCommand implements Command {
                 feedbacks = serviceFactory.getFeedBackService().findLimitFeedback((increasePage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(FEEDBACK, feedbacks);
             } catch (ServiceException e) {
+                log.error(this.getClass() + ":" + e.getMessage());
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, increasePage);
@@ -37,11 +42,13 @@ public class AdminFeedbackIncreasePageCommand implements Command {
                 feedbacks = serviceFactory.getFeedBackService().findLimitFeedback((currentPage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(FEEDBACK, feedbacks);
             } catch (ServiceException e) {
+                log.error(this.getClass() + ":" + e.getMessage());
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
             request.setAttribute(PAGE, currentPage);
         }
         request.setAttribute(COUNT, count);
+        log.debug("Page number increase for feedbacks started.");
         return CommandResult.forward("/WEB-INF/jsp/admin/admin_feedback.jsp");
     }
 }

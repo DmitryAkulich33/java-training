@@ -4,6 +4,8 @@ import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandName;
 import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.domain.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ public class RoleFilter implements Filter {
     private static final Map<CommandName, List<Integer>> commandsUsers = new HashMap<>();
     private static final String COMMAND = "command";
     private static final String USER = "user";
+    private static Logger log = LogManager.getLogger(RoleFilter.class.getName());
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -100,6 +103,7 @@ public class RoleFilter implements Filter {
             }
             List<Integer> roles = commandsUsers.get(commandName);
             if (roles != null && !roles.contains(role)) {
+                log.info("Wrong role for command");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/common/errorRole.jsp");
                 dispatcher.forward(request, servletResponse);
                 return;

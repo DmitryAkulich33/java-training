@@ -1,6 +1,7 @@
 package by.epam.bakery.controller.tag;
 
-import by.epam.bakery.controller.tag.exception.TagException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import java.io.IOException;
 
 public class RedirectTag extends TagSupport {
     private String page;
+    private static Logger log = LogManager.getLogger(StatisticTag.class.getName());
 
     public void setPage(String page) {
         this.page = page;
@@ -24,7 +26,7 @@ public class RedirectTag extends TagSupport {
         try {
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
-            throw new TagException(e);
+            log.error(this.getClass() + ":" + e.getMessage());
         }
         return SKIP_BODY;
     }

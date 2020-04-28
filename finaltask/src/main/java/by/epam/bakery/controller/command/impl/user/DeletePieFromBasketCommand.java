@@ -7,6 +7,8 @@ import by.epam.bakery.domain.Pie;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,9 +19,11 @@ public class DeletePieFromBasketCommand implements Command {
     private static final String BASKET_PRODUCT_COST = "productCost";
     private static final String BASKET_ID = "basketId";
     private static final String BASKET_TOTAL = "basketTotal";
+    private static Logger log = LogManager.getLogger(DeletePieFromBasketCommand.class.getName());
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        log.debug("Deleting pie from basket started.");
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         int basketProductId = Integer.parseInt(request.getParameter(BASKET_PRODUCT_ID));
         int basketId = Integer.parseInt(request.getParameter(BASKET_ID));
@@ -29,13 +33,16 @@ public class DeletePieFromBasketCommand implements Command {
         try {
             serviceFactory.getBasketProductService().deleteBasketProductById(basketProductId);
         } catch (ServiceException e) {
+            log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
         try {
             serviceFactory.getBasketService().changeTotal(basketTotal - productCost, basketId);
         } catch (ServiceException e) {
+            log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
+        log.debug("Deleting pie from basket finished.");
         return CommandResult.redirect(request.getContextPath() + "controller?command=show_basket");
     }
 }

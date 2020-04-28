@@ -7,6 +7,8 @@ import by.epam.bakery.service.exception.LoginIsNotFreeException;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,9 +30,11 @@ public class SaveUserCommand implements Command {
     private static final String WRONG_LOGIN = " - this login is not free!";
     private static final String WRONG_DATA = "The entered data is not correct!";
     private static final String RIGHT_MESSAGE = "User was added successfully!";
+    private static Logger log = LogManager.getLogger(SaveUserCommand.class.getName());
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+        log.debug("Saving user started.");
         HttpSession session = request.getSession();
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String login = request.getParameter(SAVE_LOGIN);
@@ -48,13 +52,17 @@ public class SaveUserCommand implements Command {
                 serviceFactory.getBasketService().saveBasket(login, 0.00);
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
             } catch (ValidatorException ex){
+                log.error(this.getClass() + ":" + ex.getMessage());
                 session.setAttribute(WRONG, WRONG_DATA);
             } catch (LoginIsNotFreeException exc){
+                log.error(this.getClass() + ":" + exc.getMessage());
                 session.setAttribute(WRONG, login + WRONG_LOGIN);
             }
         } catch (ServiceException e) {
+            log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }
+        log.debug("Saving user finished.");
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_users&page=1");
     }
 }
