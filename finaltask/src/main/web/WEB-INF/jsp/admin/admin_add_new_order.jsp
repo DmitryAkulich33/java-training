@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -16,33 +21,33 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Add new order</title>
+    <title><fmt:message key="add.new.order"/></title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div class="container">
-    <a class="link_acc nav-link" href="${request.contextPath}controller?command=admin_account">Return</a>
+    <a class="link_acc nav-link" href="${request.contextPath}controller?command=admin_account"><fmt:message key="return"/></a>
     <table class="table table-striped">
         <tbody>
         <tr>
-            <td>User id is <c:out value="${ userForOrder.id }"/>, <c:out value="${ userForOrder.surname }"/> <c:out
+            <td><fmt:message key="user.id.is"/> <c:out value="${ userForOrder.id }"/>, <c:out value="${ userForOrder.surname }"/> <c:out
                     value="${ userForOrder.name }"/> <c:out value="${ userForOrder.patronymic }"/></td>
         </tr>
         </tbody>
     </table>
     <br>
     <div>
-        New order:
+        <fmt:message key="new.order"/>
     </div>
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Pie id</th>
-            <th>Pie name</th>
-            <th>Pie price</th>
-            <th>Amount</th>
-            <th>Cost</th>
-            <th>Action</th>
+            <th><fmt:message key="id"/></th>
+            <th><fmt:message key="name"/></th>
+            <th><fmt:message key="price"/></th>
+            <th><fmt:message key="amount"/></th>
+            <th><fmt:message key="cost"/></th>
+            <th><fmt:message key="action"/></th>
         </tr>
         </thead>
         <c:forEach var="element" items="${basketProducts}" varStatus="status">
@@ -55,13 +60,13 @@
                 <td>
                     <button type="button" class="change-info btn btn-primary" data-toggle="modal"
                             data-target="#myModalAdd${ element.id }">
-                        Delete
+                        <fmt:message key="delete"/>
                     </button>
                     <div class="modal fade" id="myModalAdd${ element.id }">
                         <div class="modal-dialog modal-dialog-centered modal-sm">
                             <div class="modal-content">
                                 <div class="modal-body">
-                                    Do you want to remove the pie from the basket?
+                                    <fmt:message key="delete.pie.from.basket"/>
                                 </div>
                                 <form action="controller" method="POST">
                                     <div class="modal-footer">
@@ -70,8 +75,8 @@
                                         <input type="hidden" name="basketId" value="${ element.basket.id }"/>
                                         <input type="hidden" name="basketTotal" value="${ element.basket.total }"/>
                                         <input type="hidden" name="command" value="admin_delete_pie_from_order">
-                                        <input type="submit" class="btn btn-secondary" value="Delete">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
+                                        <input type="submit" class="btn btn-secondary" value="<fmt:message key="delete"/>">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><fmt:message key="cancel"/>
                                         </button>
                                     </div>
                                 </form>
@@ -89,7 +94,7 @@
             <td>
             </td>
             <td>
-                Total:
+                <fmt:message key="total"/>
             </td>
             <td>
                 <c:out value="${ total }0 BYN"/>
@@ -98,7 +103,7 @@
                 <form action="controller" method="POST">
                     <input type="hidden" name="command" value="admin_product_to_order">
                     <input type="hidden" name="total" value="${ total }">
-                    <input type="submit" class="change-info btn btn-primary" value="TO ORDER">
+                    <input type="submit" class="change-info btn btn-primary" value="<fmt:message key="to.order"/>">
                 </form>
             </td>
         </tr>
@@ -108,7 +113,7 @@
 </div>
 <div class="container-fluid pt-3">
     <div>
-        Our pies:
+        <fmt:message key="our.pies"/>
     </div>
     <br>
     <div class="wrong_message"><c:out value="${ wrong }"/></div>
@@ -116,14 +121,14 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Picture</th>
-            <th>Name</th>
-            <th>Weight</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Action</th>
+            <th><fmt:message key="id"/></th>
+            <th><fmt:message key="picture"/></th>
+            <th><fmt:message key="name"/></th>
+            <th><fmt:message key="weight"/></th>
+            <th><fmt:message key="price"/></th>
+            <th><fmt:message key="description"/></th>
+            <th><fmt:message key="amount"/></th>
+            <th><fmt:message key="action"/></th>
         </tr>
         </thead>
         <c:forEach var="element" items="${pies}" varStatus="status">
@@ -143,7 +148,7 @@
                         <input type="hidden" name="pieId" value="${ element.id }">
                         <input type="hidden" name="piePrice" value="${ element.price }">
                         <input type="hidden" name="command" value="admin_add_pie_to_order">
-                        <input type="submit" class="change-info btn btn-primary" value="Add to basket">
+                        <input type="submit" class="change-info btn btn-primary" value="<fmt:message key="add.to.basket"/>">
                     </td>
                 </form>
             </tr>

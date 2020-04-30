@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -16,14 +21,14 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Admin account</title>
+    <title><fmt:message key="login.admin"/></title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="admin_menu.jsp"/>
 <div class="container-fluid">
     <br>
-    <h2>Orders:</h2>
+    <h2><fmt:message key="orders"/></h2>
     <br>
     <div class="wrong_message"><c:out value="${ wrong }"/></div>
     <div class="right_message"><c:out value="${ right }"/></div>
@@ -31,16 +36,16 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Status</th>
-            <th>id user</th>
-            <th>Surname</th>
-            <th>name</th>
-            <th>patronymic</th>
-            <th>production date</th>
-            <th>delivery date</th>
-            <th>total</th>
-            <th>action</th>
+            <th><fmt:message key="id"/></th>
+            <th><fmt:message key="status"/></th>
+            <th><fmt:message key="user.id"/></th>
+            <th><fmt:message key="surname"/></th>
+            <th><fmt:message key="name"/></th>
+            <th><fmt:message key="patronymic"/></th>
+            <th><fmt:message key="production.date"/></th>
+            <th><fmt:message key="delivery.date"/></th>
+            <th><fmt:message key="table.total"/></th>
+            <th><fmt:message key="action"/></th>
             <th></th>
         </tr>
         </thead>
@@ -77,20 +82,20 @@
                     <th>
                         <button type="button" class="change-info btn btn-primary" data-toggle="modal"
                                 data-target="#myModalDelOrd${ element.order.id }">
-                            Delete
+                            <fmt:message key="delete"/>
                         </button>
                         <div class="modal fade" id="myModalDelOrd${ element.order.id }">
                             <div class="modal-dialog modal-dialog-centered modal-sm">
                                 <div class="modal-content">
                                     <div class="modal-body">
-                                        Do you want to remove the order from the database?
+                                        <fmt:message key="delete.order"/>
                                     </div>
                                     <div class="modal-footer">
                                         <form action="controller" method="POST">
                                             <input type="hidden" name="delId" value="${ element.order.id }"/>
                                             <input type="hidden" name="command" value="delete_order">
-                                            <input type="submit" class="btn btn-secondary" value="Delete">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
+                                            <input type="submit" class="btn btn-secondary" value="<fmt:message key="delete"/>">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><fmt:message key="cancel"/>
                                             </button>
                                         </form>
                                     </div>
@@ -101,46 +106,46 @@
                     <th>
                         <button type="button" class="change-info btn btn-primary" data-toggle="modal"
                                 data-target="#myModalChange${ element.order.id }">
-                            Change
+                            <fmt:message key="change"/>
                         </button>
                         <div class="modal fade" id="myModalChange${ element.order.id }">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title">Change information</h4>
+                                        <h4 class="modal-title"><fmt:message key="change.information"/></h4>
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     </div>
                                     <div class="modal-body">
                                         <form action="controller" method="POST">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text">Production date</span>
+                                                    <span class="input-group-text"><fmt:message key="production.date"/></span>
                                                 </div>
                                                 <input type="datetime-local" class="form-control" name="productionDate">
                                             </div>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text">Delivery date</span>
+                                                    <span class="input-group-text"><fmt:message key="delivery.date"/></span>
                                                 </div>
                                                 <input type="datetime-local" class="form-control" name="deliveryDate">
                                             </div>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text">Status</span>
+                                                    <span class="input-group-text"><fmt:message key="status"/></span>
                                                 </div>
                                                 <select name="changeStatus">
-                                                    <option value="not ready">not ready</option>
-                                                    <option value="ready">ready</option>
-                                                    <option value="delivered">delivered</option>
-                                                    <option value="not delivered">not delivered</option>
+                                                    <option value="not ready"><fmt:message key="not.ready"/></option>
+                                                    <option value="ready"><fmt:message key="ready"/></option>
+                                                    <option value="delivered"><fmt:message key="delivered"/></option>
+                                                    <option value="not delivered"><fmt:message key="not.delivered"/></option>
                                                 </select>
                                             </div>
                                             <div class="modal-footer">
                                                 <input type="hidden" name="changeId" value="${ element.order.id }"/>
                                                 <input type="hidden" name="command" value="change_order">
-                                                <input type="submit" class="btn btn-secondary" value="Change">
+                                                <input type="submit" class="btn btn-secondary" value="<fmt:message key="change"/>">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Cancel
+                                                    <fmt:message key="cancel"/>
                                                 </button>
                                             </div>
                                         </form>
@@ -164,21 +169,21 @@
                         <td>
                             <button type="button" class="change-info btn btn-primary" data-toggle="modal"
                                     data-target="#myModalProdDel${ element.id }">
-                                Delete
+                                <fmt:message key="delete"/>
                             </button>
                             <div class="modal fade" id="myModalProdDel${ element.id }">
                                 <div class="modal-dialog modal-dialog-centered modal-sm">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            Do you want to remove the order_product from the database?
+                                            <fmt:message key="delete.order.product"/>
                                         </div>
                                         <div class="modal-footer">
                                             <form action="controller" method="POST">
                                                 <input type="hidden" name="delId" value="${ element.id }"/>
                                                 <input type="hidden" name="command" value="delete_order_product">
-                                                <input type="submit" class="btn btn-secondary" value="Delete">
+                                                <input type="submit" class="btn btn-secondary" value="<fmt:message key="delete"/>">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Cancel
+                                                    <fmt:message key="cancel"/>
                                                 </button>
                                             </form>
                                         </div>
@@ -203,21 +208,21 @@
                         <td>
                             <button type="button" class="change-info btn btn-primary" data-toggle="modal"
                                     data-target="#myModalProdDel${ element.id }">
-                                Delete
+                                <fmt:message key="delete"/>
                             </button>
                             <div class="modal fade" id="myModalProdDel${ element.id }">
                                 <div class="modal-dialog modal-dialog-centered modal-sm">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            Do you want to remove the order_product from the database?
+                                            <fmt:message key="delete.order.product"/>
                                         </div>
                                         <div class="modal-footer">
                                             <form action="controller" method="POST">
                                                 <input type="hidden" name="delId" value="${ element.id }"/>
                                                 <input type="hidden" name="command" value="delete_order_product">
-                                                <input type="submit" class="btn btn-secondary" value="Delete">
+                                                <input type="submit" class="btn btn-secondary" value="<fmt:message key="delete"/>">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Cancel
+                                                    <fmt:message key="cancel"/>
                                                 </button>
                                             </form>
                                         </div>
@@ -231,14 +236,14 @@
         </c:forEach>
     </table>
     <ul class="pagination justify-content-center" style="margin:20px 0">
-        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_order_product&page=1">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_order_product&page=1"><fmt:message key="first"/></a></li>
         <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_order_product_decrease_page&page=${page}&count=${count}"><<</a></li>
         <li class="pagination_number">
             <span class="pagination_number"><mark>&nbspPage <c:out value="${ page }"/> from <c:out value="${ count }"/>&nbsp</mark></span>
         </li>
         <li class="page-item">
             <a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_order_product_increase_page&page=${page}&count=${count}">>></a></li>
-        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_order_product&page=${count}">The last</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=admin_order_product&page=${count}"><fmt:message key="last"/></a></li>
     </ul>
 </div>
 <div class="container-fluid pt-3">

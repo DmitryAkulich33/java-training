@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="st" uri="/WEB-INF/tld/StatisticTag.tld" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -17,7 +22,7 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Admin account</title>
+    <title><fmt:message key="login.admin"/></title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -25,12 +30,6 @@
 <div class="container-fluid pt-3">
     <div class="wrong_message"><c:out value="${ wrong }"/></div>
     <st:statistic/>
-<%--    <br>--%>
-<%--    <p>Number of registered users: <strong>15!</strong></p>--%>
-<%--    <br>--%>
-<%--    <p>Number of delivered orders: <strong>108!</strong></p>--%>
-<%--    <br>--%>
-<%--    <p>The total amount of orders is: <strong>25 670.00 RUB!</strong></p>--%>
     <div class="admin_padding footer">
         <jsp:include page="../common/footer.jsp"/>
     </div>
