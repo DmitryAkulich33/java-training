@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -16,7 +21,7 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Personal account</title>
+    <title><fmt:message key="about.us"/></title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -26,31 +31,31 @@
     <table class="table table-hover">
         <tr>
             <th>
-                <h><strong>WE</strong></h>
+                <h><strong><fmt:message key="about.message1"/></strong></h>
                 <br>
-                <p>“TastyPie” company proposes you hot pies, delivered to your office or home every day since  10:00 a.m. till 22:00 p.m.</p>
-                <p>In our menu you can find:</p>
+                <p><fmt:message key="about.message2"/></p>
+                <p><fmt:message key="about.message3"/></p>
                 <ul>
-                    <li>hearty pies – with meat, fish, potatoes;</li>
-                    <li>sweet pies for desert – with fruit, berries, chocolate;</li>
-                    <li>pies snacks – with vegetables, cheese, greens.</li>
+                    <li><fmt:message key="about.message4"/></li>
+                    <li><fmt:message key="about.message5"/></li>
+                    <li><fmt:message key="about.message6"/></li>
                 </ul>
                 <br>
             </th>
         </tr>
         <tr>
             <th>
-                <h><strong>OUR ADVANTAGES</strong></h>
+                <h><strong><fmt:message key="about.message7"/></strong></h>
                 <br>
-                <p>Over 10 000 clients have chosen us during the 1st year of work, because among our advantages are:</p>
+                <p><fmt:message key="about.message8"/></p>
                 <ul>
-                    <li>fresh and healthy farm products;</li>
-                    <li>more than 30 items in the menu, which is regularly updating;</li>
-                    <li>lots of filling in the pies – not less than 50% of its general weight;</li>
-                    <li>convenient system of getting orders – you can make it online even at night and our managers will contact you since  10:00 a.m. till 22:00 p.m.;</li>
-                    <li>quick delivery around Minsk and beyond the city (average time of delivery in the city is 1 hour);</li>
+                    <li><fmt:message key="about.message9"/></li>
+                    <li><fmt:message key="about.message10"/></li>
+                    <li><fmt:message key="about.message11"/></li>
+                    <li><fmt:message key="about.message12"/></li>
+                    <li><fmt:message key="about.message13"/></li>
                 </ul>
-                <p>If you have any questions, please, contact our managers +375445646130. And if you have already tasted our pies, don’t forget to leave you feedback  - help the others to choose the tastiest pie. Every opinion is important for us!</p>
+                <p><fmt:message key="about.message14"/></p>
             </th>
         </tr>
     </table>

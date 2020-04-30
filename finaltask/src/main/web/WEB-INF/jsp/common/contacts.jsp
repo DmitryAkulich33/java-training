@@ -1,6 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
 <!doctype html>
 <html>
 <head>
@@ -16,7 +20,7 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Personal account</title>
+    <title><fmt:message key="contacts"/></title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -26,9 +30,9 @@
     <table class="table table-hover">
         <tr>
             <th>
-                <h><strong>OUR CONTACTS</strong></h>
+                <h><strong><fmt:message key="contacts.message1"/></strong></h>
                 <br>
-                <p>Telephones</p>
+                <p><fmt:message key="contacts.message2"/></p>
                 <ul>
                     <li>
                         +375 44 564 61 30
@@ -41,15 +45,15 @@
         </tr>
         <tr>
             <th>
-                <h><strong>OUR ADDRESS</strong></h>
+                <h><strong><fmt:message key="contacts.message3"/></strong></h>
                 <br>
                 <p>TASTYPIE.COM</p>
-                <p>27 Lubimova St., Minsk</p>
+                <p><fmt:message key="address.company"/></p>
                 <br>
             </th>
         </tr>
     </table>
-    <h><strong>OUR LOCATION HERE</strong></h>
+    <h><strong><fmt:message key="contacts.message4"/></strong></h>
     <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A39841349ba1022f696ab7d290cc2cfa5a46eaa08a7ab547c8d1bda449778d739&amp;width=800&amp;height=500&amp;lang=ru_RU&amp;scroll=true"></script>
 </div>
 <div class="container-fluid pt-3">

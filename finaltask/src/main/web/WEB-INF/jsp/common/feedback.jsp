@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -16,14 +21,14 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Feedback</title>
+    <title><fmt:message key="feedback"/></title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <jsp:include page="login.jsp"/>
 <jsp:include page="menu.jsp"/>
 <div class="container-fluid mt-3">
-    <p>Your feedback:</p>
+    <p><fmt:message key="your.feedback"/></p>
     <br>
     <div class="wrong_message"><c:out value="${ wrong }"/></div>
     <div class="right_message"><c:out value="${ right }"/></div>
@@ -31,17 +36,17 @@
         <c:when test="${user.role == 3}">
             <form action="controller" method="POST">
                 <div class="input-group mb-3">
-                    <textarea class="form-control" name="review" rows="3" placeholder="max 2000 symbols" required></textarea>
+                    <textarea class="form-control" name="review" rows="3" placeholder="<fmt:message key="max.2000.symbols"/>" required></textarea>
                 </div>
                 <input type="hidden" name="command" value="add_feedback">
-                <input type="submit" value="Send feedback" class="btn btn-outline-secondary">
+                <input type="submit" value="<fmt:message key="send.feedback"/>" class="btn btn-outline-secondary">
             </form>
         </c:when>
         <c:otherwise>
             <div class="input-group mb-3">
-                <textarea class="form-control" name="review" rows="3" placeholder="max 2000 symbols" required></textarea>
+                <textarea class="form-control" name="review" rows="3" placeholder="<fmt:message key="max.2000.symbols"/>" required></textarea>
             </div>
-            <input type="submit" value="Send feedback" class="btn btn-outline-secondary" data-toggle="modal"
+            <input type="submit" value="<fmt:message key="send.feedback"/>" class="btn btn-outline-secondary" data-toggle="modal"
                    data-target="#AddNewFeedback">
             <div class="modal fade" id="AddNewFeedback">
                 <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -51,11 +56,11 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            You need to log in as a user!
+                            <fmt:message key="login.as.user"/>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary"
-                                    data-dismiss="modal">Close
+                                    data-dismiss="modal"><fmt:message key="close"/>
                             </button>
                         </div>
                     </div>
@@ -68,7 +73,7 @@
         <br>
         <div class="feedback media border p-3">
             <div class="media-body">
-                <h4><c:out value="${ element.user.surname }"/> <c:out value="${ element.user.name }"/><small><i> posted
+                <h4><c:out value="${ element.user.surname }"/> <c:out value="${ element.user.name }"/><small><i> <fmt:message key="posted"/>
                     <c:out value="${ element.localDateTime.toString().replace(\"T\", \" \") }"/></i></small></h4>
                 <p><c:out value="${ element.review }"/></p>
             </div>
@@ -76,7 +81,7 @@
     </c:forEach>
     <ul class="pagination justify-content-center" style="margin:20px 0">
         <li class="page-item"><a class="pagination_color page-link"
-                                 href="${request.contextPath}controller?command=show_feedback&page=1">The first</a></li>
+                                 href="${request.contextPath}controller?command=show_feedback&page=1"><fmt:message key="first"/></a></li>
         <li class="page-item"><a class="pagination_color page-link"
                                  href="${request.contextPath}controller?command=show_feedback_decrease_page&page=${page}&count=${count}"><<</a>
         </li>
@@ -88,8 +93,7 @@
                href="${request.contextPath}controller?command=show_feedback_increase_page&page=${page}&count=${count}">>></a>
         </li>
         <li class="page-item"><a class="pagination_color page-link"
-                                 href="${request.contextPath}controller?command=show_feedback&page=${count}">The
-            last</a></li>
+                                 href="${request.contextPath}controller?command=show_feedback&page=${count}"><fmt:message key="last"/></a></li>
     </ul>
 </div>
 <div class="container-fluid pt-3">

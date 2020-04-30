@@ -1,8 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<%@ taglib prefix="rdct" uri="/WEB-INF/tld/RedirectTag.tld" %>--%>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--<jsp:useBean id="pie" class="by.epam.bakery.domain.Pie" scope="application"/>--%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -18,7 +21,7 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Bakery</title>
+    <title><fmt:message key="bakery"/></title>
 </head>
 <body>
 <div class="container-fluid pt-3">
@@ -27,33 +30,31 @@
             <li class="li_pages">
                 <div class="button_navbar_menu">
                     <a href="${request.contextPath}controller?command=show_about_us" class="a_link"><img
-                            src="image/group.png" class="ico"> ABOUT US</a>
+                            src="image/group.png" class="ico"><fmt:message key="about.us"/></a>
                 </div>
             </li>
             <li class="li_pages">
                 <div class="button_navbar_menu">
                     <a href="${request.contextPath}controller?command=show_main_page" class="a_link"><img
-                            src="image/magazine.png" class="ico"> OUR
-                        PIES</a>
+                            src="image/magazine.png" class="ico"><fmt:message key="our.pies"/></a>
                 </div>
             </li>
             <li class="li_pages">
                 <div class="button_navbar_menu">
                     <a href="${request.contextPath}controller?command=show_contacts" class="a_link"><img
-                            src="image/hours.png" class="ico"> CONTACTS</a>
+                            src="image/hours.png" class="ico"><fmt:message key="contacts"/></a>
                 </div>
             </li>
             <li class="li_pages">
                 <div class="button_navbar_menu">
                     <a href="${request.contextPath}controller?command=show_delivery" class="a_link"><img
-                            src="image/runner.png" class="ico"> DELIVERY</a>
+                            src="image/runner.png" class="ico"><fmt:message key="delivery"/></a>
                 </div>
             </li>
             <li class="li_pages">
                 <div class="button_navbar_menu">
                     <a href="${request.contextPath}controller?command=show_feedback&page=1" class="a_link"><img
-                            src="image/pen.png" class="ico">
-                        FEEDBACK</a>
+                            src="image/pen.png" class="ico"><fmt:message key="feedback"/></a>
                 </div>
             </li>
             <li class="li_pages">
@@ -62,8 +63,7 @@
                         <div class="button_navbar_menu">
                             <a href="${request.contextPath}controller?command=show_basket" class="a_link">
                                 <button type="button" class="in_basket_menu h5">
-                                    <img src="image/basket.png" class="ico">
-                                    BASKET
+                                    <img src="image/basket.png" class="ico"><fmt:message key="basket"/>
                                 </button>
                             </a>
                         </div>
@@ -72,7 +72,7 @@
                         <div class="button_navbar_menu">
                             <button type="button" class="in_basket_menu h5" data-toggle="modal"
                                     data-target="#myModalBask">
-                                <img src="image/basket.png" class="ico"> BASKET
+                                <img src="image/basket.png" class="ico"><fmt:message key="basket"/>
                             </button>
                             <div class="modal fade" id="myModalBask">
                                 <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -82,11 +82,11 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            You need to log in as a user!
+                                            <fmt:message key="login.as.user"/>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close
+                                                    data-dismiss="modal"><fmt:message key="close"/>
                                             </button>
                                         </div>
                                     </div>

@@ -2,6 +2,7 @@
 
 <fmt:setLocale value="${language}"/>
 <fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>

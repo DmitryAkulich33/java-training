@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -16,19 +21,19 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Error</title>
+    <title><fmt:message key="error"/></title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 <div class="container mt-3">
     <br>
-    <p>Sorry!</p>
-    <p>Technical problems.</p>
-    <p>Please try again later.</p>
+    <p><fmt:message key="sorry"/></p>
+    <p><fmt:message key="technical.problems"/></p>
+    <p><fmt:message key="try.again"/></p>
     <br>
     <ul class="nav">
         <li class="nav-item">
-            <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the homepage</a>
+            <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page"><fmt:message key="return"/></a>
         </li>
     </ul>
 </div>
