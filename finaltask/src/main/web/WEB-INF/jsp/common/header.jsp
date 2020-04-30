@@ -1,3 +1,8 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -10,7 +15,7 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Bakery</title>
+    <title><fmt:message key="bakery"/></title>
 </head>
 <body>
 <div class="container-fluid pt-3">
@@ -21,11 +26,17 @@
                 <td class="name_organization">T A S T Y P I E . C O M</td>
                 <td class="a1_logo"><img class="image_logo_a1" src="image/a1.png"></td>
                 <td class="a1_phone"><a href="tel:+375445646130" class="a_link_telephone">+375-44-564-61-30</a></td>
+                <td>
+                    <a href="${request.contextPath}controller?command=show_main_page&locale=ru">RU</a>
+                    <a href="${request.contextPath}controller?command=show_main_page&locale=en">EN</a>
+                    <a href="${request.contextPath}controller?command=show_main_page&locale=be">BE</a>
+                </td>
             </tr>
             <tr>
-                <td class="address_organization">27 Lubimova St, Minsk</td>
+                <td class="address_organization"><fmt:message key="address.company"/></td>
                 <td class="mts_logo"><img class="image_logo_a1" src="image/mts.png"></td>
                 <td class="mts_phone"><a href="tel:+375295646130" class="a_link_telephone">+375-29-564-61-30</a></td>
+                <td></td>
             </tr>
         </table>
     </div>

@@ -1,3 +1,7 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
 <!doctype html>
 <html>
 <head>
@@ -10,7 +14,7 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Bakery</title>
+    <title><fmt:message key="bakery"/></title>
 </head>
 <body>
 <div class="container-fluid p-3 m-3 bg-dark text-white">
@@ -20,7 +24,7 @@
         </td>
         <td class="td_last_text">
         <span>
-            An advertisement offering a delivery of pies "TASTYPIE", placed on other sites or in certain brochures, is not an advertisement of our network, and you can get products that have nothing to do with pies "TASTYPIE". For more information, contact the bakery.
+            <fmt:message key="footer.message"/>
         </span>
         </td>
     </table>

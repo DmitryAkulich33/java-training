@@ -40,6 +40,14 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <filter>
+        <filter-name>LocaleFilter</filter-name>
+        <filter-class>by.epam.bakery.controller.filter.LocaleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LocaleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
         <filter-name>EncodingFilter</filter-name>
         <filter-class>by.epam.bakery.controller.filter.EncodingFilter</filter-class>
         <init-param>

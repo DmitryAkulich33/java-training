@@ -1,6 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
 <!doctype html>
 <html>
 <head>
@@ -16,7 +20,7 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Bakery</title>
+    <title><fmt:message key="bakery"/></title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -30,12 +34,11 @@
     </c:if>
     <br>
     <button type="button" class="dropdown_sort btn btn-primary" data-toggle="dropdown">
-        Sort by
+        <fmt:message key="sort.by"/>
     </button>
     <div class="dropdown-menu">
-        <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_increase_price">price
-            increase</a>
-        <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_reduction_price">price
+        <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_increase_price"><fmt:message key="price.increase"/></a>
+        <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_reduction_price"><fmt:message key="price.reduction"/>
             reduction</a>
     </div>
     <ul class="ul_pie">
@@ -71,7 +74,7 @@
                                         <input type="hidden" name="pieId" value="${ element.id }"/>
                                         <input type="hidden" name="piePrice" value="${ element.price }"/>
                                         <input type="hidden" name="command" value="add_pie">
-                                        <input type="submit" name="button" class="in_basket" value="TO BASKET"/>
+                                        <input type="submit" name="button" class="in_basket" value="<fmt:message key="to.basket"/>"/>
                                     </td>
                                 </tr>
                             </form>
@@ -85,24 +88,21 @@
                             </tr>
                             <tr>
                                 <td class="button_navbar_menu">
-                                    <input type="submit" name="button" class="in_basket" value="TO BASKET"
+                                    <input type="submit" name="button" class="in_basket" value="<fmt:message key="to.basket"/>"
                                            data-toggle="modal" data-target="#myModalBasket"/>
                                     <div class="modal fade" id="myModalBasket">
                                         <div class="modal-dialog modal-dialog-centered modal-sm">
                                             <div class="modal-content">
-                                                <!-- Modal Header -->
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal">&times;
                                                     </button>
                                                 </div>
-                                                <!-- Modal body -->
                                                 <div class="modal-body">
-                                                    You need to log in as a user!
+                                                    <fmt:message key="login.as.user"/>
                                                 </div>
-                                                <!-- Modal footer -->
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close
+                                                            data-dismiss="modal"><fmt:message key="close"/>
                                                     </button>
                                                 </div>
                                             </div>
