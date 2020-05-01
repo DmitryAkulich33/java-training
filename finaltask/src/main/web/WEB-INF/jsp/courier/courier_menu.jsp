@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -16,28 +21,28 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Admin account</title>
+    <title><fmt:message key="login.courier"/></title>
 </head>
 <body>
 <div class="container-fluid">
     <ul class="nav">
         <li class="nav-item">
-            <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the homepage</a>
+            <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page"><fmt:message key="return"/></a>
         </li>
         <li class="nav-item">
-            <a class="link_acc nav-link" href="${request.contextPath}controller?command=log_out">Exit</a>
+            <a class="link_acc nav-link" href="${request.contextPath}controller?command=log_out"><fmt:message key="login.exit"/></a>
         </li>
     </ul>
     <div class="btn-group">
         <form action="controller" method="POST">
             <input type="hidden" name="command" value="courier_clients">
             <input type="hidden" name="page" value="1">
-            <input type="submit" class="change-info btn btn-primary" value="Change user note">
+            <input type="submit" class="change-info btn btn-primary" value="<fmt:message key="change.user.note"/>">
         </form>
         <form action="controller" method="POST">
             <input type="hidden" name="command" value="courier_order">
             <input type="hidden" name="page" value="1">
-            <input type="submit" class="change-info btn btn-primary" value="Change order status">
+            <input type="submit" class="change-info btn btn-primary" value="<fmt:message key="change.order.status"/>">
         </form>
     </div>
 </div>

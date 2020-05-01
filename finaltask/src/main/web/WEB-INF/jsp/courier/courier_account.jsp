@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="st" uri="/WEB-INF/tld/StatisticTag.tld" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -17,7 +22,7 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Courier account</title>
+    <title><fmt:message key="login.courier"/></title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>

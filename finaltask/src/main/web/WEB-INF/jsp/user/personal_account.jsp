@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -16,22 +21,21 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Personal account</title>
+    <title><fmt:message key="login.client"/></title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div class="container">
     <ul class="nav">
         <li class="nav-item">
-            <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the
-                homepage</a>
+            <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page"><fmt:message key="return"/></a>
         </li>
         <li class="nav-item">
-            <a class="link_acc nav-link" href="${request.contextPath}controller?command=log_out">Exit</a>
+            <a class="link_acc nav-link" href="${request.contextPath}controller?command=log_out"><fmt:message key="login.exit"/></a>
         </li>
     </ul>
     <br>
-    <h2>Personal Information:</h2>
+    <h2><fmt:message key="personal.information"/></h2>
     <br>
     <div class="wrong_message"><c:out value="${ wrong }"/></div>
     <div class="right_message"><c:out value="${ right }"/></div>
@@ -39,25 +43,25 @@
     <table class="table table-striped">
         <tbody>
         <tr>
-            <td>Surname:</td>
+            <td><fmt:message key="surname"/></td>
             <td><c:out value="${ user.surname }"/>
             </td>
             <td>
                 <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Change information
+                    <fmt:message key="change.information"/>
                 </button>
                 <div class="modal fade" id="myModal">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Change surname</h4>
+                                <h4 class="modal-title"><fmt:message key="change.surname"/></h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <form action="controller" method="POST">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">New surname (max 70 symbols)</span>
+                                            <span class="input-group-text"><fmt:message key="surname"/> (<fmt:message key="max.70.symbols"/>)</span>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Surname" name="newSurname"
                                                pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)" required>
@@ -65,8 +69,8 @@
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_surname">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="submit" value="Change" class="btn btn-secondary">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
+                                        <input type="submit" value="<fmt:message key="change"/>" class="btn btn-secondary">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><fmt:message key="cancel"/>
                                         </button>
                                     </div>
                                 </form>
@@ -77,33 +81,33 @@
             </td>
         </tr>
         <tr>
-            <td>Name:</td>
-            <td><c:out value="${ user.name }"/></td>
+            <td><fmt:message key="name"/></td>
+            <td><c:out value="${ user.name }"/>:</td>
             <td>
                 <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal2">
-                    Change information
+                    <fmt:message key="change.information"/>
                 </button>
                 <div class="modal fade" id="myModal2">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Change name</h4>
+                                <h4 class="modal-title"><fmt:message key="change.name"/></h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <form action="controller" method="POST">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">New name (max 70 symbols)</span>
+                                            <span class="input-group-text"><fmt:message key="name"/> (<fmt:message key="max.70.symbols"/>)</span>
                                         </div>
-                                        <input type="text" class="form-control" name="newName" placeholder="Name"
+                                        <input type="text" class="form-control" name="newName" placeholder="<fmt:message key="name"/>"
                                                pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)" required>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_name">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="submit" value="Change" class="btn btn-secondary">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
+                                        <input type="submit" value="<fmt:message key="change"/>" class="btn btn-secondary">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><fmt:message key="cancel"/>
                                         </button>
                                     </div>
                                 </form>
@@ -114,34 +118,33 @@
             </td>
         </tr>
         <tr>
-            <td>Patronymic:</td>
+            <td><fmt:message key="patronymic"/>:</td>
             <td><c:out value="${ user.patronymic }"/></td>
             <td>
                 <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal3">
-                    Change information
+                    <fmt:message key="change.information"/>
                 </button>
                 <div class="modal fade" id="myModal3">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Change patronymic</h4>
+                                <h4 class="modal-title"><fmt:message key="change.patronymic"/></h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <form action="controller" method="POST">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">New patronymic (max 70 symbols)</span>
+                                            <span class="input-group-text"><fmt:message key="patronymic"/> (<fmt:message key="max.70.symbols"/>)</span>
                                         </div>
-                                        <input type="text" class="form-control" name="newPatronymic" placeholder="Patronymic"
+                                        <input type="text" class="form-control" name="newPatronymic" placeholder="<fmt:message key="patronymic"/>"
                                                pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)" required>
                                     </div>
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_patronymic">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="submit" value="Change" class="btn btn-secondary">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
-                                        </button>
+                                        <input type="submit" value="<fmt:message key="change"/>" class="btn btn-secondary">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><fmt:message key="cancel"/></button>
                                     </div>
                                 </form>
                             </div>
@@ -151,24 +154,24 @@
             </td>
         </tr>
         <tr>
-            <td>Address:</td>
+            <td><fmt:message key="address"/>:</td>
             <td><c:out value="${ user.address }"/></td>
             <td>
                 <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal4">
-                    Change information
+                    <fmt:message key="change.information"/>
                 </button>
                 <div class="modal fade" id="myModal4">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Change address</h4>
+                                <h4 class="modal-title"><fmt:message key="change.address"/></h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <form action="controller" method="POST">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">New address (5-70 symbols)</span>
+                                            <span class="input-group-text"><fmt:message key="address"/> (5-70 <fmt:message key="symbols"/>)</span>
                                         </div>
                                         <input type="text" class="form-control" name="newAddress" placeholder="Address"
                                                pattern="(^.{5,70}$)" required>
@@ -176,9 +179,8 @@
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_address">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="submit" value="Change" class="btn btn-secondary">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
-                                        </button>
+                                        <input type="submit" value="<fmt:message key="change"/>" class="btn btn-secondary">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><fmt:message key="cancel"/></button>
                                     </div>
                                 </form>
                             </div>
@@ -188,24 +190,24 @@
             </td>
         </tr>
         <tr>
-            <td>Phone:</td>
+            <td><fmt:message key="phone"/>:</td>
             <td><c:out value="${ user.phone }"/></td>
             <td>
                 <button type="button" class="change-info btn btn-primary" data-toggle="modal" data-target="#myModal5">
-                    Change information
+                    <fmt:message key="change.information"/>
                 </button>
                 <div class="modal fade" id="myModal5">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title">Change phone</h4>
+                                <h4 class="modal-title"><fmt:message key="change.phone"/></h4>
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <form action="controller" method="POST">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">New phone (with code)</span>
+                                            <span class="input-group-text"><fmt:message key="phone.code"/></span>
                                         </div>
                                         <input type="text" class="form-control" name="newPhone" placeholder="8-044-1234567"
                                                pattern="(^[8]-(033|029|044|017)-[1-9][0-9]{2}-[0-9]{2}-[0-9]{2}$)" required>
@@ -213,9 +215,8 @@
                                     <div class="modal-footer">
                                         <input type="hidden" name="command" value="change_phone">
                                         <input type="hidden" name="page" value="${ page }">
-                                        <input type="submit" value="Change" class="btn btn-secondary">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel
-                                        </button>
+                                        <input type="submit" value="<fmt:message key="change"/>" class="btn btn-secondary">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><fmt:message key="cancel"/></button>
                                     </div>
                                 </form>
                             </div>
@@ -229,16 +230,16 @@
 </div>
 <div class="container-fluid">
     <br>
-    <h2>Order history:</h2>
+    <h2><fmt:message key="order.history"/>:</h2>
     <br>
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Status</th>
-            <th>production date</th>
-            <th>delivery date</th>
-            <th>total</th>
+            <th><fmt:message key="id"/></th>
+            <th><fmt:message key="status"/></th>
+            <th><fmt:message key="production.date"/></th>
+            <th><fmt:message key="delivery.date"/></th>
+            <th><fmt:message key="table.total"/></th>
         </tr>
         </thead>
         <c:set var="index" scope="session" value="0"/>
@@ -295,7 +296,7 @@
     </table>
     <ul class="pagination justify-content-center" style="margin:20px 0">
         <li class="page-item"><a class="pagination_color page-link"
-                                 href="${request.contextPath}controller?command=personal_account&page=1">The first</a>
+                                 href="${request.contextPath}controller?command=personal_account&page=1"><fmt:message key="first"/></a>
         </li>
         <li class="page-item"><a class="pagination_color page-link"
                                  href="${request.contextPath}controller?command=personal_account_decrease_page&page=${page}&count=${count}"><<</a>
@@ -308,8 +309,7 @@
                href="${request.contextPath}controller?command=personal_account_increase_page&page=${page}&count=${count}">>></a>
         </li>
         <li class="page-item"><a class="pagination_color page-link"
-                                 href="${request.contextPath}controller?command=personal_account&page=${count}">The
-            last</a></li>
+                                 href="${request.contextPath}controller?command=personal_account&page=${count}"><fmt:message key="last"/></a></li>
     </ul>
 </div>
 <div class="container-fluid pt-3">

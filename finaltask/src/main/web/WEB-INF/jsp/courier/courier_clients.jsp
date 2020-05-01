@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -16,29 +21,29 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Courier account</title>
+    <title><fmt:message key="login.courier"/></title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="courier_menu.jsp"/>
 <div class="container-fluid">
     <br>
-    <h2>Users:</h2>
+    <h2><fmt:message key="users"/></h2>
     <br>
     <div class="wrong_message"><c:out value="${ wrong }"/></div>
     <div class="right_message"><c:out value="${ right }"/></div>
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Role</th>
-            <th>Surname</th>
-            <th>Name</th>
-            <th>Patronymic</th>
-            <th>Address</th>
-            <th>PhoneNumber</th>
-            <th>Note</th>
-            <th>Action</th>
+            <th><fmt:message key="id"/></th>
+            <th><fmt:message key="role"/></th>
+            <th><fmt:message key="surname"/></th>
+            <th><fmt:message key="name"/></th>
+            <th><fmt:message key="patronymic"/></th>
+            <th><fmt:message key="address"/></th>
+            <th><fmt:message key="phone"/></th>
+            <th><fmt:message key="note"/></th>
+            <th><fmt:message key="action"/></th>
             <th></th>
         </tr>
         </thead>
@@ -55,30 +60,30 @@
                 <td>
                     <button type="button" class="change-info btn btn-primary" data-toggle="modal"
                             data-target="#mySecModal${ element.id }">
-                        Change note
+                        <fmt:message key="change.note"/>
                     </button>
                     <div class="modal fade" id="mySecModal${ element.id }">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Change note</h4>
+                                    <h4 class="modal-title"><fmt:message key="change.note"/></h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="controller" method="POST">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">New note</span>
+                                                <span class="input-group-text"><fmt:message key="note"/></span>
                                             </div>
-                                            <input type="text" class="form-control" name="changeNote" placeholder="max 250 symbols"
+                                            <input type="text" class="form-control" name="changeNote" placeholder="<fmt:message key="max.250.symbols"/>"
                                                    pattern="(^.{0,250}$)" required>
                                         </div>
                                         <div class="modal-footer">
                                             <input type="hidden" name="changeId" value="${ element.id }"/>
                                             <input type="hidden" name="command" value="change_note">
-                                            <input type="submit" class="btn btn-secondary" value="Change">
+                                            <input type="submit" class="btn btn-secondary" value="<fmt:message key="change"/>">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                Cancel
+                                                <fmt:message key="cancel"/>
                                             </button>
                                         </div>
                                     </form>
@@ -91,14 +96,14 @@
         </c:forEach>
     </table>
     <ul class="pagination justify-content-center" style="margin:20px 0">
-        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_clients&page=1">The first</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_clients&page=1"><fmt:message key="first"/></a></li>
         <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_clients_decrease_page&page=${page}&count=${count}"><<</a></li>
         <li class="pagination_number">
             <span class="pagination_number"><mark>&nbspPage <c:out value="${ page }"/> from <c:out value="${ count }"/>&nbsp</mark></span>
         </li>
         <li class="page-item">
             <a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_clients_increase_page&page=${page}&count=${count}">>></a></li>
-        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_clients&page=${count}">The last</a></li>
+        <li class="page-item"><a class="pagination_color page-link" href="${request.contextPath}controller?command=courier_clients&page=${count}"><fmt:message key="last"/></a></li>
     </ul>
 </div>
 <div class="container-fluid pt-3">

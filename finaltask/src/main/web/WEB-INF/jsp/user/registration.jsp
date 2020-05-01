@@ -1,6 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}"/>
+<fmt:setBundle basename="interface"/>
+
 <!doctype html>
 <html>
 <head>
@@ -16,13 +21,12 @@
     <script>
         <%@include file="../../../js/bootstrap.js" %>
     </script>
-    <title>Registration</title>
+    <title><fmt:message key="registration"/></title>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
 <div class="container">
-    <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page">Return to the
-        homepage</a>
+    <a class="link_acc nav-link" href="${request.contextPath}controller?command=show_main_page"><fmt:message key="return"/></a>
     <br>
     <form action="controller" method="POST">
         <div class="wrong_message">
@@ -32,10 +36,10 @@
             <tbody>
             <tr>
                 <td>
-                    Enter your login (English)</span>
+                    <fmt:message key="enter.your.login"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveLogin" placeholder="5-12 symbols"
+                    <input type="text" class="form-control" name="saveLogin" placeholder="5-12 <fmt:message key="symbols"/>"
                            pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
                 </td>
                 <td>
@@ -45,10 +49,10 @@
             </tr>
             <tr>
                 <td>
-                    Enter your password (English)
+                    <fmt:message key="enter.your.password"/>
                 </td>
                 <td>
-                    <input type="password" class="form-control" name="savePassword" placeholder="5-12 symbols"
+                    <input type="password" class="form-control" name="savePassword" placeholder="5-12 <fmt:message key="symbols"/>"
                            pattern="(^[a-zA-Z0-9_-]{5,12}$)" required>
                 </td>
                 <td>
@@ -58,10 +62,10 @@
             </tr>
             <tr>
                 <td>
-                    Enter your surname
+                    <fmt:message key="enter.your.surname"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveSurname" placeholder="max 70 symbols"
+                    <input type="text" class="form-control" name="saveSurname" placeholder="<fmt:message key="max.70.symbols"/>"
                            pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)"
                            required>
                 </td>
@@ -72,10 +76,10 @@
             </tr>
             <tr>
                 <td>
-                    Enter your name
+                    <fmt:message key="enter.your.name"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveName" placeholder="max 70 symbols"
+                    <input type="text" class="form-control" name="saveName" placeholder="<fmt:message key="max.70.symbols"/>"
                            pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)"
                            required>
                 </td>
@@ -86,10 +90,10 @@
             </tr>
             <tr>
                 <td>
-                    Enter your patronymic
+                    <fmt:message key="patronymic"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="savePatronymic" placeholder="max 70 symbols"
+                    <input type="text" class="form-control" name="savePatronymic" placeholder="<fmt:message key="max.70.symbols"/>"
                            pattern="(^[A-Z][a-z]{0,35}(-[A-Z])*[a-z]{0,35}$)|(^[А-Я][а-я]{0,35}(-[А-Я])*[а-я]{0,35}$)|(^[A-Z][a-z]{0,70}$)|(^[А-Я][а-я]{0,70}$)"
                            required>
                 </td>
@@ -100,10 +104,10 @@
             </tr>
             <tr>
                 <td>
-                    Enter your address
+                    <fmt:message key="enter.your.address"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveAddress" placeholder="5-70 symbols"
+                    <input type="text" class="form-control" name="saveAddress" placeholder="5-70 <fmt:message key="symbols"/>"
                            pattern="(^.{5,70}$)" required>
                 </td>
                 <td>
@@ -113,7 +117,7 @@
             </tr>
             <tr>
                 <td>
-                    Enter your phone
+                    <fmt:message key="enter.your.phone"/>
                 </td>
                 <td>
                     <input type="text" class="form-control" name="savePhone" placeholder="8-044-1234567"
@@ -126,10 +130,10 @@
             </tr>
             <tr>
                 <td>
-                    Enter note
+                    <fmt:message key="enter.note"/>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="saveNote" placeholder="max 250 symbols"
+                    <input type="text" class="form-control" name="saveNote" placeholder="<fmt:message key="max.250.symbols"/>"
                            pattern="(^.{0,250}$)" required>
                 </td>
                 <td>
@@ -143,7 +147,7 @@
                 <td>
                     <div class="modal-footer">
                         <input type="hidden" name="command" value="registration_user">
-                        <input type="submit" value="Finish registration" class="btn btn-secondary">
+                        <input type="submit" value="<fmt:message key="finish.registration"/>" class="btn btn-secondary">
                     </div>
                 </td>
             </tr>

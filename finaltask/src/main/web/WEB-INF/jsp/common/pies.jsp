@@ -55,7 +55,7 @@
                         <td class="product_description"><c:out value="${ element.description }"/></td>
                     </tr>
                     <tr>
-                        <td class="product_weight"><c:out value="${ element.weight }"/> grams</td>
+                        <td class="product_weight"><c:out value="${ element.weight }"/> <fmt:message key="grams"/></td>
                     </tr>
                     <tr>
                         <td class="product_price">
