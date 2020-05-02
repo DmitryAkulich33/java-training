@@ -18,8 +18,8 @@ public class ChangeAddressCommand implements Command {
     private static final String NEW_ADDRESS = "newAddress";
     private static final String RIGHT = "right";
     private static final String WRONG = "wrong";
-    private static final String WRONG_ADDRESS_MESSAGE = "The new address is wrong";
-    private static final String RIGHT_ADDRESS_MESSAGE = "The address changed";
+    private static final String WRONG_ADDRESS_MESSAGE = "wrongAddress";
+    private static final String RIGHT_ADDRESS_MESSAGE = "rightAddress";
     private static final String PAGE = "page";
     private static Logger log = LogManager.getLogger(ChangeAddressCommand.class.getName());
 

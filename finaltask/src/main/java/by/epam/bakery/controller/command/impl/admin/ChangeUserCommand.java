@@ -20,8 +20,8 @@ public class ChangeUserCommand implements Command {
     private static final String CHANGE_ID = "changeId";
     private static final String WRONG = "wrong";
     private static final String RIGHT = "right";
-    private static final String WRONG_MESSAGE = "The entered data is not correct!";
-    private static final String RIGHT_MESSAGE = "User was changed successfully!";
+    private static final String WRONG_MESSAGE = "wrongMessage";
+    private static final String RIGHT_MESSAGE = "rightUser";
     private static Logger log = LogManager.getLogger(ChangeUserCommand.class.getName());
 
 

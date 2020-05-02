@@ -24,8 +24,8 @@ public class SavePieCommand implements Command {
     private static final String SAVE_DESCRIPTION = "saveDescription";
     private static final String WRONG = "wrong";
     private static final String RIGHT = "right";
-    private static final String WRONG_MESSAGE = "The entered data is not correct!";
-    private static final String RIGHT_MESSAGE = "The pie was added successfully!";
+    private static final String WRONG_MESSAGE = "wrongMessage";
+    private static final String RIGHT_MESSAGE = "rightSavePie";
     private static Logger log = LogManager.getLogger(SavePieCommand.class.getName());
 
     @Override

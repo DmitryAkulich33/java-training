@@ -19,8 +19,8 @@ public class ChangeOrderCommand implements Command {
     private static final String ID_ORDER = "changeId";
     private static final String WRONG = "wrong";
     private static final String RIGHT = "right";
-    private static final String WRONG_MESSAGE = "The entered data is not correct!";
-    private static final String RIGHT_MESSAGE = "The order was changed successfully!";
+    private static final String WRONG_MESSAGE = "wrongMessage";
+    private static final String RIGHT_MESSAGE = "rightOrder";
     private static Logger log = LogManager.getLogger(ChangeOrderCommand.class.getName());
 
     @Override

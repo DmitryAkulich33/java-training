@@ -20,8 +20,8 @@ public class LoginCommand implements Command {
     private static final String LOGIN = "login";
     private static final String PASSWORD = "password";
     private static final String USER = "user";
-    private static final String WRONG_LOGIN = "Incorrect login or password!";
-    private static final String WRONG_DATA = "The entered data is not correct!";
+    private static final String WRONG_LOGIN = "incorrectLogin";
+    private static final String WRONG_DATA = "wrongMessage";
     private static final String WRONG = "wrong";
     private static final String NO_RECORDS = "No records";
 

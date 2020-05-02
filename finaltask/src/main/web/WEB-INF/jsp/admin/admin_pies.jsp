@@ -162,7 +162,7 @@
             <th><fmt:message key="id"/></th>
             <th><fmt:message key="picture"/></th>
             <th><fmt:message key="name"/></th>
-            <th><fmt:message key="weight"/>/<th>
+            <th><fmt:message key="weight"/></th>
             <th><fmt:message key="price"/></th>
             <th><fmt:message key="description"/></th>
             <th><fmt:message key="action"/></th>

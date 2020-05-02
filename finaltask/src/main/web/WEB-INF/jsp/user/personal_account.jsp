@@ -209,7 +209,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><fmt:message key="phone.code"/></span>
                                         </div>
-                                        <input type="text" class="form-control" name="newPhone" placeholder="8-044-1234567"
+                                        <input type="text" class="form-control" name="newPhone" placeholder="8-044-123-45-67"
                                                pattern="(^[8]-(033|029|044|017)-[1-9][0-9]{2}-[0-9]{2}-[0-9]{2}$)" required>
                                     </div>
                                     <div class="modal-footer">

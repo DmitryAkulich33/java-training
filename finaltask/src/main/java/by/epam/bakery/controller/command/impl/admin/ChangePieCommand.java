@@ -24,8 +24,8 @@ public class ChangePieCommand implements Command {
     private static final String CHANGE_ID = "changeId";
     private static final String WRONG = "wrong";
     private static final String RIGHT = "right";
-    private static final String WRONG_MESSAGE = "The entered data is not correct!";
-    private static final String RIGHT_MESSAGE = "The pie was changed successfully!";
+    private static final String WRONG_MESSAGE = "wrongMessage";
+    private static final String RIGHT_MESSAGE = "rightPie";
     private static Logger log = LogManager.getLogger(ChangePieCommand.class.getName());
 
     @Override

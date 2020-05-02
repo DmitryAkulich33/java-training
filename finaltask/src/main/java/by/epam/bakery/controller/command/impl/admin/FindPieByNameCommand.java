@@ -19,8 +19,8 @@ public class FindPieByNameCommand implements Command {
     private static final String PIE_NAME = "pieName";
     private static final String PIES = "pies";
     private static final String WRONG = "wrong";
-    private static final String WRONG_MESSAGE = "The entered data is not correct!";
-    private static final String WRONG_NAME = "The entered name not found in database";
+    private static final String WRONG_MESSAGE = "wrongMessage";
+    private static final String WRONG_NAME = "wrongName";
     private static final String NO_RECORDS = "No records";
     private static Logger log = LogManager.getLogger(FindPieByNameCommand.class.getName());
 

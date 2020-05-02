@@ -17,8 +17,8 @@ public class AdminAddNewUserForOrder implements Command {
     private static final String USER_FOR_ORDER_ID = "userForOrderId";
     private static final String USER_FOR_ORDER = "userForOrder";
     private static final String WRONG = "wrong";
-    private static final String WRONG_MESSAGE = "The entered data is not correct!";
-    private static final String WRONG_ID = "The entered id not found in database";
+    private static final String WRONG_MESSAGE = "wrongMessage";
+    private static final String WRONG_ID = "wrongId";
     private static final String NO_RECORDS = "No records";
     private static Logger log = LogManager.getLogger(AdminAddNewUserForOrder.class.getName());
 

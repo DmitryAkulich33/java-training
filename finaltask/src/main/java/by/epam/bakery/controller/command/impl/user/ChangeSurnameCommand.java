@@ -18,8 +18,8 @@ public class ChangeSurnameCommand implements Command {
     private static final String NEW_SURNAME = "newSurname";
     private static final String RIGHT = "right";
     private static final String WRONG = "wrong";
-    private static final String WRONG_SURNAME_MESSAGE = "The new surname is wrong";
-    private static final String RIGHT_SURNAME_MESSAGE = "The surname changed";
+    private static final String WRONG_SURNAME_MESSAGE = "wrongSurname";
+    private static final String RIGHT_SURNAME_MESSAGE = "rightSurname";
     private static final String PAGE = "page";
     private static Logger log = LogManager.getLogger(ChangeSurnameCommand.class.getName());
 

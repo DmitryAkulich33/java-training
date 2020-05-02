@@ -26,9 +26,9 @@ public class RegistrationUserCommand implements Command {
     private static final String SAVE_NOTE = "saveNote";
     private static final String WRONG = "wrong";
     private static final String RIGHT = "right";
-    private static final String WRONG_LOGIN = " - this login is not free!";
-    private static final String WRONG_DATA = "The entered data is not correct!";
-    private static final String RIGHT_MESSAGE = "Registration completed successfully!";
+    private static final String WRONG_LOGIN = "wrongLogin";
+    private static final String WRONG_DATA = "wrongMessage";
+    private static final String RIGHT_MESSAGE = "rightRegistration";
     private static Logger log = LogManager.getLogger(RegistrationUserCommand.class.getName());
 
     @Override

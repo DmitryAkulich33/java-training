@@ -18,8 +18,8 @@ public class ChangeNameCommand implements Command {
     private static final String NEW_NAME = "newName";
     private static final String RIGHT = "right";
     private static final String WRONG = "wrong";
-    private static final String WRONG_NAME_MESSAGE = "The new name is wrong";
-    private static final String RIGHT_NAME_MESSAGE = "The name changed";
+    private static final String WRONG_NAME_MESSAGE = "incorrectName";
+    private static final String RIGHT_NAME_MESSAGE = "rightName";
     private static final String PAGE = "page";
     private static Logger log = LogManager.getLogger(ChangeNameCommand.class.getName());
 

@@ -18,8 +18,8 @@ public class ChangePhoneCommand implements Command {
     private static final String NEW_PHONE = "newPhone";
     private static final String RIGHT = "right";
     private static final String WRONG = "wrong";
-    private static final String WRONG_PHONE_MESSAGE = "The new phone is wrong";
-    private static final String RIGHT_PHONE_MESSAGE = "The phone changed";
+    private static final String WRONG_PHONE_MESSAGE = "wrongPhone";
+    private static final String RIGHT_PHONE_MESSAGE = "rightPhone";
     private static final String PAGE = "page";
     private static Logger log = LogManager.getLogger(ChangePhoneCommand.class.getName());
 

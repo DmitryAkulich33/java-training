@@ -22,8 +22,8 @@ public class AddFeedbackCommand implements Command {
     private static final String REVIEW = "review";
     private static final String WRONG = "wrong";
     private static final String RIGHT = "right";
-    private static final String WRONG_FEEDBACK = "The entered data is not correct!";
-    private static final String RIGHT_FEEDBACK = "Your feedback has been successfully added.";
+    private static final String WRONG_FEEDBACK = "wrongMessage";
+    private static final String RIGHT_FEEDBACK = "rightFeedback";
     private static Logger log = LogManager.getLogger(AddFeedbackCommand.class.getName());
 
     @Override

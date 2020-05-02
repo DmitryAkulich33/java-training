@@ -17,8 +17,8 @@ public class ChangeNoteCommand implements Command {
     private static final String CHANGE_ID = "changeId";
     private static final String RIGHT = "right";
     private static final String WRONG = "wrong";
-    private static final String WRONG_MESSAGE = "The entered data is not correct!";
-    private static final String RIGHT_MESSAGE = "Note was changed successfully!";
+    private static final String WRONG_MESSAGE = "wrongMessage";
+    private static final String RIGHT_MESSAGE = "rightNote";
     private static Logger log = LogManager.getLogger(ChangeNoteCommand.class.getName());
 
     @Override

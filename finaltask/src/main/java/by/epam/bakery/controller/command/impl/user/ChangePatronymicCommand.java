@@ -18,8 +18,8 @@ public class ChangePatronymicCommand implements Command {
     private static final String NEW_PATRONYMIC = "newPatronymic";
     private static final String RIGHT = "right";
     private static final String WRONG = "wrong";
-    private static final String WRONG_PATRONYMIC_MESSAGE = "The new patronymic is wrong";
-    private static final String RIGHT_PATRONYMIC_MESSAGE = "The patronymic changed";
+    private static final String WRONG_PATRONYMIC_MESSAGE = "wrongPatronymic";
+    private static final String RIGHT_PATRONYMIC_MESSAGE = "rightPatronymic";
     private static final String PAGE = "page";
     private static Logger log = LogManager.getLogger(ChangePatronymicCommand.class.getName());
 

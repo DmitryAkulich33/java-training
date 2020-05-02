@@ -27,9 +27,9 @@ public class SaveUserCommand implements Command {
     private static final String SAVE_NOTE = "saveNote";
     private static final String WRONG = "wrong";
     private static final String RIGHT = "right";
-    private static final String WRONG_LOGIN = " - this login is not free!";
-    private static final String WRONG_DATA = "The entered data is not correct!";
-    private static final String RIGHT_MESSAGE = "User was added successfully!";
+    private static final String WRONG_LOGIN = "wrongLogin";
+    private static final String WRONG_DATA = "wrongMessage";
+    private static final String RIGHT_MESSAGE = "rightSaveUser";
     private static Logger log = LogManager.getLogger(SaveUserCommand.class.getName());
 
     @Override

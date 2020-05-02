@@ -21,8 +21,8 @@ public class AdminAddPieToOrderCommand implements Command {
     private static final String PIE_AMOUNT = "pieAmount";
     private static final String RIGHT = "right";
     private static final String WRONG = "wrong";
-    private static final String WRONG_AMOUNT_MESSAGE = "The number of pies is wrong";
-    private static final String RIGHT_AMOUNT_MESSAGE = "Product added to basket";
+    private static final String WRONG_AMOUNT_MESSAGE = "wrongAmount";
+    private static final String RIGHT_AMOUNT_MESSAGE = "rightAmount";
     private static Logger log = LogManager.getLogger(AdminAddPieToOrderCommand.class.getName());
 
     @Override
