@@ -27,9 +27,9 @@
                 <td class="a1_logo"><img class="image_logo_a1" src="image/a1.png"></td>
                 <td class="a1_phone"><a href="tel:+375445646130" class="a_link_telephone">+375-44-564-61-30</a></td>
                 <td>
-                    <a href="${request.contextPath}controller?command=show_main_page&locale=ru">RU</a>
-                    <a href="${request.contextPath}controller?command=show_main_page&locale=en">EN</a>
-                    <a href="${request.contextPath}controller?command=show_main_page&locale=be">BE</a>
+                    <a href="${request.contextPath}controller?command=show_main_page&locale=ru_RU">RU</a>
+                    <a href="${request.contextPath}controller?command=show_main_page&locale=en_EN">EN</a>
+                    <a href="${request.contextPath}controller?command=show_main_page&locale=be_BE">BE</a>
                 </td>
             </tr>
             <tr>

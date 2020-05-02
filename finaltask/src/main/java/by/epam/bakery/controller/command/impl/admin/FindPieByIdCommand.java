@@ -20,7 +20,8 @@ public class FindPieByIdCommand implements Command {
     private static final String PIES = "pies";
     private static final String WRONG = "wrong";
     private static final String WRONG_MESSAGE = "The entered data is not correct!";
-    private static final String WRONG_ID = "The entered id not found in database";
+    private static final String WRONG_ID = "<fmt:message key=\"not.found\"/>";
+//    private static final String WRONG_ID = "The entered id not found in database";
     private static final String NO_RECORDS = "No records";
     private static Logger log = LogManager.getLogger(FindPieByIdCommand.class.getName());
 

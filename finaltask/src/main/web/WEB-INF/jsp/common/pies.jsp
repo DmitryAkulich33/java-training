@@ -39,8 +39,7 @@
     </button>
     <div class="dropdown-menu">
         <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_increase_price"><fmt:message key="price.increase"/></a>
-        <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_reduction_price"><fmt:message key="price.reduction"/>
-            reduction</a>
+        <a class="dropdown-item" href="${request.contextPath}controller?command=sort_by_reduction_price"><fmt:message key="price.reduction"/></a>
     </div>
     <ul class="ul_pie">
         <c:forEach var="element" items="${pies}" varStatus="status">
