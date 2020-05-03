@@ -17,14 +17,21 @@ public class ConnectionFactory {
     private static Logger log = LogManager.getLogger(ConnectionFactory.class.getName());
     private static final String CONNECTION_ERROR = "Failed to create a database connection";
     private static final String READ_ERROR ="Could not read the property file to create a database connection";
-    private static final String PATH_TO_PROPERTIES = "d:/java-training/finaltask/src/main/resources/database.properties";
+//    private static final String PATH_TO_PROPERTIES = "d:/java-training/finaltask/src/main/resources/database.properties";
+    private static final String PATH_TO_PROPERTIES = "/database.properties";
     private static String databaseUrl;
     private static String databaseUsername;
     private static String databasePassword;
 
     public ConnectionFactory(){
         Properties properties = new Properties();
-        try (InputStream input = Files.newInputStream(Paths.get(PATH_TO_PROPERTIES))) {
+//        try (InputStream input = Files.newInputStream(Paths.get(PATH_TO_PROPERTIES))) {
+//            properties.load(input);
+//        } catch (IOException e) {
+//            log.error("Could not read the property file!");
+//            throw new ConnectionException(READ_ERROR, e);
+//        }
+        try (InputStream input = ConnectionPool.class.getResourceAsStream(PATH_TO_PROPERTIES)) {
             properties.load(input);
         } catch (IOException e) {
             log.error("Could not read the property file!");

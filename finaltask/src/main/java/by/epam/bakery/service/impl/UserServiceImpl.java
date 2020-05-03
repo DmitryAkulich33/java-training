@@ -174,7 +174,7 @@ public class UserServiceImpl implements UserService {
         }
         log.debug("Service: Deleting role finished.");
     }
-    
+
     @Override
     public User findClientById(String userId) throws ServiceException, ValidatorException {
         log.debug("Service: Getting user.");
