@@ -45,17 +45,16 @@ public class RegistrationUserCommand implements Command {
         String phone = request.getParameter(SAVE_PHONE);
         String note = request.getParameter(SAVE_NOTE);
         try {
-            serviceFactory.getUserService().addUser(login, password, USER_ROLE, surname, name, patronymic, address, phone, note);
-            serviceFactory.getBasketService().saveBasket(login, TOTAL);
+            serviceFactory.getUserService().addUser(login, password, USER_ROLE, surname, name, patronymic, address, phone, note, TOTAL);
             session.setAttribute(RIGHT, RIGHT_MESSAGE);
         } catch (ValidatorException ex){
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_DATA);
-            return CommandResult.forward("/WEB-INF/jsp/user/registration.jsp");
+            return CommandResult.redirect(request.getContextPath() + "controller?command=registration");
         } catch (LoginIsNotFreeException exc){
             log.error(this.getClass() + ":" + exc.getMessage());
-            session.setAttribute(WRONG, login + WRONG_LOGIN);
-            return CommandResult.forward("/WEB-INF/jsp/user/registration.jsp");
+            session.setAttribute(WRONG, WRONG_LOGIN);
+            return CommandResult.redirect(request.getContextPath() + "controller?command=registration");
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");

@@ -29,15 +29,8 @@ public class DeletePieFromBasketCommand implements Command {
         int basketId = Integer.parseInt(request.getParameter(BASKET_ID));
         double productCost = Double.parseDouble(request.getParameter(BASKET_PRODUCT_COST));
         double basketTotal = Double.parseDouble(request.getParameter(BASKET_TOTAL));
-
         try {
-            serviceFactory.getBasketProductService().deleteBasketProductById(basketProductId);
-        } catch (ServiceException e) {
-            log.error(this.getClass() + ":" + e.getMessage());
-            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-        }
-        try {
-            serviceFactory.getBasketService().changeTotal(basketTotal - productCost, basketId);
+            serviceFactory.getBasketProductService().deleteBasketProductById(basketProductId,basketTotal - productCost , basketId);
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");

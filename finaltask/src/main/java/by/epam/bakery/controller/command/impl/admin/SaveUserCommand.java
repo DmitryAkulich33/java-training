@@ -2,7 +2,6 @@ package by.epam.bakery.controller.command.impl.admin;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.LoginIsNotFreeException;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.exception.ValidatorException;
@@ -13,9 +12,9 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 public class SaveUserCommand implements Command {
+    private static final double TOTAL = 0.00;
     private static final String SAVE_LOGIN = "saveLogin";
     private static final String SAVE_PASSWORD = "savePassword";
     private static final String SAVE_ROLE = "saveRole";
@@ -48,15 +47,14 @@ public class SaveUserCommand implements Command {
         String note = request.getParameter(SAVE_NOTE);
         try {
             try {
-                serviceFactory.getUserService().addUser(login, password, role, surname, name, patronymic, address, phone, note);
-                serviceFactory.getBasketService().saveBasket(login, 0.00);
+                serviceFactory.getUserService().addUser(login, password, role, surname, name, patronymic, address, phone, note, TOTAL);
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
             } catch (ValidatorException ex){
                 log.error(this.getClass() + ":" + ex.getMessage());
                 session.setAttribute(WRONG, WRONG_DATA);
             } catch (LoginIsNotFreeException exc){
                 log.error(this.getClass() + ":" + exc.getMessage());
-                session.setAttribute(WRONG, login + WRONG_LOGIN);
+                session.setAttribute(WRONG, WRONG_LOGIN);
             }
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());

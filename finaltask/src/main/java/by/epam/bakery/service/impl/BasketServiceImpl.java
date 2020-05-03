@@ -19,18 +19,6 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public void saveBasket(String userLogin, double total) throws ServiceException {
-        log.debug("Service: saving basket started.");
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            BasketDao dao = helper.createBasketDao();
-            dao.save(userLogin, total);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-        log.debug("Service: saving basket finished.");
-    }
-
-    @Override
     public Basket findBasketByUserLogin (String userLogin) throws ServiceException{
         log.debug("Service: search basket by user login.");
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -39,17 +27,5 @@ public class BasketServiceImpl implements BasketService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
-    }
-
-    @Override
-    public void changeTotal(double newTotal, int basketId) throws ServiceException{
-        log.debug("Service: changing total in basket started.");
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            BasketDao dao = helper.createBasketDao();
-            dao.changeTotal(newTotal, basketId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-        log.debug("Service: changing total in basket finished.");
     }
 }

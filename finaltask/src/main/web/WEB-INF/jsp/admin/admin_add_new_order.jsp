@@ -112,9 +112,7 @@
     <br>
 </div>
 <div class="container-fluid pt-3">
-    <div>
-        <fmt:message key="our.pies"/>
-    </div>
+    <h2><fmt:message key="our.pies"/></h2>
     <br>
     <div class="wrong_message"><c:out value="${ wrong }"/></div>
     <div class="right_message"><c:out value="${ right }"/></div>

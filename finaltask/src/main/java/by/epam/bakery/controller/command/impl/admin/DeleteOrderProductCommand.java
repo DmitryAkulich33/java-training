@@ -2,7 +2,6 @@ package by.epam.bakery.controller.command.impl.admin;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.OrderProduct;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
 import org.apache.logging.log4j.LogManager;
@@ -21,15 +20,7 @@ public class DeleteOrderProductCommand implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         int orderProductId = Integer.parseInt(request.getParameter(DELETE_ORDER_PRODUCT_ID));
         try {
-             OrderProduct orderProduct = serviceFactory.getOrderProductService().findOrderProductById(orderProductId);
-             double piePrice = orderProduct.getPie().getPrice();
-             double total = orderProduct.getOrder().getTotal() - piePrice;
-             int orderId = orderProduct.getOrder().getId();
-             serviceFactory.getOrderService().changeTotal(total, orderId);
-             if(total == 0.0){
-                 serviceFactory.getOrderService().deleteOrderById(orderId);
-             }
-             serviceFactory.getOrderProductService().deleteOrderProductById(orderProductId);
+            serviceFactory.getOrderProductService().deleteOrderProduct(orderProductId);
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");

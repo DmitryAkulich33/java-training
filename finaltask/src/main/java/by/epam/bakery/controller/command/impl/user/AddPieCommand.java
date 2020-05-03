@@ -39,11 +39,10 @@ public class AddPieCommand implements Command {
         try {
             basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
             int basketId = basket.getId();
-            serviceFactory.getBasketProductService().saveBasketProduct(basketId, pieId, amount, piePrice);
             int pieAmount = Integer.parseInt(amount);
             double cost = pieAmount * piePrice;
             double total = basket.getTotal();
-            serviceFactory.getBasketService().changeTotal((total + cost), basketId);
+            serviceFactory.getBasketProductService().saveBasketProduct(basketId, pieId, amount, piePrice, (total + cost));
             session.setAttribute(RIGHT, RIGHT_AMOUNT_MESSAGE);
         } catch (ValidatorException e) {
             log.error(this.getClass() + ":" + e.getMessage());

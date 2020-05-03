@@ -19,7 +19,6 @@ public class ClearBasketCommand implements Command {
     private static final String BASKET_PRODUCT = "basketProducts";
     private static Logger log = LogManager.getLogger(ClearBasketCommand.class.getName());
 
-
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         log.debug("Basket cleaning started.");
@@ -30,8 +29,7 @@ public class ClearBasketCommand implements Command {
         try {
             basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
             int basketId = basket.getId();
-            serviceFactory.getBasketService().changeTotal(TOTAL, basketId);
-            serviceFactory.getBasketProductService().deleteBasketProductByBasketId(basketId);
+            serviceFactory.getBasketProductService().clearBasket(basketId, TOTAL);
             session.removeAttribute(BASKET_PRODUCT);
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());

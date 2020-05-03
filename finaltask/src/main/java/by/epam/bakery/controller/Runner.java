@@ -48,8 +48,8 @@ public class Runner {
 //        System.out.println(LocalDateTime.now().toString().substring(0, 19));
 //        serviceFactory.getOrderService().save(4, 76.00, null, null, StatusEnum.NOTREADY.getValue());
 //        serviceFactory.getBasketService().save(3, 22);
-        Basket basket = serviceFactory.getBasketService().findBasketByUserLogin("user7");
-        System.out.println(basket);
+//        Basket basket = serviceFactory.getBasketService().findBasketByUserLogin("user7");
+//        System.out.println(basket);
 //        serviceFactory.getBasketProductService().saveBasketProduct(2, 4);
 //        List<Pie> pies = pieDao.findPieByBasketId(1);
 //        System.out.println(pies);
@@ -87,5 +87,22 @@ public class Runner {
 //        } catch (ValidatorException e) {
 //            System.out.println(e.getMessage());
 //        }
+//        try {
+//            serviceFactory.getUserService().addUserTransaction("user2g33s", "user230", "3", "Akulich", "Dmitry",
+//                    "Viktorovich", "Belarus", "8-044-564-61-30", "good!", 0.0);
+//        } catch (ValidatorException e) {
+//            System.out.println("validator");
+//        } catch (LoginIsNotFreeException e) {
+//            System.out.println("login");
+//        } catch (ServiceException e) {
+//            System.out.println("SQL");
+//        }
+//
+//        try {
+//            serviceFactory.getUserService().changeAddress("Bolgaria44", 5);
+//        } catch (ValidatorException e) {
+//            e.printStackTrace();
+//        }
+
     }
 }

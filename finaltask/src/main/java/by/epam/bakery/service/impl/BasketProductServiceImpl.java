@@ -2,6 +2,7 @@ package by.epam.bakery.service.impl;
 
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
+import by.epam.bakery.dao.api.BasketDao;
 import by.epam.bakery.dao.api.BasketProductDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.BasketProduct;
@@ -24,7 +25,7 @@ public class BasketProductServiceImpl implements BasketProductService {
     }
 
     @Override
-    public void saveBasketProduct(int basketId, int pieId, String amount, double price) throws ServiceException, ValidatorException {
+    public void saveBasketProduct(int basketId, int pieId, String amount, double price, double newTotal) throws ServiceException, ValidatorException {
         log.debug("Service: saving basket product started.");
         if (!pieDataValidator.isPieAmountValid(amount)) {
             log.error("The number of pies is wrong");
@@ -33,8 +34,17 @@ public class BasketProductServiceImpl implements BasketProductService {
         int pieAmount = Integer.parseInt(amount);
         double cost = pieAmount * price;
         try (DaoHelper helper = daoHelperFactory.create()) {
-            BasketProductDao dao = helper.createBasketProductDao();
-            dao.save(basketId, pieId, amount, cost);
+            BasketProductDao basketProductDao = helper.createBasketProductDao();
+            BasketDao basketDao = helper.createBasketDao();
+            try {
+                helper.startTransaction();
+                basketProductDao.save(basketId, pieId, amount, cost);
+                basketDao.changeTotal(newTotal, basketId);
+                helper.endTransaction();
+            } catch (DaoException ex) {
+                helper.backTransaction();
+                throw new ServiceException(ex);
+            }
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -42,11 +52,20 @@ public class BasketProductServiceImpl implements BasketProductService {
     }
 
     @Override
-    public void deleteBasketProductByBasketId(int basketId) throws ServiceException {
+    public void clearBasket (int basketId, double newTotal) throws ServiceException {
         log.debug("Service: deleting basket product by basket id started.");
         try (DaoHelper helper = daoHelperFactory.create()) {
-            BasketProductDao dao = helper.createBasketProductDao();
-            dao.removeByBasketId(basketId);
+            BasketProductDao basketProductDao = helper.createBasketProductDao();
+            BasketDao basketDao = helper.createBasketDao();
+            try {
+                helper.startTransaction();
+                basketProductDao.removeByBasketId(basketId);
+                basketDao.changeTotal(newTotal, basketId);
+                helper.endTransaction();
+            } catch (DaoException ex) {
+                helper.backTransaction();
+                throw new ServiceException(ex);
+            }
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -54,11 +73,20 @@ public class BasketProductServiceImpl implements BasketProductService {
     }
 
     @Override
-    public void deleteBasketProductById(int basketProductId) throws ServiceException {
+    public void deleteBasketProductById(int basketProductId, double newTotal, int basketId) throws ServiceException {
         log.debug("Service: deleting basket product by id started.");
         try (DaoHelper helper = daoHelperFactory.create()) {
-            BasketProductDao dao = helper.createBasketProductDao();
-            dao.removeById(basketProductId);
+            BasketProductDao basketProductDao = helper.createBasketProductDao();
+            BasketDao basketDao = helper.createBasketDao();
+            try {
+                helper.startTransaction();
+                basketProductDao.removeById(basketProductId);
+                basketDao.changeTotal(newTotal, basketId);
+                helper.endTransaction();
+            } catch (DaoException ex) {
+                helper.backTransaction();
+                throw new ServiceException(ex);
+            }
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

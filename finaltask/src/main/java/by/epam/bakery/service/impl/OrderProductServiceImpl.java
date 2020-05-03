@@ -2,6 +2,7 @@ package by.epam.bakery.service.impl;
 
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
+import by.epam.bakery.dao.api.OrderDao;
 import by.epam.bakery.dao.api.OrderProductDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.OrderProduct;
@@ -34,26 +35,31 @@ public class OrderProductServiceImpl implements OrderProductService {
     }
 
     @Override
-    public void deleteOrderProductById(int orderProductId) throws ServiceException {
+    public void deleteOrderProduct(int orderProductId) throws ServiceException {
         log.debug("Service: deleting order product started.");
         try (DaoHelper helper = daoHelperFactory.create()) {
-            OrderProductDao dao = helper.createOrderProductDao();
-            dao.removeById(orderProductId);
+            OrderProductDao orderProductDao = helper.createOrderProductDao();
+            OrderDao orderDao = helper.createOrderDao();
+            try {
+                helper.startTransaction();
+                OrderProduct orderProduct = orderProductDao.findOrderProductById(orderProductId);
+                double piePrice = orderProduct.getPie().getPrice();
+                double total = orderProduct.getOrder().getTotal() - piePrice;
+                int orderId = orderProduct.getOrder().getId();
+                orderDao.changeTotal(total, orderId);
+                if(total == 0.0){
+                    orderDao.removeById(orderId);
+                }
+                orderProductDao.removeById(orderProductId);
+                helper.endTransaction();
+            } catch (DaoException ex) {
+                helper.backTransaction();
+                throw new ServiceException(ex);
+            }
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
         log.debug("Service: deleting order product finished.");
-    }
-
-    @Override
-    public OrderProduct findOrderProductById (int orderProductId) throws ServiceException{
-        log.debug("Service: search order product by id.");
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            OrderProductDao dao = helper.createOrderProductDao();
-            return dao.findOrderProductById(orderProductId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
     }
 
     @Override

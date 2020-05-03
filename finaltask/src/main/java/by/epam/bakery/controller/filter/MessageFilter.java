@@ -30,7 +30,7 @@ public class MessageFilter implements Filter {
         messagesEn.put("wrongName", "The entered name not found in database!");
         messagesEn.put("rightSavePie", "The pie was added successfully!");
         messagesEn.put("rightSaveUser", "User was added successfully!");
-        messagesEn.put("wrongLogin", " - this login is not free!");
+        messagesEn.put("wrongLogin", "This login is not free!");
         messagesEn.put("incorrectLogin", "Incorrect login or password!");
         messagesEn.put("rightRegistration", "Registration completed successfully!");
         messagesEn.put("rightNote", "Note was changed successfully!");
@@ -57,7 +57,7 @@ public class MessageFilter implements Filter {
         messagesRu.put("wrongName", "Введенное имя не найдено в базе данных!");
         messagesRu.put("rightSavePie", "Пирог был сохранен успешно!");
         messagesRu.put("rightSaveUser", "Пользователь был добавлен успешно!");
-        messagesRu.put("wrongLogin", " - этот логин занят!");
+        messagesRu.put("wrongLogin", "Этот логин занят!");
         messagesRu.put("incorrectLogin", "Неправильный логин или пароль!");
         messagesRu.put("rightRegistration", "Регистрация прошла успешно!");
         messagesRu.put("rightNote", "Примечание было изменено успешно!");
@@ -84,7 +84,7 @@ public class MessageFilter implements Filter {
         messagesBe.put("wrongName", "Уведзенае імя не знойдзена ў базе даных!");
         messagesBe.put("rightSavePie", "Пірог быў захаваны паспяхова!");
         messagesBe.put("rightSaveUser", "Карыстальнік быў дададзены паспяхова!");
-        messagesBe.put("wrongLogin", " - гэты лагін заняты!");
+        messagesBe.put("wrongLogin", "Гэты лагін заняты!");
         messagesBe.put("incorrectLogin", "Няправільны імя або пароль!");
         messagesBe.put("rightRegistration", "Рэгістрацыя прайшла паспяхова!");
         messagesBe.put("rightNote", "Заўвага было зменена паспяхова!");

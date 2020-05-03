@@ -2,8 +2,13 @@ package by.epam.bakery.service.impl;
 
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
+import by.epam.bakery.dao.api.BasketDao;
+import by.epam.bakery.dao.api.BasketProductDao;
 import by.epam.bakery.dao.api.OrderDao;
+import by.epam.bakery.dao.api.OrderProductDao;
 import by.epam.bakery.dao.exception.DaoException;
+import by.epam.bakery.domain.Basket;
+import by.epam.bakery.domain.BasketProduct;
 import by.epam.bakery.domain.Order;
 import by.epam.bakery.domain.StatusEnum;
 import by.epam.bakery.service.api.OrderService;
@@ -26,26 +31,39 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void save(int userId, double total, LocalDateTime productionDate, LocalDateTime deliveryDate,  String status) throws ServiceException {
+    public void saveOrder (int userId, double total, LocalDateTime productionDate, LocalDateTime deliveryDate, String status,
+                           List<BasketProduct> basketProducts, String userLogin, double newTotal) throws ServiceException {
         log.debug("Service: saving order started.");
         try (DaoHelper helper = daoHelperFactory.create()) {
-            OrderDao dao = helper.createOrderDao();
-            dao.save(userId, total, productionDate, deliveryDate, status);
+            OrderDao orderDao = helper.createOrderDao();
+            OrderProductDao orderProductDao = helper.createOrderProductDao();
+            BasketProductDao basketProductDao = helper.createBasketProductDao();
+            BasketDao basketDao = helper.createBasketDao();
+            try {
+                helper.startTransaction();
+                orderDao.save(userId, total, productionDate, deliveryDate, status);
+                log.debug("saved 1");
+                Order order = orderDao.findLastUserOrderById(userId);
+                int orderId = order.getId();
+                log.debug("found id is" + orderId);
+                for(BasketProduct basketProduct: basketProducts){
+                    log.debug("cycl" );
+                    orderProductDao.save(orderId, basketProduct.getPie().getId(), basketProduct.getAmount(), basketProduct.getCost());
+                }
+                log.debug("cycl finished" );
+                Basket basket = basketDao.getBasketByUserLogin(userLogin);
+                int basketId = basket.getId();
+                basketProductDao.removeByBasketId(basketId);
+                basketDao.changeTotal(newTotal, basketId);
+                helper.endTransaction();
+            } catch (DaoException ex) {
+                helper.backTransaction();
+                throw new ServiceException(ex);
+            }
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
         log.debug("Service: saving order finished.");
-    }
-
-    @Override
-    public Order findLastOrderByUserId(int userId) throws ServiceException {
-        log.debug("Service: search last order by user id.");
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            OrderDao dao = helper.createOrderDao();
-            return dao.findLastUserOrderById(userId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
     }
 
     @Override
@@ -116,18 +134,6 @@ public class OrderServiceImpl implements OrderService {
             throw new ServiceException(e);
         }
         log.debug("Service: changing status finished.");
-    }
-
-    @Override
-    public void changeTotal(double newTotal, int orderId) throws ServiceException{
-        log.debug("Service: changing total started.");
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            OrderDao dao = helper.createOrderDao();
-            dao.changeTotal(newTotal, orderId);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-        log.debug("Service: changing total finished.");
     }
 
     private int findOrderAmount () throws ServiceException{

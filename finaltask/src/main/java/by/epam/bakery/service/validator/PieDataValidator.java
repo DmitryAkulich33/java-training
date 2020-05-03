@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PieDataValidator {
-    private static final String REGEX_AMOUNT = "^[1-9]{1,2}$";
+    private static final String REGEX_AMOUNT = "^(([1-9]{1,2})|([1-9][0]))$";
     private static final String REGEX_ID = "^([1-9][0-9]{0,8})$";
     private static final String REGEX_WEIGHT = "^((3000)|([1-9][0-9][0-9])|[1-2][0-9][0-9][0-9])$";
     private static final String REGEX_PICTURE = "^.{0,255}$";

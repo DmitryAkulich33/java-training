@@ -17,6 +17,7 @@ import java.util.List;
 
 public class AddOrderCommand implements Command {
     private static final String USER = "user";
+    private static final double TOTAL = 0.0;
     private static final String BASKET_TOTAL = "total";
     private static final String BASKET_PRODUCT = "basketProducts";
     private static Logger log = LogManager.getLogger(AddOrderCommand.class.getName());
@@ -27,25 +28,22 @@ public class AddOrderCommand implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         double basketTotal = Double.parseDouble(request.getParameter(BASKET_TOTAL));
         HttpSession session = request.getSession();
+        List<BasketProduct> basketProducts = (List<BasketProduct>) session.getAttribute(BASKET_PRODUCT);
         User user = (User) session.getAttribute(USER);
         int userId = user.getId();
+        String login = user.getLogin();
         if (basketTotal == 0) {
             return CommandResult.forward("/WEB-INF/jsp/user/basket.jsp");
         } else {
             try {
-                serviceFactory.getOrderService().save(userId, basketTotal, null, null, StatusEnum.NOT_READY.getValue());
-                Order order = serviceFactory.getOrderService().findLastOrderByUserId(userId);
-                int orderId = order.getId();
-                List<BasketProduct> basketProducts = (List<BasketProduct>) session.getAttribute(BASKET_PRODUCT);
-                for(BasketProduct basketProduct: basketProducts){
-                    serviceFactory.getOrderProductService().save(orderId, basketProduct.getPie().getId(), basketProduct.getAmount(), basketProduct.getCost());
-                }
+                serviceFactory.getOrderService().saveOrder(userId, basketTotal, null, null, StatusEnum.NOT_READY.getValue(),
+                        basketProducts, login, TOTAL);
             } catch (ServiceException e) {
                 log.error(this.getClass() + ":" + e.getMessage());
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
         log.debug("Adding order finished.");
-        return CommandResult.redirect(request.getContextPath() + "controller?command=clear_basket");
+        return CommandResult.redirect(request.getContextPath() + "controller?command=show_basket");
     }
 }

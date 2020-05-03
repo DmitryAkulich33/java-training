@@ -27,34 +27,21 @@ public class AdminProductToOrder implements Command {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(USER_FOR_ORDER);
         int userId = user.getId();
+        String login = user.getLogin();
         double basketTotal = Double.parseDouble(request.getParameter(BASKET_TOTAL));
+        List<BasketProduct> basketProducts = (List<BasketProduct>) session.getAttribute(BASKET_PRODUCT);
         if (basketTotal == 0) {
             return CommandResult.redirect(request.getContextPath() + "controller?command=admin_add_new_order");
         } else {
             try {
-                serviceFactory.getOrderService().save(userId, basketTotal, null, null, StatusEnum.NOT_READY.getValue());
-                Order order = serviceFactory.getOrderService().findLastOrderByUserId(userId);
-                int orderId = order.getId();
-                List<BasketProduct> basketProducts = (List<BasketProduct>) session.getAttribute(BASKET_PRODUCT);
-                for(BasketProduct basketProduct: basketProducts){
-                    serviceFactory.getOrderProductService().save(orderId, basketProduct.getPie().getId(), basketProduct.getAmount(), basketProduct.getCost());
-                }
+                serviceFactory.getOrderService().saveOrder(userId, basketTotal, null, null, StatusEnum.NOT_READY.getValue(),
+                        basketProducts, login, TOTAL);
             } catch (ServiceException e) {
                 log.error(this.getClass() + ":" + e.getMessage());
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
         }
         session.removeAttribute(BASKET_PRODUCT);
-        Basket basket;
-        try {
-            basket = serviceFactory.getBasketService().findBasketByUserLogin(user.getLogin());
-            int basketId = basket.getId();
-            serviceFactory.getBasketService().changeTotal(TOTAL, basketId);
-            serviceFactory.getBasketProductService().deleteBasketProductByBasketId(basketId);
-        } catch (ServiceException e) {
-            log.error(this.getClass() + ":" + e.getMessage());
-            return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
-        }
         log.debug("Adding products to order finished.");
         return CommandResult.redirect(request.getContextPath() + "controller?command=admin_add_new_order");
     }

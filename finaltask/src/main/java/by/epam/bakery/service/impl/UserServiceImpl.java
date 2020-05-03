@@ -2,6 +2,7 @@ package by.epam.bakery.service.impl;
 
 import by.epam.bakery.dao.DaoHelper;
 import by.epam.bakery.dao.DaoHelperFactory;
+import by.epam.bakery.dao.api.BasketDao;
 import by.epam.bakery.dao.api.UserDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.User;
@@ -173,31 +174,7 @@ public class UserServiceImpl implements UserService {
         }
         log.debug("Service: Deleting role finished.");
     }
-
-    @Override
-    public void addUser(String login, String password, String role, String surname, String name, String patronymic, String address, String phone, String note) throws ServiceException, ValidatorException, LoginIsNotFreeException {
-        log.debug("Service: Adding user started.");
-        if (!userDataValidator.isLoginValid(login) || !userDataValidator.isPasswordValid(password) ||
-                !userDataValidator.isSurnameValid(surname) || !userDataValidator.isNameValid(name) ||
-                !userDataValidator.isPatronymicValid(patronymic) || !userDataValidator.isAddressValid(address) ||
-                !userDataValidator.isPhoneValid(phone) || !userDataValidator.isNoteValid(note) ||
-                !userDataValidator.isRoleValid(role)) {
-            log.error("The entered data is not correct!");
-            throw new ValidatorException("The entered data is not correct!");
-        }
-        if (!checkLogin(login).isEmpty()) {
-            log.error("Login is not free");
-            throw new LoginIsNotFreeException("Login is not free");
-        }
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            UserDao dao = helper.createUserDao();
-            dao.save(login, password, role, surname, name, patronymic, address, phone, note);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-        log.debug("Service: Adding user finished.");
-    }
-
+    
     @Override
     public User findClientById(String userId) throws ServiceException, ValidatorException {
         log.debug("Service: Getting user.");
@@ -268,5 +245,38 @@ public class UserServiceImpl implements UserService {
         log.debug("Service: Getting client page amount.");
         int amountAllClients = findClientAmount();
         return (int) Math.ceil((double) amountAllClients / pageAmount);
+    }
+
+    @Override
+    public void addUser(String login, String password, String role, String surname, String name, String patronymic, String address, String phone, String note, double total) throws ServiceException, ValidatorException, LoginIsNotFreeException {
+        log.debug("Service: Adding user started.");
+        if (!userDataValidator.isLoginValid(login) || !userDataValidator.isPasswordValid(password) ||
+                !userDataValidator.isSurnameValid(surname) || !userDataValidator.isNameValid(name) ||
+                !userDataValidator.isPatronymicValid(patronymic) || !userDataValidator.isAddressValid(address) ||
+                !userDataValidator.isPhoneValid(phone) || !userDataValidator.isNoteValid(note) ||
+                !userDataValidator.isRoleValid(role)) {
+            log.error("The entered data is not correct!");
+            throw new ValidatorException("The entered data is not correct!");
+        }
+        if (!checkLogin(login).isEmpty()) {
+            log.error("Login is not free");
+            throw new LoginIsNotFreeException("Login is not free");
+        }
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao userDao = helper.createUserDao();
+            BasketDao basketDao = helper.createBasketDao();
+            try {
+                helper.startTransaction();
+                userDao.save(login, password, role, surname, name, patronymic, address, phone, note);
+                basketDao.save(login, total);
+                helper.endTransaction();
+            } catch (DaoException ex) {
+                helper.backTransaction();
+                throw new ServiceException(ex);
+            }
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+        log.debug("Service: Adding user finished.");
     }
 }
