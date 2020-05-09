@@ -24,8 +24,7 @@ public class LoginCommand implements Command {
     private static final String WRONG_DATA = "wrongMessage";
     private static final String WRONG = "wrong";
     private static final String NO_RECORDS = "No records";
-
-
+    
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         log.debug("Login user started.");
