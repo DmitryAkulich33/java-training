@@ -43,10 +43,6 @@ public class PieServiceImplTest {
             new Pie(4, "French", 1000, 25.00, "Signature dough, ripe spicy cherry with hints of clove", "image/france.png"),
             new Pie(5, "Belgian", 900, 20.00, "Signature dough with delicate, fragrant raspberries", "image/Belg.png")));
 
-//    @BeforeTest
-//    public void initList() {
-//
-//    }
 
     @Test
     public void testCorrectPieList() throws ServiceException {

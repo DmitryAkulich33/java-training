@@ -41,16 +41,6 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public List<User> checkLogin(String login) throws ServiceException {
-        log.debug("Service: checking login.");
-        try (DaoHelper helper = daoHelperFactory.create()) {
-            UserDao dao = helper.createUserDao();
-            return dao.findUserByLogin(login);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-    }
-
     @Override
     public void changeName(String newName, int userId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing name started.");
@@ -162,6 +152,17 @@ public class UserServiceImpl implements UserService {
         }
         log.debug("Service: Changing role finished.");
     }
+
+    public List<User> checkLogin(String login) throws ServiceException {
+        log.debug("Service: checking login.");
+        try (DaoHelper helper = daoHelperFactory.create()) {
+            UserDao dao = helper.createUserDao();
+            return dao.findUserByLogin(login);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 
     @Override
     public void deleteUser(int id) throws ServiceException {
