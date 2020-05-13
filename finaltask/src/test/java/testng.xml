@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Suite">
-    <test name="Test">
+    <test name="testPieService">
         <classes>
-            <class name = "by.epam.bakery.service.impl.PieServiceImplTest">
+            <class name="by.epam.bakery.service.impl.PieServiceImplTest">
             </class>
-            <class name = "by.epam.bakery.service.impl.FeedbackServiceImplTest">
+        </classes>
+    </test>
+    <test name="testFeedbackService">
+        <classes>
+            <class name="by.epam.bakery.service.impl.FeedbackServiceImplTest">
+            </class>
+        </classes>
+    </test>
+    <test name="testUserServiceImpl">
+        <classes>
+            <class name="by.epam.bakery.service.impl.UserServiceImplTest">
+            </class>
+        </classes>
+    </test>
+    <test name="testBasketServiceImpl">
+        <classes>
+            <class name="by.epam.bakery.service.impl.BasketServiceImplTest">
             </class>
         </classes>
     </test>

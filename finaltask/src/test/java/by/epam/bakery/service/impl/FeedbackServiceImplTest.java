@@ -26,14 +26,7 @@ import java.util.List;
 
 public class FeedbackServiceImplTest {
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
-    List<Feedback> allFeedbacks = new ArrayList<>(Arrays.asList(new Feedback(3, new User(4, "user2", "user2", 3, "Petrov", "Petr", "Petrovich", "Apt 45, 17 Kazinca St, Minsk", "8-044-573-76-40",
-                    "There are enough parking spaces in the yard"), LocalDateTime.parse("2020-04-09T12:00:00"), "It was delicious!"),
-            new Feedback(2, new User(3, "user1", "user1", 3, "Ivanov", "Ivan", "Ivanovich", "Apt 18, 44 Rafieva St, Minsk", "8-029-743-45-46",
-                    "In the yard problems with parking spaces"), LocalDateTime.parse("2020-04-08T11:00:00"), "It was good!"),
-            new Feedback(1, new User(3, "user1", "user1", 3, "Ivanov", "Ivan", "Ivanovich", "Apt 18, 44 Rafieva St, Minsk", "8-029-743-45-46",
-                    "In the yard problems with parking spaces"), LocalDateTime.parse("2020-04-05T10:00:00"), "It was bad!")));
 
-    
     @DataProvider
     public Object[][] forFindCorrectLimitFeedbackOnPage() {
         List<Feedback> feedbacks1 = new ArrayList<>(Arrays.asList(new Feedback(3, new User(4, "user2", "user2", 3, "Petrov", "Petr", "Petrovich", "Apt 45, 17 Kazinca St, Minsk", "8-044-573-76-40",
@@ -136,7 +129,7 @@ public class FeedbackServiceImplTest {
         };
     }
 
-    @Test(priority = 1, dataProvider = "forDeleteFeedback")
+    @Test(priority = 2, dataProvider = "forDeleteFeedback")
     public void testDeleteFeedback(List<Feedback> feedbacks, int id, int start, int amount) throws ServiceException {
         serviceFactory.getFeedBackService().deleteFeedback(id);
         Assert.assertEquals(serviceFactory.getFeedBackService().findLimitFeedback(start, amount), feedbacks);
@@ -167,7 +160,7 @@ public class FeedbackServiceImplTest {
         };
     }
 
-    @Test(priority = 2, dataProvider = "forSaveFeedback")
+    @Test(priority = 3, dataProvider = "forSaveFeedback")
     public void testSaveFeedback(List<Feedback> feedbacks, int userId, LocalDateTime localDateTime, String review, int start, int amount) throws ServiceException, ValidatorException {
         serviceFactory.getFeedBackService().save(userId, localDateTime, review);
         Assert.assertEquals(serviceFactory.getFeedBackService().findLimitFeedback(start, amount), feedbacks);

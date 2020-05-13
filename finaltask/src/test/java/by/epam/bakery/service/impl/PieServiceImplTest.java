@@ -332,6 +332,19 @@ public class PieServiceImplTest {
         Assert.assertEquals(serviceFactory.getPieService().findPieById(String.valueOf(id)), pie);
     }
 
+    @BeforeTest
+    public void beforeTest() throws SQLException, IOException{
+        DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+        String mysqlUrl = "jdbc:mysql://localhost:3306/test_bakery_db?serverTimezone=Europe/Minsk";
+        Connection con = DriverManager.getConnection(mysqlUrl, "root", "5646130");
+        ScriptRunner sr = new ScriptRunner(con);
+        Reader reader = new BufferedReader(new FileReader("src/test/resources/sql/allScripts.sql"));
+        sr.runScript(reader);
+        con.close();
+        reader.close();
+        sr.closeConnection();
+    }
+
     @AfterTest
     void tearDown() throws SQLException, IOException {
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());

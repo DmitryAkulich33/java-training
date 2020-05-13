@@ -269,7 +269,9 @@ public class UserServiceImpl implements UserService {
             try {
                 helper.startTransaction();
                 userDao.save(login, password, role, surname, name, patronymic, address, phone, note);
-                basketDao.save(login, total);
+                if(role.equals("3")) {
+                    basketDao.save(login, total);
+                }
                 helper.endTransaction();
             } catch (DaoException ex) {
                 helper.backTransaction();
