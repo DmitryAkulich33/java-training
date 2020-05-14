@@ -25,4 +25,10 @@
             </class>
         </classes>
     </test>
+    <test name="testBasketProductServiceImpl">
+        <classes>
+            <class name="by.epam.bakery.service.impl.BasketProductServiceImplTest">
+            </class>
+        </classes>
+    </test>
 </suite>
