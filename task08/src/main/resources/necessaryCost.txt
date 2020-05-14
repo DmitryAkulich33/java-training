@@ -1,2 +1,0 @@
-Car is MERCEDES C-Class, 2007 year, color is White, cost is 27500 BYN, registration number is AK-7-6666
-Car is BMW X5, 2007 year, color is Blue, cost is 28900 BYN, registration number is AK-7-3434

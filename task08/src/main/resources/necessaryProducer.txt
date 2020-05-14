@@ -1,2 +1,0 @@
-Car is BMW X5, 2007 year, color is Blue, cost is 28900 BYN, registration number is AK-7-3434
-Car is BMW X6, 2011 year, color is Black, cost is 31100 BYN, registration number is AP-7-2230
