@@ -31,4 +31,10 @@
             </class>
         </classes>
     </test>
+    <test name="testOrderServiceImpl">
+        <classes>
+            <class name="by.epam.bakery.service.impl.OrderServiceImplTest">
+            </class>
+        </classes>
+    </test>
 </suite>
