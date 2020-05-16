@@ -14,18 +14,48 @@ import by.epam.bakery.service.validator.UserDataValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implementation of {@link UserService} interface. Provides access to {@link by.epam.bakery.service.api.UserService},
+ * {@link by.epam.bakery.dao.exception.DaoException} and provides support for working with entity {@link User}
+ *
+ * @see DaoHelper
+ */
 public class UserServiceImpl implements UserService {
+    /**
+     * Factory for Dao
+     */
     private DaoHelperFactory daoHelperFactory;
+
+    /**
+     * Validator for this service
+     */
     private UserDataValidator userDataValidator = new UserDataValidator();
+
+    /**
+     * Logger for this service
+     */
     private static Logger log = LogManager.getLogger(UserServiceImpl.class.getName());
 
+    /**
+     * Constructor - creating a new object
+     *
+     * @param daoHelperFactory dao for this server
+     */
     public UserServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
 
+    /**
+     * Get user by login and password
+     *
+     * @param login user's login
+     * @param password user's password
+     * @return user
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public User login(String login, String password) throws ServiceException, ValidatorException {
         log.debug("Service: Login user.");
@@ -41,6 +71,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Change user's name
+     *
+     * @param newName user's new name
+     * @param userId user id
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public void changeName(String newName, int userId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing name started.");
@@ -57,6 +95,14 @@ public class UserServiceImpl implements UserService {
         log.debug("Service: Changing name finished.");
     }
 
+    /**
+     * Change user's surname
+     *
+     * @param newSurname user's new surname
+     * @param userId user id
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public void changeSurname(String newSurname, int userId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing surname started.");
@@ -73,6 +119,14 @@ public class UserServiceImpl implements UserService {
         log.debug("Service: Changing surname finished.");
     }
 
+    /**
+     * Change user's patronymic
+     *
+     * @param newPatronymic user's new patronymic
+     * @param userId user's id
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public void changePatronymic(String newPatronymic, int userId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing patronymic started.");
@@ -89,6 +143,14 @@ public class UserServiceImpl implements UserService {
         log.debug("Service: Changing patronymic finished.");
     }
 
+    /**
+     * Change user's address
+     *
+     * @param newAddress user's new address
+     * @param userId user's id
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public void changeAddress(String newAddress, int userId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing address started.");
@@ -105,6 +167,14 @@ public class UserServiceImpl implements UserService {
         log.debug("Service: Changing address finished.");
     }
 
+    /**
+     * Change user's phone
+     *
+     * @param newPhone user's new phone
+     * @param userId user's id
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public void changePhone(String newPhone, int userId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing phone started.");
@@ -121,6 +191,14 @@ public class UserServiceImpl implements UserService {
         log.debug("Service: Changing phone finished.");
     }
 
+    /**
+     * Change user's note
+     *
+     * @param newNote users's new note
+     * @param userId user's id
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public void changeNote(String newNote, int userId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing note started.");
@@ -137,6 +215,14 @@ public class UserServiceImpl implements UserService {
         log.debug("Service: Changing note finished.");
     }
 
+    /**
+     * Change user's role
+     *
+     * @param newRole user's new role
+     * @param userId user's id
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public void changeRole(String newRole, int userId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing role started.");
@@ -153,6 +239,13 @@ public class UserServiceImpl implements UserService {
         log.debug("Service: Changing role finished.");
     }
 
+    /**
+     * Check login
+     *
+     * @param login user's login
+     * @return list of users
+     * @throws ServiceException if there is an error on DAO layer
+     */
     public List<User> checkLogin(String login) throws ServiceException {
         log.debug("Service: checking login.");
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -163,7 +256,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
+    /**
+     * Delete user
+     *
+     * @param id user's id
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public void deleteUser(int id) throws ServiceException {
         log.debug("Service: Deleting role started.");
@@ -176,6 +274,14 @@ public class UserServiceImpl implements UserService {
         log.debug("Service: Deleting role finished.");
     }
 
+    /**
+     * Get user by id
+     *
+     * @param userId user's id
+     * @return user
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public User findClientById(String userId) throws ServiceException, ValidatorException {
         log.debug("Service: Getting user.");
@@ -191,6 +297,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Find number of users
+     *
+     * @return number of users
+     * @throws ServiceException if there is an error on DAO layer
+     */
     private int findUserAmount() throws ServiceException {
         log.debug("Service: Getting user amount.");
         try (DaoHelper helper = daoHelperFactory.create()) {
@@ -201,6 +313,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Find number of pages with users
+     *
+     * @param pageAmount number of users on page
+     * @return number of pages
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public int findUserPageAmount(int pageAmount) throws ServiceException {
         log.debug("Service: Getting user page amount.");
@@ -208,6 +327,14 @@ public class UserServiceImpl implements UserService {
         return (int) Math.ceil((double) amountAllUser / pageAmount);
     }
 
+    /**
+     * Find list of users on 1 page
+     *
+     * @param start index of the first user on page
+     * @param amount number users on page
+     * @return list of users on 1 page
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public List<User> findLimitUser(int start, int amount) throws ServiceException {
         log.debug("Service: Getting user limit.");
@@ -219,6 +346,14 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Find list of clients on 1 page
+     *
+     * @param start index of the first client on page
+     * @param amount number clients on page
+     * @return list of clients on 1 page
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public List<User> findLimitClients(int start, int amount) throws ServiceException {
         log.debug("Service: Getting clients limit.");
@@ -230,6 +365,12 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Find number of clients
+     *
+     * @return number of clients
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public int findClientAmount() throws ServiceException {
         log.debug("Service: Getting clients amount.");
@@ -241,6 +382,13 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * Find number of pages with clients
+     *
+     * @param pageAmount number of clients on page
+     * @return number of pages
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public int findClientPageAmount(int pageAmount) throws ServiceException {
         log.debug("Service: Getting client page amount.");
@@ -248,6 +396,23 @@ public class UserServiceImpl implements UserService {
         return (int) Math.ceil((double) amountAllClients / pageAmount);
     }
 
+    /**
+     * Add new user
+     *
+     * @param login user's login
+     * @param password user's password
+     * @param role user's role
+     * @param surname user's surname
+     * @param name user's name
+     * @param patronymic user's patronymic
+     * @param address user's address
+     * @param phone user's phone
+     * @param note user's note
+     * @param total user's basket total
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     * @throws LoginIsNotFreeException if there is login is not free
+     */
     @Override
     public void addUser(String login, String password, String role, String surname, String name, String patronymic, String address, String phone, String note, double total) throws ServiceException, ValidatorException, LoginIsNotFreeException {
         log.debug("Service: Adding user started.");
@@ -269,7 +434,7 @@ public class UserServiceImpl implements UserService {
             try {
                 helper.startTransaction();
                 userDao.save(login, password, role, surname, name, patronymic, address, phone, note);
-                if(role.equals("3")) {
+                if (role.equals("3")) {
                     basketDao.save(login, total);
                 }
                 helper.endTransaction();

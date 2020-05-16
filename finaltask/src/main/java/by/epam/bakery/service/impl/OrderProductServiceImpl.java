@@ -14,14 +14,41 @@ import org.apache.logging.log4j.Logger;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Implementation of {@link OrderProductService} interface. Provides access to {@link by.epam.bakery.service.api.OrderProductService},
+ * {@link by.epam.bakery.dao.exception.DaoException} and provides support for working with entity {@link OrderProduct}
+ *
+ * @see DaoHelper
+ */
 public class OrderProductServiceImpl implements OrderProductService {
+    /**
+     * Factory for Dao
+     */
     private DaoHelperFactory daoHelperFactory;
+
+    /**
+     * Logger for this service
+     */
     private static Logger log = LogManager.getLogger(OrderProductServiceImpl.class.getName());
 
+    /**
+     * Constructor - creating a new object
+     *
+     * @param daoHelperFactory dao for this server
+     */
     public OrderProductServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
 
+    /**
+     * Save product to order
+     *
+     * @param orderId order's id
+     * @param pieId pie's id
+     * @param amount pie's amount
+     * @param cost cost of pies
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public void save(int orderId, int pieId, int amount, double cost) throws ServiceException {
         log.debug("Service: saving order product started.");
@@ -34,6 +61,12 @@ public class OrderProductServiceImpl implements OrderProductService {
         log.debug("Service: saving order product finished.");
     }
 
+    /**
+     * Delete product from order
+     *
+     * @param orderProductId product's id in order
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public void deleteOrderProduct(int orderProductId) throws ServiceException {
         log.debug("Service: deleting order product started.");
@@ -62,6 +95,13 @@ public class OrderProductServiceImpl implements OrderProductService {
         log.debug("Service: deleting order product finished.");
     }
 
+    /**
+     * Get list of products on 1 page
+     *
+     * @param start index of first products on page
+     * @param amount number of products on page
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public List<OrderProduct> findLimitOrderProduct(int start, int amount) throws ServiceException {
         log.debug("Service: search limit order product on page.");
@@ -73,6 +113,13 @@ public class OrderProductServiceImpl implements OrderProductService {
         }
     }
 
+    /**
+     * Get list of products on 1 page by user
+     *
+     * @param start index of first products on page by user
+     * @param amount number of products on page by user
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public List<OrderProduct> findLimitOrderProductByUserId(int userId, int start, int amount) throws ServiceException {
         log.debug("Service: search limit order product by user id.");

@@ -15,15 +15,48 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * Implementation of {@link BasketProductService} interface. Provides access to {@link by.epam.bakery.service.api.BasketProductService},
+ * {@link by.epam.bakery.dao.exception.DaoException} and provides support for working with entity {@link BasketProduct}
+ *
+ * @see DaoHelper
+ */
 public class BasketProductServiceImpl implements BasketProductService {
+    /**
+     * Logger for this service
+     */
     private static Logger log = LogManager.getLogger(BasketProductServiceImpl.class.getName());
+
+    /**
+     * Factory for Dao
+     */
     private DaoHelperFactory daoHelperFactory;
+
+    /**
+     * Validator for this service
+     */
     private PieDataValidator pieDataValidator = new PieDataValidator();
 
+    /**
+     * Constructor - creating a new object
+     *
+     * @param daoHelperFactory dao for this server
+     */
     public BasketProductServiceImpl(DaoHelperFactory daoHelperFactory) {
         this.daoHelperFactory = daoHelperFactory;
     }
 
+    /**
+     * Save product to basket
+     *
+     * @param basketId basket's id
+     * @param pieId pie's id
+     * @param amount pie's amount
+     * @param price pie's price
+     * @param newTotal basket's new total
+     * @throws ServiceException if there is an error on DAO layer
+     * @throws ValidatorException if there are validation problems
+     */
     @Override
     public void saveBasketProduct(int basketId, int pieId, String amount, double price, double newTotal) throws ServiceException, ValidatorException {
         log.debug("Service: saving basket product started.");
@@ -51,6 +84,13 @@ public class BasketProductServiceImpl implements BasketProductService {
         log.debug("Service: saving basket product finished.");
     }
 
+    /**
+     * Clear basket
+     *
+     * @param basketId basket's id
+     * @param newTotal basket's new total
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public void clearBasket (int basketId, double newTotal) throws ServiceException {
         log.debug("Service: deleting basket product by basket id started.");
@@ -72,6 +112,14 @@ public class BasketProductServiceImpl implements BasketProductService {
         log.debug("Service: deleting basket product by basket id finished.");
     }
 
+    /**
+     * Delete product from basket by product from basket id
+     *
+     * @param basketProductId product's id
+     * @param basketId basket's id
+     * @param newTotal basket's new total
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public void deleteBasketProductById(int basketProductId, double newTotal, int basketId) throws ServiceException {
         log.debug("Service: deleting basket product by id started.");
@@ -93,6 +141,12 @@ public class BasketProductServiceImpl implements BasketProductService {
         log.debug("Service: deleting basket product by id finished.");
     }
 
+    /**
+     * Find all products by basket id
+     *
+     * @param basketId basket's id
+     * @throws ServiceException if there is an error on DAO layer
+     */
     @Override
     public List<BasketProduct> findProductByBasketId(int basketId) throws ServiceException {
         log.debug("Service: search product by basket id.");
