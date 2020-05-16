@@ -13,6 +13,15 @@ public class Order extends Entity implements Serializable {
     public Order() {
     }
 
+    public Order(int id, User user, double total, LocalDateTime productionDate, LocalDateTime deliveryDate, StatusEnum status) {
+        super(id);
+        this.user = user;
+        this.total = total;
+        this.productionDate = productionDate;
+        this.deliveryDate = deliveryDate;
+        this.status = status;
+    }
+
     public double getTotal() {
         return total;
     }

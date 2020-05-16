@@ -42,15 +42,11 @@ public class OrderServiceImpl implements OrderService {
             try {
                 helper.startTransaction();
                 orderDao.save(userId, total, productionDate, deliveryDate, status);
-                log.debug("saved 1");
                 Order order = orderDao.findLastUserOrderById(userId);
                 int orderId = order.getId();
-                log.debug("found id is" + orderId);
                 for(BasketProduct basketProduct: basketProducts){
-                    log.debug("cycl" );
                     orderProductDao.save(orderId, basketProduct.getPie().getId(), basketProduct.getAmount(), basketProduct.getCost());
                 }
-                log.debug("cycl finished" );
                 Basket basket = basketDao.getBasketByUserLogin(userLogin);
                 int basketId = basket.getId();
                 basketProductDao.removeByBasketId(basketId);

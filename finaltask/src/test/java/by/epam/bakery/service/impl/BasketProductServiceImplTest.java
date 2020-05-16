@@ -29,11 +29,7 @@ import static org.testng.Assert.*;
 
 public class BasketProductServiceImplTest {
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
-    Basket basket1 = new Basket(1, new User(3, "user1", "user1", 3, "Ivanov", "Ivan", "Ivanovich", "Apt 18, 44 Rafieva St, Minsk", "8-029-743-45-46",
-            "In the yard problems with parking spaces"), 0.0);
-    Basket basket2 = new Basket(2, new User(4, "user2", "user2", 3, "Petrov", "Petr", "Petrovich", "Apt 45, 17 Kazinca St, Minsk", "8-044-573-76-40",
-            "There are enough parking spaces in the yard"), 0.0);
-    List<BasketProduct> basketProducts = new ArrayList<>(Collections.singletonList(new BasketProduct(1, new Basket(1, new User(3, "user1", "user1", 3, "Ivanov", "Ivan", "Ivanovich", "Apt 18, 44 Rafieva St, Minsk", "8-029-743-45-46",
+    private List<BasketProduct> basketProducts = new ArrayList<>(Collections.singletonList(new BasketProduct(1, new Basket(1, new User(3, "user1", "user1", 3, "Ivanov", "Ivan", "Ivanovich", "Apt 18, 44 Rafieva St, Minsk", "8-029-743-45-46",
             "In the yard problems with parking spaces"), 24.0), new Pie(1, "Belorussian", 1000, 24.00, "Signature dough, rustic potatoes, with cracklings, fried mushrooms, caraway seeds and coriander", "image/Belarus.png"), 1, 24.00)));
 
     @DataProvider
