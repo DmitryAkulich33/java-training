@@ -15,7 +15,6 @@ import java.util.Locale;
 public class StatisticTag extends TagSupport {
     private static Logger log = LogManager.getLogger(StatisticTag.class.getName());
 
-
     @Override
     public int doStartTag() {
         log.debug("Loading statistic data started");

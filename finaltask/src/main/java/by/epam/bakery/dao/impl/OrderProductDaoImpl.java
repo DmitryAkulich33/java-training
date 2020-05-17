@@ -2,9 +2,7 @@ package by.epam.bakery.dao.impl;
 
 import by.epam.bakery.dao.api.OrderProductDao;
 import by.epam.bakery.dao.exception.DaoException;
-import by.epam.bakery.dao.mapper.impl.FeedBackRowMapper;
 import by.epam.bakery.dao.mapper.impl.OrderProductRowMapper;
-import by.epam.bakery.domain.Feedback;
 import by.epam.bakery.domain.OrderProduct;
 
 import java.sql.Connection;

@@ -1,8 +1,5 @@
 package by.epam.bakery.controller.filter;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import javax.servlet.*;
 import java.io.IOException;
 

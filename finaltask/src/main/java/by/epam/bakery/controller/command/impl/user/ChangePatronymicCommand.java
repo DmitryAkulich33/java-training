@@ -37,7 +37,7 @@ public class ChangePatronymicCommand implements Command {
             user.setPatronymic(newPatronymic);
             session.setAttribute(USER, user);
             session.setAttribute(RIGHT, RIGHT_PATRONYMIC_MESSAGE);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_PATRONYMIC_MESSAGE);
         } catch (ServiceException e) {

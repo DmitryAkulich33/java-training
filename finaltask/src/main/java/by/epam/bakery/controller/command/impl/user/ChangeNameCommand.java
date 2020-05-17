@@ -37,7 +37,7 @@ public class ChangeNameCommand implements Command {
             user.setName(newName);
             session.setAttribute(USER, user);
             session.setAttribute(RIGHT, RIGHT_NAME_MESSAGE);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_NAME_MESSAGE);
         } catch (ServiceException e) {

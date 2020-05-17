@@ -43,11 +43,10 @@ public class AdminAddPieToOrderCommand implements Command {
             double total = basket.getTotal();
             serviceFactory.getBasketProductService().saveBasketProduct(basketId, pieId, amount, piePrice, (total + cost));
             session.setAttribute(RIGHT, RIGHT_AMOUNT_MESSAGE);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_AMOUNT_MESSAGE);
-        }
-        catch (ServiceException e) {
+        } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }

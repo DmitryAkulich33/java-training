@@ -2,7 +2,6 @@ package by.epam.bakery.dao.impl;
 
 import by.epam.bakery.dao.api.FeedbackDao;
 import by.epam.bakery.dao.exception.DaoException;
-import by.epam.bakery.dao.mapper.RowMapper;
 import by.epam.bakery.dao.mapper.impl.FeedBackRowMapper;
 import by.epam.bakery.domain.Feedback;
 

@@ -37,7 +37,7 @@ public class ChangePhoneCommand implements Command {
             user.setPhone(newPhone);
             session.setAttribute(USER, user);
             session.setAttribute(RIGHT, RIGHT_PHONE_MESSAGE);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_PHONE_MESSAGE);
         } catch (ServiceException e) {

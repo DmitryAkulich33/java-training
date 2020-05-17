@@ -44,7 +44,7 @@ public class BasketServiceImpl implements BasketService {
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override
-    public Basket findBasketByUserLogin (String userLogin) throws ServiceException{
+    public Basket findBasketByUserLogin(String userLogin) throws ServiceException {
         log.debug("Service: search basket by user login.");
         try (DaoHelper helper = daoHelperFactory.create()) {
             BasketDao dao = helper.createBasketDao();

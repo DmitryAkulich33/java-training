@@ -3,11 +3,7 @@ package by.epam.bakery.dao.impl;
 import by.epam.bakery.dao.api.BasketProductDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.dao.mapper.impl.BasketProductRowMapper;
-import by.epam.bakery.dao.mapper.impl.OrderProductRowMapper;
-import by.epam.bakery.dao.mapper.impl.PieRowMapper;
 import by.epam.bakery.domain.BasketProduct;
-import by.epam.bakery.domain.OrderProduct;
-import by.epam.bakery.domain.Pie;
 
 import java.sql.Connection;
 import java.util.List;

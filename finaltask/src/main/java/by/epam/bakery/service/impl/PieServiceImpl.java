@@ -102,13 +102,13 @@ public class PieServiceImpl implements PieService {
      *
      * @param pieId pie's id
      * @return pie
-     * @throws ServiceException if there is an error on DAO layer
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public Pie findPieById(String pieId) throws ServiceException, ValidatorException {
         log.debug("Service: Getting pie by id.");
-        if(!pieDataValidator.isIdValid(pieId)){
+        if (!pieDataValidator.isIdValid(pieId)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -125,13 +125,13 @@ public class PieServiceImpl implements PieService {
      *
      * @param name pie's id
      * @return pie
-     * @throws ServiceException if there is an error on DAO layer
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public Pie findPieByName(String name) throws ServiceException, ValidatorException {
         log.debug("Service: Getting pie by name.");
-        if(!pieDataValidator.isNameValid(name)){
+        if (!pieDataValidator.isNameValid(name)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -164,12 +164,12 @@ public class PieServiceImpl implements PieService {
     /**
      * Add new pie
      *
-     * @param name pie's name
-     * @param weight pie's weight
-     * @param price pie's price
+     * @param name        pie's name
+     * @param weight      pie's weight
+     * @param price       pie's price
      * @param description pie's description
-     * @param picture pie's picture
-     * @throws ServiceException if there is an error on DAO layer
+     * @param picture     pie's picture
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -194,14 +194,14 @@ public class PieServiceImpl implements PieService {
      * Change pie's name
      *
      * @param newName pie's new name
-     * @param pieId pie's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param pieId   pie's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public void changeName(String newName, int pieId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing name started.");
-        if(!pieDataValidator.isNameValid(newName)){
+        if (!pieDataValidator.isNameValid(newName)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -218,14 +218,14 @@ public class PieServiceImpl implements PieService {
      * Change path of picture
      *
      * @param newPicture pie's new path of picture
-     * @param pieId pie's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param pieId      pie's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public void changePicture(String newPicture, int pieId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing picture started.");
-        if(!pieDataValidator.isPictureValid(newPicture)){
+        if (!pieDataValidator.isPictureValid(newPicture)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -242,14 +242,14 @@ public class PieServiceImpl implements PieService {
      * Change pie's description
      *
      * @param newDescription pie's new description
-     * @param pieId pie's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param pieId          pie's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public void changeDescription(String newDescription, int pieId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing description started.");
-        if(!pieDataValidator.isDescriptionValid(newDescription)){
+        if (!pieDataValidator.isDescriptionValid(newDescription)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -266,14 +266,14 @@ public class PieServiceImpl implements PieService {
      * Change pie's weight
      *
      * @param newWeight pie's new weight
-     * @param pieId pie's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param pieId     pie's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public void changeWeight(String newWeight, int pieId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing weight started.");
-        if(!pieDataValidator.isWeightValid(newWeight)){
+        if (!pieDataValidator.isWeightValid(newWeight)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -290,14 +290,14 @@ public class PieServiceImpl implements PieService {
      * Change pie's price
      *
      * @param newPrice pie's new price
-     * @param pieId pie's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param pieId    pie's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public void changePrice(String newPrice, int pieId) throws ServiceException, ValidatorException {
         log.debug("Service: Changing price started.");
-        if(!pieDataValidator.isPriceValid(newPrice)){
+        if (!pieDataValidator.isPriceValid(newPrice)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -313,9 +313,9 @@ public class PieServiceImpl implements PieService {
     /**
      * Get sorted list of pies
      *
-     * @param value way of sort
+     * @param value    way of sort
      * @param increase value sorting by increase price
-     * @param reduce value sorting by reduce price
+     * @param reduce   value sorting by reduce price
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override

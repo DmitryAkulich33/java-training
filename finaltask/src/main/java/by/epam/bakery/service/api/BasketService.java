@@ -4,6 +4,6 @@ import by.epam.bakery.domain.Basket;
 import by.epam.bakery.service.exception.ServiceException;
 
 public interface BasketService {
-    Basket findBasketByUserLogin (String userLogin) throws ServiceException;
+    Basket findBasketByUserLogin(String userLogin) throws ServiceException;
 
 }

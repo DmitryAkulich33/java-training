@@ -109,11 +109,11 @@ public class MessageFilter implements Filter {
         String rightMessage = (String) session.getAttribute(RIGHT);
         String wrongMessage = (String) session.getAttribute(WRONG);
         String language = (String) session.getAttribute("language");
-        if(language == null) {
+        if (language == null) {
             language = Locale.getDefault().toString();
         }
         if (rightMessage != null) {
-            switch (language){
+            switch (language) {
                 case "en_EN":
                     req.setAttribute(RIGHT, messagesEn.get(rightMessage));
                     break;
@@ -128,8 +128,8 @@ public class MessageFilter implements Filter {
             }
             session.setAttribute(RIGHT, null);
         }
-        if(wrongMessage != null) {
-            switch (language){
+        if (wrongMessage != null) {
+            switch (language) {
                 case "en_EN":
                     req.setAttribute(WRONG, messagesEn.get(wrongMessage));
                     break;

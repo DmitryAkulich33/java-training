@@ -1,8 +1,6 @@
 package by.epam.bakery.controller.filter;
 
-import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandName;
-import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.domain.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -94,7 +92,7 @@ public class RoleFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String command = request.getParameter(COMMAND);
-        if(command != null){
+        if (command != null) {
             CommandName commandName = CommandName.valueOf(command.toUpperCase());
             User user = (User) request.getSession().getAttribute(USER);
             int role = 0;
@@ -109,8 +107,8 @@ public class RoleFilter implements Filter {
                 return;
             }
         }
-        filterChain.doFilter(request,servletResponse);
-}
+        filterChain.doFilter(request, servletResponse);
+    }
 
     @Override
     public void destroy() {

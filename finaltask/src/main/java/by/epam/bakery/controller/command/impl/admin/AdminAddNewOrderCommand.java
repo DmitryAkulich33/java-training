@@ -14,9 +14,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
-
 
 public class AdminAddNewOrderCommand implements Command {
     private static final String USER_FOR_ORDER = "userForOrder";
@@ -24,7 +22,6 @@ public class AdminAddNewOrderCommand implements Command {
     private static final String TOTAL = "total";
     private static final String BASKET_PRODUCT = "basketProducts";
     private static Logger log = LogManager.getLogger(AdminAddNewOrderCommand.class.getName());
-
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {

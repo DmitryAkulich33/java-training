@@ -49,16 +49,16 @@ public class FeedbackServiceImpl implements FeedbackService {
     /**
      * Save feedback
      *
-     * @param userId user's id
+     * @param userId       user's id
      * @param feedbackDate feedback's date of posting
-     * @param review user's feedback
-     * @throws ServiceException if there is an error on DAO layer
+     * @param review       user's feedback
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public void save(int userId, LocalDateTime feedbackDate, String review) throws ServiceException, ValidatorException {
         log.debug("Service: saving feedback started.");
-        if(!feedbackDataValidator.isFeedbackValid(review)){
+        if (!feedbackDataValidator.isFeedbackValid(review)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -78,7 +78,7 @@ public class FeedbackServiceImpl implements FeedbackService {
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override
-    public void deleteFeedback (int id) throws ServiceException {
+    public void deleteFeedback(int id) throws ServiceException {
         log.debug("Service: deleting feedback started.");
         try (DaoHelper helper = daoHelperFactory.create()) {
             FeedbackDao dao = helper.createFeedBackDao();
@@ -95,7 +95,7 @@ public class FeedbackServiceImpl implements FeedbackService {
      * @return number of feedbacks
      * @throws ServiceException if there is an error on DAO layer
      */
-    private int findFeedbackAmount () throws ServiceException{
+    private int findFeedbackAmount() throws ServiceException {
         log.debug("Service: search feedback.");
         try (DaoHelper helper = daoHelperFactory.create()) {
             FeedbackDao dao = helper.createFeedBackDao();
@@ -113,16 +113,16 @@ public class FeedbackServiceImpl implements FeedbackService {
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override
-    public int findFeedbackPageAmount (int pageAmount) throws ServiceException{
+    public int findFeedbackPageAmount(int pageAmount) throws ServiceException {
         log.debug("Service: search feedback page amount.");
         int amountAllFeedbacks = findFeedbackAmount();
-        return (int) Math.ceil((double) amountAllFeedbacks/pageAmount);
+        return (int) Math.ceil((double) amountAllFeedbacks / pageAmount);
     }
 
     /**
      * Get list of feedbacks on page
      *
-     * @param start index of first ffedbacks on page
+     * @param start  index of first ffedbacks on page
      * @param amount number feedbacks on page
      * @return number of pages with feedbacks
      * @throws ServiceException if there is an error on DAO layer

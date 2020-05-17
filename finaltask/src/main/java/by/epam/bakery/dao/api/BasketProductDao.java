@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface BasketProductDao extends Dao<BasketProduct> {
     void removeByBasketId(int basketId) throws DaoException;
+
     List<BasketProduct> findByBasketId(int basketId) throws DaoException;
 }

@@ -49,10 +49,10 @@ public class SaveUserCommand implements Command {
             try {
                 serviceFactory.getUserService().addUser(login, password, role, surname, name, patronymic, address, phone, note, TOTAL);
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
-            } catch (ValidatorException ex){
+            } catch (ValidatorException ex) {
                 log.error(this.getClass() + ":" + ex.getMessage());
                 session.setAttribute(WRONG, WRONG_DATA);
-            } catch (LoginIsNotFreeException exc){
+            } catch (LoginIsNotFreeException exc) {
                 log.error(this.getClass() + ":" + exc.getMessage());
                 session.setAttribute(WRONG, WRONG_LOGIN);
             }

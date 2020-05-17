@@ -2,7 +2,6 @@ package by.epam.bakery.controller.command.impl.user;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.Feedback;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.exception.ValidatorException;
@@ -14,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.List;
 
 public class AddFeedbackCommand implements Command {
     private static final String USER = "user";

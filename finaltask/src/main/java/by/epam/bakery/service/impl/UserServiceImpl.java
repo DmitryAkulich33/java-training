@@ -50,10 +50,10 @@ public class UserServiceImpl implements UserService {
     /**
      * Get user by login and password
      *
-     * @param login user's login
+     * @param login    user's login
      * @param password user's password
      * @return user
-     * @throws ServiceException if there is an error on DAO layer
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -75,8 +75,8 @@ public class UserServiceImpl implements UserService {
      * Change user's name
      *
      * @param newName user's new name
-     * @param userId user id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param userId  user id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -99,8 +99,8 @@ public class UserServiceImpl implements UserService {
      * Change user's surname
      *
      * @param newSurname user's new surname
-     * @param userId user id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param userId     user id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -123,8 +123,8 @@ public class UserServiceImpl implements UserService {
      * Change user's patronymic
      *
      * @param newPatronymic user's new patronymic
-     * @param userId user's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param userId        user's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -147,8 +147,8 @@ public class UserServiceImpl implements UserService {
      * Change user's address
      *
      * @param newAddress user's new address
-     * @param userId user's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param userId     user's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -171,8 +171,8 @@ public class UserServiceImpl implements UserService {
      * Change user's phone
      *
      * @param newPhone user's new phone
-     * @param userId user's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param userId   user's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -195,8 +195,8 @@ public class UserServiceImpl implements UserService {
      * Change user's note
      *
      * @param newNote users's new note
-     * @param userId user's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param userId  user's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -219,8 +219,8 @@ public class UserServiceImpl implements UserService {
      * Change user's role
      *
      * @param newRole user's new role
-     * @param userId user's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param userId  user's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -279,7 +279,7 @@ public class UserServiceImpl implements UserService {
      *
      * @param userId user's id
      * @return user
-     * @throws ServiceException if there is an error on DAO layer
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -330,7 +330,7 @@ public class UserServiceImpl implements UserService {
     /**
      * Find list of users on 1 page
      *
-     * @param start index of the first user on page
+     * @param start  index of the first user on page
      * @param amount number users on page
      * @return list of users on 1 page
      * @throws ServiceException if there is an error on DAO layer
@@ -349,7 +349,7 @@ public class UserServiceImpl implements UserService {
     /**
      * Find list of clients on 1 page
      *
-     * @param start index of the first client on page
+     * @param start  index of the first client on page
      * @param amount number clients on page
      * @return list of clients on 1 page
      * @throws ServiceException if there is an error on DAO layer
@@ -399,18 +399,18 @@ public class UserServiceImpl implements UserService {
     /**
      * Add new user
      *
-     * @param login user's login
-     * @param password user's password
-     * @param role user's role
-     * @param surname user's surname
-     * @param name user's name
+     * @param login      user's login
+     * @param password   user's password
+     * @param role       user's role
+     * @param surname    user's surname
+     * @param name       user's name
      * @param patronymic user's patronymic
-     * @param address user's address
-     * @param phone user's phone
-     * @param note user's note
-     * @param total user's basket total
-     * @throws ServiceException if there is an error on DAO layer
-     * @throws ValidatorException if there are validation problems
+     * @param address    user's address
+     * @param phone      user's phone
+     * @param note       user's note
+     * @param total      user's basket total
+     * @throws ServiceException        if there is an error on DAO layer
+     * @throws ValidatorException      if there are validation problems
      * @throws LoginIsNotFreeException if there is login is not free
      */
     @Override

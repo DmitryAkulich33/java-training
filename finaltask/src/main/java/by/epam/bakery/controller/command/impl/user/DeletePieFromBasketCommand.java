@@ -2,9 +2,6 @@ package by.epam.bakery.controller.command.impl.user;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.Basket;
-import by.epam.bakery.domain.Pie;
-import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
 import org.apache.logging.log4j.LogManager;
@@ -12,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 public class DeletePieFromBasketCommand implements Command {
     private static final String BASKET_PRODUCT_ID = "basketProductId";
@@ -30,7 +26,7 @@ public class DeletePieFromBasketCommand implements Command {
         double productCost = Double.parseDouble(request.getParameter(BASKET_PRODUCT_COST));
         double basketTotal = Double.parseDouble(request.getParameter(BASKET_TOTAL));
         try {
-            serviceFactory.getBasketProductService().deleteBasketProductById(basketProductId,basketTotal - productCost , basketId);
+            serviceFactory.getBasketProductService().deleteBasketProductById(basketProductId, basketTotal - productCost, basketId);
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");

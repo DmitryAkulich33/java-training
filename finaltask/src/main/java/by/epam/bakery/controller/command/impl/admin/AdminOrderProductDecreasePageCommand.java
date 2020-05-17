@@ -29,7 +29,7 @@ public class AdminOrderProductDecreasePageCommand implements Command {
         List<OrderProduct> orderProducts;
         if (decreasePage >= 1) {
             try {
-                orderProducts= serviceFactory.getOrderProductService().findLimitOrderProduct((decreasePage - 1) * AMOUNT, AMOUNT);
+                orderProducts = serviceFactory.getOrderProductService().findLimitOrderProduct((decreasePage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(ORDER_PRODUCTS, orderProducts);
             } catch (ServiceException e) {
                 log.error(this.getClass() + ":" + e.getMessage());

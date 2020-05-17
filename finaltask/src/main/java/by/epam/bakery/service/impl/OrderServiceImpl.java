@@ -54,19 +54,19 @@ public class OrderServiceImpl implements OrderService {
     /**
      * Save order
      *
-     * @param userId user's id
-     * @param total order's total
+     * @param userId         user's id
+     * @param total          order's total
      * @param productionDate date of production pie
-     * @param deliveryDate date of delivery pie
-     * @param status order's status
+     * @param deliveryDate   date of delivery pie
+     * @param status         order's status
      * @param basketProducts list of pies from basket
-     * @param userLogin user's login
-     * @param newTotal new total of basket after removing list of pies to order
+     * @param userLogin      user's login
+     * @param newTotal       new total of basket after removing list of pies to order
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override
-    public void saveOrder (int userId, double total, LocalDateTime productionDate, LocalDateTime deliveryDate, String status,
-                           List<BasketProduct> basketProducts, String userLogin, double newTotal) throws ServiceException {
+    public void saveOrder(int userId, double total, LocalDateTime productionDate, LocalDateTime deliveryDate, String status,
+                          List<BasketProduct> basketProducts, String userLogin, double newTotal) throws ServiceException {
         log.debug("Service: saving order started.");
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao orderDao = helper.createOrderDao();
@@ -78,7 +78,7 @@ public class OrderServiceImpl implements OrderService {
                 orderDao.save(userId, total, productionDate, deliveryDate, status);
                 Order order = orderDao.findLastUserOrderById(userId);
                 int orderId = order.getId();
-                for(BasketProduct basketProduct: basketProducts){
+                for (BasketProduct basketProduct : basketProducts) {
                     orderProductDao.save(orderId, basketProduct.getPie().getId(), basketProduct.getAmount(), basketProduct.getCost());
                 }
                 Basket basket = basketDao.getBasketByUserLogin(userLogin);
@@ -119,18 +119,18 @@ public class OrderServiceImpl implements OrderService {
      *
      * @param newDate date of pie's production
      * @param orderId pie's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public void changeProductionDate(String newDate, int orderId) throws ServiceException, ValidatorException {
         log.debug("Service: changing production started.");
-        if(!orderDataValidator.isDateValid(newDate)){
+        if (!orderDataValidator.isDateValid(newDate)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
         LocalDateTime newLocalDateTime = LocalDateTime.parse(newDate);
-        if(!orderDataValidator.isDateAfter(newLocalDateTime)){
+        if (!orderDataValidator.isDateAfter(newLocalDateTime)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -148,18 +148,18 @@ public class OrderServiceImpl implements OrderService {
      *
      * @param newDate date of pie's delivery
      * @param orderId pie's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public void changeDeliveryDate(String newDate, int orderId) throws ServiceException, ValidatorException {
         log.debug("Service: changing production started.");
-        if(!orderDataValidator.isDateValid(newDate)){
+        if (!orderDataValidator.isDateValid(newDate)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
         LocalDateTime newLocalDateTime = LocalDateTime.parse(newDate);
-        if(!orderDataValidator.isDateAfter(newLocalDateTime)){
+        if (!orderDataValidator.isDateAfter(newLocalDateTime)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -176,14 +176,14 @@ public class OrderServiceImpl implements OrderService {
      * Change order's status
      *
      * @param newStatus order's status
-     * @param orderId pie's id
-     * @throws ServiceException if there is an error on DAO layer
+     * @param orderId   pie's id
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
     public void changeStatus(String newStatus, int orderId) throws ServiceException, ValidatorException {
         log.debug("Service: changing status started.");
-        if(!orderDataValidator.isStatusValid(newStatus)) {
+        if (!orderDataValidator.isStatusValid(newStatus)) {
             log.error("The entered data is not correct!");
             throw new ValidatorException("The entered data is not correct!");
         }
@@ -202,7 +202,7 @@ public class OrderServiceImpl implements OrderService {
      * @return number of orders
      * @throws ServiceException if there is an error on DAO layer
      */
-    private int findOrderAmount () throws ServiceException{
+    private int findOrderAmount() throws ServiceException {
         log.debug("Service: Getting order amount.");
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
@@ -220,10 +220,10 @@ public class OrderServiceImpl implements OrderService {
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override
-    public int findOrderPageAmount (int pageAmount) throws ServiceException{
+    public int findOrderPageAmount(int pageAmount) throws ServiceException {
         log.debug("Service: Getting order page amount.");
         int amountAllOrders = findOrderAmount();
-        return (int) Math.ceil((double) amountAllOrders/pageAmount);
+        return (int) Math.ceil((double) amountAllOrders / pageAmount);
     }
 
     /**
@@ -233,7 +233,7 @@ public class OrderServiceImpl implements OrderService {
      * @return numbers of orders by user
      * @throws ServiceException if there is an error on DAO layer
      */
-    private int findAmountOrderByUserId (int userId) throws ServiceException{
+    private int findAmountOrderByUserId(int userId) throws ServiceException {
         log.debug("Service: Getting amount order by user id.");
         try (DaoHelper helper = daoHelperFactory.create()) {
             OrderDao dao = helper.createOrderDao();
@@ -247,15 +247,15 @@ public class OrderServiceImpl implements OrderService {
      * Find number of pages with orders by user
      *
      * @param pageAmount number of order on page
-     * @param userId user's id
+     * @param userId     user's id
      * @return numbers of pages with orders by user
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override
-    public int findOrderByUserIdPageAmount (int pageAmount, int userId) throws ServiceException{
+    public int findOrderByUserIdPageAmount(int pageAmount, int userId) throws ServiceException {
         log.debug("Service: Getting amount order by user id on page.");
         int amountAllOrders = findAmountOrderByUserId(userId);
-        return (int) Math.ceil((double) amountAllOrders/pageAmount);
+        return (int) Math.ceil((double) amountAllOrders / pageAmount);
     }
 
     /**

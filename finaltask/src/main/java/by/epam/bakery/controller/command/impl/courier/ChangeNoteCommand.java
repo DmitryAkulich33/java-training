@@ -28,11 +28,11 @@ public class ChangeNoteCommand implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String note = request.getParameter(CHANGE_NOTE);
         int userId = Integer.parseInt(request.getParameter(CHANGE_ID));
-        if(!note.isEmpty()){
+        if (!note.isEmpty()) {
             try {
                 serviceFactory.getUserService().changeNote(note, userId);
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
-            } catch (ValidatorException ex){
+            } catch (ValidatorException ex) {
                 log.error(this.getClass() + ":" + ex.getMessage());
                 session.setAttribute(WRONG, WRONG_MESSAGE);
             } catch (ServiceException e) {

@@ -2,7 +2,6 @@ package by.epam.bakery.controller.command.impl.common;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.controller.command.impl.admin.SaveUserCommand;
 import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
@@ -36,12 +35,12 @@ public class LoginCommand implements Command {
         try {
             user = serviceFactory.getUserService().login(login, password);
             session.setAttribute(USER, user);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_DATA);
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
-            if(e.getCause().getMessage().equals(NO_RECORDS)){
+            if (e.getCause().getMessage().equals(NO_RECORDS)) {
                 session.setAttribute(WRONG, WRONG_LOGIN);
             } else {
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");

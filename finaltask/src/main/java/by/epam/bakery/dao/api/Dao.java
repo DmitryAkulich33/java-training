@@ -4,7 +4,6 @@ import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.domain.Entity;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface Dao<T extends Entity> {
     T findById(String id) throws DaoException;

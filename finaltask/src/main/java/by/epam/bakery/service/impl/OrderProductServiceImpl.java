@@ -11,7 +11,6 @@ import by.epam.bakery.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -44,9 +43,9 @@ public class OrderProductServiceImpl implements OrderProductService {
      * Save product to order
      *
      * @param orderId order's id
-     * @param pieId pie's id
-     * @param amount pie's amount
-     * @param cost cost of pies
+     * @param pieId   pie's id
+     * @param amount  pie's amount
+     * @param cost    cost of pies
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override
@@ -80,7 +79,7 @@ public class OrderProductServiceImpl implements OrderProductService {
                 double total = orderProduct.getOrder().getTotal() - piePrice;
                 int orderId = orderProduct.getOrder().getId();
                 orderDao.changeTotal(total, orderId);
-                if(total == 0.0){
+                if (total == 0.0) {
                     orderDao.removeById(orderId);
                 }
                 orderProductDao.removeById(orderProductId);
@@ -98,7 +97,7 @@ public class OrderProductServiceImpl implements OrderProductService {
     /**
      * Get list of products on 1 page
      *
-     * @param start index of first products on page
+     * @param start  index of first products on page
      * @param amount number of products on page
      * @throws ServiceException if there is an error on DAO layer
      */
@@ -116,7 +115,7 @@ public class OrderProductServiceImpl implements OrderProductService {
     /**
      * Get list of products on 1 page by user
      *
-     * @param start index of first products on page by user
+     * @param start  index of first products on page by user
      * @param amount number of products on page by user
      * @throws ServiceException if there is an error on DAO layer
      */

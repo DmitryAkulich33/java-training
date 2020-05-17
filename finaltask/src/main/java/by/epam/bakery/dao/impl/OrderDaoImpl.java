@@ -4,12 +4,9 @@ import by.epam.bakery.dao.api.OrderDao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.dao.mapper.impl.OrderRowMapper;
 import by.epam.bakery.domain.Order;
-import by.epam.bakery.domain.StatusEnum;
 
 import java.sql.Connection;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 
 public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     private static final String ORDER_TABLE = "`order`";
@@ -73,17 +70,17 @@ public class OrderDaoImpl extends AbstractDao<Order> implements OrderDao {
     }
 
     @Override
-    public int findAmountOrdersByUserId (int userId) throws DaoException{
+    public int findAmountOrdersByUserId(int userId) throws DaoException {
         return executeQuery(FIND_ORDERS_COUNT_BY_USER_ID, AMOUNT_ORDERS_BY_USER_ID, userId);
     }
 
     @Override
-    public int findOrdersAmount () throws DaoException{
+    public int findOrdersAmount() throws DaoException {
         return executeQuery(FIND_ORDERS_AMOUNT, COUNT);
     }
 
     @Override
-    public int findOrdersCost () throws DaoException{
+    public int findOrdersCost() throws DaoException {
         return executeQuery(FIND_ORDERS_COST, SUM);
     }
 }

@@ -50,11 +50,11 @@ public class BasketProductServiceImpl implements BasketProductService {
      * Save product to basket
      *
      * @param basketId basket's id
-     * @param pieId pie's id
-     * @param amount pie's amount
-     * @param price pie's price
+     * @param pieId    pie's id
+     * @param amount   pie's amount
+     * @param price    pie's price
      * @param newTotal basket's new total
-     * @throws ServiceException if there is an error on DAO layer
+     * @throws ServiceException   if there is an error on DAO layer
      * @throws ValidatorException if there are validation problems
      */
     @Override
@@ -92,7 +92,7 @@ public class BasketProductServiceImpl implements BasketProductService {
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override
-    public void clearBasket (int basketId, double newTotal) throws ServiceException {
+    public void clearBasket(int basketId, double newTotal) throws ServiceException {
         log.debug("Service: deleting basket product by basket id started.");
         try (DaoHelper helper = daoHelperFactory.create()) {
             BasketProductDao basketProductDao = helper.createBasketProductDao();
@@ -116,8 +116,8 @@ public class BasketProductServiceImpl implements BasketProductService {
      * Delete product from basket by product from basket id
      *
      * @param basketProductId product's id
-     * @param basketId basket's id
-     * @param newTotal basket's new total
+     * @param basketId        basket's id
+     * @param newTotal        basket's new total
      * @throws ServiceException if there is an error on DAO layer
      */
     @Override

@@ -32,15 +32,15 @@ public class AdminAddNewUserForOrder implements Command {
         try {
             user = serviceFactory.getUserService().findClientById(userId);
             session.setAttribute(USER_FOR_ORDER, user);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
-            request.setAttribute(WRONG, WRONG_MESSAGE);
-            return CommandResult.forward("/WEB-INF/jsp/admin/admin_account.jsp");
+            session.setAttribute(WRONG, WRONG_MESSAGE);
+            return CommandResult.redirect(request.getContextPath() + "controller?command=admin_account");
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
-            if(e.getCause().getMessage().equals(NO_RECORDS)){
-                request.setAttribute(WRONG, WRONG_ID);
-                return CommandResult.forward("/WEB-INF/jsp/admin/admin_account.jsp");
+            if (e.getCause().getMessage().equals(NO_RECORDS)) {
+                session.setAttribute(WRONG, WRONG_ID);
+                return CommandResult.redirect(request.getContextPath() + "controller?command=admin_account");
             } else {
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }

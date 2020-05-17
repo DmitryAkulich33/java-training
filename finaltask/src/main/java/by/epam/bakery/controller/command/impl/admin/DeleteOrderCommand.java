@@ -14,7 +14,6 @@ public class DeleteOrderCommand implements Command {
     private static final String DELETE_ORDER_ID = "delId";
     private static Logger log = LogManager.getLogger(DeleteOrderCommand.class.getName());
 
-
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         log.debug("Deleting order started.");

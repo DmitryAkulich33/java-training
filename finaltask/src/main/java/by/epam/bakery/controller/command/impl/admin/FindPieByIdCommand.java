@@ -35,13 +35,13 @@ public class FindPieByIdCommand implements Command {
         try {
             pie = serviceFactory.getPieService().findPieById(pieId);
             pies.add(pie);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_MESSAGE);
             return CommandResult.redirect(request.getContextPath() + "controller?command=admin_pies");
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
-            if(e.getCause().getMessage().equals(NO_RECORDS)){
+            if (e.getCause().getMessage().equals(NO_RECORDS)) {
                 session.setAttribute(WRONG, WRONG_ID);
                 return CommandResult.redirect(request.getContextPath() + "controller?command=admin_pies");
             } else {

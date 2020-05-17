@@ -4,13 +4,10 @@ import by.epam.bakery.dao.api.Dao;
 import by.epam.bakery.dao.exception.DaoException;
 import by.epam.bakery.dao.mapper.RowMapper;
 import by.epam.bakery.domain.Entity;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public abstract class AbstractDao<T extends Entity> implements Dao<T> {
     private Connection connection;
@@ -101,7 +98,7 @@ public abstract class AbstractDao<T extends Entity> implements Dao<T> {
     }
 
     @Override
-    public int findAmount () throws DaoException{
+    public int findAmount() throws DaoException {
         String table = getTableName();
         String query = FIND_COUNT + table;
         return executeQuery(query, AMOUNT);

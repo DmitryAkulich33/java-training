@@ -16,13 +16,13 @@ public class OrderRowMapper implements RowMapper<Order> {
         order.setId(resultSet.getInt("id_order"));
         order.setTotal(resultSet.getDouble("total"));
         String productionDate = resultSet.getString("productionDate");
-        if(productionDate == null){
+        if (productionDate == null) {
             order.setProductionDate(null);
         } else {
             order.setProductionDate(LocalDateTime.parse(productionDate.replace(" ", "T")));
         }
         String deliveryDate = resultSet.getString("deliveryDate");
-        if(deliveryDate == null){
+        if (deliveryDate == null) {
             order.setDeliveryDate(null);
         } else {
             order.setDeliveryDate(LocalDateTime.parse(deliveryDate.replace(" ", "T")));

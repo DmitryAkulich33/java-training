@@ -37,7 +37,7 @@ public class ChangeSurnameCommand implements Command {
             user.setSurname(newSurname);
             session.setAttribute(USER, user);
             session.setAttribute(RIGHT, RIGHT_SURNAME_MESSAGE);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_SURNAME_MESSAGE);
         } catch (ServiceException e) {

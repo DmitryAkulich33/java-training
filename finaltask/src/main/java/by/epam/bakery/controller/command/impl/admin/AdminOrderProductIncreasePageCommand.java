@@ -38,7 +38,7 @@ public class AdminOrderProductIncreasePageCommand implements Command {
             request.setAttribute(PAGE, increasePage);
         } else {
             try {
-                orderProducts= serviceFactory.getOrderProductService().findLimitOrderProduct((currentPage - 1) * AMOUNT, AMOUNT);
+                orderProducts = serviceFactory.getOrderProductService().findLimitOrderProduct((currentPage - 1) * AMOUNT, AMOUNT);
                 request.setAttribute(ORDER_PRODUCTS, orderProducts);
             } catch (ServiceException e) {
                 log.error(this.getClass() + ":" + e.getMessage());

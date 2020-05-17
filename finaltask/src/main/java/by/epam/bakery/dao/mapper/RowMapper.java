@@ -11,20 +11,26 @@ public interface RowMapper<T extends Entity> {
 
     T map(ResultSet resultSet) throws SQLException;
 
-    static RowMapper<? extends Entity> create (String table) throws DaoException {
-        switch (table){
-            case "user": return new UserRowMapper();
-            case "pie": return new PieRowMapper();
-            case "order": return new OrderRowMapper();
-            case "feedback": return new FeedBackRowMapper();
-            case "basket": return new BasketRowMapper();
-            case "basket_product": return new BasketProductRowMapper();
-            case "order_product": return new OrderProductRowMapper();
+    static RowMapper<? extends Entity> create(String table) throws DaoException {
+        switch (table) {
+            case "user":
+                return new UserRowMapper();
+            case "pie":
+                return new PieRowMapper();
+            case "order":
+                return new OrderRowMapper();
+            case "feedback":
+                return new FeedBackRowMapper();
+            case "basket":
+                return new BasketRowMapper();
+            case "basket_product":
+                return new BasketProductRowMapper();
+            case "order_product":
+                return new OrderProductRowMapper();
 
-            default: throw new DaoException("Unknown table = " + table);
+            default:
+                throw new DaoException("Unknown table = " + table);
 
         }
     }
-
-
 }

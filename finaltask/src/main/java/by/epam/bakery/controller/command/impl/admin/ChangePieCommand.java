@@ -2,8 +2,6 @@ package by.epam.bakery.controller.command.impl.admin;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.Pie;
-import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
@@ -13,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 public class ChangePieCommand implements Command {
     private static final String CHANGE_NAME = "changeName";
@@ -39,31 +36,31 @@ public class ChangePieCommand implements Command {
         String weight = request.getParameter(CHANGE_WEIGHT);
         String price = request.getParameter(CHANGE_PRICE);
         int pieId = Integer.parseInt(request.getParameter(CHANGE_ID));
-        try{
-            if(name.isEmpty() & picture.isEmpty() & description.isEmpty() & weight.isEmpty() & price.isEmpty()){
+        try {
+            if (name.isEmpty() & picture.isEmpty() & description.isEmpty() & weight.isEmpty() & price.isEmpty()) {
                 session.setAttribute(WRONG, WRONG_MESSAGE);
             } else {
-                if(!name.isEmpty()){
+                if (!name.isEmpty()) {
                     serviceFactory.getPieService().changeName(name, pieId);
                 }
-                if(!picture.isEmpty()){
+                if (!picture.isEmpty()) {
                     serviceFactory.getPieService().changePicture(picture, pieId);
                 }
-                if(!description.isEmpty()){
+                if (!description.isEmpty()) {
                     serviceFactory.getPieService().changeDescription(description, pieId);
                 }
-                if(!weight.isEmpty()) {
+                if (!weight.isEmpty()) {
                     serviceFactory.getPieService().changeWeight(weight, pieId);
                 }
-                if(!price.isEmpty()) {
+                if (!price.isEmpty()) {
                     serviceFactory.getPieService().changePrice(price, pieId);
                 }
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
             }
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_MESSAGE);
-        } catch (ServiceException e){
+        } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }

@@ -37,7 +37,7 @@ public class ChangeAddressCommand implements Command {
             user.setAddress(newAddress);
             session.setAttribute(USER, user);
             session.setAttribute(RIGHT, RIGHT_ADDRESS_MESSAGE);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_ADDRESS_MESSAGE);
         } catch (ServiceException e) {

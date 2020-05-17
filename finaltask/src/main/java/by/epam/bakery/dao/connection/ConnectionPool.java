@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ConnectionPool {
     private static Logger log = LogManager.getLogger(ConnectionPool.class.getName());
-    private static final String THREAD_ERROR= "Thread operation error, cause ";
+    private static final String THREAD_ERROR = "Thread operation error, cause ";
     private static final int POOL_SIZE = 10;
     private Semaphore semaphore = new Semaphore(POOL_SIZE);
 

@@ -4,7 +4,6 @@ import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
 import by.epam.bakery.domain.Pie;
 import by.epam.bakery.service.factory.ServiceFactory;
-import by.epam.bakery.service.impl.PieServiceImpl;
 import by.epam.bakery.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShowMainPageCommand implements Command {

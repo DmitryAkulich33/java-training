@@ -32,25 +32,25 @@ public class ChangeOrderCommand implements Command {
         String newDeliveryDate = request.getParameter(CHANGE_DELIVERY_DATE);
         String newStatus = request.getParameter(CHANGE_STATUS);
         int orderId = Integer.parseInt(request.getParameter(ID_ORDER));
-        try{
-            if(newProductionDate.isEmpty() & newDeliveryDate.isEmpty() & newStatus.isEmpty()){
+        try {
+            if (newProductionDate.isEmpty() & newDeliveryDate.isEmpty() & newStatus.isEmpty()) {
                 session.setAttribute(WRONG, WRONG_MESSAGE);
             } else {
-                if(!newProductionDate.isEmpty()){
-                    serviceFactory.getOrderService().changeProductionDate(newProductionDate, orderId );
+                if (!newProductionDate.isEmpty()) {
+                    serviceFactory.getOrderService().changeProductionDate(newProductionDate, orderId);
                 }
-                if(!newDeliveryDate.isEmpty()){
-                    serviceFactory.getOrderService().changeDeliveryDate(newDeliveryDate, orderId );
+                if (!newDeliveryDate.isEmpty()) {
+                    serviceFactory.getOrderService().changeDeliveryDate(newDeliveryDate, orderId);
                 }
-                if(!newStatus.isEmpty()){
+                if (!newStatus.isEmpty()) {
                     serviceFactory.getOrderService().changeStatus(newStatus, orderId);
                 }
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
             }
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_MESSAGE);
-        } catch (ServiceException e){
+        } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }

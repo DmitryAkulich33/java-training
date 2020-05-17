@@ -2,19 +2,15 @@ package by.epam.bakery.controller.command.impl.admin;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.Pie;
-import by.epam.bakery.domain.User;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.exception.ValidatorException;
 import by.epam.bakery.service.factory.ServiceFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 public class SavePieCommand implements Command {
     private static final String SAVE_NAME = "saveName";
@@ -41,7 +37,7 @@ public class SavePieCommand implements Command {
         try {
             serviceFactory.getPieService().addPie(name, weight, price, description, picture);
             session.setAttribute(RIGHT, RIGHT_MESSAGE);
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_MESSAGE);
         } catch (ServiceException e) {

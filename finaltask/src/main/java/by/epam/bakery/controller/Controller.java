@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@MultipartConfig
+//@MultipartConfig
 public class Controller extends HttpServlet {
     private static final String COMMAND = "command";
 

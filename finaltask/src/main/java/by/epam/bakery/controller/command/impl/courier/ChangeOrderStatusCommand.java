@@ -11,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.time.LocalDateTime;
 
 public class ChangeOrderStatusCommand implements Command {
     private static final String CHANGE_STATUS = "changeStatus";
@@ -29,7 +28,7 @@ public class ChangeOrderStatusCommand implements Command {
         ServiceFactory serviceFactory = ServiceFactory.getInstance();
         String newStatus = request.getParameter(CHANGE_STATUS);
         int orderId = Integer.parseInt(request.getParameter(ID_ORDER));
-        if(!newStatus.isEmpty()){
+        if (!newStatus.isEmpty()) {
             try {
                 serviceFactory.getOrderService().changeStatus(newStatus, orderId);
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
@@ -40,7 +39,7 @@ public class ChangeOrderStatusCommand implements Command {
                 log.error(this.getClass() + ":" + e.getMessage());
                 return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
             }
-        }else {
+        } else {
             session.setAttribute(WRONG, WRONG_MESSAGE);
         }
         log.debug("Changing order status finished.");

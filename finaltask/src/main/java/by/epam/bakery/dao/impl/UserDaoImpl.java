@@ -7,13 +7,12 @@ import by.epam.bakery.domain.User;
 
 import java.sql.Connection;
 import java.util.List;
-import java.util.Optional;
 
 public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String USER_TABLE = "user";
     private static final String ID_USER = "id_user";
-    private static final String FIND_BY_LOGIN_AND_PASSWORD ="SELECT * FROM user WHERE login = ? AND password = ?";
-    private static final String FIND_LIMIT_CLIENTS ="SELECT * FROM user WHERE role = 3 LIMIT ?, ?";
+    private static final String FIND_BY_LOGIN_AND_PASSWORD = "SELECT * FROM user WHERE login = ? AND password = ?";
+    private static final String FIND_LIMIT_CLIENTS = "SELECT * FROM user WHERE role = 3 LIMIT ?, ?";
     private static final String CHANGE_NOTE = "UPDATE user SET note = ? WHERE id_user = ?";
     private static final String CHANGE_NAME = "UPDATE user SET name_user = ? WHERE id_user = ?";
     private static final String CHANGE_SURNAME = "UPDATE user SET surname = ? WHERE id_user = ?";
@@ -23,7 +22,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     private static final String SAVE_USER = "INSERT INTO user (login, password, role, surname, name_user, patronymic, address, phone, note)" +
             " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String CHANGE_ROLE = "UPDATE user SET role = ? WHERE id_user = ?";
-    private static final String FIND_CLIENT_BY_ID ="SELECT * FROM user WHERE role = 3 AND id_user = ?";
+    private static final String FIND_CLIENT_BY_ID = "SELECT * FROM user WHERE role = 3 AND id_user = ?";
     private static final String FIND_CLIENTS_COUNT = "SELECT COUNT(*) AS amount FROM user WHERE role = 3";
     private static final String FIND_USER_BY_LOGIN = "SELECT * FROM user WHERE login = ?";
     private static final String AMOUNT_CLIENTS = "amount";
@@ -84,7 +83,7 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
     }
 
     @Override
-    public int findClientsAmount () throws DaoException{
+    public int findClientsAmount() throws DaoException {
         return executeQuery(FIND_CLIENTS_COUNT, AMOUNT_CLIENTS);
     }
 

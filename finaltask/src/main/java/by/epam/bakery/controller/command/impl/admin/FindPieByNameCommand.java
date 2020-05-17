@@ -41,7 +41,7 @@ public class FindPieByNameCommand implements Command {
             return CommandResult.redirect(request.getContextPath() + "controller?command=admin_pies");
         } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
-            if(e.getCause().getMessage().equals(NO_RECORDS)){
+            if (e.getCause().getMessage().equals(NO_RECORDS)) {
                 session.setAttribute(WRONG, WRONG_NAME);
                 return CommandResult.redirect(request.getContextPath() + "controller?command=admin_pies");
             } else {

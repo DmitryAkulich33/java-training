@@ -35,28 +35,28 @@ public class ChangeUserCommand implements Command {
         String note = request.getParameter(CHANGE_NOTE);
         String role = request.getParameter(CHANGE_ROLE);
         int userId = Integer.parseInt(request.getParameter(CHANGE_ID));
-        try{
-            if(role.isEmpty() & note.isEmpty() & phone.isEmpty() & address.isEmpty()){
+        try {
+            if (role.isEmpty() & note.isEmpty() & phone.isEmpty() & address.isEmpty()) {
                 session.setAttribute(WRONG, WRONG_MESSAGE);
             } else {
-                if(!address.isEmpty()){
+                if (!address.isEmpty()) {
                     serviceFactory.getUserService().changeAddress(address, userId);
                 }
-                if(!phone.isEmpty()){
+                if (!phone.isEmpty()) {
                     serviceFactory.getUserService().changePhone(phone, userId);
                 }
-                if(!note.isEmpty()){
+                if (!note.isEmpty()) {
                     serviceFactory.getUserService().changeNote(note, userId);
                 }
-                if(!role.isEmpty()){
+                if (!role.isEmpty()) {
                     serviceFactory.getUserService().changeRole(role, userId);
                 }
                 session.setAttribute(RIGHT, RIGHT_MESSAGE);
             }
-        } catch (ValidatorException ex){
+        } catch (ValidatorException ex) {
             log.error(this.getClass() + ":" + ex.getMessage());
             session.setAttribute(WRONG, WRONG_MESSAGE);
-        } catch (ServiceException e){
+        } catch (ServiceException e) {
             log.error(this.getClass() + ":" + e.getMessage());
             return CommandResult.forward("/WEB-INF/jsp/common/error.jsp");
         }

@@ -2,7 +2,6 @@ package by.epam.bakery.controller.command.impl.courier;
 
 import by.epam.bakery.controller.command.Command;
 import by.epam.bakery.controller.command.CommandResult;
-import by.epam.bakery.domain.Order;
 import by.epam.bakery.domain.OrderProduct;
 import by.epam.bakery.service.exception.ServiceException;
 import by.epam.bakery.service.factory.ServiceFactory;
